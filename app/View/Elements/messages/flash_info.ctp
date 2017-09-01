@@ -1,0 +1,1 @@
+<span class="text-info"><i class="icon-info-sign"></i> <?php echo h($message); ?></span>

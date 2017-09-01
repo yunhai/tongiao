@@ -1,0 +1,1 @@
+<span class="text-error"> <?php echo h($message); ?></span>

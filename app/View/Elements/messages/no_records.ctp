@@ -1,0 +1,1 @@
+﻿<span<?php echo isset($class)?' class="'.$class.'"':'';?>><i class="icon-warning-sign"></i> 条件に一致するデータはありませんでした。</span>
