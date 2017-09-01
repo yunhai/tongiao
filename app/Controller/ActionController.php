@@ -220,7 +220,7 @@ class ActionController extends AppController {
         $filename = "{$this->_type_text[$type]}";
         $data = $this->{"__getType{$type}Data"}();
         $this->Excel->load($source);
-        $this->Excel->defaultPlaceHolder = '【なし】';
+        //$this->Excel->defaultPlaceHolder = '【なし】';
         $this->Excel->setVariableArray($data);
         $this->Excel->compile();
         $this->Excel->save($filename);
@@ -316,6 +316,11 @@ class ActionController extends AppController {
             'bienhoa_phatgiaohoahao_dacapgcn_tongiao' => $bienhoa_phatgiaohoahao_dacapgcn_tongiao,
             'bienhoa_phatgiaohoahao_dacapgcn_khac' => $bienhoa_phatgiaohoahao_dacapgcn_khac,
             'bienhoa_phatgiaohoahao_chuacapgcn' => $bienhoa_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'bienhoa_tinnguong_tongdt' => $bienhoa_tinnguong_tongdt,
+            'bienhoa_tinnguong_dacapgcn_tongiao' => $bienhoa_tinnguong_dacapgcn_tongiao,
+            'bienhoa_tinnguong_dacapgcn_khac' => $bienhoa_tinnguong_dacapgcn_khac,
+            'bienhoa_tinnguong_chuacapgcn' => $bienhoa_tinnguong_chuacapgcn,
         
             /*LONG KHÁNH*/
             'longkhanh_tongdt' => $longkhanh_tongdt,
@@ -353,6 +358,11 @@ class ActionController extends AppController {
             'longkhanh_phatgiaohoahao_dacapgcn_tongiao' => $longkhanh_phatgiaohoahao_dacapgcn_tongiao,
             'longkhanh_phatgiaohoahao_dacapgcn_khac' => $longkhanh_phatgiaohoahao_dacapgcn_khac,
             'longkhanh_phatgiaohoahao_chuacapgcn' => $longkhanh_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'longkhanh_tinnguong_tongdt' => $longkhanh_tinnguong_tongdt,
+            'longkhanh_tinnguong_dacapgcn_tongiao' => $longkhanh_tinnguong_dacapgcn_tongiao,
+            'longkhanh_tinnguong_dacapgcn_khac' => $longkhanh_tinnguong_dacapgcn_khac,
+            'longkhanh_tinnguong_chuacapgcn' => $longkhanh_tinnguong_chuacapgcn,
         
             //XUÂN LỘC
             'xuanloc_tongdt' => $xuanloc_tongdt,
@@ -390,6 +400,11 @@ class ActionController extends AppController {
             'xuanloc_phatgiaohoahao_dacapgcn_tongiao' => $xuanloc_phatgiaohoahao_dacapgcn_tongiao,
             'xuanloc_phatgiaohoahao_dacapgcn_khac' => $xuanloc_phatgiaohoahao_dacapgcn_khac,
             'xuanloc_phatgiaohoahao_chuacapgcn' => $xuanloc_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'xuanloc_tinnguong_tongdt' => $xuanloc_tinnguong_tongdt,
+            'xuanloc_tinnguong_dacapgcn_tongiao' => $xuanloc_tinnguong_dacapgcn_tongiao,
+            'xuanloc_tinnguong_dacapgcn_khac' => $xuanloc_tinnguong_dacapgcn_khac,
+            'xuanloc_tinnguong_chuacapgcn' => $xuanloc_tinnguong_chuacapgcn,
         
             /*CẨM MỸ*/
             'cammy_tongdt' => $cammy_tongdt,
@@ -427,6 +442,11 @@ class ActionController extends AppController {
             'cammy_phatgiaohoahao_dacapgcn_tongiao' => $cammy_phatgiaohoahao_dacapgcn_tongiao,
             'cammy_phatgiaohoahao_dacapgcn_khac' => $cammy_phatgiaohoahao_dacapgcn_khac,
             'cammy_phatgiaohoahao_chuacapgcn' => $cammy_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'cammy_tinnguong_tongdt' => $cammy_tinnguong_tongdt,
+            'cammy_tinnguong_dacapgcn_tongiao' => $cammy_tinnguong_dacapgcn_tongiao,
+            'cammy_tinnguong_dacapgcn_khac' => $cammy_tinnguong_dacapgcn_khac,
+            'cammy_tinnguong_chuacapgcn' => $cammy_tinnguong_chuacapgcn,
         
             /*TÂN PHÚ*/
             'tanphu_tongdt' => $tanphu_tongdt,
@@ -464,6 +484,11 @@ class ActionController extends AppController {
             'tanphu_phatgiaohoahao_dacapgcn_tongiao' => $tanphu_phatgiaohoahao_dacapgcn_tongiao,
             'tanphu_phatgiaohoahao_dacapgcn_khac' => $tanphu_phatgiaohoahao_dacapgcn_khac,
             'tanphu_phatgiaohoahao_chuacapgcn' => $tanphu_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'tanphu_tinnguong_tongdt' => $tanphu_tinnguong_tongdt,
+            'tanphu_tinnguong_dacapgcn_tongiao' => $tanphu_tinnguong_dacapgcn_tongiao,
+            'tanphu_tinnguong_dacapgcn_khac' => $tanphu_tinnguong_dacapgcn_khac,
+            'tanphu_tinnguong_chuacapgcn' => $tanphu_tinnguong_chuacapgcn,
         
             //ĐỊNH QUÁN
             'dinhquan_tongdt' => $dinhquan_tongdt,
@@ -501,6 +526,11 @@ class ActionController extends AppController {
             'dinhquan_phatgiaohoahao_dacapgcn_tongiao' => $dinhquan_phatgiaohoahao_dacapgcn_tongiao,
             'dinhquan_phatgiaohoahao_dacapgcn_khac' => $dinhquan_phatgiaohoahao_dacapgcn_khac,
             'dinhquan_phatgiaohoahao_chuacapgcn' => $dinhquan_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'dinhquan_tinnguong_tongdt' => $dinhquan_tinnguong_tongdt,
+            'dinhquan_tinnguong_dacapgcn_tongiao' => $dinhquan_tinnguong_dacapgcn_tongiao,
+            'dinhquan_tinnguong_dacapgcn_khac' => $dinhquan_tinnguong_dacapgcn_khac,
+            'dinhquan_tinnguong_chuacapgcn' => $dinhquan_tinnguong_chuacapgcn,
         
             //THỐNG NHẤT
             'thongnhat_tongdt' => $thongnhat_tongdt,
@@ -538,6 +568,11 @@ class ActionController extends AppController {
             'thongnhat_phatgiaohoahao_dacapgcn_tongiao' => $thongnhat_phatgiaohoahao_dacapgcn_tongiao,
             'thongnhat_phatgiaohoahao_dacapgcn_khac' => $thongnhat_phatgiaohoahao_dacapgcn_khac,
             'thongnhat_phatgiaohoahao_chuacapgcn' => $thongnhat_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'thongnhat_tinnguong_tongdt' => $thongnhat_tinnguong_tongdt,
+            'thongnhat_tinnguong_dacapgcn_tongiao' => $thongnhat_tinnguong_dacapgcn_tongiao,
+            'thongnhat_tinnguong_dacapgcn_khac' => $thongnhat_tinnguong_dacapgcn_khac,
+            'thongnhat_tinnguong_chuacapgcn' => $thongnhat_tinnguong_chuacapgcn,
         
             //TRẢNG BOM
             'trangbom_tongdt' => $trangbom_tongdt,
@@ -575,6 +610,11 @@ class ActionController extends AppController {
             'trangbom_phatgiaohoahao_dacapgcn_tongiao' => $trangbom_phatgiaohoahao_dacapgcn_tongiao,
             'trangbom_phatgiaohoahao_dacapgcn_khac' => $trangbom_phatgiaohoahao_dacapgcn_khac,
             'trangbom_phatgiaohoahao_chuacapgcn' => $trangbom_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'trangbom_tinnguong_tongdt' => $trangbom_tinnguong_tongdt,
+            'trangbom_tinnguong_dacapgcn_tongiao' => $trangbom_tinnguong_dacapgcn_tongiao,
+            'trangbom_tinnguong_dacapgcn_khac' => $trangbom_tinnguong_dacapgcn_khac,
+            'trangbom_tinnguong_chuacapgcn' => $trangbom_tinnguong_chuacapgcn,
             
             //VĨNH CỬU
             'vinhcuu_tongdt' => $vinhcuu_tongdt,
@@ -612,6 +652,11 @@ class ActionController extends AppController {
             'vinhcuu_phatgiaohoahao_dacapgcn_tongiao' => $vinhcuu_phatgiaohoahao_dacapgcn_tongiao,
             'vinhcuu_phatgiaohoahao_dacapgcn_khac' => $vinhcuu_phatgiaohoahao_dacapgcn_khac,
             'vinhcuu_phatgiaohoahao_chuacapgcn' => $vinhcuu_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'vinhcuu_tinnguong_tongdt' => $vinhcuu_tinnguong_tongdt,
+            'vinhcuu_tinnguong_dacapgcn_tongiao' => $vinhcuu_tinnguong_dacapgcn_tongiao,
+            'vinhcuu_tinnguong_dacapgcn_khac' => $vinhcuu_tinnguong_dacapgcn_khac,
+            'vinhcuu_tinnguong_chuacapgcn' => $vinhcuu_tinnguong_chuacapgcn,
         
             //NHƠN TRẠCH
             'nhontrach_tongdt' => $nhontrach_tongdt,
@@ -649,6 +694,11 @@ class ActionController extends AppController {
             'nhontrach_phatgiaohoahao_dacapgcn_tongiao' => $nhontrach_phatgiaohoahao_dacapgcn_tongiao,
             'nhontrach_phatgiaohoahao_dacapgcn_khac' => $nhontrach_phatgiaohoahao_dacapgcn_khac,
             'nhontrach_phatgiaohoahao_chuacapgcn' => $nhontrach_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'nhontrach_tinnguong_tongdt' => $nhontrach_tinnguong_tongdt,
+            'nhontrach_tinnguong_dacapgcn_tongiao' => $nhontrach_tinnguong_dacapgcn_tongiao,
+            'nhontrach_tinnguong_dacapgcn_khac' => $nhontrach_tinnguong_dacapgcn_khac,
+            'nhontrach_tinnguong_chuacapgcn' => $nhontrach_tinnguong_chuacapgcn,
         
             //LONG THÀNH
             'longthanh_tongdt' => $longthanh_tongdt,
@@ -686,6 +736,53 @@ class ActionController extends AppController {
             'longthanh_phatgiaohoahao_dacapgcn_tongiao' => $longthanh_phatgiaohoahao_dacapgcn_tongiao,
             'longthanh_phatgiaohoahao_dacapgcn_khac' => $longthanh_phatgiaohoahao_dacapgcn_khac,
             'longthanh_phatgiaohoahao_chuacapgcn' => $longthanh_phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'longthanh_tinnguong_tongdt' => $longthanh_tinnguong_tongdt,
+            'longthanh_tinnguong_dacapgcn_tongiao' => $longthanh_tinnguong_dacapgcn_tongiao,
+            'longthanh_tinnguong_dacapgcn_khac' => $longthanh_tinnguong_dacapgcn_khac,
+            'longthanh_tinnguong_chuacapgcn' => $longthanh_tinnguong_chuacapgcn,
+        
+            /*TỔNG*/
+            'tongdt' => $tongdt,
+            'sodientichdat_dacapgcn_tong' => $sodientichdat_dacapgcn_tong,
+            'sodientichdat_dacapgcn_tongiao' => $sodientichdat_dacapgcn_tongiao,
+            'sodientichdat_dacapgcn_khac' => $sodientichdat_dacapgcn_khac,
+            'sodientichdat_chuacapgcn' => $sodientichdat_chuacapgcn,
+            //CÔNG GIÁO
+            'congiao_tongdt' => $congiao_tongdt,
+            'congiao_dacapgcn_tongiao' => $congiao_dacapgcn_tongiao,
+            'congiao_dacapgcn_khac' => $congiao_dacapgcn_khac,
+            'congiao_chuacapgcn' => $congiao_chuacapgcn,
+            //PHẬT GIÁO
+            'phatgiao_tongdt' => $phatgiao_tongdt,
+            'phatgiao_dacapgcn_tongiao' => $phatgiao_dacapgcn_tongiao,
+            'phatgiao_dacapgcn_khac' => $phatgiao_dacapgcn_khac,
+            'phatgiao_chuacapgcn' => $phatgiao_chuacapgcn,
+            //CAO ĐÀI
+            'caodai_tongdt' => $caodai_tongdt,
+            'caodai_dacapgcn_tongiao' => $caodai_dacapgcn_tongiao,
+            'caodai_dacapgcn_khac' => $caodai_dacapgcn_khac,
+            'caodai_chuacapgcn' => $caodai_chuacapgcn,
+            //TĐCSPHVN
+            'tdcsphvn_tongdt' => $tdcsphvn_tongdt,
+            'tdcsphvn_dacapgcn_tongiao' => $tdcsphvn_dacapgcn_tongiao,
+            'tdcsphvn_dacapgcn_khac' => $tdcsphvn_dacapgcn_khac,
+            'tdcsphvn_chuacapgcn' => $tdcsphvn_chuacapgcn,
+            //HỒI GIÁO
+            'hoigiao_tongdt' => $hoigiao_tongdt,
+            'hoigiao_dacapgcn_tongiao' => $hoigiao_dacapgcn_tongiao,
+            'hoigiao_dacapgcn_khac' => $hoigiao_dacapgcn_khac,
+            'hoigiao_chuacapgcn' => $hoigiao_chuacapgcn,
+            //PHẬT GIÁO HÒA HẢO
+            'phatgiaohoahao_tongdt' => $phatgiaohoahao_tongdt,
+            'phatgiaohoahao_dacapgcn_tongiao' => $phatgiaohoahao_dacapgcn_tongiao,
+            'phatgiaohoahao_dacapgcn_khac' => $phatgiaohoahao_dacapgcn_khac,
+            'phatgiaohoahao_chuacapgcn' => $phatgiaohoahao_chuacapgcn,
+            //TÍN NGƯỠNG
+            'tinnguong_tongdt' => $tinnguong_tongdt,
+            'tinnguong_dacapgcn_tongiao' => $tinnguong_dacapgcn_tongiao,
+            'tinnguong_dacapgcn_khac' => $tinnguong_dacapgcn_khac,
+            'tinnguong_chuacapgcn' => $tinnguong_chuacapgcn,
         );
         return $data;
     }
