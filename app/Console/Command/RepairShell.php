@@ -87,6 +87,30 @@ class RepairShell extends AppShell
          * Cột datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3 có chứa datngoaikhuonvien_dsdmdk_dacap_dientich_3
          * 
          */
+        
+        $arrays = array(
+            'tongiao_dacap_gcn_quyensudungdat' => 'tongiao_dacap_dientich',
+            'nnlnntts_dacap_gcn_quyensudungdat' => 'nnlnntts_dacap_dientich',
+            'gdyt_dacap_gcn_quyensudungdat' => 'gdyt_dacap_dientich',
+            'dsdmdk_dacap_gcn_quyensudungdat' => 'dsdmdk_dacap_dientich',
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_dsdmdk_dacap_dientich',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_3',
+            
+        );
 
         $string = [
             '1300',
@@ -107,7 +131,24 @@ class RepairShell extends AppShell
             
             '2000 + 1.637,8',
             '462.5 và 796.6',
-            '3142; 15441.8; 5885.7'
+            '3142; 15441.8; 5885.7',
+            '412.715',
+            '947,2 m2',
+            '606.5 m2',
+            '13461,5 m2; 1512 m2; 14383 m2; 571,5 m2',
+            '16983,3 (17163,3)',    //Hodaocaodais/add/22
+            '2047+16983,3 m2',  
+            '1690 m2 + 217 m2',
+            '709, 7 m2 (đất họ đạo 357 m2)',    //Hodaocaodais/add/40
+            'mượn 25/1080 m2 (tờ 9, thửa 122)', //Hodaocaodais/add/47
+            'đát thánh thất là 1,209 m2; đất Điện thờ Phật mẫu: 1.078 m2',      //Hodaocaodais/add/21
+            '13.700.4 m2',
+            'Đất ơ nông thôn 150 m2, đất trồng cây lâu năm',        //Chihoitinhdocusiphatgiaovietnams/add/5
+            'đất nông thôn 150 m2, đất trồng cây lâu năm 919 m2',   //Chihoitinhdocusiphatgiaovietnams/add/14
+            '2.045,4m2',
+            '58.411,3 m2',
+            '1132 m2 đất lộ giới',
+            //'638m2 thuộc tờ 30, thửa 603. 533m2 thuộc tờ 20, thửa 600. 2634 m2 thuộc tờ 30, thửa 602. 1576 m2 thuộc tờ 37, thửa 143'    //Tuvienphatgiaos/add/579
         ];
         foreach ($string as $id => $string) {
             $this->out($string);

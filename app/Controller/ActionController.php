@@ -233,12 +233,11 @@ class ActionController extends AppController
     {
         $this->autoLayout = false;
         $this->autoRender = false;
-        $this->test();
+        //$this->test();
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template{$type}.xls";
         $filename = "{$this->_type_text[$type]}";
         $data = $this->{"__getType{$type}Data"}();
         $this->Excel->load($source);
-        //$this->Excel->defaultPlaceHolder = '【なし】';
         $this->Excel->setVariableArray($data);
         $this->Excel->compile();
         $this->Excel->save($filename);
@@ -841,10 +840,22 @@ class ActionController extends AppController
 
     public function formatData()
     {
+        /**
+         * Exports/formatData/Giaoxu
+         * 
+         * Cosotinnguong
+         * Diemnhomtinlanh
+         * Cosohoigiaoislam
+         * Hodaocaodai
+         * Chihoitinhdocusiphatgiaovietnam
+         * Chihoitinlanh
+         * Dongtuconggiao
+         * Giaoxu
+         * Tuvienphatgiao
+         */
         $request = $this->request;
         $pass = $request->params['pass'];
         $modelName = $pass[0];
-        //$columnName = $pass[1];
         $array = array(
             $modelName
         );
@@ -853,9 +864,6 @@ class ActionController extends AppController
         foreach ($array as $element) {
             $this->$element = new $element();
         }
-
-
-
 
         $fields = array();
         $conditions = array(
@@ -957,16 +965,16 @@ class ActionController extends AppController
             'fields' => $fields,
             'conditions' => $conditions
         ));
-        /*print "<pre>";
+        print "<pre>";
         print_r($data);
-        print "</pre>";*/
+        print "</pre>";
         foreach ($data as $key => $value) {
-            print '<pre>';
+            /*print '<pre>';
             print_r($value);
-            print '</pre>';
+            print '</pre>';*/
         }
         exit;
-
+        
         /*$data = $this->$modelName->find('list', array(
             'fields' => array($columnName),
             'conditions' => array(
