@@ -7,8 +7,7 @@ class UtilityComponent extends Component
         $matches = [];
         preg_match_all('/[\s][0-9\.\,]*/', ' ' . $string, $matches);
         $matches = array_filter($matches);
-        $number = isset($matches[0]) ? $matches[0] : '';
-
+        $number = isset($matches[0]) ? $matches[0] : 0;
 
         if ($number) {
             $number = array_filter($number, function ($target) {
