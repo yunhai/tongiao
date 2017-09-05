@@ -843,10 +843,10 @@ class ActionController extends AppController
         /**
          * Exports/formatData/Giaoxu
          * 
-         * Cosotinnguong
-         * Diemnhomtinlanh
-         * Cosohoigiaoislam
-         * Hodaocaodai
+         * Cosotinnguong            OK
+         * Diemnhomtinlanh          OK
+         * Cosohoigiaoislam         OK
+         * Hodaocaodai              OK
          * Chihoitinhdocusiphatgiaovietnam
          * Chihoitinlanh
          * Dongtuconggiao
@@ -874,20 +874,28 @@ class ActionController extends AppController
         if ($modelName == 'Cosotinnguong') {
             $fields = array(
                 'id', 'datdai_tongdientich',
-                'tongiao_dientich', 'tongiao_dacap_dientich', 'tongiao_chuacap_dientich', 'tongiao_dacap_gcn_quyensudungdat',
-                'nnlnntts_dientich', 'nnlnntts_dacap_dientich', 'nnlnntts_chuacap_dientich', 'nnlnntts_dacap_gcn_quyensudungdat',
-                'gdyt_dientich', 'gdyt_dacap_dientich', 'gdyt_chuacap_dientich', 'gdyt_dacap_gcn_quyensudungdat',
-                'dsdmdk_dientich', 'dsdmdk_dacap_dientich', 'dsdmdk_chuacap_dientich', 'dsdmdk_dacap_gcn_quyensudungdat'
+                'tongiao_dientich', 'tongiao_chuacap_dientich', 
+                //'tongiao_dacap_dientich', 'tongiao_dacap_gcn_quyensudungdat',
+                'nnlnntts_dientich', 'nnlnntts_chuacap_dientich', 
+                //'nnlnntts_dacap_dientich', 'nnlnntts_dacap_gcn_quyensudungdat',
+                'gdyt_dientich', 'gdyt_chuacap_dientich', 
+                //'gdyt_dacap_dientich', 'gdyt_dacap_gcn_quyensudungdat',
+                'dsdmdk_dientich', 'dsdmdk_chuacap_dientich', 
+                //'dsdmdk_dacap_dientich', 'dsdmdk_dacap_gcn_quyensudungdat'
             );
         }
         //Diemnhomtinlanh
         if ($modelName == 'Diemnhomtinlanh') {
             $fields = array(
                 'id', 'tongdientichdat',
-                'tongiao_dientich', 'tongiao_dacap_dientich', 'tongiao_chuacap_dientich', 'tongiao_dacap_gcn_quyensudungdat',
-                'nnlnntts_dientich', 'nnlnntts_dacap_dientich', 'nnlnntts_chuacap_dientich', 'nnlnntts_dacap_gcn_quyensudungdat',
-                'gdyt_dientich', 'gdyt_dacap_dientich', 'gdyt_chuacap_dientich', 'gdyt_dacap_gcn_quyensudungdat',
-                'dsdmdk_dientich', 'dsdmdk_dacap_dientich', 'dsdmdk_chuacap_dientich', 'dsdmdk_dacap_gcn_quyensudungdat'
+                'tongiao_dientich', 'tongiao_chuacap_dientich', 
+                //'tongiao_dacap_dientich', 'tongiao_dacap_gcn_quyensudungdat',
+                'nnlnntts_dientich', 'nnlnntts_chuacap_dientich', 
+                //'nnlnntts_dacap_dientich', 'nnlnntts_dacap_gcn_quyensudungdat',
+                'gdyt_dientich', 'gdyt_chuacap_dientich', 
+                //'gdyt_dacap_dientich', 'gdyt_dacap_gcn_quyensudungdat',
+                'dsdmdk_dientich', 'dsdmdk_chuacap_dientich', 
+                //'dsdmdk_dacap_dientich', 'dsdmdk_dacap_gcn_quyensudungdat'
             );
         }
         //Cosohoigiaoislam
@@ -906,59 +914,92 @@ class ActionController extends AppController
                 /*dattrongkhuonvien*/
                 'dattrongkhuonvien', 'datdai_tongdientich',
                 //Tôn giáo
-                'dattrongkhuonvien_tongiao_dientich', 'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat',
-                'dattrongkhuonvien_tongiao_dacap_dientich', 'dattrongkhuonvien_tongiao_chuacap_dientich',
+                'dattrongkhuonvien_tongiao_dientich', 
+                //'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat', 
+                'dattrongkhuonvien_tongiao_dacap_dientich', 
+                'dattrongkhuonvien_tongiao_chuacap_dientich',
                 //Nông nghiệp, lâm nghiệp, nuôi trồng thủy sản
-                'dattrongkhuonvien_nnlnntts_dientich', 'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat',
-                'dattrongkhuonvien_nnlnntts_dacap_dientich', 'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+                'dattrongkhuonvien_nnlnntts_dientich', 
+                //'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat', 
+                'dattrongkhuonvien_nnlnntts_dacap_dientich', 
+                'dattrongkhuonvien_nnlnntts_chuacap_dientich',
                 //Giáo dục, y tế
-                'dattrongkhuonvien_gdyt_dientich', 'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat',
-                'dattrongkhuonvien_gdyt_dacap_dientich', 'dattrongkhuonvien_gdyt_chuacap_dientich',
+                'dattrongkhuonvien_gdyt_dientich', 
+                //'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat', 
+                'dattrongkhuonvien_gdyt_dacap_dientich', 
+                'dattrongkhuonvien_gdyt_chuacap_dientich',
                 //Đất sử dụng mục đích khác
-                'dattrongkhuonvien_dsdmdk_dientich', 'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
-                'dattrongkhuonvien_dsdmdk_dacap_dientich', 'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+                'dattrongkhuonvien_dsdmdk_dientich', 
+                'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
+                'dattrongkhuonvien_dsdmdk_dacap_dientich', 
+                'dattrongkhuonvien_dsdmdk_chuacap_dientich',
 
                 /*datngoaikhuonvien*/
                 'datngoaikhuonvien',
                 //(1)Tôn giáo
-                'datngoaikhuonvien_tongiao_dientich_1', 'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1',
-                'datngoaikhuonvien_tongiao_dacap_dientich_1', 'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+                'datngoaikhuonvien_tongiao_dientich_1', 
+                //'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1',
+                'datngoaikhuonvien_tongiao_dacap_dientich_1', 
+                'datngoaikhuonvien_tongiao_chuacap_dientich_1',
                 //(1)Nông nghiệp, lâm nghiệp, nuôi trồng thủy sản
-                'datngoaikhuonvien_nnlnntts_dientich_1', 'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1',
-                'datngoaikhuonvien_nnlnntts_dacap_dientich_1', 'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+                'datngoaikhuonvien_nnlnntts_dientich_1', 
+                //'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_1', 
+                'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
                 //(1)Giáo dục, y tế
-                'datngoaikhuonvien_gdyt_dientich_1', 'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1',
-                'datngoaikhuonvien_gdyt_dacap_dientich_1', 'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+                'datngoaikhuonvien_gdyt_dientich_1', 
+                //'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1',
+                'datngoaikhuonvien_gdyt_dacap_dientich_1', 
+                'datngoaikhuonvien_gdyt_chuacap_dientich_1',
                 //(1)Đất sử dụng mục đích khác
-                'datngoaikhuonvien_dsdmdk_dientich_1', 'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1',
-                'datngoaikhuonvien_dsdmdk_dacap_dientich_1', 'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+                'datngoaikhuonvien_dsdmdk_dientich_1', 
+                //'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_1', 
+                'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
 
                 //(2)Tôn giáo
-                'datngoaikhuonvien_tongiao_dientich_2', 'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2',
-                'datngoaikhuonvien_tongiao_dacap_dientich_2', 'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+                'datngoaikhuonvien_tongiao_dientich_2', 
+                //'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2',
+                'datngoaikhuonvien_tongiao_dacap_dientich_2', 
+                'datngoaikhuonvien_tongiao_chuacap_dientich_2',
                 //(2)Nông nghiệp, lâm nghiệp, nuôi trồng thủy sản
-                'datngoaikhuonvien_nnlnntts_dientich_2', 'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2',
-                'datngoaikhuonvien_nnlnntts_dacap_dientich_2', 'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+                'datngoaikhuonvien_nnlnntts_dientich_2', 
+                //'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_2', 
+                'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
                 //(2)Giáo dục, y tế
-                'datngoaikhuonvien_gdyt_dientich_2', 'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2',
-                'datngoaikhuonvien_gdyt_dacap_dientich_2', 'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+                'datngoaikhuonvien_gdyt_dientich_2', 
+                //'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2',
+                'datngoaikhuonvien_gdyt_dacap_dientich_2', 
+                'datngoaikhuonvien_gdyt_chuacap_dientich_2',
                 //(2)Đất sử dụng mục đích khác
-                'datngoaikhuonvien_dsdmdk_dientich_2', 'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2',
-                'datngoaikhuonvien_dsdmdk_dacap_dientich_2', 'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+                'datngoaikhuonvien_dsdmdk_dientich_2', 
+                //'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_2', 
+                'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
 
                 //(3)Tôn giáo
-                'datngoaikhuonvien_tongiao_dientich_3', 'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3',
-                'datngoaikhuonvien_tongiao_dacap_dientich_3', 'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+                'datngoaikhuonvien_tongiao_dientich_3', 
+                //'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3',
+                'datngoaikhuonvien_tongiao_dacap_dientich_3', 
+                'datngoaikhuonvien_tongiao_chuacap_dientich_3',
                 //(3)Nông nghiệp, lâm nghiệp, nuôi trồng thủy sản
-                'datngoaikhuonvien_nnlnntts_dientich_3', 'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3',
-                'datngoaikhuonvien_nnlnntts_dacap_dientich_3', 'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+                'datngoaikhuonvien_nnlnntts_dientich_3', 
+                //'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_3', 
+                'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
                 //(3)Giáo dục, y tế
-                'datngoaikhuonvien_gdyt_dientich_3', 'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3',
-                'datngoaikhuonvien_gdyt_dacap_dientich_3', 'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+                'datngoaikhuonvien_gdyt_dientich_3', 
+                //'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3',
+                'datngoaikhuonvien_gdyt_dacap_dientich_3', 
+                'datngoaikhuonvien_gdyt_chuacap_dientich_3',
                 //(3)Đất sử dụng mục đích khác
-                'datngoaikhuonvien_dsdmdk_dientich_3', 'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3',
-                'datngoaikhuonvien_dsdmdk_dacap_dientich_3', 'datngoaikhuonvien_dsdmdk_chuacap_dientich_3'
+                'datngoaikhuonvien_dsdmdk_dientich_3', 
+                //'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_3', 
+                'datngoaikhuonvien_dsdmdk_chuacap_dientich_3'
             );
+            
         }
 
         $data = $this->$modelName->find('all', array(

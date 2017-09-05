@@ -129,22 +129,22 @@ class RepairShell extends AppShell
             'khoang 900 m2',
             'chieu. chungtoi, 900m2',
             
-            '2000 + 1.637,8',
-            '462.5 và 796.6',
-            '3142; 15441.8; 5885.7',
+            //'2000 + 1.637,8',       //Cosotinnguongs/add/352        datdai_tongdientich,tongiao_chuacap_dientich
+            //'462.5 và 796.6',
+            //'3142; 15441.8; 5885.7',
             '412.715',
             '947,2 m2',
             '606.5 m2',
-            '13461,5 m2; 1512 m2; 14383 m2; 571,5 m2',
-            '16983,3 (17163,3)',    //Hodaocaodais/add/22
-            '2047+16983,3 m2',  
-            '1690 m2 + 217 m2',
-            '709, 7 m2 (đất họ đạo 357 m2)',    //Hodaocaodais/add/40
-            'mượn 25/1080 m2 (tờ 9, thửa 122)', //Hodaocaodais/add/47
-            'đát thánh thất là 1,209 m2; đất Điện thờ Phật mẫu: 1.078 m2',      //Hodaocaodais/add/21
+            //'13461,5 m2; 1512 m2; 14383 m2; 571,5 m2',
+            //'16983,3 (17163,3)',    //Hodaocaodais/add/22
+            //'2047+16983,3 m2',  
+            //'1690 m2 + 217 m2',     //Hodaocaodais/add/24
+            //'709, 7 m2 (đất họ đạo 357 m2)',    //Hodaocaodais/add/40       datngoaikhuonvien_dsdmdk_dientich_2
+            //'mượn 25/1080 m2 (tờ 9, thửa 122)', //Hodaocaodais/add/47       datdai_tongdientich
+            //'đát thánh thất là 1,209 m2; đất Điện thờ Phật mẫu: 1.078 m2',      //Hodaocaodais/add/21   datdai_tongdientich
             '13.700.4 m2',
-            'Đất ơ nông thôn 150 m2, đất trồng cây lâu năm',        //Chihoitinhdocusiphatgiaovietnams/add/5
-            'đất nông thôn 150 m2, đất trồng cây lâu năm 919 m2',   //Chihoitinhdocusiphatgiaovietnams/add/14
+            //'Đất ơ nông thôn 150 m2, đất trồng cây lâu năm',        //Chihoitinhdocusiphatgiaovietnams/add/5
+            //'đất nông thôn 150 m2, đất trồng cây lâu năm 919 m2',   //Chihoitinhdocusiphatgiaovietnams/add/14
             '2.045,4m2',
             '58.411,3 m2',
             '1132 m2 đất lộ giới',
