@@ -161,7 +161,7 @@ class RepairShell extends AppShell
                 'dattrongkhuonvien_gdyt_chuacap_dientich',
                 //Đất sử dụng mục đích khác
                 'dattrongkhuonvien_dsdmdk_dientich',
-                'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
+                //'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
                 'dattrongkhuonvien_dsdmdk_dacap_dientich',
                 'dattrongkhuonvien_dsdmdk_chuacap_dientich',
 
