@@ -1,0 +1,38 @@
+/**
+ * Exports/formatData/Giaoxu
+ * 
+ * Cosotinnguong            OK
+ * Diemnhomtinlanh          OK
+ * Cosohoigiaoislam         OK
+ * Hodaocaodai              OK
+ * Chihoitinhdocusiphatgiaovietnam
+ * Chihoitinlanh            OK
+ * Dongtuconggiao           OK
+ * Giaoxu                   OK
+ * Tuvienphatgiao           OK
+ */
+
+ 
+TÍN NGƯỠNG
+model Cosotinnguong
+bảng cosotinnguong
+	(32) là cột datdai_tongdientich = tongiao_dientich + nnlnntts_dientich + gdyt_dientich + dsdmdk_dientich
+	(33) = tongiao_dacap_gcn_quyensudungdat
+	(34) = nnlnntts_dacap_gcn_quyensudungdat + gdyt_dacap_gcn_quyensudungdat + dsdmdk_dacap_gcn_quyensudungdat
+	(35) = tongiao_chuacap_dientich + nnlnntts_chuacap_dientich + gdyt_chuacap_dientich + dsdmdk_chuacap_dientich
+	
+HỒI GIÁO
+model Cosohoigiaoislam
+bảng cosohoigiaoislam
+	(24) là cột datdai_tongdientich = dattrongkhuonvien + datngoaikhuonvien
+	(25) = dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat + datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1 + datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2 + datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3
+	(26) = dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat + dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat + dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat + datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1 + datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1 + datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1 + datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2 + datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2 + datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2 + datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3 + datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3 + datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3
+
+CAO ĐÀI
+model Hodaocaodai
+bảng hodaocaodai
+	(16) là cột datdai_tongdientich = dattrongkhuonvien + datngoaikhuonvien
+	(17) = dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat + datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1 + datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2 + datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3
+	(18) = dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat + dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat + dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat + datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1 + datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1 + datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1 + datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2 + datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2 + datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2 + 
+	datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3 + datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3 + datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3
+	
