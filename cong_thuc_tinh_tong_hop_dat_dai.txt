@@ -59,3 +59,59 @@ Tính theo 2 bảng dongtuconggiao, giaoxu
 	datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3 + datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3 + datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3
 	(11) = dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich
 	datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
+	
+	
+
+Field đặc biệt
+
+//Tôn giáo
+//'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat',
+'dattrongkhuonvien_tongiao_chuacap_dientich',
+//Nông nghiệp, lâm nghiệp, nuôi trồng thủy sản
+//'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat',
+'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+//Giáo dục, y tế
+//'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat',
+'dattrongkhuonvien_gdyt_chuacap_dientich',
+//Đất sử dụng mục đích khác
+//'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
+'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+
+//(1)Tôn giáo
+//'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1',
+'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+//(1)Nông nghiệp, lâm nghiệp, nuôi trồng thủy sản
+//'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1',
+'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+//(1)Giáo dục, y tế
+//'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1',
+'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+//(1)Đất sử dụng mục đích khác
+//'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1',
+'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+
+//(2)Tôn giáo
+//'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2',
+'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+//(2)Nông nghiệp, lâm nghiệp, nuôi trồng thủy sản
+//'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2',
+'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+//(2)Giáo dục, y tế
+//'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2',
+'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+//(2)Đất sử dụng mục đích khác
+//'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2',
+'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+
+//(3)Tôn giáo
+//'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3',
+'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+//(3)Nông nghiệp, lâm nghiệp, nuôi trồng thủy sản
+//'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3',
+'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+//(3)Giáo dục, y tế
+//'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3',
+'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+//(3)Đất sử dụng mục đích khác
+//'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3',
+'datngoaikhuonvien_dsdmdk_chuacap_dientich_3'	
