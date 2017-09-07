@@ -114,4 +114,32 @@ Field đặc biệt
 'datngoaikhuonvien_gdyt_chuacap_dientich_3',
 //(3)Đất sử dụng mục đích khác
 //'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3',
-'datngoaikhuonvien_dsdmdk_chuacap_dientich_3'	
+'datngoaikhuonvien_dsdmdk_chuacap_dientich_3'
+
+
+/*ĐỊA CHỈ*/
+TÍN NGƯỠNG
+model Cosotinnguong
+bảng cosotinnguong
+	-	lấy theo cột diachi_huyen
+HỒI GIÁO
+model Cosohoigiaoislam
+bảng cosohoigiaoislam
+	-	lấy theo cột tenthanhduong_diachi_huyen
+CAO ĐÀI
+model Hodaocaodai
+bảng hodaocaodai
+	-	lấy theo cột tenhodao_diachi_huyen
+PHẬT GIÁO
+model Tuvienphatgiao
+bảng tuvienphatgiao
+	-	lấy theo cột diachi_huyen
+CÔNG GIÁO
+model 
+	+	Dongtuconggiao, 
+	+	Giaoxu
+Tính theo 2 bảng 
+	+	dongtuconggiao, 
+	+	giaoxu	
+-	dongtuconggiao	lấy theo cột diachi_huyen
+-	giaoxu			lấy theo cột diachi_huyen
