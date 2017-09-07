@@ -151,7 +151,823 @@ class RepairShell extends AppShell
 
         $this->out('makeSum_cosotinnguong');
     }
+    
+    public function makeSum_cosohoigiaoislam($model, $update = false)
+    {
+        $after_log = "repair/sum/after/{$model}";
+        $before_log = "repair/sum/before/{$model}";
+        $track_log = "repair/sum/track/{$model}";
 
+        $obj = ClassRegistry::init($model);
+        $field = [
+            'id',
+
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_dsdmdk_dacap_dientich', 
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
+            
+            'datngoaikhuonvien_tongiao_dacap_dientich_1', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_1', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_2', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_2', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_3', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_3', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3',
+            
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3'
+        ];
+        $conditions = [
+            'is_add' => 1,
+        ];
+        $data = $obj->find('all', array(
+            'fields' => $field,
+            'conditions' => $conditions
+        ));
+
+        $data = Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
+
+        if (!$update) {
+            $this->log(print_r($data, true), $before_log);
+        }
+
+        $field = [
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_dsdmdk_dacap_dientich',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_3',
+        ];
+
+        $final = [];
+        foreach ($data as $id => $target) {
+            $tmp = [];
+            foreach ($field as $k => $v) {
+                $string = $target[$k];
+                if ($string) {
+                    $f = $v;
+                    $result = $this->retrieveSumData($string, $f);
+                    $tmp[$f] = $this->Utility->sumList($result);
+                }
+            }
+
+            if ($tmp) {
+                $final[$id] = array_merge(['id' => $id], $tmp);
+            }
+        }
+
+
+        if ($update) {
+            foreach ($final as $id => $item) {
+                //    $obj->save($item);
+            }
+        } else {
+            $this->log(print_r($final, true), $after_log);
+        }
+
+        $this->out('makeSum_cosohoigiaoislam');
+    }
+
+    public function makeSum_chihoitinhdocusiphatgiaovietnam($model, $update = false)
+    {
+        $after_log = "repair/sum/after/{$model}";
+        $before_log = "repair/sum/before/{$model}";
+        $track_log = "repair/sum/track/{$model}";
+
+        $obj = ClassRegistry::init($model);
+        $field = [
+            'id',
+
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_dsdmdk_dacap_dientich', 
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
+            
+            'datngoaikhuonvien_tongiao_dacap_dientich_1', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_1', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_2', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_2', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_3', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_3', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3',
+            
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3'
+        ];
+        $conditions = [
+            'is_add' => 1,
+        ];
+        $data = $obj->find('all', array(
+            'fields' => $field,
+            'conditions' => $conditions
+        ));
+
+        $data = Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
+
+        if (!$update) {
+            $this->log(print_r($data, true), $before_log);
+        }
+
+        $field = [
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_dsdmdk_dacap_dientich',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_3',
+        ];
+
+        $final = [];
+        foreach ($data as $id => $target) {
+            $tmp = [];
+            foreach ($field as $k => $v) {
+                $string = $target[$k];
+                if ($string) {
+                    $f = $v;
+                    $result = $this->retrieveSumData($string, $f);
+                    $tmp[$f] = $this->Utility->sumList($result);
+                }
+            }
+
+            if ($tmp) {
+                $final[$id] = array_merge(['id' => $id], $tmp);
+            }
+        }
+
+
+        if ($update) {
+            foreach ($final as $id => $item) {
+                //    $obj->save($item);
+            }
+        } else {
+            $this->log(print_r($final, true), $after_log);
+        }
+
+        $this->out('makeSum_chihoitinhdocusiphatgiaovietnam');
+    }
+    
+    public function makeSum_hodaocaodai($model, $update = false)
+    {
+        $after_log = "repair/sum/after/{$model}";
+        $before_log = "repair/sum/before/{$model}";
+        $track_log = "repair/sum/track/{$model}";
+
+        $obj = ClassRegistry::init($model);
+        $field = [
+            'id',
+
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_dsdmdk_dacap_dientich', 
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
+            
+            'datngoaikhuonvien_tongiao_dacap_dientich_1', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_1', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_2', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_2', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_3', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_3', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3',
+            
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3'
+        ];
+        $conditions = [
+            'is_add' => 1,
+        ];
+        $data = $obj->find('all', array(
+            'fields' => $field,
+            'conditions' => $conditions
+        ));
+
+        $data = Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
+
+        if (!$update) {
+            $this->log(print_r($data, true), $before_log);
+        }
+
+        $field = [
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_dsdmdk_dacap_dientich',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_3',
+        ];
+
+        $final = [];
+        foreach ($data as $id => $target) {
+            $tmp = [];
+            foreach ($field as $k => $v) {
+                $string = $target[$k];
+                if ($string) {
+                    $f = $v;
+                    $result = $this->retrieveSumData($string, $f);
+                    $tmp[$f] = $this->Utility->sumList($result);
+                }
+            }
+
+            if ($tmp) {
+                $final[$id] = array_merge(['id' => $id], $tmp);
+            }
+        }
+
+
+        if ($update) {
+            foreach ($final as $id => $item) {
+                //    $obj->save($item);
+            }
+        } else {
+            $this->log(print_r($final, true), $after_log);
+        }
+
+        $this->out('makeSum_hodaocaodai');
+    }
+    
+    public function makeSum_tuvienphatgiao($model, $update = false)
+    {
+        $after_log = "repair/sum/after/{$model}";
+        $before_log = "repair/sum/before/{$model}";
+        $track_log = "repair/sum/track/{$model}";
+
+        $obj = ClassRegistry::init($model);
+        $field = [
+            'id',
+
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_dsdmdk_dacap_dientich', 
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
+            
+            'datngoaikhuonvien_tongiao_dacap_dientich_1', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_1', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_2', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_2', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_3', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_3', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3',
+            
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3'
+        ];
+        $conditions = [
+            'is_add' => 1,
+        ];
+        $data = $obj->find('all', array(
+            'fields' => $field,
+            'conditions' => $conditions
+        ));
+
+        $data = Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
+
+        if (!$update) {
+            $this->log(print_r($data, true), $before_log);
+        }
+
+        $field = [
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_dsdmdk_dacap_dientich',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_3',
+        ];
+
+        $final = [];
+        foreach ($data as $id => $target) {
+            $tmp = [];
+            foreach ($field as $k => $v) {
+                $string = $target[$k];
+                if ($string) {
+                    $f = $v;
+                    $result = $this->retrieveSumData($string, $f);
+                    $tmp[$f] = $this->Utility->sumList($result);
+                }
+            }
+
+            if ($tmp) {
+                $final[$id] = array_merge(['id' => $id], $tmp);
+            }
+        }
+
+
+        if ($update) {
+            foreach ($final as $id => $item) {
+                //    $obj->save($item);
+            }
+        } else {
+            $this->log(print_r($final, true), $after_log);
+        }
+
+        $this->out('makeSum_tuvienphatgiao');
+    }
+    
+    public function makeSum_dongtuconggiao($model, $update = false)
+    {
+        $after_log = "repair/sum/after/{$model}";
+        $before_log = "repair/sum/before/{$model}";
+        $track_log = "repair/sum/track/{$model}";
+
+        $obj = ClassRegistry::init($model);
+        $field = [
+            'id',
+
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_dsdmdk_dacap_dientich', 
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
+            
+            'datngoaikhuonvien_tongiao_dacap_dientich_1', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_1', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_2', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_2', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_3', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_3', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3',
+            
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3'
+        ];
+        $conditions = [
+            'is_add' => 1,
+        ];
+        $data = $obj->find('all', array(
+            'fields' => $field,
+            'conditions' => $conditions
+        ));
+
+        $data = Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
+
+        if (!$update) {
+            $this->log(print_r($data, true), $before_log);
+        }
+
+        $field = [
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_dsdmdk_dacap_dientich',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_3',
+        ];
+
+        $final = [];
+        foreach ($data as $id => $target) {
+            $tmp = [];
+            foreach ($field as $k => $v) {
+                $string = $target[$k];
+                if ($string) {
+                    $f = $v;
+                    $result = $this->retrieveSumData($string, $f);
+                    $tmp[$f] = $this->Utility->sumList($result);
+                }
+            }
+
+            if ($tmp) {
+                $final[$id] = array_merge(['id' => $id], $tmp);
+            }
+        }
+
+
+        if ($update) {
+            foreach ($final as $id => $item) {
+                //    $obj->save($item);
+            }
+        } else {
+            $this->log(print_r($final, true), $after_log);
+        }
+
+        $this->out('makeSum_dongtuconggiao');
+    }
+    
+    public function makeSum_giaoxu($model, $update = false)
+    {
+        $after_log = "repair/sum/after/{$model}";
+        $before_log = "repair/sum/before/{$model}";
+        $track_log = "repair/sum/track/{$model}";
+
+        $obj = ClassRegistry::init($model);
+        $field = [
+            'id',
+
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat',
+
+            'dattrongkhuonvien_dsdmdk_dacap_dientich', 
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat',
+            
+            'datngoaikhuonvien_tongiao_dacap_dientich_1', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_1', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_2', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_2', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_3', 
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3', 
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3',
+        
+            'datngoaikhuonvien_gdyt_dacap_dientich_3', 
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3',
+            
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3', 
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3'
+        ];
+        $conditions = [
+            'is_add' => 1,
+        ];
+        $data = $obj->find('all', array(
+            'fields' => $field,
+            'conditions' => $conditions
+        ));
+
+        $data = Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
+
+        if (!$update) {
+            $this->log(print_r($data, true), $before_log);
+        }
+
+        $field = [
+            'dattrongkhuonvien_tongiao_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_gcn_quyensudungdat' => 'dattrongkhuonvien_dsdmdk_dacap_dientich',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_1' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_2' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+            'datngoaikhuonvien_tongiao_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_gcn_quyensudungdat_3' => 'datngoaikhuonvien_dsdmdk_dacap_dientich_3',
+        ];
+
+        $final = [];
+        foreach ($data as $id => $target) {
+            $tmp = [];
+            foreach ($field as $k => $v) {
+                $string = $target[$k];
+                if ($string) {
+                    $f = $v;
+                    $result = $this->retrieveSumData($string, $f);
+                    $tmp[$f] = $this->Utility->sumList($result);
+                }
+            }
+
+            if ($tmp) {
+                $final[$id] = array_merge(['id' => $id], $tmp);
+            }
+        }
+
+
+        if ($update) {
+            foreach ($final as $id => $item) {
+                //    $obj->save($item);
+            }
+        } else {
+            $this->log(print_r($final, true), $after_log);
+        }
+
+        $this->out('makeSum_giaoxu');
+    }
+    
     private function retrieveSumData($string, $keyword)
     {
         $list = explode(';', $string);
@@ -185,11 +1001,11 @@ class RepairShell extends AppShell
     {
         $model = [
             1 => 'Cosotinnguong',
-            'Diemnhomtinlanh',
+            //'Diemnhomtinlanh',
             'Cosohoigiaoislam',
             'Hodaocaodai',
             'Chihoitinhdocusiphatgiaovietnam',
-            'Chihoitinlanh',
+            //'Chihoitinlanh',
             'Dongtuconggiao',
             'Giaoxu',
             'Tuvienphatgiao'
