@@ -32,4 +32,21 @@ class UtilityComponent extends Component
 
         return $number;
     }
+
+    public function seperateNumberFromString($string, $token = ';')
+    {
+        $string = explode($token, $string);
+
+        $result = [];
+        foreach ($string as $str) {
+            $result[] = self::retrieveNumberFromString($str);
+        }
+
+        return $result;
+    }
+
+    public function sumList($list)
+    {
+        return array_sum($result);
+    }
 }
