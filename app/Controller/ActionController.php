@@ -243,36 +243,6 @@ class ActionController extends AppController
         $this->Excel->save($filename);
     }
 
-    public function test()
-    {
-        $string = [
-            '1300',
-            '1,300',
-            '1,300,000',
-            '1.300',
-            '1.300.000',
-            '1300,25',
-            '1300.25',
-            '1300.32',
-            '1.300,25',
-            '1,300.25',
-            '900m2',
-            '900 m2',
-            'khoảng 900 m2',
-            'khoang 900 m2',
-            'chieu. chungtoi, 900m2',
-        ];
-        $result = [];
-        foreach ($string as $id => $string) {
-            $result[$string] = $this->Utility->retrieveNumberFromString($string);
-        }
-
-        print_r('<pre>');
-        print_r($result);
-        print_r('</pre>');
-        exit;
-    }
-
     //TONG HOP CHUC SAC
     protected function __getType0Data()
     {
