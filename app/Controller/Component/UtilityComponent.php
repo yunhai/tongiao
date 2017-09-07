@@ -47,6 +47,6 @@ class UtilityComponent extends Component
 
     public function sumList($list)
     {
-        return array_sum($result);
+        return array_sum($list);
     }
 }

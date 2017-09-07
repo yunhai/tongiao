@@ -10,6 +10,177 @@ class RepairShell extends AppShell
         $this->out('Hello world.');
     }
 
+    public function test()
+    {
+        $collection = new ComponentCollection();
+        $this->Utility = new UtilityComponent($collection);
+
+        $string = '800;200.2;1,000.5';
+        $array = $this->Utility->seperateNumberFromString($string);
+        $this->out($this->Utility->sumList($array));
+    }
+
+    public function sum()
+    {
+        $model = [
+            1 => 'Cosotinnguong',
+            'Diemnhomtinlanh',
+            'Cosohoigiaoislam',
+            'Hodaocaodai',
+            'Chihoitinhdocusiphatgiaovietnam',
+            'Chihoitinlanh',
+            'Dongtuconggiao',
+            'Giaoxu',
+            'Tuvienphatgiao'
+        ];
+
+        foreach ($model as $id => $name) {
+            $this->out("{$id}: $name");
+        }
+        $this->out('99: All model');
+        $in = '';
+        while (!(int) $in) {
+            $in = $this->in('Please chose model');
+        }
+
+        $this->out('Repairing ...');
+        $collection = new ComponentCollection();
+        $this->Utility = new UtilityComponent($collection);
+
+        if ($in < 99) {
+            $model = [$model[$in]];
+        }
+        foreach ($model as $name) {
+            $this->makeSum($name);
+        }
+
+        $in = '';
+        while (!in_array($in, array('y', 'Y', 'n', 'N'))) {
+            $in = $this->in('Are you sure to updating ? (y or n)');
+        }
+        if (mb_strtolower($in) == 'y') {
+            $this->out('Executing update db');
+            foreach ($model as $name) {
+                $this->makeSum($name, true);
+            }
+            $this->out('Finished updating db');
+        }
+        $this->out('Finished');
+    }
+
+    public function makeSum($model = '', $update = false)
+    {
+        $func = 'makeSum_' . strtolower($model);
+        return $this->$func($model, $update);
+    }
+
+    public function makeSum_cosotinnguong($model, $update = false)
+    {
+        $after_log = "repair/sum/after/{$model}";
+        $before_log = "repair/sum/before/{$model}";
+        $track_log = "repair/sum/track/{$model}";
+
+        $obj = ClassRegistry::init($model);
+        $field = [
+            'id',
+            'datdai_tongdientich',
+            'tongiao_dientich',
+
+            'tongiao_dacap_dientich',
+            'tongiao_chuacap_dientich',
+            'tongiao_dacap_gcn_quyensudungdat',
+
+            'nnlnntts_dacap_dientich',
+            'nnlnntts_dacap_gcn_quyensudungdat',
+            'nnlnntts_chuacap_dientich',
+
+            'gdyt_dacap_dientich',
+            'gdyt_dacap_gcn_quyensudungdat',
+            'gdyt_chuacap_dientich',
+
+            'dsdmdk_dacap_dientich',
+            'dsdmdk_dacap_gcn_quyensudungdat',
+            'dsdmdk_chuacap_dientich'
+        ];
+        $conditions = [
+            'is_add' => 1,
+        ];
+        $data = $obj->find('all', array(
+            'fields' => $field,
+            'conditions' => $conditions
+        ));
+
+        $data = Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
+
+        if (!$update) {
+            $this->log(print_r($data, true), $before_log);
+        }
+
+        $field = [
+            'tongiao_dacap_gcn_quyensudungdat' => 'tongiao_dacap_dientich',
+            'nnlnntts_dacap_gcn_quyensudungdat' => 'nnlnntts_dacap_dientich',
+            'gdyt_dacap_gcn_quyensudungdat' => 'gdyt_dacap_dientich',
+            'dsdmdk_dacap_gcn_quyensudungdat' => 'dsdmdk_dacap_dientich',
+        ];
+
+        $final = [];
+        foreach ($data as $id => $target) {
+            $tmp = [];
+            foreach ($field as $k => $v) {
+                $string = $target[$k];
+                if ($string) {
+                    $f = $v;
+                    $result = $this->retrieveSumData($string, $f);
+                    $tmp[$f] = $this->Utility->sumList($result);
+                }
+            }
+
+            if ($tmp) {
+                $final[$id] = array_merge(['id' => $id], $tmp);
+            }
+        }
+
+
+        if ($update) {
+            foreach ($final as $id => $item) {
+                //    $obj->save($item);
+            }
+        } else {
+            $this->log(print_r($final, true), $after_log);
+        }
+
+        $this->out('makeSum_cosotinnguong');
+    }
+
+    private function retrieveSumData($string, $keyword)
+    {
+        $list = explode(';', $string);
+
+        $result = [];
+        foreach ($list as $item) {
+            $target = explode(',', $item);
+            foreach ($target as $value) {
+                $flag = strpos($value, $keyword) !== false;
+                if ($flag) {
+                    $value = str_replace($keyword, '', $value);
+                    $value = str_replace(':', '', $value);
+                    $value = str_replace('_', '', $value);
+
+                    $result[] = $this->Utility->retrieveNumberFromString($value);
+                }
+            }
+        }
+        return $result;
+    }
+
+
+
+
+
+
+
+
+
     public function format()
     {
         $model = [
@@ -60,11 +231,11 @@ class RepairShell extends AppShell
 
     private function makeFormat($model = '', $update = false)
     {
-        $after_log = "repair/after/{$model}";
-        $before_log = "repair/before/{$model}";
-        $track_log = "repair/track/{$model}";
+        $after_log = "repair/format/after/{$model}";
+        $before_log = "repair/format/before/{$model}";
+        $track_log = "repair/format/track/{$model}";
 
-        $field = $this->mapping($model);
+        $field = $this->formatMapping($model);
         $conditions = [
             'is_add' => 1
         ];
@@ -105,20 +276,20 @@ class RepairShell extends AppShell
         }
     }
 
-    private function mapping($model = '')
+    private function formatMapping($model = '')
     {
         $model = mb_strtolower($model);
 
         if ($model == 'cosotinnguong') {
             return [
                 'id', 'datdai_tongdientich',
-                'tongiao_dientich', 
+                'tongiao_dientich',
                 //'tongiao_chuacap_dientich',
-                'nnlnntts_dientich', 
+                'nnlnntts_dientich',
                 //'nnlnntts_chuacap_dientich',
-                'gdyt_dientich', 
+                'gdyt_dientich',
                 //'gdyt_chuacap_dientich',
-                'dsdmdk_dientich', 
+                'dsdmdk_dientich',
                 //'dsdmdk_chuacap_dientich'
             ];
         }
@@ -126,13 +297,13 @@ class RepairShell extends AppShell
         if ($model == 'diemnhomtinlanh') {
             return [
                 'id', 'tongdientichdat',
-                'tongiao_dientich', 
+                'tongiao_dientich',
                 //'tongiao_chuacap_dientich',
-                'nnlnntts_dientich', 
+                'nnlnntts_dientich',
                 //'nnlnntts_chuacap_dientich',
-                'gdyt_dientich', 
+                'gdyt_dientich',
                 //'gdyt_chuacap_dientich',
-                'dsdmdk_dientich', 
+                'dsdmdk_dientich',
                 //'dsdmdk_chuacap_dientich'
             ];
         }
