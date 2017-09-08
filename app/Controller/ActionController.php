@@ -351,10 +351,10 @@ class ActionController extends AppController
             'longkhanh_sodientichdat_dacapgcn_khac' => $longkhanh_sodientichdat_dacapgcn_khac,
             'longkhanh_sodientichdat_chuacapgcn' => $longkhanh_sodientichdat_chuacapgcn,
             //CÔNG GIÁO
-            'longkhanh_congiao_tongdt' => $longkhanh_congiao_tongdt,
-            'longkhanh_congiao_dacapgcn_tongiao' => $longkhanh_congiao_dacapgcn_tongiao,
-            'longkhanh_congiao_dacapgcn_khac' => $longkhanh_congiao_dacapgcn_khac,
-            'longkhanh_congiao_chuacapgcn' => $longkhanh_congiao_chuacapgcn,
+            'longkhanh_congiao_tongdt' => $result['long-khanh']['8'],//$longkhanh_congiao_tongdt,
+            'longkhanh_congiao_dacapgcn_tongiao' => $result['long-khanh']['9'],//$longkhanh_congiao_dacapgcn_tongiao,
+            'longkhanh_congiao_dacapgcn_khac' => $result['long-khanh']['10'],//$longkhanh_congiao_dacapgcn_khac,
+            'longkhanh_congiao_chuacapgcn' => $result['long-khanh']['11'],//$longkhanh_congiao_chuacapgcn,
             //PHẬT GIÁO
             'longkhanh_phatgiao_tongdt' => $longkhanh_phatgiao_tongdt,
             'longkhanh_phatgiao_dacapgcn_tongiao' => $longkhanh_phatgiao_dacapgcn_tongiao,
@@ -796,10 +796,10 @@ class ActionController extends AppController
             'hoigiao_dacapgcn_khac' => $hoigiao_dacapgcn_khac,
             'hoigiao_chuacapgcn' => $hoigiao_chuacapgcn,
             //PHẬT GIÁO HÒA HẢO
-            'phatgiaohoahao_tongdt' => $phatgiaohoahao_tongdt,
-            'phatgiaohoahao_dacapgcn_tongiao' => $phatgiaohoahao_dacapgcn_tongiao,
-            'phatgiaohoahao_dacapgcn_khac' => $phatgiaohoahao_dacapgcn_khac,
-            'phatgiaohoahao_chuacapgcn' => $phatgiaohoahao_chuacapgcn,
+            'phatgiaohoahao_tongdt' => 0,//$phatgiaohoahao_tongdt,
+            'phatgiaohoahao_dacapgcn_tongiao' => 0,//$phatgiaohoahao_dacapgcn_tongiao,
+            'phatgiaohoahao_dacapgcn_khac' => 0,//$phatgiaohoahao_dacapgcn_khac,
+            'phatgiaohoahao_chuacapgcn' => 0,//$phatgiaohoahao_chuacapgcn,
             //TÍN NGƯỠNG
             'tinnguong_tongdt' => $tinnguong_tongdt,
             'tinnguong_dacapgcn_tongiao' => $tinnguong_dacapgcn_tongiao,
