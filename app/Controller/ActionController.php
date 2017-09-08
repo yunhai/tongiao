@@ -1002,31 +1002,37 @@ class ActionController extends AppController
 
     private function calculate_conggiao()
     {
-        $list = [
-            1 => 'Cosotinnguong', // ok
-            'Cosohoigiaoislam', // ok
-            'Conggiao',
-            // 'Hodaocaodai', // ok
-            // 'Chihoitinhdocusiphatgiaovietnam', // ok
-            // 'Dongtuconggiao', // ok
-            // 'Giaoxu', // ok
-            // 'Tuvienphatgiao' // ok
-        ];
+        $dtcg = $this->calculate_dongtuconggiao('Dongtuconggiao');
+        $gx = $this->calculate_giaoxu('Giaoxu');
 
-        // 'Dongtuconggiao'
-        // 'Giaoxu'
+        foreach ($dtcg as $province_code => &$item) {
+            if (isset($gx[$province_code])) {
+                $item['total'] = $gx[$province_code]['total'];
+                $item['licensed_main'] = $gx[$province_code]['licensed_main'];
+                $item['licensed_other'] = $gx[$province_code]['licensed_other'];
+                $item['unlicense'] = $gx[$province_code]['unlicense'];
+                unset($gx[$province_code]);
+            }
+        }
+
+        if ($gx) {
+            $dtcg = array_merge($dtcg, $gx);
+        }
+
+        return $dtcg;
     }
 
     public function test2()
     {
         $list = [
-            1 => 'Cosotinnguong', // ok
-            'Cosohoigiaoislam', // ok
-            'Hodaocaodai', // ok
-            'Chihoitinhdocusiphatgiaovietnam', // ok
-            'Dongtuconggiao', // ok
-            'Giaoxu', // ok
-            'Tuvienphatgiao' // ok
+            'Conggiao',
+            // 'Cosotinnguong', // ok
+            // 'Cosohoigiaoislam', // ok
+            // 'Hodaocaodai', // ok
+            // 'Chihoitinhdocusiphatgiaovietnam', // ok
+            // 'Dongtuconggiao', // ok
+            // 'Giaoxu', // ok
+            // 'Tuvienphatgiao' // ok
         ];
 
         $statictis = [];
@@ -1361,7 +1367,7 @@ class ActionController extends AppController
 
         return $this->calculate($data, $formular, 'diachi_huyen');
     }
-    
+
     private function calculate_dongtuconggiao($model)
     {
         $field = [
@@ -1421,7 +1427,7 @@ class ActionController extends AppController
 
         return $this->calculate($data, $formular, 'diachi_huyen');
     }
-    
+
     private function calculate_giaoxu($model)
     {
         $field = [
