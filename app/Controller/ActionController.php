@@ -1030,8 +1030,8 @@ class ActionController extends AppController
              'Cosohoigiaoislam', // ok
              'Hodaocaodai', // ok
              'Chihoitinhdocusiphatgiaovietnam', // ok
-             'Dongtuconggiao', // ok
-             'Giaoxu', // ok
+             //'Dongtuconggiao', // ok
+             //'Giaoxu', // ok
              'Tuvienphatgiao' // ok
         ];
 
@@ -1564,7 +1564,7 @@ class ActionController extends AppController
         $data = $obj->find('all', array(
             'fields' => $data_field,
             'conditions' => $conditions,
-            'limit' => 10
+            //'limit' => 10
         ));
 
         return Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
