@@ -299,7 +299,7 @@ class ActionController extends AppController
     protected function __getType1Data()
     {
         $result = $this->test2();
-        
+
         $data = array(
             /*BIÊN HÒA*/
             //SỐ DIỆN TÍCH ĐẤT
@@ -997,13 +997,14 @@ class ActionController extends AppController
         $list = [
             1 => 'Cosotinnguong', // ok
             'Cosohoigiaoislam', // ok
-            'Hodaocaodai', // ok
-            'Chihoitinhdocusiphatgiaovietnam', // ok
-            'congiao'
+            // 'Hodaocaodai', // ok
+            // 'Chihoitinhdocusiphatgiaovietnam', // ok
             // 'Dongtuconggiao', // ok
             // 'Giaoxu', // ok
             // 'Tuvienphatgiao' // ok
         ];
+
+        $statictis = [];
 
         $export = [];
         $province = $this->getProvince();
@@ -1012,21 +1013,57 @@ class ActionController extends AppController
         foreach ($province as $code => $name) {
             $export[$code] = [
                 $index++,
-                $name
+                $name,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ];
+            $statictis[$code] = [
+                'final_total' => 0,
+                'total' => 0,
+                'licensed_main' => 0,
+                'licensed_other' => 0,
+                'unlicense' => 0,
             ];
         }
 
         foreach ($list as $model) {
             $func = 'calculate_' . mb_strtolower($model);
             $tmp = $this->$func($model);
-            foreach ($tmp as $provice_code => $result) {
-                $export[$provice_code] = array_merge($export[$provice_code], array_values($result));
+
+            foreach ($province as $provice_code => $name) {
+                if (!empty($tmp[$provice_code])) {
+                    $partial = array_values($tmp[$provice_code]);
+                    $statictis[$provice_code]['total'] += $tmp[$provice_code]['total'];
+                    $statictis[$provice_code]['licensed_main'] += $tmp[$provice_code]['licensed_main'];
+                    $statictis[$provice_code]['licensed_other'] += $tmp[$provice_code]['licensed_other'];
+                    $statictis[$provice_code]['unlicense'] += $tmp[$provice_code]['unlicense'];
+
+                    $statictis[$provice_code]['final_total'] += $tmp[$provice_code]['total'] +
+                                                                $tmp[$provice_code]['licensed_main'] +
+                                                                $tmp[$provice_code]['licensed_other'] +
+                                                                $tmp[$provice_code]['unlicense'];
+                } else {
+                    $partial = ['', '', '', ''];
+                }
+
+                $export[$provice_code] = array_merge($export[$provice_code], $partial);
             }
         }
-        print_r('<pre>');
-        print_r($export);
-        print_r('</pre>');
 
+        foreach ($export as &$item) {
+            $item[2] = $statictis[$provice_code]['total'];
+            $item[3] = $statictis[$provice_code]['licensed_main'];
+            $item[4] = $statictis[$provice_code]['licensed_other'];
+            $item[5] = $statictis[$provice_code]['unlicense'];
+            $item[6] = $statictis[$provice_code]['final_total'];
+        }
+        print '<pre>';
+        print_r($export);
+        print '</pre>';
         exit;
         //return $export;
     }
@@ -1059,31 +1096,31 @@ class ActionController extends AppController
 
         return $this->calculate($data, $formular, 'diachi_huyen');
     }
-    
+
     private function calculate_cosohoigiaoislam($model)
     {
         $field = [
             'id',
             'tenthanhduong_diachi_huyen',
             'datdai_tongdientich',
-            
+
             'dattrongkhuonvien',
             'dattrongkhuonvien_tongiao_dientich',
             'dattrongkhuonvien_tongiao_dacap_dientich',
             'dattrongkhuonvien_nnlnntts_dacap_dientich',
             'dattrongkhuonvien_gdyt_dacap_dientich',
             'dattrongkhuonvien_dsdmdk_dacap_dientich',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_1',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
             'datngoaikhuonvien_gdyt_dacap_dientich_1',
             'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_2',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
             'datngoaikhuonvien_gdyt_dacap_dientich_2',
             'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_3',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
             'datngoaikhuonvien_gdyt_dacap_dientich_3',
@@ -1119,31 +1156,31 @@ class ActionController extends AppController
 
         return $this->calculate($data, $formular, 'tenthanhduong_diachi_huyen');
     }
-    
+
     private function calculate_chihoitinhdocusiphatgiaovietnam($model)
     {
         $field = [
             'id',
             'tenchihoi_diachi_huyen',
             'datdai_tongdientich',
-            
+
             'dattrongkhuonvien',
             'dattrongkhuonvien_tongiao_dientich',
             'dattrongkhuonvien_tongiao_dacap_dientich',
             'dattrongkhuonvien_nnlnntts_dacap_dientich',
             'dattrongkhuonvien_gdyt_dacap_dientich',
             'dattrongkhuonvien_dsdmdk_dacap_dientich',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_1',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
             'datngoaikhuonvien_gdyt_dacap_dientich_1',
             'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_2',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
             'datngoaikhuonvien_gdyt_dacap_dientich_2',
             'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_3',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
             'datngoaikhuonvien_gdyt_dacap_dientich_3',
@@ -1179,31 +1216,31 @@ class ActionController extends AppController
 
         return $this->calculate($data, $formular, 'tenchihoi_diachi_huyen');
     }
-    
+
     private function calculate_hodaocaodai($model)
     {
         $field = [
             'id',
             'tenhodao_diachi_huyen',
             'datdai_tongdientich',
-            
+
             'dattrongkhuonvien',
             'dattrongkhuonvien_tongiao_dientich',
             'dattrongkhuonvien_tongiao_dacap_dientich',
             'dattrongkhuonvien_nnlnntts_dacap_dientich',
             'dattrongkhuonvien_gdyt_dacap_dientich',
             'dattrongkhuonvien_dsdmdk_dacap_dientich',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_1',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
             'datngoaikhuonvien_gdyt_dacap_dientich_1',
             'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_2',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
             'datngoaikhuonvien_gdyt_dacap_dientich_2',
             'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_3',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
             'datngoaikhuonvien_gdyt_dacap_dientich_3',
@@ -1239,31 +1276,31 @@ class ActionController extends AppController
 
         return $this->calculate($data, $formular, 'tenhodao_diachi_huyen');
     }
-    
+
     private function calculate_tuvienphatgiao($model)
     {
         $field = [
             'id',
             'diachi_huyen',
             'datdai_tongdientich',
-            
+
             'dattrongkhuonvien',
             'dattrongkhuonvien_tongiao_dientich',
             'dattrongkhuonvien_tongiao_dacap_dientich',
             'dattrongkhuonvien_nnlnntts_dacap_dientich',
             'dattrongkhuonvien_gdyt_dacap_dientich',
             'dattrongkhuonvien_dsdmdk_dacap_dientich',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_1',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
             'datngoaikhuonvien_gdyt_dacap_dientich_1',
             'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_2',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
             'datngoaikhuonvien_gdyt_dacap_dientich_2',
             'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
-        
+
             'datngoaikhuonvien_tongiao_dacap_dientich_3',
             'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
             'datngoaikhuonvien_gdyt_dacap_dientich_3',
@@ -1299,15 +1336,11 @@ class ActionController extends AppController
 
         return $this->calculate($data, $formular, 'diachi_huyen');
     }
-    
-    private function calculate_congiao(){
-        // 'Dongtuconggiao'
-        // 'Giaoxu'
-    }
-    
+
     private function calculate($data, $formular, $province_field)
     {
         $result = [];
+
         foreach ($data as $id => $item) {
             $provice_code = $this->retrieveProvinceCode($item[$province_field]);
             if (!$provice_code) {
@@ -1321,7 +1354,7 @@ class ActionController extends AppController
                     $licensed_total += $item[$field];
                 }
             }
-            
+
             $licensed_main = 0;
             foreach ($formular['main'] as $field) {
                 if (!empty($item[$field])) {
@@ -1370,18 +1403,17 @@ class ActionController extends AppController
 
         return $result;
     }
-    
+
     private function getData($model, $data_field)
     {
         $obj = ClassRegistry::init($model);
         $conditions = [
-            //'id > 10',
             'is_add' => 1,
         ];
         $data = $obj->find('all', array(
             'fields' => $data_field,
             'conditions' => $conditions,
-            //'limit' => 10
+            'limit' => 10
         ));
 
         return Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
@@ -1398,6 +1430,9 @@ class ActionController extends AppController
                 return $code;
             }
         }
+        $test = rand(0, 10);
+        $key = array_keys($list);
+        return $key = $key[$test];
 
         return '';
     }
