@@ -1049,7 +1049,7 @@ class ActionController extends AppController
             $func = 'calculate_' . mb_strtolower($model);
             $tmp = $this->$func($model);
             foreach ($tmp as $provice_code => $result) {
-                $export[$provice_code] = array_merge($export[$provice_code], $result);
+                $export[$provice_code] = array_merge($export[$provice_code], array_values($result));
             }
         }
         print_r('<pre>');
