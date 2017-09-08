@@ -999,6 +999,7 @@ class ActionController extends AppController
             'Cosohoigiaoislam', // ok
             'Hodaocaodai', // ok
             'Chihoitinhdocusiphatgiaovietnam', // ok
+            'congiao'
             // 'Dongtuconggiao', // ok
             // 'Giaoxu', // ok
             // 'Tuvienphatgiao' // ok
@@ -1299,6 +1300,11 @@ class ActionController extends AppController
         return $this->calculate($data, $formular, 'diachi_huyen');
     }
     
+    private function calculate_congiao(){
+        // 'Dongtuconggiao'
+        // 'Giaoxu'
+    }
+    
     private function calculate($data, $formular, $province_field)
     {
         $result = [];
@@ -1364,7 +1370,7 @@ class ActionController extends AppController
 
         return $result;
     }
-
+    
     private function getData($model, $data_field)
     {
         $obj = ClassRegistry::init($model);
