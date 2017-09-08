@@ -298,19 +298,21 @@ class ActionController extends AppController
     //tổng hop dat dai
     protected function __getType1Data()
     {
+        $result = $this->test2();
+        
         $data = array(
             /*BIÊN HÒA*/
             //SỐ DIỆN TÍCH ĐẤT
             'bienhoa_tongdt' => 900,
-            'bienhoa_sodientichdat_dacapgcn_tong' => $bienhoa_sodientichdat_dacapgcn_tong,
+            'bienhoa_sodientichdat_dacapgcn_tong' => $result['bien-hoa']['2'],//$bienhoa_sodientichdat_dacapgcn_tong,
             'bienhoa_sodientichdat_dacapgcn_tongiao' => $bienhoa_sodientichdat_dacapgcn_tongiao,
             'bienhoa_sodientichdat_dacapgcn_khac' => $bienhoa_sodientichdat_dacapgcn_khac,
             'bienhoa_sodientichdat_chuacapgcn' => $bienhoa_sodientichdat_chuacapgcn,
             //CÔNG GIÁO
-            'bienhoa_congiao_tongdt' => $bienhoa_congiao_tongdt,
-            'bienhoa_congiao_dacapgcn_tongiao' => $bienhoa_congiao_dacapgcn_tongiao,
-            'bienhoa_congiao_dacapgcn_khac' => $bienhoa_congiao_dacapgcn_khac,
-            'bienhoa_congiao_chuacapgcn' => $bienhoa_congiao_chuacapgcn,
+            'bienhoa_congiao_tongdt' => $result['bien-hoa']['8'],//$bienhoa_congiao_tongdt,
+            'bienhoa_congiao_dacapgcn_tongiao' => $result['bien-hoa']['9'],//$bienhoa_congiao_dacapgcn_tongiao,
+            'bienhoa_congiao_dacapgcn_khac' => $result['bien-hoa']['10'],//$bienhoa_congiao_dacapgcn_khac,
+            'bienhoa_congiao_chuacapgcn' => $result['bien-hoa']['11'],$bienhoa_congiao_chuacapgcn,
             //PHẬT GIÁO
             'bienhoa_phatgiao_tongdt' => $bienhoa_phatgiao_tongdt,
             'bienhoa_phatgiao_dacapgcn_tongiao' => $bienhoa_phatgiao_dacapgcn_tongiao,
@@ -994,11 +996,9 @@ class ActionController extends AppController
     {
         $list = [
             1 => 'Cosotinnguong', // ok
-            //'Diemnhomtinlanh', // k thong ke
-            // 'Cosohoigiaoislam', // ok
-            // 'Hodaocaodai', // ok
-            // 'Chihoitinhdocusiphatgiaovietnam', // ok
-            // 'Chihoitinlanh',
+            'Cosohoigiaoislam', // ok
+            'Hodaocaodai', // ok
+            'Chihoitinhdocusiphatgiaovietnam', // ok
             // 'Dongtuconggiao', // ok
             // 'Giaoxu', // ok
             // 'Tuvienphatgiao' // ok
@@ -1027,6 +1027,7 @@ class ActionController extends AppController
         print_r('</pre>');
 
         exit;
+        //return $export;
     }
 
     private function calculate_cosotinnguong($model)
@@ -1057,7 +1058,247 @@ class ActionController extends AppController
 
         return $this->calculate($data, $formular, 'diachi_huyen');
     }
+    
+    private function calculate_cosohoigiaoislam($model)
+    {
+        $field = [
+            'id',
+            'tenthanhduong_diachi_huyen',
+            'datdai_tongdientich',
+            
+            'dattrongkhuonvien',
+            'dattrongkhuonvien_tongiao_dientich',
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_dientich',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+        ];
 
+        $formular = [
+            'total' => 'datdai_tongdientich',
+            'main' => [
+                'dattrongkhuonvien_tongiao_dacap_dientich',
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            ],
+            'sum' => [
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+                'datngoaikhuonvien_gdyt_dacap_dientich_1',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+                'datngoaikhuonvien_gdyt_dacap_dientich_2',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+                'datngoaikhuonvien_gdyt_dacap_dientich_3',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+            ]
+        ];
+        $data = $this->getData($model, $field);
+
+        return $this->calculate($data, $formular, 'tenthanhduong_diachi_huyen');
+    }
+    
+    private function calculate_chihoitinhdocusiphatgiaovietnam($model)
+    {
+        $field = [
+            'id',
+            'tenchihoi_diachi_huyen',
+            'datdai_tongdientich',
+            
+            'dattrongkhuonvien',
+            'dattrongkhuonvien_tongiao_dientich',
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_dientich',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+        ];
+
+        $formular = [
+            'total' => 'datdai_tongdientich',
+            'main' => [
+                'dattrongkhuonvien_tongiao_dacap_dientich',
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            ],
+            'sum' => [
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+                'datngoaikhuonvien_gdyt_dacap_dientich_1',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+                'datngoaikhuonvien_gdyt_dacap_dientich_2',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+                'datngoaikhuonvien_gdyt_dacap_dientich_3',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+            ]
+        ];
+        $data = $this->getData($model, $field);
+
+        return $this->calculate($data, $formular, 'tenchihoi_diachi_huyen');
+    }
+    
+    private function calculate_hodaocaodai($model)
+    {
+        $field = [
+            'id',
+            'tenhodao_diachi_huyen',
+            'datdai_tongdientich',
+            
+            'dattrongkhuonvien',
+            'dattrongkhuonvien_tongiao_dientich',
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_dientich',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+        ];
+
+        $formular = [
+            'total' => 'datdai_tongdientich',
+            'main' => [
+                'dattrongkhuonvien_tongiao_dacap_dientich',
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            ],
+            'sum' => [
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+                'datngoaikhuonvien_gdyt_dacap_dientich_1',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+                'datngoaikhuonvien_gdyt_dacap_dientich_2',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+                'datngoaikhuonvien_gdyt_dacap_dientich_3',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+            ]
+        ];
+        $data = $this->getData($model, $field);
+
+        return $this->calculate($data, $formular, 'tenhodao_diachi_huyen');
+    }
+    
+    private function calculate_tuvienphatgiao($model)
+    {
+        $field = [
+            'id',
+            'diachi_huyen',
+            'datdai_tongdientich',
+            
+            'dattrongkhuonvien',
+            'dattrongkhuonvien_tongiao_dientich',
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_dientich',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+        
+            'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+        ];
+
+        $formular = [
+            'total' => 'datdai_tongdientich',
+            'main' => [
+                'dattrongkhuonvien_tongiao_dacap_dientich',
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            ],
+            'sum' => [
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+                'datngoaikhuonvien_gdyt_dacap_dientich_1',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+                'datngoaikhuonvien_gdyt_dacap_dientich_2',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+                'datngoaikhuonvien_gdyt_dacap_dientich_3',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+            ]
+        ];
+        $data = $this->getData($model, $field);
+
+        return $this->calculate($data, $formular, 'diachi_huyen');
+    }
+    
     private function calculate($data, $formular, $province_field)
     {
         $result = [];
@@ -1074,6 +1315,8 @@ class ActionController extends AppController
                     $licensed_total += $item[$field];
                 }
             }
+            
+            $licensed_main = 0;
             foreach ($formular['main'] as $field) {
                 if (!empty($item[$field])) {
                     $licensed_main += $item[$field];
@@ -1126,13 +1369,13 @@ class ActionController extends AppController
     {
         $obj = ClassRegistry::init($model);
         $conditions = [
-            'id > 10',
+            //'id > 10',
             'is_add' => 1,
         ];
         $data = $obj->find('all', array(
             'fields' => $data_field,
             'conditions' => $conditions,
-            'limit' => 10
+            //'limit' => 10
         ));
 
         return Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);

@@ -4,7 +4,7 @@ App::uses('DataController', 'Controller');
 
 class ExportsController extends DataController {
 
-    public $components = array('Excel');
+    public $components = array('Excel', 'Utility');
     
     public function index() {
         $header = array(
