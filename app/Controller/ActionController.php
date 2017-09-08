@@ -393,10 +393,10 @@ class ActionController extends AppController
             'xuanloc_sodientichdat_dacapgcn_khac' => $xuanloc_sodientichdat_dacapgcn_khac,
             'xuanloc_sodientichdat_chuacapgcn' => $xuanloc_sodientichdat_chuacapgcn,
             //CÔNG GIÁO
-            'xuanloc_congiao_tongdt' => $xuanloc_congiao_tongdt,
-            'xuanloc_congiao_dacapgcn_tongiao' => $xuanloc_congiao_dacapgcn_tongiao,
-            'xuanloc_congiao_dacapgcn_khac' => $xuanloc_congiao_dacapgcn_khac,
-            'xuanloc_congiao_chuacapgcn' => $xuanloc_congiao_chuacapgcn,
+            'xuanloc_congiao_tongdt' => $result['xuan-loc']['8'],//$xuanloc_congiao_tongdt,
+            'xuanloc_congiao_dacapgcn_tongiao' => $result['xuan-loc']['9'],//$xuanloc_congiao_dacapgcn_tongiao,
+            'xuanloc_congiao_dacapgcn_khac' => $result['xuan-loc']['10'],//$xuanloc_congiao_dacapgcn_khac,
+            'xuanloc_congiao_chuacapgcn' => $result['xuan-loc']['11'],//$xuanloc_congiao_chuacapgcn,
             //PHẬT GIÁO
             'xuanloc_phatgiao_tongdt' => $xuanloc_phatgiao_tongdt,
             'xuanloc_phatgiao_dacapgcn_tongiao' => $xuanloc_phatgiao_dacapgcn_tongiao,
@@ -435,10 +435,10 @@ class ActionController extends AppController
             'cammy_sodientichdat_dacapgcn_khac' => $cammy_sodientichdat_dacapgcn_khac,
             'cammy_sodientichdat_chuacapgcn' => $cammy_sodientichdat_chuacapgcn,
             //CÔNG GIÁO
-            'cammy_congiao_tongdt' => $cammy_congiao_tongdt,
-            'cammy_congiao_dacapgcn_tongiao' => $cammy_congiao_dacapgcn_tongiao,
-            'cammy_congiao_dacapgcn_khac' => $cammy_congiao_dacapgcn_khac,
-            'cammy_congiao_chuacapgcn' => $cammy_congiao_chuacapgcn,
+            'cammy_congiao_tongdt' => $result['cam-my']['8'],//$cammy_congiao_tongdt,
+            'cammy_congiao_dacapgcn_tongiao' => $result['cam-my']['9'],//$cammy_congiao_dacapgcn_tongiao,
+            'cammy_congiao_dacapgcn_khac' => $result['cam-my']['10'],//$cammy_congiao_dacapgcn_khac,
+            'cammy_congiao_chuacapgcn' => $result['cam-my']['11'],//$cammy_congiao_chuacapgcn,
             //PHẬT GIÁO
             'cammy_phatgiao_tongdt' => $cammy_phatgiao_tongdt,
             'cammy_phatgiao_dacapgcn_tongiao' => $cammy_phatgiao_dacapgcn_tongiao,
@@ -477,10 +477,10 @@ class ActionController extends AppController
             'tanphu_sodientichdat_dacapgcn_khac' => $tanphu_sodientichdat_dacapgcn_khac,
             'tanphu_sodientichdat_chuacapgcn' => $tanphu_sodientichdat_chuacapgcn,
             //CÔNG GIÁO
-            'tanphu_congiao_tongdt' => $tanphu_congiao_tongdt,
-            'tanphu_congiao_dacapgcn_tongiao' => $tanphu_congiao_dacapgcn_tongiao,
-            'tanphu_congiao_dacapgcn_khac' => $tanphu_congiao_dacapgcn_khac,
-            'tanphu_congiao_chuacapgcn' => $tanphu_congiao_chuacapgcn,
+            'tanphu_congiao_tongdt' => $result['tan-phu']['8'],//$tanphu_congiao_tongdt,
+            'tanphu_congiao_dacapgcn_tongiao' => $result['tan-phu']['9'],//$tanphu_congiao_dacapgcn_tongiao,
+            'tanphu_congiao_dacapgcn_khac' => $result['tan-phu']['10'],//$tanphu_congiao_dacapgcn_khac,
+            'tanphu_congiao_chuacapgcn' => $result['tan-phu']['11'],//$tanphu_congiao_chuacapgcn,
             //PHẬT GIÁO
             'tanphu_phatgiao_tongdt' => $tanphu_phatgiao_tongdt,
             'tanphu_phatgiao_dacapgcn_tongiao' => $tanphu_phatgiao_dacapgcn_tongiao,
@@ -514,10 +514,10 @@ class ActionController extends AppController
 
             /*ĐỊNH QUÁN*/
             'dinhquan_tongdt' => $dinhquan_tongdt,
-            'dinhquan_sodientichdat_dacapgcn_tong' => $dinhquan_sodientichdat_dacapgcn_tong,
-            'dinhquan_sodientichdat_dacapgcn_tongiao' => $dinhquan_sodientichdat_dacapgcn_tongiao,
-            'dinhquan_sodientichdat_dacapgcn_khac' => $dinhquan_sodientichdat_dacapgcn_khac,
-            'dinhquan_sodientichdat_chuacapgcn' => $dinhquan_sodientichdat_chuacapgcn,
+            'dinhquan_sodientichdat_dacapgcn_tong' => $result['dinh-quan']['8'],//$dinhquan_sodientichdat_dacapgcn_tong,
+            'dinhquan_sodientichdat_dacapgcn_tongiao' => $result['dinh-quan']['9'],//$dinhquan_sodientichdat_dacapgcn_tongiao,
+            'dinhquan_sodientichdat_dacapgcn_khac' => $result['dinh-quan']['10'],//$dinhquan_sodientichdat_dacapgcn_khac,
+            'dinhquan_sodientichdat_chuacapgcn' => $result['dinh-quan']['11'],//$dinhquan_sodientichdat_chuacapgcn,
             //CÔNG GIÁO
             'dinhquan_congiao_tongdt' => $dinhquan_congiao_tongdt,
             'dinhquan_congiao_dacapgcn_tongiao' => $dinhquan_congiao_dacapgcn_tongiao,
@@ -561,10 +561,10 @@ class ActionController extends AppController
             'thongnhat_sodientichdat_dacapgcn_khac' => $thongnhat_sodientichdat_dacapgcn_khac,
             'thongnhat_sodientichdat_chuacapgcn' => $thongnhat_sodientichdat_chuacapgcn,
             //CÔNG GIÁO
-            'thongnhat_congiao_tongdt' => $thongnhat_congiao_tongdt,
-            'thongnhat_congiao_dacapgcn_tongiao' => $thongnhat_congiao_dacapgcn_tongiao,
-            'thongnhat_congiao_dacapgcn_khac' => $thongnhat_congiao_dacapgcn_khac,
-            'thongnhat_congiao_chuacapgcn' => $thongnhat_congiao_chuacapgcn,
+            'thongnhat_congiao_tongdt' => $result['thong-nhat']['8'],//$thongnhat_congiao_tongdt,
+            'thongnhat_congiao_dacapgcn_tongiao' => $result['thong-nhat']['9'],//$thongnhat_congiao_dacapgcn_tongiao,
+            'thongnhat_congiao_dacapgcn_khac' => $result['thong-nhat']['10'],//$thongnhat_congiao_dacapgcn_khac,
+            'thongnhat_congiao_chuacapgcn' => $result['thong-nhat']['11'],//$thongnhat_congiao_chuacapgcn,
             //PHẬT GIÁO
             'thongnhat_phatgiao_tongdt' => $thongnhat_phatgiao_tongdt,
             'thongnhat_phatgiao_dacapgcn_tongiao' => $thongnhat_phatgiao_dacapgcn_tongiao,
@@ -603,10 +603,10 @@ class ActionController extends AppController
             'trangbom_sodientichdat_dacapgcn_khac' => $trangbom_sodientichdat_dacapgcn_khac,
             'trangbom_sodientichdat_chuacapgcn' => $trangbom_sodientichdat_chuacapgcn,
             //CÔNG GIÁO
-            'trangbom_congiao_tongdt' => $trangbom_congiao_tongdt,
-            'trangbom_congiao_dacapgcn_tongiao' => $trangbom_congiao_dacapgcn_tongiao,
-            'trangbom_congiao_dacapgcn_khac' => $trangbom_congiao_dacapgcn_khac,
-            'trangbom_congiao_chuacapgcn' => $trangbom_congiao_chuacapgcn,
+            'trangbom_congiao_tongdt' => $result['trang-bom']['8'],//$trangbom_congiao_tongdt,
+            'trangbom_congiao_dacapgcn_tongiao' => $result['trang-bom']['9'],//$trangbom_congiao_dacapgcn_tongiao,
+            'trangbom_congiao_dacapgcn_khac' => $result['trang-bom']['10'],//$trangbom_congiao_dacapgcn_khac,
+            'trangbom_congiao_chuacapgcn' => $result['trang-bom']['11'],//$trangbom_congiao_chuacapgcn,
             //PHẬT GIÁO
             'trangbom_phatgiao_tongdt' => $trangbom_phatgiao_tongdt,
             'trangbom_phatgiao_dacapgcn_tongiao' => $trangbom_phatgiao_dacapgcn_tongiao,
@@ -645,10 +645,10 @@ class ActionController extends AppController
             'vinhcuu_sodientichdat_dacapgcn_khac' => $vinhcuu_sodientichdat_dacapgcn_khac,
             'vinhcuu_sodientichdat_chuacapgcn' => $vinhcuu_sodientichdat_chuacapgcn,
             //CÔNG GIÁO
-            'vinhcuu_congiao_tongdt' => $vinhcuu_congiao_tongdt,
-            'vinhcuu_congiao_dacapgcn_tongiao' => $vinhcuu_congiao_dacapgcn_tongiao,
-            'vinhcuu_congiao_dacapgcn_khac' => $vinhcuu_congiao_dacapgcn_khac,
-            'vinhcuu_congiao_chuacapgcn' => $vinhcuu_congiao_chuacapgcn,
+            'vinhcuu_congiao_tongdt' => $result['vinh-cuu']['8'],//$vinhcuu_congiao_tongdt,
+            'vinhcuu_congiao_dacapgcn_tongiao' => $result['vinh-cuu']['9'],//$vinhcuu_congiao_dacapgcn_tongiao,
+            'vinhcuu_congiao_dacapgcn_khac' => $result['vinh-cuu']['10'],//$vinhcuu_congiao_dacapgcn_khac,
+            'vinhcuu_congiao_chuacapgcn' => $result['vinh-cuu']['11'],//$vinhcuu_congiao_chuacapgcn,
             //PHẬT GIÁO
             'vinhcuu_phatgiao_tongdt' => $vinhcuu_phatgiao_tongdt,
             'vinhcuu_phatgiao_dacapgcn_tongiao' => $vinhcuu_phatgiao_dacapgcn_tongiao,
@@ -997,11 +997,11 @@ class ActionController extends AppController
         $list = [
             1 => 'Cosotinnguong', // ok
             'Cosohoigiaoislam', // ok
-            // 'Hodaocaodai', // ok
-            // 'Chihoitinhdocusiphatgiaovietnam', // ok
-            // 'Dongtuconggiao', // ok
-            // 'Giaoxu', // ok
-            // 'Tuvienphatgiao' // ok
+            'Hodaocaodai', // ok
+            'Chihoitinhdocusiphatgiaovietnam', // ok
+            'Dongtuconggiao', // ok
+            'Giaoxu', // ok
+            'Tuvienphatgiao' // ok
         ];
 
         $statictis = [];
@@ -1278,6 +1278,126 @@ class ActionController extends AppController
     }
 
     private function calculate_tuvienphatgiao($model)
+    {
+        $field = [
+            'id',
+            'diachi_huyen',
+            'datdai_tongdientich',
+
+            'dattrongkhuonvien',
+            'dattrongkhuonvien_tongiao_dientich',
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_dientich',
+
+            'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+
+            'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+
+            'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+        ];
+
+        $formular = [
+            'total' => 'datdai_tongdientich',
+            'main' => [
+                'dattrongkhuonvien_tongiao_dacap_dientich',
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            ],
+            'sum' => [
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+                'datngoaikhuonvien_gdyt_dacap_dientich_1',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+                'datngoaikhuonvien_gdyt_dacap_dientich_2',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+                'datngoaikhuonvien_gdyt_dacap_dientich_3',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+            ]
+        ];
+        $data = $this->getData($model, $field);
+
+        return $this->calculate($data, $formular, 'diachi_huyen');
+    }
+    
+    private function calculate_dongtuconggiao($model)
+    {
+        $field = [
+            'id',
+            'diachi_huyen',
+            'datdai_tongdientich',
+
+            'dattrongkhuonvien',
+            'dattrongkhuonvien_tongiao_dientich',
+            'dattrongkhuonvien_tongiao_dacap_dientich',
+            'dattrongkhuonvien_nnlnntts_dacap_dientich',
+            'dattrongkhuonvien_gdyt_dacap_dientich',
+            'dattrongkhuonvien_dsdmdk_dacap_dientich',
+
+            'datngoaikhuonvien_tongiao_dacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+            'datngoaikhuonvien_gdyt_dacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+
+            'datngoaikhuonvien_tongiao_dacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+            'datngoaikhuonvien_gdyt_dacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+
+            'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+            'datngoaikhuonvien_gdyt_dacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+        ];
+
+        $formular = [
+            'total' => 'datdai_tongdientich',
+            'main' => [
+                'dattrongkhuonvien_tongiao_dacap_dientich',
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+            ],
+            'sum' => [
+                'datngoaikhuonvien_tongiao_dacap_dientich_1',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_1',
+                'datngoaikhuonvien_gdyt_dacap_dientich_1',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_1',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_2',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_2',
+                'datngoaikhuonvien_gdyt_dacap_dientich_2',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_2',
+
+                'datngoaikhuonvien_tongiao_dacap_dientich_3',
+                'datngoaikhuonvien_nnlnntts_dacap_dientich_3',
+                'datngoaikhuonvien_gdyt_dacap_dientich_3',
+                'datngoaikhuonvien_dsdmdk_dacap_dientich_3'
+            ]
+        ];
+        $data = $this->getData($model, $field);
+
+        return $this->calculate($data, $formular, 'diachi_huyen');
+    }
+    
+    private function calculate_giaoxu($model)
     {
         $field = [
             'id',
