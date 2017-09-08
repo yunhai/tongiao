@@ -992,6 +992,31 @@ class ActionController extends AppController
         exit;
     }
 
+
+
+
+
+
+
+
+
+    private function calculate_conggiao()
+    {
+        $list = [
+            1 => 'Cosotinnguong', // ok
+            'Cosohoigiaoislam', // ok
+            'Conggiao',
+            // 'Hodaocaodai', // ok
+            // 'Chihoitinhdocusiphatgiaovietnam', // ok
+            // 'Dongtuconggiao', // ok
+            // 'Giaoxu', // ok
+            // 'Tuvienphatgiao' // ok
+        ];
+
+        // 'Dongtuconggiao'
+        // 'Giaoxu'
+    }
+
     public function test2()
     {
         $list = [
@@ -1430,9 +1455,9 @@ class ActionController extends AppController
                 return $code;
             }
         }
-        $test = rand(0, 10);
-        $key = array_keys($list);
-        return $key = $key[$test];
+        // $test = rand(0, 10);
+        // $key = array_keys($list);
+        // return $key = $key[$test];
 
         return '';
     }
