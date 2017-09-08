@@ -1073,7 +1073,9 @@ class ActionController extends AppController
 
         $formular = [
             'total' => 'datdai_tongdientich',
-            'main' => 'tongiao_dacap_dientich',
+            'main' => [
+                'tongiao_dacap_dientich',
+            ],
             'sum' => [
                 'tongiao_dacap_dientich',
                 'nnlnntts_dacap_dientich',
@@ -1102,7 +1104,11 @@ class ActionController extends AppController
                     $licensed_total += $item[$field];
                 }
             }
-            $licensed_main = $item[$formular['main']];
+            foreach ($formular['main'] as $field) {
+                if (!empty($item[$field])) {
+                    $licensed_main += $item[$field];
+                }
+            }
             $licensed_other = $licensed_total - $licensed_main;
             $unlicense = $total - $licensed_total;
 
