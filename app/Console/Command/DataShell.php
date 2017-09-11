@@ -465,7 +465,7 @@ class DataShell extends AppShell
             3 => 'Cosohoigiaoislam',
             4 => 'Hodaocaodai',
             5 => 'Chihoitinhdocusiphatgiaovietnam',
-            6 => 'Chihoitinlanh',
+            //6 => 'Chihoitinlanh',
             7 => 'Dongtuconggiao',
             8 => 'Giaoxu',
             9 => 'Tuvienphatgiao'
