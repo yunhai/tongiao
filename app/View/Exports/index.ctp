@@ -20,7 +20,7 @@
                                     echo $this->element("ButtonExports", array("array" => $arrayButtonLable1));
                                     break;
                                 case 1:
-                                    echo $this->element("ButtonExports", array("array" => $arrayButtonLable1));
+                                    echo $this->element("ButtonExports", array("array" => $arrayButtonLable2));
                                     break;
                                 default:
                                     break;
