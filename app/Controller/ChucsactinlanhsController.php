@@ -15,7 +15,7 @@ class ChucsactinlanhsController extends DataController {
      *
      * @var array
      */
-    public $components = array('Paginator', 'PhpExcel', 'Excel');
+    public $components = array('Paginator');
     public $uses = array("Chucsactinlanh");
     public $helpers = array('CustomPaginator');
     public $nameTable = "chucsactinlanh"; //name table 
