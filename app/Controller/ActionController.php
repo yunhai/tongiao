@@ -228,6 +228,57 @@ class ActionController extends AppController
         $this->Session->setFlash(__("{$local}"), 'messages/flash_success');
         $this->redirect($this->referer());
     }
+    
+    public function template($type)
+    {
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template{$type}.xls";
+        $filename = "template{$type}";
+        $this->Excel->load($source);
+        $this->{"__createTemplate{$type}"}();
+        $this->Excel->save($filename);
+    }
+    
+    /**
+     * Tạo template
+     */
+    public function __createTemplate0(){
+        $maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 2;
+        for($c = 'C'; $c <= 'Z'; $c++){
+            $colIndexes[$index] = $c;
+            $index ++;
+            if($c == $maxCols) break;
+        }
+        
+        $arrays = array(
+            9 => 'bien-hoa',
+            10 => 'cam-my',
+            11 => 'dinh-quan',
+            12 => 'long-khanh',
+            13 => 'long-thanh',
+            14 => 'nhon-trach',
+            15 => 'thong-nhat',
+            16 => 'trang-bom',
+            17 => 'tan-phu',
+            18 => 'vinh-cuu',
+            19 => 'xuan-loc',
+            20 => 'tong'
+        );
+        
+        foreach ($arrays as $key => $value) {
+            for($r = 3; $r <= $maxRows; $r++){
+                foreach($colIndexes as $k => $c){
+                    $this->Excel->ActiveSheet->getCell("{$c}{$key}")->setValue('{$'.$value.$k.'}');
+                }
+            }
+        }
+        //exit;
+    }
 
     public function download($type)
     {
