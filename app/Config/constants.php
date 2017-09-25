@@ -11,3 +11,4 @@ define('LOCAL_STORE', "Lưu");
 
 define('TONG_HOP_CHUC_SAC', 0); //template0.xls
 define('TONG_HOP_DAT_DAI', 1); //template1.xls
+define('TH_TON_GIAO_CO_SO', 2); //template2.xls

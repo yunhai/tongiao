@@ -14,7 +14,7 @@ class ExportsController extends DataController {
         $arrayButtonLable1 = array(
             '1' => 'TỔNG HỢP ĐẤT ĐAI',
             '0' => 'TH TÔN GIÁO CƠ SỞ',
-            'TH CO SO TON GIAO' => 'TH CO SO TON GIAO',
+            '2' => 'TH CO SO TON GIAO',
             'TONG HOP DI TICH' => 'TONG HOP DI TICH',
             'TONG HOP CSTT XAY DUNG' => 'TONG HOP CSTT XAY DUNG',
             'TONG HOP CSTG TRUNG TU' => 'TONG HOP CSTG TRUNG TU',

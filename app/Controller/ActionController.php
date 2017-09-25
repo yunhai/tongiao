@@ -40,11 +40,11 @@ class ActionController extends AppController
         $this->_type_text = array(
             TONG_HOP_CHUC_SAC => 'TONG HOP CHUC SAC',
             TONG_HOP_DAT_DAI => 'TONG HOP DAT DAI',
+            TH_TON_GIAO_CO_SO=> 'TH TON GIAO CO SO',
         );
     }
 
-    public function createTable()
-    {
+    function createTable() {
         $this->resultModel = array();
         for ($i = 1; $i <= LIMIT_ARRAY_DATA; $i++) {
             if (!empty($this->result_table["array_{$i}"])) {
@@ -53,81 +53,74 @@ class ActionController extends AppController
                 }
             }
         }
-        foreach ($this->result_table['cacThongTinKhac'] as $val) {
+        foreach ($this->result_table["cacThongTinKhac"] as $val) {
             $this->getLast($val);
         }
-        foreach ($this->result_table['kienNghi'] as $val) {
+        foreach ($this->result_table["kienNghi"] as $val) {
             $this->getLast($val);
         }
 
         $this->TableHelper->table($this->nameTable, $this->resultModel);
-        echo 'Sucessfull';
+        echo "Sucessfull";
         exit;
     }
 
-    public function addAjax($model = null, $fiedlAuto = '')
-    {
+    function addAjax($model = NULL, $fiedlAuto = "") {
         $is_error = 0;
         if (empty($model)) {
             $is_error = 1;
         }
         $this->model = $model;
-        $this->fiedlAuto = explode(',', $fiedlAuto);
+        $this->fiedlAuto = explode(",", $fiedlAuto);
         $dataRequest = $this->request->data;
         $this->autoLayout = false;
         $this->autoRender = false;
-        $this->response->type('json');
-        if (empty($dataRequest[$this->model]['id'])) {
+        $this->response->type("json");
+        if (empty($dataRequest[$this->model]["id"])) {
             $is_error = 1;
         }
         if ($is_error == 0) {
-            $this->add($dataRequest[$this->model]['id'], 1);
+            $this->add($dataRequest[$this->model]["id"], 1);
         }
-
         return $this->response->body(json_encode(array(
-                    'errors' => $is_error,
+                    "errors" => $is_error,
         )));
     }
 
-    public function add($id = null, $is_ajax = 0)
-    {
+    function add($id = NULL, $is_ajax = 0) {
         $str = LOCAL_INSERT;
-        if (!empty($id)) {
+        if (!empty($id))
             $str = LOCAL_EDIT;
-        }
         $model = $this->model;
         if ($this->request->is('post') || $this->request->is('put') || $is_ajax == 1) {
             $dataRequest = $this->request->data;
             $result = $this->TableHelper->decodeDataSave($dataRequest[$this->model], $this->fiedlAuto);
-            APP::import('Model', $model);
+            APP::import("Model", $model);
             $this->$model = new $model();
             $this->$model->create();
-            $result['is_add'] = 1;
+            $result["is_add"] = 1;
             $res = $this->$model->save($result);
             if ($is_ajax == 0) {
                 if ($res) {
-                    $local = $str . ' ' . SUCCESSFULL;
+                    $local = $str . " " . SUCCESSFULL;
                     $this->Session->setFlash(__("{$local}"), 'messages/flash_success');
-
-                    return $this->redirect('index');
+                    return $this->redirect("index");
                 } else {
-                    $local = $str . ' ' . FAILED;
+                    $local = $str . " " . FAILED;
                     $this->Session->setFlash(__("{$local}"), 'messages/flash_error');
                 }
             }
         } else {
-            if ($is_ajax == 1) {
+            if ($is_ajax == 1)
                 return;
-            }
             if (!empty($id)) {
                 $data = $this->$model->find('first', array(
                     'conditions' => array(
                         "{$model}.id" => $id
                     )
                 ));
-                if (empty($data)) {
-                    return $this->redirect('index');
-                }
+                if (empty($data))
+                    return $this->redirect("index");
                 $data[$this->model] = $this->TableHelper->encodeDataSave($data[$this->model], $this->fiedlAuto);
                 $this->request->data = $data;
             } else {
@@ -135,53 +128,49 @@ class ActionController extends AppController
                 $this->$model->create();
                 $res = $this->$model->save($result);
                 $this->request->data = $res;
-
                 return $this->redirect(
                                 array(
-                                    'controller' => $this->controller,
-                                    'action' => 'add',
-                                    $res[$this->model]['id'],
-                )
-                );
+                                    "controller" => $this->controller,
+                                    "action" => "add",
+                                    $res[$this->model]["id"],
+                ));
             }
         }
-        if ($is_ajax == 1) {
+        if ($is_ajax == 1)
             return;
-        }
         $title_for_layout = mb_strtolower($this->title_for_layout);
-        $fiedlAuto = implode(',', $this->fiedlAuto);
+        $fiedlAuto = implode(",", $this->fiedlAuto);
         $this->set(array(
-              'is_show_add' => 1,
-            'fiedlAuto' => $fiedlAuto,
-            'is_add' => !empty($this->request->data[$this->model]['is_add']) ? $this->request->data[$this->model]['is_add'] : 0,
+              "is_show_add" => 1,
+            "fiedlAuto" => $fiedlAuto,
+            "is_add" => !empty($this->request->data[$this->model]["is_add"]) ? $this->request->data[$this->model]["is_add"] : 0,
             'title_for_layout' => "{$str} {$title_for_layout}",
         ));
     }
 
-    public function index()
-    {
+    public function index() {
         $model = $this->model;
         $admin = CakeSession::read('admin');
-
+        
         //created_user
         $createdUser = $admin['Admin']['id'];
         $userName = $admin['Admin']['username'];
-
+        
         $conditions[] = array(
             "{$model}.is_add" => true,
             //"{$model}.created_user" => $createdUser,
         );
-
+        
         if ($userName != 'admin') {
             $conditions[] = array(
                 "{$model}.created_user" => $createdUser,
             );
         }
-
-        $order = '';
-        if (!empty($this->request->query['search'])) {
-            $search = $this->request->query['search'];
-            $value = '';
+        
+        $order = "";
+        if (!empty($this->request->query["search"])) {
+            $search = $this->request->query["search"];
+            $value = "";
             foreach ($this->showField as $val) {
                 $value = $val;
                 break;
@@ -189,15 +178,15 @@ class ActionController extends AppController
 
             if (!empty($value)) {
                 $conditions[] = array(
-                    "LOWER({$model}.{$value}) LIKE" => '%' . mb_strtolower($search) . '%'
+                    "LOWER({$model}.{$value}) LIKE" => '%' . strtolower($search) . '%'
                 );
             }
         }
         $this->CustomPaginator->settings = array(
             'conditions' => $conditions,
             'order' => $order,
-            'limit' => LIMIT_PAGE,
-            'recurisve' => -1,
+            "limit" => LIMIT_PAGE,
+            "recurisve" => -1,
         );
         $data = $this->CustomPaginator->paginate($this->model);
         $result = array();
@@ -205,26 +194,25 @@ class ActionController extends AppController
             $result[] = $val;
         }
         $this->set(array(
-            'showField' => $this->showField,
+            "showField" => $this->showField,
             'data' => $result,
-            'search' => !empty($search) ? $search : '',
-            'page' => $this->request->params['paging'][$this->model]['page'],
+            "search" => !empty($search) ? $search : "",
+            "page" => $this->request->params["paging"][$this->model]["page"],
             'title_for_layout' => $this->title_for_layout,
         ));
-        $this->render('../common/index');
+        $this->render("../common/index");
     }
 
-    public function delete($id = null)
-    {
+    public function delete($id = null) {
         $model = $this->model;
         $condition["{$model}.id"] = $id;
-        $data = $this->$model->find('first', array(
+        $data = $this->$model->find("first", array(
             'conditions' => $condition,
         ));
         if (!empty($data)) {
             $this->$model->delete($id);
         }
-        $local = LOCAL_DELETE . ' ' . SUCCESSFULL;
+        $local = LOCAL_DELETE . " " . SUCCESSFULL;
         $this->Session->setFlash(__("{$local}"), 'messages/flash_success');
         $this->redirect($this->referer());
     }
@@ -889,6 +877,75 @@ class ActionController extends AppController
         );
 
         return $data;
+    }
+    
+    /**
+     * TH TON GIAO CO SO
+     */
+    protected function __getType2Data() {
+        /**
+         * 1.   CÔNG GIÁO
+         *      E5 GIÁO XỨ
+         *          Đếm trong bảng giaoxu lọc theo diachi_huyen
+         *      F6 DÒNG TU
+         *          Đếm trong bảng dongtuconggiao lọc theo
+         *              tentuvien like DÒNG TU
+         *              diachi_huyen
+         *      G7 CỘNG ĐOÀN
+         *          Đếm trong bảng dongtuconggiao lọc theo
+         *              tentuvien like CỘNG ĐOÀN
+         *              diachi_huyen
+         *      H8 TU VIỆN
+         *          Đếm trong bảng dongtuconggiao lọc theo
+         *              tentuvien like TU VIỆN
+         *              diachi_huyen
+         *      I9 ĐAN VIỆN
+         *          Đếm trong bảng dongtuconggiao lọc theo
+         *              tentuvien like ĐAN VIỆN
+         *              diachi_huyen
+         * 2.   PHẬT GIÁO
+         *      K11 CHÙA
+         *          Đếm trong bảng tuvienphatgiao lọc theo
+         *              tentuvien like CHÙA
+         *              diachi_huyen
+         *      L12 TỊNH XÁ
+         *          Đếm trong bảng tuvienphatgiao lọc theo
+         *              tentuvien like TỊNH XÁ
+         *              diachi_huyen
+         *      M13 TỊNH THẤT
+         *          Đếm trong bảng tuvienphatgiao lọc theo
+         *              tentuvien like TỊNH THẤT
+         *              diachi_huyen
+         *      N14 THIỀN VIỆN
+         *          Đếm trong bảng tuvienphatgiao lọc theo
+         *              tentuvien like THIỀN VIỆN
+         *              diachi_huyen
+         *      O15 TU VIỆN
+         *          Đếm trong bảng tuvienphatgiao lọc theo
+         *              tentuvien like TU VIỆN
+         *              diachi_huyen
+         *      P16 NIỆM PHẬT ĐƯỜNG
+         *          Đếm trong bảng tuvienphatgiao lọc theo
+         *              tentuvien like NIỆM PHẬT ĐƯỜNG
+         *              diachi_huyen
+         * 3.   CAO ĐÀI
+         *      Q17 HỌ ĐẠO
+         *          Đếm trong bảng hodaocaodai lọc theo
+         *              tenhodao_diachi_huyen
+         * 4.   TỊNH ĐỘ CƯ SĨ VIỆT NAM
+         *      R18 CHIHỘI
+         *          Đếm trong bảng chihoitinhdocusiphatgiaovietnam lọc theo
+         *              tenchihoi_diachi_huyen
+         * 5.   HỒI GIÁO
+         *      S19 THÁNH ĐƯỜNG
+         *          Đếm trong bảng cosohoigiaoislam lọc theo
+         *              tenthanhduong_diachi_huyen
+         * 6.   PHẬT GIÁO HÒA HẢO
+         *      T20 BAN TRỊ SỰ
+         *          CHỜ CONFIRM
+         */
+        
+        
     }
 
     public function formatData()
