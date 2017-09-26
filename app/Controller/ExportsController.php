@@ -13,14 +13,14 @@ class ExportsController extends DataController {
         );
         $arrayButtonLable1 = array(
             '1' => 'TỔNG HỢP ĐẤT ĐAI',
-            '0' => 'TH TÔN GIÁO CƠ SỞ',
-            '2' => 'TH CO SO TON GIAO',
-            'TONG HOP DI TICH' => 'TONG HOP DI TICH',
-            'TONG HOP CSTT XAY DUNG' => 'TONG HOP CSTT XAY DUNG',
-            'TONG HOP CSTG TRUNG TU' => 'TONG HOP CSTG TRUNG TU',
-            'BANG TONG HOP TIN DO' => 'BANG TONG HOP TIN DO',
-            'ds cstt' => 'ds cstt',
-            'DSCS BAO TRO XA HOI' => 'DSCS BAO TRO XA HOI'
+            '2' => 'TH TÔN GIÁO CƠ SỞ',
+            '3' => 'TH CƠ SỞ TÔN GIÁO',
+            '4' => 'TỔNG HỢP DI TÍCH',
+            '5' => 'TỔNG HỢP CSTT XÂY DỰNG',
+            '6' => 'TỔNG HỢP CSTG TRÙNG TU',
+            '7' => 'BẢNG TỔNG HỢP TÍN ĐỒ',
+            '8' => 'DANH SÁCH CƠ SỞ THỜ TỰ',
+            '9' => 'DSCS BẢO TRỢ XÃ HỘI'
         );
         
         $arrayButtonLable2 = array(
