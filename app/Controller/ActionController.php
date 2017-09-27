@@ -907,6 +907,9 @@ class ActionController extends AppController
      */
     protected function __getType2Data()
     {
+        $component = $this->Components->load('Tongiaocoso');
+        $data = $component->export();
+
         /**
          * 1.   CÔNG GIÁO
          *      E5 GIÁO XỨ
@@ -968,6 +971,16 @@ class ActionController extends AppController
          *      T20 BAN TRỊ SỰ
          *          CHỜ CONFIRM
          */
+    }
+
+    public function pandog()
+    {
+        $component = $this->Components->load('Tongiaocoso');
+        $data = $component->export();
+        print_r('<pre>');
+        print_r($data);
+        print_r('</pre>');
+        exit;
     }
 
     public function formatData()
@@ -1542,7 +1555,7 @@ class ActionController extends AppController
         $string = $this->Utility->slug($string);
 
         foreach ($list as $code => $name) {
-            if (mb_strpos($string, $code) !== false) {
+            if (strpos($string, $code) !== false) {
                 return $code;
             }
         }
@@ -1572,15 +1585,5 @@ class ActionController extends AppController
         $provine = $this->getProvince();
 
         return isset($province[$code]) ? $province[$code] : '';
-    }
-
-    public function pandog()
-    {
-        $component = $this->Components->load('Tongiaocoso');
-        $data = $component->export();
-        print_r('<pre>');
-        print_r($data);
-        print_r('</pre>');
-        exit;
     }
 }

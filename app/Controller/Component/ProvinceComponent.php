@@ -14,7 +14,7 @@ class ProvinceComponent extends Component
         $string = $component->slug($string);
 
         foreach ($list as $code => $name) {
-            if (mb_strpos($string, $code) !== false) {
+            if (strpos($string, $code) !== false) {
                 return $code;
             }
         }

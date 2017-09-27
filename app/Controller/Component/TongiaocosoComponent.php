@@ -6,23 +6,29 @@ class TongiaocosoComponent extends Component
     {
         App::uses('ProvinceComponent', 'Controller/Component');
         $this->Province = new ProvinceComponent(new ComponentCollection());
+
+        App::uses('UtilityComponent', 'Controller/Component');
+        $this->Utility = new UtilityComponent(new ComponentCollection());
     }
 
     public function export()
     {
         $list = [
+            'Conggiao',
+            'Tuvienphatgiao',
             'Hodaocaodai',
+            'Chihoitinhdocusiphatgiaovietnam',
             'Cosohoigiaoislam',
-            // 'Phatgiaohoahoa'
+            'Phatgiaohoahoa'
         ];
 
         $single = [
             'Hodaocaodai',
+            'Chihoitinhdocusiphatgiaovietnam',
             'Cosohoigiaoislam',
-            // 'Phatgiaohoahoa'
+            'Phatgiaohoahoa'
         ];
 
-        $statictis = [];
         $province = $this->Province->getProvince();
 
         $index = 1;
@@ -31,9 +37,6 @@ class TongiaocosoComponent extends Component
                 $index++,
                 $name,
                 0,
-            ];
-            $statictis[$code] = [
-                'total' => 0,
             ];
         }
 
@@ -54,12 +57,161 @@ class TongiaocosoComponent extends Component
             }
         }
 
-        print_r('<pre>');
-        print_r($export);
-        print_r('</pre>');
+        return $export;
+    }
+
+    private function cal_conggiao()
+    {
+        $giaoxu = $this->cal_conggiao_giaoxu('Giaoxu');
+
+        $result = [];
+        $province = $this->Province->getProvince();
+        foreach ($province as $provice_code => $name) {
+            $result[$provice_code] = [
+                'total' => 0,
+                'giao-xu' => isset($giaoxu[$provice_code]) ? $giaoxu[$provice_code] : 0,
+                'dong-tu' => 0,
+                'cong-doan' => 0,
+                'tu-vien' => 0,
+                'dan-vien' => 0,
+            ];
+        }
+
+        $model = 'Dongtuconggiao';
+        $option = $this->calculateMapping($model);
+
+        extract($option);
+
+        $data = $this->getData($model, $data_field);
+
+        $province_field = $this->getLocationFieldName($model);
+        foreach ($data as $id => $item) {
+            $provice_code = $this->Province->retrieveProvinceCode($item[$province_field]);
+            if (!$provice_code) {
+                continue;
+            }
+
+            $keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
+            $keyword = strtolower(str_replace(' ', '-', $keyword));
+
+            foreach ($result[$provice_code] as $key => &$count) {
+                if (strpos($keyword, $key) !== false) {
+                    $count++;
+                    break;
+                }
+            }
+        }
+
+        foreach ($result as $key => &$item) {
+            $item['total'] = array_sum($item);
+        }
+
+        return $result;
+    }
+
+    private function cal_conggiao_giaoxu($model = 'Giaoxu')
+    {
+        $result = [];
+
+        $province = $this->Province->getProvince();
+        foreach ($province as $provice_code => $name) {
+            $result[$provice_code] = 0;
+        }
+        $option = $this->calculateMapping($model);
+
+        extract($option);
+
+        $data = $this->getData($model, $data_field);
+
+        $province_field = $this->getLocationFieldName($model);
+        foreach ($data as $id => $item) {
+            $provice_code = $this->Province->retrieveProvinceCode($item[$province_field]);
+            if (!$provice_code) {
+                continue;
+            }
+
+            $result[$provice_code] = $result[$provice_code] + 1;
+        }
+
+        return $result;
+    }
+
+    private function cal_tuvienphatgiao($model)
+    {
+        $result = [];
+        $province = $this->Province->getProvince();
+        foreach ($province as $provice_code => $name) {
+            $result[$provice_code] = [
+                'total' => 0,
+                'chua' => 0,
+                'tinh-xa' => 0,
+                'tinh-that' => 0,
+                'thien-vien' => 0,
+                'tu-vien' => 0,
+                'niem-phat-duong' => 0,
+            ];
+        }
+        $option = $this->calculateMapping($model);
+
+        extract($option);
+
+        $data = $this->getData($model, $data_field);
+
+        $province_field = $this->getLocationFieldName($model);
+        foreach ($data as $id => $item) {
+            $provice_code = $this->Province->retrieveProvinceCode($item[$province_field]);
+            if (!$provice_code) {
+                continue;
+            }
+
+            $keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
+            $keyword = strtolower(str_replace(' ', '-', $keyword));
+            foreach ($result[$provice_code] as $key => &$count) {
+                if (strpos($keyword, $key) !== false) {
+                    $count++;
+                    break;
+                }
+            }
+        }
+
+        foreach ($result as $key => &$item) {
+            $item['total'] = array_sum($item);
+        }
+
+        return $result;
     }
 
     private function cal_hodaocaodai($model)
+    {
+        $result = [];
+        $province = $this->Province->getProvince();
+        foreach ($province as $provice_code => $name) {
+            $result[$provice_code] = 0;
+        }
+        $option = $this->calculateMapping($model);
+
+        extract($option);
+
+        $data = $this->getData($model, $data_field);
+
+        $province_field = $this->getLocationFieldName($model);
+        foreach ($data as $id => $item) {
+            $provice_code = $this->Province->retrieveProvinceCode($item[$province_field]);
+            if (!$provice_code) {
+                continue;
+            }
+
+            $result[$provice_code] = $result[$provice_code] + 1;
+        }
+
+        foreach ($result as $key => &$val) {
+            $val = [$val];
+        }
+
+        return $result;
+    }
+
+    private function cal_chihoitinhdocusiphatgiaovietnam($model)
     {
         $result = [];
         $province = $this->Province->getProvince();
@@ -126,21 +278,6 @@ class TongiaocosoComponent extends Component
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = 0;
         }
-        $option = $this->calculateMapping($model);
-
-        extract($option);
-
-        $data = $this->getData($model, $data_field);
-
-        $province_field = $this->getLocationFieldName($model);
-        foreach ($data as $id => $item) {
-            $provice_code = $this->Province->retrieveProvinceCode($item[$province_field]);
-            if (!$provice_code) {
-                continue;
-            }
-
-            $result[$provice_code] = $result[$provice_code] + 1;
-        }
 
         foreach ($result as $key => &$val) {
             $val = [$val];
@@ -166,13 +303,22 @@ class TongiaocosoComponent extends Component
     private function calculateMapping($model)
     {
         $model = mb_strtolower($model);
-
+        $data_field = [];
         switch ($model) {
             case 'hodaocaodai':
             case 'cosohoigiaoislam':
             case 'phatgiaohoahoa':
+            case 'chihoitinhdocusiphatgiaovietnam':
+            case 'giaoxu':
                 $data_field = [
                     'id',
+                ];
+                break;
+            case 'tuvienphatgiao':
+            case 'dongtuconggiao':
+                $data_field = [
+                    'id',
+                    'tentuvien'
                 ];
                 break;
         }
