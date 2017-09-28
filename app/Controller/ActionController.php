@@ -267,17 +267,17 @@ class ActionController extends AppController
         }
 
         $arrays = array(
-            9 => 'bien-hoa',
-            10 => 'cam-my',
-            11 => 'dinh-quan',
-            12 => 'long-khanh',
-            13 => 'long-thanh',
-            14 => 'nhon-trach',
-            15 => 'thong-nhat',
-            16 => 'trang-bom',
-            17 => 'tan-phu',
-            18 => 'vinh-cuu',
-            19 => 'xuan-loc',
+            9 => 'bien_hoa',
+            10 => 'cam_my',
+            11 => 'dinh_quan',
+            12 => 'long_khanh',
+            13 => 'long_thanh',
+            14 => 'nhon_trach',
+            15 => 'thong_nhat',
+            16 => 'trang_bom',
+            17 => 'tan_phu',
+            18 => 'vinh_cuu',
+            19 => 'xuan_loc',
             20 => 'tong'
         );
 
@@ -908,8 +908,29 @@ class ActionController extends AppController
     protected function __getType2Data()
     {
         $component = $this->Components->load('Tongiaocoso');
-        $data = $component->export();
-
+        $result = $component->export();
+        
+        $data = array();
+        foreach ($result as $key => $value) {
+            foreach ($value as $k => $v) {
+                if ($k >=2) {
+                    $key = str_replace('-', '_', $key);
+                    $data[$key.$k] = $v;
+                }
+            }
+        }
+        $i = 2;
+        while($i <= 19) {
+           $sum = 0;
+           foreach ($result as $key => $value) {
+               $sum += $value[$i];
+            }
+            $data["tong{$i}"] = $sum;
+            $i++; 
+        }
+        
+        return $data;
+        
         /**
          * 1.   CÔNG GIÁO
          *      E5 GIÁO XỨ
