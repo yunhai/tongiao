@@ -995,10 +995,160 @@ class ActionController extends AppController
     }
     
     /**
+     * TH CO SO TON GIAO
+     * sheet 3/9
+     */
+    protected function __getType6Data() {
+        /*
+            CÔNG GIÁO
+                D4 TỔNG
+                E5 NHÀ THỜ
+                F6 THÁP CHUÔNG
+                G7 NHÀ XỨ
+                H8 NHÀ GIÁO LÝ
+                I9 NHÀ SINH HOẠT
+                J10 ĐẾN, ĐÀI, TƯỢNG
+                K11 KHÁC
+            PHẬT GIÁO
+                L12 TỔNG
+                    Tổng của (M13, P16, Q17, R18)
+                M13 CHÙA
+                    Đếm trong bảng tuvienphatgiao lọc theo
+                        tentuvien like CHÙA
+                        diachi_huyen
+                P16 TỊNH THẤT
+                    Đếm trong bảng tuvienphatgiao lọc theo
+                        tentuvien like TỊNH THẤT
+                        diachi_huyen
+                Q17 TU VIỆN
+                    Đếm trong bảng tuvienphatgiao lọc theo
+                        tentuvien like TU VIỆN
+                        diachi_huyen
+                R18 NIỆM PHẬT ĐƯỜNG
+                    Đếm trong bảng tuvienphatgiao lọc theo
+                        tentuvien like NIỆM PHẬT ĐƯỜNG
+                        diachi_huyen
+            CAO ĐÀI
+                S19 THÁNH THẤT
+                    Đếm trong bảng hodaocaodai lọc theo
+                        tenhodao like THÁNH THẤT
+                        tenhodao_diachi_huyen
+                T20 ĐIỆN THỜ PHẬT MẪU
+                    Đếm trong bảng hodaocaodai lọc theo
+                        tenhodao like ĐIỆN THỜ PHẬT MẪU
+                        tenhodao_diachi_huyen
+            TỊNH ĐỘ CƯ SĨ VIỆT NAM
+                U21 CHI HỘI
+                    Đếm trong bảng chihoitinhdocusiphatgiaovietnam lọc theo
+                        tenchihoi like ĐIỆN THỜ PHẬT MẪU
+                        tenchihoi_diachi_huyen
+            HỒI GIÁO
+                V22 THÁNH ĐƯỜNG
+                    Đếm trong bảng cosohoigiaoislam lọc theo
+                        tenthanhduong like THÁNH ĐƯỜNG
+                        tenthanhduong_diachi_huyen
+                W23 TIỂU THÁNH ĐƯỜNG
+                    Đếm trong bảng cosohoigiaoislam lọc theo
+                        tenthanhduong like TIỂU THÁNH ĐƯỜNG
+                        tenthanhduong_diachi_huyen
+            PHẬT GIÁO HÒA HẢO
+                X24 VP. BAN ĐẠI DIỆN
+                    Đếm trong bảng chucviecphathoahao lọc theo
+                        hoatdongtongiaotai like VP. BAN ĐẠI DIỆN
+                        hoatdongtongiaotai_diachi_huyen
+                Y25 BAN TRỊ SỰ
+                    Đếm trong bảng chucviecphathoahao lọc theo
+                        hoatdongtongiaotai like BAN TRỊ SỰ
+                        hoatdongtongiaotai_diachi_huyen
+            TÍN NGƯỠNG
+                E26 ĐÌNH
+                    Đếm trong bảng cosotinnguong lọc theo
+                        tencoso like ĐÌNH
+                        diachi_huyen
+                AA27 ĐỀN
+                    Đếm trong bảng cosotinnguong lọc theo
+                        tencoso like ĐỀN
+                        diachi_huyen
+                AB28 AM
+                    Đếm trong bảng cosotinnguong lọc theo
+                        tencoso like AM
+                        diachi_huyen
+                AC29 MIẾU
+                    Đếm trong bảng cosotinnguong lọc theo
+                        tencoso like MIẾU
+                        diachi_huyen
+                AD30 KHÁC
+                    Đếm trong bảng cosotinnguong lọc theo
+                        Ngoài nhữ thằng (E26, AA27, AB28, AC29, AD30)
+                        diachi_huyen
+            Công giáo
+                Số lần
+                    Đếm trong bảng dongtuconggiao và bảng giaoxu lọc theo
+                        ttttcs_solan
+                        diachi_huyen
+                Số tiền
+                    Đếm trong bảng dongtuconggiao và bảng giaoxu lọc theo
+                        ttttcs_tongkinhphi
+                        diachi_huyen    
+            Phật giáo
+                Số lần
+                    Đếm trong bảng tuvienphatgiao lọc theo
+                        ttttcs_solan
+                        diachi_huyen
+                Số tiền
+                    Đếm trong bảng tuvienphatgiao lọc theo
+                        ttttcs_tongkinhphi
+                        diachi_huyen        
+            
+            Tin lành
+                Số lần
+                    Đếm trong bảng chihoitinlanh lọc theo
+                        ttttcs_solan
+                        diachi_huyen
+                Số tiền
+                    Đếm trong bảng chihoitinlanh lọc theo
+                        ttttcs_tongkinhphi diachi_huyen
+            Cao đài
+                Số lần
+                    Đếm trong bảng hodaocaodai lọc theo
+                        ttttcs_solan tenhodao_diachi_huyen
+                Số tiền
+                    Đếm trong bảng hodaocaodai lọc theo
+                        ttttcs_tongkinhphi
+                        tenhodao_diachi_huyen       
+            Tịnh độ Cư sĩ Phật hội VN   
+                Số lần
+                    Đếm trong bảng chihoitinhdocusiphatgiaovietnam lọc theo
+                        ttttcs_solan tenchihoi_diachi_huyen
+                Số tiền
+                    Đếm trong bảng chihoitinhdocusiphatgiaovietnam lọc theo
+                        ttttcs_tongkinhphi
+                        tenchihoi_diachi_huyen
+            Phật giáo Hòa Hảo
+                Số lần
+                Số tiền
+            Hồi giáo
+                Số lần
+                    Đếm trong bảng cosohoigiaoislam lọc theo
+                        ttttcs_solan tenthanhduong_diachi_huyen
+                Số tiền
+                    Đếm trong bảng cosotinnguong lọc theo
+                        ttttcs_tongkinhphi
+                        diachi_huyen    
+            Tín ngưỡng
+                Số lần
+                    Đếm trong bảng cosotinnguong lọc theo
+                        ttttcs_solan diachi_huyen
+                Số tiền
+                    Đếm trong bảng cosotinnguong lọc theo
+                        ttttcs_tongkinhphi diachi_huyen
+         */
+    }
+    /**
      * TONG HOP CSTG TRUNG TU
      * Sheet 6/9
      */
-    protected function __getType6Data(){
+    protected function __getType6Data() {
         /**
          * 1.   Công giáo
          *      Số lần
