@@ -998,7 +998,7 @@ class ActionController extends AppController
      * TH CO SO TON GIAO
      * sheet 3/9
      */
-    protected function __getType6Data() {
+    protected function __getType3Data() {
         /*
             CÔNG GIÁO
                 D4 TỔNG
