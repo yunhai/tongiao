@@ -993,6 +993,73 @@ class ActionController extends AppController
          *          CHỜ CONFIRM
          */
     }
+    
+    /**
+     * TONG HOP CSTG TRUNG TU
+     * Sheet 6/9
+     */
+    protected function __getType6Data(){
+        /**
+         * 1.   Công giáo
+         *      Số lần
+         *          Đếm trong bảng dongtuconggiao và bảng giaoxu lọc theo
+         *              ttttcs_solan
+         *              diachi_huyen
+         *      Số tiền
+         *          Đếm trong bảng dongtuconggiao và bảng giaoxu lọc theo
+         *              ttttcs_tongkinhphi
+         *              diachi_huyen
+         * 2.   Phật giáo
+         *      Số lần
+         *          Đếm trong bảng tuvienphatgiao lọc theo
+         *              ttttcs_solan
+         *              diachi_huyen
+         *      Số tiền
+         *          Đếm trong bảng tuvienphatgiao lọc theo
+         *              ttttcs_tongkinhphi
+         *              diachi_huyen
+         * 3.   Tin lành
+         *      Số lần
+         *          Đếm trong bảng chihoitinlanh lọc theo
+         *              ttttcs_solan
+         *              diachi_huyen
+         *      Số tiền
+         *          Đếm trong bảng chihoitinlanh lọc theo
+         *              ttttcs_tongkinhphi
+         *              diachi_huyen
+         * 4.   Cao đài
+         *      Số lần
+         *          Đếm trong bảng hodaocaodai lọc theo
+         *              ttttcs_solan 
+         *              tenhodao_diachi_huyen
+         * 5.   Tịnh độ Cư sĩ Phật hội VN
+         *      Số lần
+         *          Đếm trong bảng chihoitinhdocusiphatgiaovietnam lọc theo
+         *              ttttcs_solan 
+         *              tenchihoi_diachi_huyen
+         * 6.   Phật giáo Hòa Hảo
+         *      Số lần
+         *      Số tiền
+         * 7.   Hồi giáo
+         *      Số lần
+         *          Đếm trong bảng cosohoigiaoislam lọc theo
+         *              ttttcs_solan 
+         *              tenthanhduong_diachi_huyen
+         *      Số tiền
+         *          Đếm trong bảng cosotinnguong lọc theo
+         *              ttttcs_tongkinhphi
+         *              diachi_huyen
+         * 8.   Tín ngưỡng
+         *      Số lần
+         *          Đếm trong bảng cosotinnguong lọc theo
+         *              ttttcs_solan 
+         *              diachi_huyen
+         *      Số tiền
+         *          Đếm trong bảng cosotinnguong lọc theo
+         *              ttttcs_tongkinhphi 
+         *              diachi_huyen
+         */
+    }
 
     public function pandog()
     {
