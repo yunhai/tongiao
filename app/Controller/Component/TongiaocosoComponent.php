@@ -19,14 +19,14 @@ class TongiaocosoComponent extends Component
             'Hodaocaodai',
             'Chihoitinhdocusiphatgiaovietnam',
             'Cosohoigiaoislam',
-            'Phatgiaohoahoa'
+            'Phatgiaohoahao'
         ];
 
         $single = [
             'Hodaocaodai',
             'Chihoitinhdocusiphatgiaovietnam',
             'Cosohoigiaoislam',
-            'Phatgiaohoahoa'
+            'Phatgiaohoahao'
         ];
 
         $province = $this->Province->getProvince();
@@ -271,7 +271,7 @@ class TongiaocosoComponent extends Component
         return $result;
     }
 
-    private function cal_phatgiaohoahoa($model)
+    private function cal_phatgiaohoahao($model)
     {
         $result = [];
         $province = $this->Province->getProvince();
@@ -307,7 +307,7 @@ class TongiaocosoComponent extends Component
         switch ($model) {
             case 'hodaocaodai':
             case 'cosohoigiaoislam':
-            case 'phatgiaohoahoa':
+            case 'phatgiaohoahao':
             case 'chihoitinhdocusiphatgiaovietnam':
             case 'giaoxu':
                 $data_field = [
@@ -343,4 +343,66 @@ class TongiaocosoComponent extends Component
 
         return $location[$model];
     }
+
+    /**
+     * 1.   CÔNG GIÁO
+     *      E5 GIÁO XỨ
+     *          Đếm trong bảng giaoxu lọc theo diachi_huyen
+     *      F6 DÒNG TU
+     *          Đếm trong bảng dongtuconggiao lọc theo
+     *              tentuvien like DÒNG TU
+     *              diachi_huyen
+     *      G7 CỘNG ĐOÀN
+     *          Đếm trong bảng dongtuconggiao lọc theo
+     *              tentuvien like CỘNG ĐOÀN
+     *              diachi_huyen
+     *      H8 TU VIỆN
+     *          Đếm trong bảng dongtuconggiao lọc theo
+     *              tentuvien like TU VIỆN
+     *              diachi_huyen
+     *      I9 ĐAN VIỆN
+     *          Đếm trong bảng dongtuconggiao lọc theo
+     *              tentuvien like ĐAN VIỆN
+     *              diachi_huyen
+     * 2.   PHẬT GIÁO
+     *      K11 CHÙA
+     *          Đếm trong bảng tuvienphatgiao lọc theo
+     *              tentuvien like CHÙA
+     *              diachi_huyen
+     *      L12 TỊNH XÁ
+     *          Đếm trong bảng tuvienphatgiao lọc theo
+     *              tentuvien like TỊNH XÁ
+     *              diachi_huyen
+     *      M13 TỊNH THẤT
+     *          Đếm trong bảng tuvienphatgiao lọc theo
+     *              tentuvien like TỊNH THẤT
+     *              diachi_huyen
+     *      N14 THIỀN VIỆN
+     *          Đếm trong bảng tuvienphatgiao lọc theo
+     *              tentuvien like THIỀN VIỆN
+     *              diachi_huyen
+     *      O15 TU VIỆN
+     *          Đếm trong bảng tuvienphatgiao lọc theo
+     *              tentuvien like TU VIỆN
+     *              diachi_huyen
+     *      P16 NIỆM PHẬT ĐƯỜNG
+     *          Đếm trong bảng tuvienphatgiao lọc theo
+     *              tentuvien like NIỆM PHẬT ĐƯỜNG
+     *              diachi_huyen
+     * 3.   CAO ĐÀI
+     *      Q17 HỌ ĐẠO
+     *          Đếm trong bảng hodaocaodai lọc theo
+     *              tenhodao_diachi_huyen
+     * 4.   TỊNH ĐỘ CƯ SĨ VIỆT NAM
+     *      R18 CHIHỘI
+     *          Đếm trong bảng chihoitinhdocusiphatgiaovietnam lọc theo
+     *              tenchihoi_diachi_huyen
+     * 5.   HỒI GIÁO
+     *      S19 THÁNH ĐƯỜNG
+     *          Đếm trong bảng cosohoigiaoislam lọc theo
+     *              tenthanhduong_diachi_huyen
+     * 6.   PHẬT GIÁO HÒA HẢO
+     *      T20 BAN TRỊ SỰ
+     *          CHỜ CONFIRM
+     */
 }
