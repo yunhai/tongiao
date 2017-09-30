@@ -909,96 +909,35 @@ class ActionController extends AppController
     {
         $component = $this->Components->load('Tongiaocoso');
         $result = $component->export();
-        
+
         $data = array();
         foreach ($result as $key => $value) {
             foreach ($value as $k => $v) {
-                if ($k >=2) {
+                if ($k >= 2) {
                     $key = str_replace('-', '_', $key);
                     $data[$key.$k] = $v;
                 }
             }
         }
         $i = 2;
-        while($i <= 19) {
-           $sum = 0;
-           foreach ($result as $key => $value) {
-               $sum += $value[$i];
+        while ($i <= 19) {
+            $sum = 0;
+            foreach ($result as $key => $value) {
+                $sum += $value[$i];
             }
             $data["tong{$i}"] = $sum;
-            $i++; 
+            $i++;
         }
-        
+
         return $data;
-        
-        /**
-         * 1.   CÔNG GIÁO
-         *      E5 GIÁO XỨ
-         *          Đếm trong bảng giaoxu lọc theo diachi_huyen
-         *      F6 DÒNG TU
-         *          Đếm trong bảng dongtuconggiao lọc theo
-         *              tentuvien like DÒNG TU
-         *              diachi_huyen
-         *      G7 CỘNG ĐOÀN
-         *          Đếm trong bảng dongtuconggiao lọc theo
-         *              tentuvien like CỘNG ĐOÀN
-         *              diachi_huyen
-         *      H8 TU VIỆN
-         *          Đếm trong bảng dongtuconggiao lọc theo
-         *              tentuvien like TU VIỆN
-         *              diachi_huyen
-         *      I9 ĐAN VIỆN
-         *          Đếm trong bảng dongtuconggiao lọc theo
-         *              tentuvien like ĐAN VIỆN
-         *              diachi_huyen
-         * 2.   PHẬT GIÁO
-         *      K11 CHÙA
-         *          Đếm trong bảng tuvienphatgiao lọc theo
-         *              tentuvien like CHÙA
-         *              diachi_huyen
-         *      L12 TỊNH XÁ
-         *          Đếm trong bảng tuvienphatgiao lọc theo
-         *              tentuvien like TỊNH XÁ
-         *              diachi_huyen
-         *      M13 TỊNH THẤT
-         *          Đếm trong bảng tuvienphatgiao lọc theo
-         *              tentuvien like TỊNH THẤT
-         *              diachi_huyen
-         *      N14 THIỀN VIỆN
-         *          Đếm trong bảng tuvienphatgiao lọc theo
-         *              tentuvien like THIỀN VIỆN
-         *              diachi_huyen
-         *      O15 TU VIỆN
-         *          Đếm trong bảng tuvienphatgiao lọc theo
-         *              tentuvien like TU VIỆN
-         *              diachi_huyen
-         *      P16 NIỆM PHẬT ĐƯỜNG
-         *          Đếm trong bảng tuvienphatgiao lọc theo
-         *              tentuvien like NIỆM PHẬT ĐƯỜNG
-         *              diachi_huyen
-         * 3.   CAO ĐÀI
-         *      Q17 HỌ ĐẠO
-         *          Đếm trong bảng hodaocaodai lọc theo
-         *              tenhodao_diachi_huyen
-         * 4.   TỊNH ĐỘ CƯ SĨ VIỆT NAM
-         *      R18 CHIHỘI
-         *          Đếm trong bảng chihoitinhdocusiphatgiaovietnam lọc theo
-         *              tenchihoi_diachi_huyen
-         * 5.   HỒI GIÁO
-         *      S19 THÁNH ĐƯỜNG
-         *          Đếm trong bảng cosohoigiaoislam lọc theo
-         *              tenthanhduong_diachi_huyen
-         * 6.   PHẬT GIÁO HÒA HẢO
-         *      T20 BAN TRỊ SỰ
-         *          CHỜ CONFIRM
-         */
     }
-    
+
     /**
      * TH CO SO TON GIAO
      * sheet 3/9
      */
-    protected function __getType3Data() {
+    protected function __getType3Data()
+    {
         /*
             CÔNG GIÁO
                 D4 TỔNG
@@ -1089,7 +1028,7 @@ class ActionController extends AppController
                 Số tiền
                     Đếm trong bảng dongtuconggiao và bảng giaoxu lọc theo
                         ttttcs_tongkinhphi
-                        diachi_huyen    
+                        diachi_huyen
             Phật giáo
                 Số lần
                     Đếm trong bảng tuvienphatgiao lọc theo
@@ -1098,8 +1037,8 @@ class ActionController extends AppController
                 Số tiền
                     Đếm trong bảng tuvienphatgiao lọc theo
                         ttttcs_tongkinhphi
-                        diachi_huyen        
-            
+                        diachi_huyen
+
             Tin lành
                 Số lần
                     Đếm trong bảng chihoitinlanh lọc theo
@@ -1115,8 +1054,8 @@ class ActionController extends AppController
                 Số tiền
                     Đếm trong bảng hodaocaodai lọc theo
                         ttttcs_tongkinhphi
-                        tenhodao_diachi_huyen       
-            Tịnh độ Cư sĩ Phật hội VN   
+                        tenhodao_diachi_huyen
+            Tịnh độ Cư sĩ Phật hội VN
                 Số lần
                     Đếm trong bảng chihoitinhdocusiphatgiaovietnam lọc theo
                         ttttcs_solan tenchihoi_diachi_huyen
@@ -1134,7 +1073,7 @@ class ActionController extends AppController
                 Số tiền
                     Đếm trong bảng cosotinnguong lọc theo
                         ttttcs_tongkinhphi
-                        diachi_huyen    
+                        diachi_huyen
             Tín ngưỡng
                 Số lần
                     Đếm trong bảng cosotinnguong lọc theo
@@ -1144,81 +1083,37 @@ class ActionController extends AppController
                         ttttcs_tongkinhphi diachi_huyen
          */
     }
+
     /**
      * TONG HOP CSTG TRUNG TU
      * Sheet 6/9
      */
-    protected function __getType6Data() {
-        /**
-         * 1.   Công giáo
-         *      Số lần
-         *          Đếm trong bảng dongtuconggiao và bảng giaoxu lọc theo
-         *              ttttcs_solan
-         *              diachi_huyen
-         *      Số tiền
-         *          Đếm trong bảng dongtuconggiao và bảng giaoxu lọc theo
-         *              ttttcs_tongkinhphi
-         *              diachi_huyen
-         * 2.   Phật giáo
-         *      Số lần
-         *          Đếm trong bảng tuvienphatgiao lọc theo
-         *              ttttcs_solan
-         *              diachi_huyen
-         *      Số tiền
-         *          Đếm trong bảng tuvienphatgiao lọc theo
-         *              ttttcs_tongkinhphi
-         *              diachi_huyen
-         * 3.   Tin lành
-         *      Số lần
-         *          Đếm trong bảng chihoitinlanh lọc theo
-         *              ttttcs_solan
-         *              diachi_huyen
-         *      Số tiền
-         *          Đếm trong bảng chihoitinlanh lọc theo
-         *              ttttcs_tongkinhphi
-         *              diachi_huyen
-         * 4.   Cao đài
-         *      Số lần
-         *          Đếm trong bảng hodaocaodai lọc theo
-         *              ttttcs_solan 
-         *              tenhodao_diachi_huyen
-         * 5.   Tịnh độ Cư sĩ Phật hội VN
-         *      Số lần
-         *          Đếm trong bảng chihoitinhdocusiphatgiaovietnam lọc theo
-         *              ttttcs_solan 
-         *              tenchihoi_diachi_huyen
-         * 6.   Phật giáo Hòa Hảo
-         *      Số lần
-         *      Số tiền
-         * 7.   Hồi giáo
-         *      Số lần
-         *          Đếm trong bảng cosohoigiaoislam lọc theo
-         *              ttttcs_solan 
-         *              tenthanhduong_diachi_huyen
-         *      Số tiền
-         *          Đếm trong bảng cosotinnguong lọc theo
-         *              ttttcs_tongkinhphi
-         *              diachi_huyen
-         * 8.   Tín ngưỡng
-         *      Số lần
-         *          Đếm trong bảng cosotinnguong lọc theo
-         *              ttttcs_solan 
-         *              diachi_huyen
-         *      Số tiền
-         *          Đếm trong bảng cosotinnguong lọc theo
-         *              ttttcs_tongkinhphi 
-         *              diachi_huyen
-         */
+    protected function __getType6Data()
+    {
+        $component = $this->Components->load('Cstgtrungtu');
+        $result = $component->export();
+
+        $result = $data;
+        $total = [];
+        $i = 2;
+        while ($i <= 19) {
+            $sum = 0;
+            foreach ($result as $key => $value) {
+                $sum += $value[$i];
+            }
+            $total["tong{$i}"] = $sum;
+            $i++;
+        }
+        print_r('<pre>');
+        print_r($result);
+        print_r('</pre>');
+        exit;
     }
 
     public function pandog()
     {
-        $component = $this->Components->load('Tongiaocoso');
+        $component = $this->Components->load('Cstgtrungtu');
         $data = $component->export();
-        print_r('<pre>');
-        print_r($data);
-        print_r('</pre>');
-        exit;
     }
 
     public function formatData()
