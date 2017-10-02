@@ -966,24 +966,28 @@ class ActionController extends AppController
     protected function __getType6Data()
     {
         $component = $this->Components->load('Cstgtrungtu');
-        $data = $component->export();
+        $result = $component->export();
 
-        $result = $data;
-
-        $total = [];
+        $data = array();
+        foreach ($result as $key => $value) {
+            foreach ($value as $k => $v) {
+                if ($k >= 2) {
+                    $key = str_replace('-', '_', $key);
+                    $data[$key.$k] = $v;
+                }
+            }
+        }
         $i = 2;
         while ($i <= 19) {
             $sum = 0;
             foreach ($result as $key => $value) {
                 $sum += $value[$i];
             }
-            $total["tong{$i}"] = $sum;
+            $data["tong{$i}"] = $sum;
             $i++;
         }
-        print_r('<pre>');
-        print_r($result);
-        print_r('</pre>');
-        exit;
+        
+        return $data;
     }
 
     public function pandog()
