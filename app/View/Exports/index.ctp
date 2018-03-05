@@ -11,7 +11,7 @@
                     </a>
                 </h4>
             </div>
-            <div id="collapse_<?php echo $key; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div id="collapse_<?php echo $key; ?>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
                     <div class="input-group col-xs-12 ">
                         <?php

@@ -1,4 +1,4 @@
-<ul class="list-inline">
+<ul>
 <?php
 $index = 0;
 foreach ($array as $key => $value) {
