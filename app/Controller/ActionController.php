@@ -47,7 +47,29 @@ class ActionController extends AppController
             TONG_HOP_CSTG_TRUNG_TU => 'TONG HOP CSTG TRUNG TU',
             BANG_TONG_HOP_TIN_DO => 'BANG TONG HOP TIN DO',
             DS_CSTT => 'ds cstt',
-            DSCS_BAO_TRO_XA_HOI => 'DSCS BAO TRO XA HOI'
+            DSCS_BAO_TRO_XA_HOI => 'DSCS BAO TRO XA HOI',
+            
+            DS_CS_THAM_GIA_CT_XH_CAP_XA => 'DS CS THAM GIA CT-XH CAP XA',
+            DS_CS_THAM_GIA_CT_XH_CAP_HUYEN => 'DS CS THAM GIA CT-XH CAP HUYEN',
+            DS_CS_THAM_GIA_CT_XH_CAP_TINH => 'DS CS THAM GIA CT-XH CAP TINH',
+            TH_CS_THAM_GIA_CT_XH_CAP_XA => 'TH CS THAM GIA CT-XH CAP XA',
+            TH_CS_THAM_GIA_CT_XH_CAP_HUYEN => 'TH CS THAM GIA CT-XH CAP HUYEN',
+            TH_CS_THAM_GIA_CT_XH_CAP_TINH => 'TH CS THAM GIA CT-XHCAP TINH',
+            DS_CS_DT_BD => 'DS CS ĐT-BD',
+            THBNCS => 'THBNCS',
+            DS_CHUC_SAC_PCPP => 'DS CHUC SAC PCPP',
+            TH_CHUC_SAC_PCPP => 'TH CHUC SAC PCPP',
+            TH_TRINH_DO_TON_GIAO => 'TH TRINH DO TON GIAO',
+            TH_TRINH_DO_VH => 'TH TRINH DO VH',
+            DANH_SACH_TU_SI => 'DANH SACH TU SI',
+            DS_CHUC_SAC_KO_CO_CHUC_VU => 'DS CHUC SAC KO CO CHUC VU',
+            DS_CHUC_SAC_CO_CHUC_VU => 'DS CHUC SAC CO CHUC VU',
+            TONG_HOP_CHUC_VIEC => 'TONG HOP CHUC VIEC',
+            TONG_HOP_TU_SI => 'TONG HOP TU SI',
+            TONG_HOP_CHUC_SAC_KO_CHUC_VU => 'TONG HOP CHUC SAC KO CHUC VU',
+            TONG_HOP_CHUC_SAC_CO_CHUC_VU => 'TONG HOP CHUC SAC CO CHUC VU',
+            DO_TUOI_CUA_CHAC_SAC => 'DO TUOI CUA CHAC SAC',
+            DO_TUOI_CUA_TU_SI => 'DO TUOI CUA TU SĨ'
         );
     }
 
@@ -958,6 +980,20 @@ class ActionController extends AppController
         print_r('</pre>');
         exit;
     }
+    
+    /**
+     * TONG HOP DI TICH
+     */
+    protected function __getType4Data()
+    {
+    }
+    
+    /**
+     * TONG HOP CSTT XAY DUNG
+     */
+    protected function __getType5Data()
+    {
+    }
 
     /**
      * TONG HOP CSTG TRUNG TU
@@ -988,6 +1024,27 @@ class ActionController extends AppController
         }
         
         return $data;
+    }
+    
+    /**
+     * BANG TONG HOP TIN DO
+     */
+    protected function __getType7Data()
+    {
+    }
+    
+    /**
+     * ds cstt
+     */
+    protected function __getType8Data()
+    {
+    }
+    
+    /**
+     * DSCS BAO TRO XA HOI
+     */
+    protected function __getType9Data()
+    {
     }
 
     public function pandog()
@@ -1614,5 +1671,505 @@ class ActionController extends AppController
         $provine = $this->getProvince();
 
         return isset($province[$code]) ? $province[$code] : '';
+    }
+    
+    /*====================CHỨC SẮC TÔN GIÁO====================*/
+    /**
+     * DS CS THAM GIA CT-XH CAP XA
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP XÃ
+     * 
+     * + Cách lấy dữ liệu
+     * 1. Bảng chucsactinlanh
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_capxa = true hoặc
+     * cột uybanmttqvn_capxa = true hoặc
+     * cột hoichuthapdo_capxa = true hoặc
+     * cột hoinongdan_capxa = true hoặc
+     * cột hoilienhiepthanhnien_capxa = true hoặc
+     * cột hoilienhiepphunu_capxa = true hoặc
+     * cột cactochuckhac_capxa = true
+     * 
+     * 2. Bảng chucsacnhatuhanhconggiaotrieu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
+     * 
+     * 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
+     * 
+     * 4. Bảng chucviecphathoahao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_capxa = true hoặc
+     * cột uybanmttqvn_capxa = true hoặc
+     * cột hoichuthapdo_capxa = true hoặc
+     * cột hoinongdan_capxa = true hoặc
+     * cột hoilienhiepphunu_capxa = true hoặc
+     * cột doanthanhnien_capxa = true hoặc
+     * cột tochuckhac_capxa = true
+     * 
+     * 5. Bảng chucviectinhdocusiphathoivietnam
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_capxa = true hoặc
+     * cột ubmttqvn_capxa = true hoặc
+     * cột hoichuthapdo_capxa = true hoặc
+     * cột hoinongdan_capxa = true hoặc
+     * cột hoilienhiepphunu_capxa = true hoặc
+     * cột doanthanhnien_capxa = true hoặc
+     * cột tochuckhac_capxa = true
+     * 
+     * 6. Bảng chucsaccaodai
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột thamgiacactcctxh_hoidongnhandan_capxa = true hoặc
+     * cột thamgiacactcctxh_uybanmttqvn_capxa = true hoặc
+     * cột thamgiacactcctxh_hoichuthapdo_capxa = true hoặc
+     * cột thamgiacactcctxh_hoinongdan_capxa = true hoặc
+     * cột thamgiacactcctxh_hoilienhiepphunu_capxa = true hoặc
+     * cột thamgiacactcctxh_doanthanhnien_capxa = true hoặc
+     * cột thamgiacactcctxh_tochuckhac_capxa = true
+     * 
+     * 7. Bảng chucsacnhatuhanhphatgiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
+     * 
+     * 8. Bảng huynhtruonggiadinhphattu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột thamgia_dangcongsanvietnam_capxa = true hoặc
+     * cột thamgia_hoidongnhandan_capxa = true hoặc
+     * cột thamgia_ubmttqvn_capxa = true hoặc
+     * cột thamgia_congdoan_capxa = true hoặc
+     * cột thamgia_hoicuuchienbinh_capxa = true hoặc
+     * cột thamgia_hoinongdan_capxa = true hoặc
+     * cột thamgia_hoichuthapdo_capxa = true hoặc
+     * cột thamgia_doanthanhnien_capxa = true hoặc
+     * cột thamgia_hoilienhiepthanhnien_capxa = true hoặc
+     * cột thamgia_hoilienhiepphunu_capxa = true hoặc
+     * cột thamgia_cactochuckhac_capxa = true
+     * 
+     * 9. Bảng nguoihoatdongtinnguongchuyennghiep
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột dangcongsanvietnam_capxa = true hoặc
+     * cột hoidongnhandan_capxa = true hoặc
+     * cột ubmttqvn_capxa = true hoặc
+     * cột congdoan_capxa = true hoặc
+     * cột hoicuuchienbinh_capxa = true hoặc
+     * cột hoinongdan_capxa = true hoặc
+     * cột hoichuthapdo_capxa = true hoặc
+     * cột doanthanhnien_capxa = true hoặc
+     * cột hoilienhiepthanhnien_capxa = true hoặc
+     * cột hoilienhiepphunu_capxa = true hoặc
+     * cột cactochuckhac_capxa = true
+     * 
+     * 10. Bảng chucviechoigiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_capxa = true hoặc
+     * cột ubmttqvn_capxa = true hoặc
+     * cột hoichuthapdo_capxa = true hoặc
+     * cột hoinongdan_capxa = true hoặc
+     * cột hoilienhiepphunu_capxa = true hoặc
+     * cột doanthanhnien_capxa = true hoặc
+     * cột tochuckhac_capxa = true
+     */
+    protected function __getType11Data()
+    {
+    }
+    
+    /**
+     * DS CS THAM GIA CT-XH CAP HUYEN
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP HUYỆN
+     * 
+     * 1. Bảng chucsactinlanh
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_caphuyen = true hoặc
+     * cột uybanmttqvn_caphuyen = true hoặc
+     * cột hoichuthapdo_caphuyen = true hoặc
+     * cột hoinongdan_caphuyen = true hoặc
+     * cột hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột hoilienhiepphunu_caphuyen = true hoặc
+     * cột cactochuckhac_caphuyen = true
+     * 
+     * 2. Bảng chucsacnhatuhanhconggiaotrieu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
+     * 
+     * 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
+     * 
+     * 4. Bảng chucviecphathoahao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_caphuyen = true hoặc
+     * cột uybanmttqvn_caphuyen = true hoặc
+     * cột hoichuthapdo_caphuyen = true hoặc
+     * cột hoinongdan_caphuyen = true hoặc
+     * cột hoilienhiepphunu_caphuyen = true hoặc
+     * cột doanthanhnien_caphuyen = true hoặc
+     * cột tochuckhac_caphuyen = true
+     * 
+     * 5. Bảng chucviectinhdocusiphathoivietnam
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_caphuyen = true hoặc
+     * cột ubmttqvn_caphuyen = true hoặc
+     * cột hoichuthapdo_caphuyen = true hoặc
+     * cột hoinongdan_caphuyen = true hoặc
+     * cột hoilienhiepphunu_caphuyen = true hoặc
+     * cột doanthanhnien_caphuyen = true hoặc
+     * cột tochuckhac_caphuyen = true
+     * 
+     * 6. Bảng chucsaccaodai
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột thamgiacactcctxh_hoidongnhandan_caphuyen = true hoặc
+     * cột thamgiacactcctxh_uybanmttqvn_caphuyen = true hoặc
+     * cột thamgiacactcctxh_hoichuthapdo_caphuyen = true hoặc
+     * cột thamgiacactcctxh_hoinongdan_caphuyen = true hoặc
+     * cột thamgiacactcctxh_hoilienhiepphunu_caphuyen = true hoặc
+     * cột thamgiacactcctxh_doanthanhnien_caphuyen = true hoặc
+     * cột thamgiacactcctxh_tochuckhac_caphuyen = true
+     * 
+     * 7. Bảng chucsacnhatuhanhphatgiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
+     * 
+     * 8. Bảng huynhtruonggiadinhphattu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột thamgia_dangcongsanvietnam_caphuyen = true hoặc
+     * cột thamgia_hoidongnhandan_caphuyen = true hoặc
+     * cột thamgia_ubmttqvn_caphuyen = true hoặc
+     * cột thamgia_congdoan_caphuyen = true hoặc
+     * cột thamgia_hoicuuchienbinh_caphuyen = true hoặc
+     * cột thamgia_hoinongdan_caphuyen = true hoặc
+     * cột thamgia_hoichuthapdo_caphuyen = true hoặc
+     * cột thamgia_doanthanhnien_caphuyen = true hoặc
+     * cột thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột thamgia_hoilienhiepphunu_caphuyen = true hoặc
+     * cột thamgia_cactochuckhac_caphuyen = true
+     * 
+     * 9. Bảng nguoihoatdongtinnguongchuyennghiep
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột dangcongsanvietnam_caphuyen = true hoặc
+     * cột hoidongnhandan_caphuyen = true hoặc
+     * cột ubmttqvn_caphuyen = true hoặc
+     * cột congdoan_caphuyen = true hoặc
+     * cột hoicuuchienbinh_caphuyen = true hoặc
+     * cột hoinongdan_caphuyen = true hoặc
+     * cột hoichuthapdo_caphuyen = true hoặc
+     * cột doanthanhnien_caphuyen = true hoặc
+     * cột hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột hoilienhiepphunu_caphuyen = true hoặc
+     * cột cactochuckhac_caphuyen = true
+     * 
+     * 10. Bảng chucviechoigiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_caphuyen = true hoặc
+     * cột ubmttqvn_caphuyen = true hoặc
+     * cột hoichuthapdo_caphuyen = true hoặc
+     * cột hoinongdan_caphuyen = true hoặc
+     * cột hoilienhiepphunu_caphuyen = true hoặc
+     * cột doanthanhnien_caphuyen = true hoặc
+     * cột tochuckhac_caphuyen = true
+     */
+    protected function __getType12Data()
+    {
+    }
+    
+    /**
+     * DS CS THAM GIA CT-XH CAP TINH
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP TỈNH
+     * 
+     * 1. Bảng chucsactinlanh
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_captinh = true hoặc
+     * cột uybanmttqvn_captinh = true hoặc
+     * cột hoichuthapdo_captinh = true hoặc
+     * cột hoinongdan_captinh = true hoặc
+     * cột hoilienhiepthanhnien_captinh = true hoặc
+     * cột hoilienhiepphunu_captinh = true hoặc
+     * cột cactochuckhac_captinh = true
+     * 
+     * 2. Bảng chucsacnhatuhanhconggiaotrieu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
+     * 
+     * 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
+     * 
+     * 4. Bảng chucviecphathoahao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_captinh = true hoặc
+     * cột uybanmttqvn_captinh = true hoặc
+     * cột hoichuthapdo_captinh = true hoặc
+     * cột hoinongdan_captinh = true hoặc
+     * cột hoilienhiepphunu_captinh = true hoặc
+     * cột doanthanhnien_captinh = true hoặc
+     * cột tochuckhac_captinh = true
+     * 
+     * 5. Bảng chucviectinhdocusiphathoivietnam
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_captinh = true hoặc
+     * cột ubmttqvn_captinh = true hoặc
+     * cột hoichuthapdo_captinh = true hoặc
+     * cột hoinongdan_captinh = true hoặc
+     * cột hoilienhiepphunu_captinh = true hoặc
+     * cột doanthanhnien_captinh = true hoặc
+     * cột tochuckhac_captinh = true
+     * 
+     * 6. Bảng chucsaccaodai
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột thamgiacactcctxh_hoidongnhandan_captinh = true hoặc
+     * cột thamgiacactcctxh_uybanmttqvn_captinh = true hoặc
+     * cột thamgiacactcctxh_hoichuthapdo_captinh = true hoặc
+     * cột thamgiacactcctxh_hoinongdan_captinh = true hoặc
+     * cột thamgiacactcctxh_hoilienhiepphunu_captinh = true hoặc
+     * cột thamgiacactcctxh_doanthanhnien_captinh = true hoặc
+     * cột thamgiacactcctxh_tochuckhac_captinh = true
+     * 
+     * 7. Bảng chucsacnhatuhanhphatgiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
+     * 
+     * 8. Bảng huynhtruonggiadinhphattu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột thamgia_dangcongsanvietnam_captinh = true hoặc
+     * cột thamgia_hoidongnhandan_captinh = true hoặc
+     * cột thamgia_ubmttqvn_captinh = true hoặc
+     * cột thamgia_congdoan_captinh = true hoặc
+     * cột thamgia_hoicuuchienbinh_captinh = true hoặc
+     * cột thamgia_hoinongdan_captinh = true hoặc
+     * cột thamgia_hoichuthapdo_captinh = true hoặc
+     * cột thamgia_doanthanhnien_captinh = true hoặc
+     * cột thamgia_hoilienhiepthanhnien_captinh = true hoặc
+     * cột thamgia_hoilienhiepphunu_captinh = true hoặc
+     * cột thamgia_cactochuckhac_captinh = true
+     * 
+     * 9. Bảng nguoihoatdongtinnguongchuyennghiep
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột dangcongsanvietnam_captinh = true hoặc
+     * cột hoidongnhandan_captinh = true hoặc
+     * cột ubmttqvn_captinh = true hoặc
+     * cột congdoan_captinh = true hoặc
+     * cột hoicuuchienbinh_captinh = true hoặc
+     * cột hoinongdan_captinh = true hoặc
+     * cột hoichuthapdo_captinh = true hoặc
+     * cột doanthanhnien_captinh = true hoặc
+     * cột hoilienhiepthanhnien_captinh = true hoặc
+     * cột hoilienhiepphunu_captinh = true hoặc
+     * cột cactochuckhac_captinh = true
+     * 
+     * 10. Bảng chucviechoigiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * cột hoidongnhandan_captinh = true hoặc
+     * cột ubmttqvn_captinh = true hoặc
+     * cột hoichuthapdo_captinh = true hoặc
+     * cột hoinongdan_captinh = true hoặc
+     * cột hoilienhiepphunu_captinh = true hoặc
+     * cột doanthanhnien_captinh = true hoặc
+     * cột tochuckhac_captinh = true
+     */
+    protected function __getType13Data()
+    {
+    }
+    
+    /**
+     * TH CS THAM GIA CT-XH CAP XA
+     * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP XÃ
+     */
+    protected function __getType14Data()
+    {
+    }
+    
+    /**
+     * TH CS THAM GIA CT-XH CAP HUYEN
+     * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP HUYỆN
+     */
+    protected function __getType15Data()
+    {
+    }
+    
+    /**
+     * TH CS THAM GIA CT-XHCAP TINH
+     * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP TỈNH
+     */
+    protected function __getType16Data()
+    {
+    }
+    
+    /**
+     * DS CS ĐT-BD
+     * DANH SÁCH CHỨC SẮC ĐÃ THAM GIA CÁC LỚP ĐÀO TẠO, BỒI DƯỠNG TÔN GIÁO
+     */
+    protected function __getType17Data()
+    {
+    }
+    
+    /**
+     * THBNCS
+     * TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO ĐƯỢC BỔ NHIỆM, CHUẨN Y
+     */
+    protected function __getType18Data()
+    {
+    }
+    
+    /**
+     * DS CHUC SAC PCPP
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO ĐƯỢC PHONG CHỨC, PHONG PHẨM
+     */
+    protected function __getType19Data()
+    {
+    }
+    
+    /**
+     * TH CHUC SAC PCPP
+     * TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO ĐƯỢC PHONG CHỨC, PHONG PHẨM
+     */
+    protected function __getType20Data()
+    {
+    }
+    
+    /**
+     * TH TRINH DO TON GIAO
+     * TỔNG HỢP TRÌNH ĐỘ TÔN GIÁO CỦA CHỨC SẮC CÁC TÔN GIÁO
+     */
+    protected function __getType21Data()
+    {
+    }
+    
+    /**
+     * TH TRINH DO VH
+     * TỔNG HỢP TRÌNH ĐỘ VĂN HÓA CỦA CHỨC SẮC CÁC TÔN GIÁO
+     */
+    protected function __getType22Data()
+    {
+    }
+    
+    /**
+     * DANH SACH TU SI
+     * DANH SÁCH TU SĨ CÁC TÔN GIÁO
+     */
+    protected function __getType23Data()
+    {
+    }
+    
+    /**
+     * DS CHUC SAC KO CO CHUC VU
+     * DANH SÁCH CHỨC SẮC CÁC TÔN GIÁO (KHÔNG CÓ CHỨC VỤ)
+     */
+    protected function __getType24Data()
+    {
+    }
+    
+    /**
+     * DS CHUC SAC CO CHUC VU
+     * DANH SÁCH CHỨC SẮC CÁC TÔN GIÁO (CÓ CHỨC VỤ)
+     */
+    protected function __getType25Data()
+    {
+    }
+    
+    /**
+     * TONG HOP CHUC VIEC
+     * BẢNG TỔNG HỢP CHỨC VIỆC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
+     */
+    protected function __getType26Data()
+    {
+    }
+    
+    /**
+     * TONG HOP TU SI
+     * BẢNG TỔNG HỢP TU SĨ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
+     */
+    protected function __getType27Data()
+    {
+    }
+    
+    /**
+     * TONG HOP CHUC SAC KO CHUC VU
+     * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (KHÔNG CÓ CHỨC VỤ)
+     */
+    protected function __getType28Data()
+    {
+    }
+    
+    /**
+     * TONG HOP CHUC SAC CO CHUC VU
+     * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (CÓ CHỨC VỤ)
+     */
+    protected function __getType29Data()
+    {
+    }
+    
+    /**
+     * DO TUOI CUA CHAC SAC
+     * BẢNG TỔNG HỢP LỨA TUỔI CỦA CHỨC SẮC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
+     */
+    protected function __getType30Data()
+    {
+    }
+    
+    /**
+     * DO TUOI CUA TU SĨ
+     * BẢNG TỔNG HỢP LỨA TUỔI CỦA TU SĨ CÁC TÔN GIÁO
+     */
+    protected function __getType31Data()
+    {
     }
 }
