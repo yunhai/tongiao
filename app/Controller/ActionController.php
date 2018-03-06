@@ -2032,6 +2032,204 @@ class ActionController extends AppController
     /**
      * TH CS THAM GIA CT-XH CAP XA
      * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP XÃ
+     * 
+     * + Cách lấy dữ liệu
+     * 1. Bảng chucsactinlanh
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: diemnhom_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: diemnhom_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: diemnhom_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: diemnhom_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: diemnhom_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: diemnhom_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: diemnhom_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: diemnhom_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: diemnhom_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: diemnhom_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_capxa = true hoặc
+     * cột uybanmttqvn_capxa = true hoặc
+     * cột hoichuthapdo_capxa = true hoặc
+     * cột hoinongdan_capxa = true hoặc
+     * cột hoilienhiepthanhnien_capxa = true hoặc
+     * cột hoilienhiepphunu_capxa = true hoặc
+     * cột cactochuckhac_capxa = true
+     * 
+     * 2. Bảng chucsacnhatuhanhconggiaotrieu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiao_giaohat_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiao_giaohat_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiao_giaohat_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiao_giaohat_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiao_giaohat_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiao_giaohat_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiao_giaohat_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiao_giaohat_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiao_giaohat_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiao_giaohat_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
+     * 
+     * 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
+     * 
+     * 4. Bảng chucviecphathoahao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_capxa = true hoặc
+     * cột uybanmttqvn_capxa = true hoặc
+     * cột hoichuthapdo_capxa = true hoặc
+     * cột hoinongdan_capxa = true hoặc
+     * cột hoilienhiepphunu_capxa = true hoặc
+     * cột doanthanhnien_capxa = true hoặc
+     * cột tochuckhac_capxa = true
+     * 
+     * 5. Bảng chucviectinhdocusiphathoivietnam
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_capxa = true hoặc
+     * cột ubmttqvn_capxa = true hoặc
+     * cột hoichuthapdo_capxa = true hoặc
+     * cột hoinongdan_capxa = true hoặc
+     * cột hoilienhiepphunu_capxa = true hoặc
+     * cột doanthanhnien_capxa = true hoặc
+     * cột tochuckhac_capxa = true
+     * 
+     * 6. Bảng chucsaccaodai
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột thamgiacactcctxh_hoidongnhandan_capxa = true hoặc
+     * cột thamgiacactcctxh_uybanmttqvn_capxa = true hoặc
+     * cột thamgiacactcctxh_hoichuthapdo_capxa = true hoặc
+     * cột thamgiacactcctxh_hoinongdan_capxa = true hoặc
+     * cột thamgiacactcctxh_hoilienhiepphunu_capxa = true hoặc
+     * cột thamgiacactcctxh_doanthanhnien_capxa = true hoặc
+     * cột thamgiacactcctxh_tochuckhac_capxa = true
+     * 
+     * 7. Bảng chucsacnhatuhanhphatgiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: tencosohoatdongtongiao_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: tencosohoatdongtongiao_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: tencosohoatdongtongiao_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: tencosohoatdongtongiao_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: tencosohoatdongtongiao_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: tencosohoatdongtongiao_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: tencosohoatdongtongiao_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: tencosohoatdongtongiao_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: tencosohoatdongtongiao_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: tencosohoatdongtongiao_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
+     * 
+     * 8. Bảng huynhtruonggiadinhphattu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột thamgia_dangcongsanvietnam_capxa = true hoặc
+     * cột thamgia_hoidongnhandan_capxa = true hoặc
+     * cột thamgia_ubmttqvn_capxa = true hoặc
+     * cột thamgia_congdoan_capxa = true hoặc
+     * cột thamgia_hoicuuchienbinh_capxa = true hoặc
+     * cột thamgia_hoinongdan_capxa = true hoặc
+     * cột thamgia_hoichuthapdo_capxa = true hoặc
+     * cột thamgia_doanthanhnien_capxa = true hoặc
+     * cột thamgia_hoilienhiepthanhnien_capxa = true hoặc
+     * cột thamgia_hoilienhiepphunu_capxa = true hoặc
+     * cột thamgia_cactochuckhac_capxa = true
+     * 
+     * 9. Bảng chucviechoigiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_capxa = true hoặc
+     * cột ubmttqvn_capxa = true hoặc
+     * cột hoichuthapdo_capxa = true hoặc
+     * cột hoinongdan_capxa = true hoặc
+     * cột hoilienhiepphunu_capxa = true hoặc
+     * cột doanthanhnien_capxa = true hoặc
+     * cột tochuckhac_capxa = true
+     * 
+     * Tính tổng dữ liệu trên theo xã
      */
     protected function __getType14Data()
     {
@@ -2040,6 +2238,201 @@ class ActionController extends AppController
     /**
      * TH CS THAM GIA CT-XH CAP HUYEN
      * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP HUYỆN
+     * 
+     * * 1. Bảng chucsactinlanh
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: diemnhom_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: diemnhom_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: diemnhom_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: diemnhom_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: diemnhom_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: diemnhom_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: diemnhom_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: diemnhom_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: diemnhom_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: diemnhom_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_caphuyen = true hoặc
+     * cột uybanmttqvn_caphuyen = true hoặc
+     * cột hoichuthapdo_caphuyen = true hoặc
+     * cột hoinongdan_caphuyen = true hoặc
+     * cột hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột hoilienhiepphunu_caphuyen = true hoặc
+     * cột cactochuckhac_caphuyen = true
+     * 
+     * 2. Bảng chucsacnhatuhanhconggiaotrieu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiao_giaohat_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiao_giaohat_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiao_giaohat_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiao_giaohat_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiao_giaohat_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiao_giaohat_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiao_giaohat_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiao_giaohat_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiao_giaohat_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiao_giaohat_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
+     * 
+     * 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
+     * 
+     * 4. Bảng chucviecphathoahao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_caphuyen = true hoặc
+     * cột uybanmttqvn_caphuyen = true hoặc
+     * cột hoichuthapdo_caphuyen = true hoặc
+     * cột hoinongdan_caphuyen = true hoặc
+     * cột hoilienhiepphunu_caphuyen = true hoặc
+     * cột doanthanhnien_caphuyen = true hoặc
+     * cột tochuckhac_caphuyen = true
+     * 
+     * 5. Bảng chucviectinhdocusiphathoivietnam
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_caphuyen = true hoặc
+     * cột ubmttqvn_caphuyen = true hoặc
+     * cột hoichuthapdo_caphuyen = true hoặc
+     * cột hoinongdan_caphuyen = true hoặc
+     * cột hoilienhiepphunu_caphuyen = true hoặc
+     * cột doanthanhnien_caphuyen = true hoặc
+     * cột tochuckhac_caphuyen = true
+     * 
+     * 6. Bảng chucsaccaodai
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột thamgiacactcctxh_hoidongnhandan_caphuyen = true hoặc
+     * cột thamgiacactcctxh_uybanmttqvn_caphuyen = true hoặc
+     * cột thamgiacactcctxh_hoichuthapdo_caphuyen = true hoặc
+     * cột thamgiacactcctxh_hoinongdan_caphuyen = true hoặc
+     * cột thamgiacactcctxh_hoilienhiepphunu_caphuyen = true hoặc
+     * cột thamgiacactcctxh_doanthanhnien_caphuyen = true hoặc
+     * cột thamgiacactcctxh_tochuckhac_caphuyen = true
+     * 
+     * 7. Bảng chucsacnhatuhanhphatgiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: tencosohoatdongtongiao_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: tencosohoatdongtongiao_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: tencosohoatdongtongiao_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: tencosohoatdongtongiao_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: tencosohoatdongtongiao_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: tencosohoatdongtongiao_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: tencosohoatdongtongiao_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: tencosohoatdongtongiao_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: tencosohoatdongtongiao_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: tencosohoatdongtongiao_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
+     * 
+     * 8. Bảng huynhtruonggiadinhphattu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột thamgia_dangcongsanvietnam_caphuyen = true hoặc
+     * cột thamgia_hoidongnhandan_caphuyen = true hoặc
+     * cột thamgia_ubmttqvn_caphuyen = true hoặc
+     * cột thamgia_congdoan_caphuyen = true hoặc
+     * cột thamgia_hoicuuchienbinh_caphuyen = true hoặc
+     * cột thamgia_hoinongdan_caphuyen = true hoặc
+     * cột thamgia_hoichuthapdo_caphuyen = true hoặc
+     * cột thamgia_doanthanhnien_caphuyen = true hoặc
+     * cột thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
+     * cột thamgia_hoilienhiepphunu_caphuyen = true hoặc
+     * cột thamgia_cactochuckhac_caphuyen = true
+     * 
+     * 9. Bảng chucviechoigiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_caphuyen = true hoặc
+     * cột ubmttqvn_caphuyen = true hoặc
+     * cột hoichuthapdo_caphuyen = true hoặc
+     * cột hoinongdan_caphuyen = true hoặc
+     * cột hoilienhiepphunu_caphuyen = true hoặc
+     * cột doanthanhnien_caphuyen = true hoặc
+     * cột tochuckhac_caphuyen = true
      */
     protected function __getType15Data()
     {
@@ -2048,6 +2441,201 @@ class ActionController extends AppController
     /**
      * TH CS THAM GIA CT-XHCAP TINH
      * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP TỈNH
+     * 
+     * 1. Bảng chucsactinlanh
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: diemnhom_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: diemnhom_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: diemnhom_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: diemnhom_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: diemnhom_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: diemnhom_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: diemnhom_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: diemnhom_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: diemnhom_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: diemnhom_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_captinh = true hoặc
+     * cột uybanmttqvn_captinh = true hoặc
+     * cột hoichuthapdo_captinh = true hoặc
+     * cột hoinongdan_captinh = true hoặc
+     * cột hoilienhiepthanhnien_captinh = true hoặc
+     * cột hoilienhiepphunu_captinh = true hoặc
+     * cột cactochuckhac_captinh = true
+     * 
+     * 2. Bảng chucsacnhatuhanhconggiaotrieu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiao_giaohat_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiao_giaohat_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiao_giaohat_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiao_giaohat_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiao_giaohat_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiao_giaohat_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiao_giaohat_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiao_giaohat_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiao_giaohat_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiao_giaohat_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
+     * 
+     * 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_ubbdkcg_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
+     * 
+     * 4. Bảng chucviecphathoahao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_captinh = true hoặc
+     * cột uybanmttqvn_captinh = true hoặc
+     * cột hoichuthapdo_captinh = true hoặc
+     * cột hoinongdan_captinh = true hoặc
+     * cột hoilienhiepphunu_captinh = true hoặc
+     * cột doanthanhnien_captinh = true hoặc
+     * cột tochuckhac_captinh = true
+     * 
+     * 5. Bảng chucviectinhdocusiphathoivietnam
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_captinh = true hoặc
+     * cột ubmttqvn_captinh = true hoặc
+     * cột hoichuthapdo_captinh = true hoặc
+     * cột hoinongdan_captinh = true hoặc
+     * cột hoilienhiepphunu_captinh = true hoặc
+     * cột doanthanhnien_captinh = true hoặc
+     * cột tochuckhac_captinh = true
+     * 
+     * 6. Bảng chucsaccaodai
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột thamgiacactcctxh_hoidongnhandan_captinh = true hoặc
+     * cột thamgiacactcctxh_uybanmttqvn_captinh = true hoặc
+     * cột thamgiacactcctxh_hoichuthapdo_captinh = true hoặc
+     * cột thamgiacactcctxh_hoinongdan_captinh = true hoặc
+     * cột thamgiacactcctxh_hoilienhiepphunu_captinh = true hoặc
+     * cột thamgiacactcctxh_doanthanhnien_captinh = true hoặc
+     * cột thamgiacactcctxh_tochuckhac_captinh = true
+     * 
+     * 7. Bảng chucsacnhatuhanhphatgiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: tencosohoatdongtongiao_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: tencosohoatdongtongiao_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: tencosohoatdongtongiao_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: tencosohoatdongtongiao_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: tencosohoatdongtongiao_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: tencosohoatdongtongiao_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: tencosohoatdongtongiao_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: tencosohoatdongtongiao_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: tencosohoatdongtongiao_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: tencosohoatdongtongiao_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_ubmttqvn_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoichuthapdo_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
+     * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
+     * 
+     * 8. Bảng huynhtruonggiadinhphattu
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột thamgia_dangcongsanvietnam_captinh = true hoặc
+     * cột thamgia_hoidongnhandan_captinh = true hoặc
+     * cột thamgia_ubmttqvn_captinh = true hoặc
+     * cột thamgia_congdoan_captinh = true hoặc
+     * cột thamgia_hoicuuchienbinh_captinh = true hoặc
+     * cột thamgia_hoinongdan_captinh = true hoặc
+     * cột thamgia_hoichuthapdo_captinh = true hoặc
+     * cột thamgia_doanthanhnien_captinh = true hoặc
+     * cột thamgia_hoilienhiepthanhnien_captinh = true hoặc
+     * cột thamgia_hoilienhiepphunu_captinh = true hoặc
+     * cột thamgia_cactochuckhac_captinh = true
+     * 
+     * 9. Bảng chucviechoigiao
+     * - lấy dữ liệu thõa điều kiện sau:
+     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
+     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
+     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
+     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
+     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
+     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
+     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
+     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
+     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
+     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
+     * và điều kiện
+     * cột hoidongnhandan_captinh = true hoặc
+     * cột ubmttqvn_captinh = true hoặc
+     * cột hoichuthapdo_captinh = true hoặc
+     * cột hoinongdan_captinh = true hoặc
+     * cột hoilienhiepphunu_captinh = true hoặc
+     * cột doanthanhnien_captinh = true hoặc
+     * cột tochuckhac_captinh = true
      */
     protected function __getType16Data()
     {
