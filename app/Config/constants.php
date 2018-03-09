@@ -9,6 +9,13 @@ define('MODE_3', "______;");
 define('LIMIT_ARRAY_DATA', 10);
 define('LOCAL_STORE', "Lưu");
 
+define('GIOI_TINH', serialize(array(
+        '0' => 'Nam',
+        '1' => 'Nữ'
+        )
+    )
+);
+
 //define('TONG_HOP_CHUC_SAC', 0); //template0.xls
 define('TONG_HOP_DAT_DAI', 1); //template1.xls
 define('TH_TON_GIAO_CO_SO', 2); //template2.xls

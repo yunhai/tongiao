@@ -2647,6 +2647,118 @@ class ActionController extends AppController
      */
     protected function __getType17Data()
     {
+        $array = array(
+            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao', 
+            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Chucviechoigiao'
+        );
+        App::import('Model', $array);
+        foreach ($array as $element) {
+            $this->$element = new $element();
+        }
+        $chuc_sac_tin_lanh = $this->Chucsactinlanh->getDataExcelDSCSDTBD();
+        $chuc_sac_nha_tu_hanh_cong_giao_trieu = $this->Chucsacnhatuhanhconggiaotrieu->getDataExcelDSCSDTBD();
+        $chuc_sac_nha_tu_hanh_con_giao_dong_tu = $this->Chucsacnhatuhanhcongiaodongtu->getDataExcelDSCSDTBD();
+        $chuc_viec_phat_hoahao = $this->Chucviecphathoahao->getDataExcelDSCSDTBD();
+        $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam = $this->Chucviectinhdocusiphathoivietnam->getDataExcelDSCSDTBD();
+        $chuc_sac_cao_dai = $this->Chucsaccaodai->getDataExcelDSCSDTBD();
+        $chuc_sac_nha_tu_hanh_phat_giao = $this->Chucsacnhatuhanhphatgiao->getDataExcelDSCSDTBD();
+        $chuc_viec_hoi_giao = $this->Chucviechoigiao->getDataExcelDSCSDTBD();
+        $data = array_merge(
+            $chuc_sac_tin_lanh, $chuc_sac_nha_tu_hanh_cong_giao_trieu, $chuc_sac_nha_tu_hanh_con_giao_dong_tu, 
+            $chuc_viec_phat_hoahao, $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam, $chuc_sac_cao_dai, 
+            $chuc_sac_nha_tu_hanh_phat_giao, $chuc_viec_hoi_giao
+        );
+        //exit;
+        $this->__createTemplate17($data);
+    }
+    
+    public function __createTemplate17($data)
+    {
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template17.xls";
+        //$filename = "template17";
+        $filename = "{$this->_type_text[17]}";
+        $this->Excel->load($source);
+        //$this->{"__createTemplate{$type}"}();
+        //$this->Excel->save($filename);
+        
+        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 1;
+        for ($c = 'A'; $c <= 'N'; $c++) {
+            $colIndexes[$index] = $c;
+            $index ++;
+            /*if ($c == $maxCols) {
+                break;
+            }*/
+        }
+        /*print "<pre>";
+        print_r($data);
+        print "</pre>";
+        print "<pre>";
+        print_r($colIndexes);
+        print "</pre>";
+        exit;*/
+        $i = 1;
+        $r = 7;
+        $gioitinh = unserialize(GIOI_TINH);
+        foreach ($data as $key => $value) {
+            $gioi_tinh = isset($gioitinh[$value['gioitinh']]) ? $gioitinh[$value['gioitinh']] : '';
+            foreach ($colIndexes as $k => $c) {
+                switch ($c) {
+                    case "A":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
+                        break;
+                    case "B":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['hovaten']);
+                        break;
+                    case "C":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tengoitheotongiao']);
+                        break;
+                    case "D":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thuoctochuctongiao']);
+                        break;
+                    case "E":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ngaythangnamsinh']);
+                        break;
+                    case "F":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($gioi_tinh);
+                        break;
+                    case "G":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chungminhnhandan']);
+                        break;
+                    case "H":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamsac']);
+                        break;
+                    case "I":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chucvu']);
+                        break;
+                    case "J":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['nam_dt_bd']);
+                        break;
+                    case "K":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tenkhoa_dt_bd']);
+                        break;
+                    case "L":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['quequan']);
+                        break;
+                    case "M":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
+                        break;
+                    case "M":
+                        //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['']);
+                        break;
+                    default:
+                        echo "DS CS ĐT-BD";
+                }
+            }
+            $i++;
+            $r++;
+        }
+        return $this->Excel->save($filename);
     }
     
     /**
@@ -2759,5 +2871,38 @@ class ActionController extends AppController
      */
     protected function __getType31Data()
     {
+    }
+    
+    public function khoaHoc($array) {
+        $pattern = array(
+            'tu' => 'dqcldtbdtgtn_tu______:',
+            'tuhoc' => 'dqcldtbdtgtn_tuhoc______:',
+            'noidaotao' => 'dqcldtbdtgtn_noidaotao______:',
+            'diachi' => 'dqcldtbdtgtn_diachi______:'
+        );
+        $data = array();
+        foreach ($pattern as $key => $value) {
+            if (isset($array[0])) {
+                if (strpos($array[0], $value) !== false) {
+                    $data[$key] = str_replace('______', '', str_replace($value, "", $array[0]));
+                }
+            }
+            if (isset($array[1])) {
+                if (strpos($array[1], $value) !== false) {
+                    $data[$key] = str_replace('______', '', str_replace($value, "", $array[1]));
+                }
+            }
+            if (isset($array[2])) {
+                if (strpos($array[2], $value) !== false) {
+                    $data[$key] = str_replace('______', '', str_replace($value, "", $array[2]));
+                }
+            }
+            if (isset($array[3])) {
+                if (strpos($array[3], $value) !== false) {
+                    $data[$key] = str_replace('______', '', str_replace($value, "", $array[3]));
+                }
+            }
+        }
+        return $data;
     }
 }

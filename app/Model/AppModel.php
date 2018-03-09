@@ -381,4 +381,97 @@ class AppModel extends Model
 
         return $queries;
     }
+    
+    public function khoaHoc($array) {
+        $pattern = array(
+            'tu' => 'dqcldtbdtgtn_tu______:',
+            'tuhoc' => 'dqcldtbdtgtn_tuhoc______:',
+            'noidaotao' => 'dqcldtbdtgtn_noidaotao______:',
+            'diachi' => 'dqcldtbdtgtn_diachi______:'
+        );
+        $data = $this->formatKhoaHoc($pattern, $array);
+        return $data;
+    }
+    
+    public function khoaHocTrongNuoc($array) {
+        $pattern = array(
+            'tu' => 'trongnuoc_hinhthucdaotao______:',
+            'tuhoc' => 'trongnuoc_thoigiandaotao______:',
+            'noidaotao' => 'trongnuoc_diadiemdaotao______:',
+            'diachi' => 'trongnuoc_daoto_hinhthuccapccvb______:'
+        );
+        $data = $this->formatKhoaHoc($pattern, $array);
+        return $data;
+    }
+    
+    public function khoaHocChucSacCaoDai($array) {
+        $pattern = array(
+            'tu' => 'daquacaclopdaotao_thoigianboiduong______:',
+            'tuhoc' => 'daquacaclopdaotao_lophanhduong______:',
+            'noidaotao' => 'daquacaclopdaotao_diadiemboiduong______:',
+            'diachi' => 'daquacaclopdaotao_hinhthuccapchungchi______:'
+        );
+        $data = $this->formatKhoaHoc($pattern, $array);
+        return $data;
+    }
+    
+    public function khoaHocChucSacNhaTuHanhPhatGiaoTrongNuoc($array) {
+        $pattern = array(
+            'tu' => 'dqcldtbdtgnn_tu______:',
+            'tuhoc' => 'dqcldtbdtgnn_tuhoc______:',
+            'noidaotao' => 'dqcldtbdtgnn_noidaotao______:',
+            'diachi' => 'dqcldtbdtgnn_diachi______:'
+        );
+        $data = $this->formatKhoaHoc($pattern, $array);
+        return $data;
+    }
+    
+    public function khoaHocChucViecHoiGiaoTrongNuoc($array) {
+        $pattern = array(
+            'tu' => 'dqcldtbdtgtn_hinhthucdaotao______:',
+            'tuhoc' => 'dqcldtbdtgtn_thoigiandaotao______:',
+            'noidaotao' => 'dqcldtbdtgtn_diadiemdaotao______:',
+            'diachi' => 'dqcldtbdtgtn_hinhthuccapccvb______:'
+        );
+        $data = $this->formatKhoaHoc($pattern, $array);
+        return $data;
+    }
+    
+    public function khoaHocChucViecTinhDoCuSiPhatHoiVietNamTrongNuoc($array) {
+        $pattern = array(
+            'tu' => 'trongnuoc_lopboiduongthuyettrinhcapi_thoigian______:',
+            'tuhoc' => 'trongnuoc_lopboiduongthuyettrinhcapi______:',
+            'noidaotao' => 'trongnuoc_lopboiduongthuyettrinhcapi_diadiem______:',
+            'diachi' => 'trongnuoc_lopboiduongthuyettrinhcapi_hinhthuccapccvb______:'
+        );
+        $data = $this->formatKhoaHoc($pattern, $array);
+        return $data;
+    }
+    
+    public function formatKhoaHoc($pattern, $array) {
+        $data = array();
+        foreach ($pattern as $key => $value) {
+            if (isset($array[0])) {
+                if (strpos($array[0], $value) !== false) {
+                    $data[$key] = str_replace('______', '', str_replace($value, "", $array[0]));
+                }
+            }
+            if (isset($array[1])) {
+                if (strpos($array[1], $value) !== false) {
+                    $data[$key] = str_replace('______', '', str_replace($value, "", $array[1]));
+                }
+            }
+            if (isset($array[2])) {
+                if (strpos($array[2], $value) !== false) {
+                    $data[$key] = str_replace('______', '', str_replace($value, "", $array[2]));
+                }
+            }
+            if (isset($array[3])) {
+                if (strpos($array[3], $value) !== false) {
+                    $data[$key] = str_replace('______', '', str_replace($value, "", $array[3]));
+                }
+            }
+        }
+        return $data;
+    }
 }
