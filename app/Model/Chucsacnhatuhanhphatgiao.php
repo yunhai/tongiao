@@ -208,4 +208,116 @@ class Chucsacnhatuhanhphatgiao extends AppModel {
         
         return $chuc_sac_nha_tu_hanh_phat_giao;
     }
+    
+    /**
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP XÃ
+     */
+    public function getDataExcelDSCSTHAMGIACTXHCAPXA() {
+        $conditions = array(
+            'hovaten <>' => '',
+            'is_add' => 1,
+            'OR' => array(
+                'hoatdongtongiao_thamgia_hoidongnhandan_capxa' => true,
+                'hoatdongtongiao_thamgia_ubmttqvn_capxa' => true,
+                'hoatdongtongiao_thamgia_hoichuthapdo_capxa' => true,
+                'hoatdongtongiao_thamgia_hoinongdan_capxa' => true,
+                'hoatdongtongiao_thamgia_hoilienhiepphunu_capxa' => true,
+                'hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa' => true,
+                'hoatdongtongiao_thamgia_cactochuckhac_capxa' => true
+            )
+        );
+        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions);
+        return $data;
+    }
+    
+    /**
+     * Lay du lieu cho file excel:
+     * - DS CS THAM GIA CT-XH CAP XA
+     */
+    public function getDataExcelDSCSTHAMGIACTXH($conditions) {
+        $chucsacnhatuhanhphatgiao = $this->find('all', array(
+            'fields' => array('hovaten', 'phapdanh', 'taicoso', 'ngaythangnamsinh', 'chungminhnhandan', 
+            'noisinh', 
+            //CHỨC VỤ
+            'hoatdongtongiao_chucvuhiennay_trutri', 'hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaphuyen', 'hoatdongtongiao_chucvuhiennay_chungminhbantrisucaphuyen', 
+            'hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaptinh', 'cm_bantrisu_captinh', 'tv_hoidong_trisu', 'tv_hoidong_chungminh', 
+            //CSTG ĐANG HOẠT ĐỘNG
+            'tencosohoatdongtongiao_tencoso', 'tencosohoatdongtongiao_diachi_so', 'tencosohoatdongtongiao_diachi_duong', 
+            'tencosohoatdongtongiao_diachi_ap', 'tencosohoatdongtongiao_diachi_xa', 'tencosohoatdongtongiao_diachi_huyen', 'tencosohoatdongtongiao_diachi_tinh',
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI
+            'hoatdongtongiao_thamgia_hoidongnhandan_capxa', 'hoatdongtongiao_thamgia_ubmttqvn_capxa', 'hoatdongtongiao_thamgia_hoichuthapdo_capxa', 'hoatdongtongiao_thamgia_hoinongdan_capxa', 'hoatdongtongiao_thamgia_hoilienhiepphunu_capxa', 'hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa', 'hoatdongtongiao_thamgia_cactochuckhac_capxa', 
+            'is_add'
+            ),
+            'conditions' => $conditions
+        ));
+        $fields = array(
+            'hoatdongtongiao_thamgia_hoidongnhandan_capxa' => 'HĐND xã',
+            'hoatdongtongiao_thamgia_ubmttqvn_capxa' => 'UBMTTQ xã',
+            'hoatdongtongiao_thamgia_hoichuthapdo_capxa' => 'Hội Chữ thập đỏ',
+            'hoatdongtongiao_thamgia_hoinongdan_capxa' => 'Hội Nông dân xã',
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_capxa' => 'Hội Liên hiệp Thanh niên xã',
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa' => 'Hội Liên hiệp Phụ nữ xã',
+            'hoatdongtongiao_thamgia_cactochuckhac_capxa' => 'Các tổ chức khác Cấp xã'
+        );
+        $chuc_sac_nha_tu_hanh_phat_giao = $cosotongiaodanghoatdong = array();
+        foreach ($chucsacnhatuhanhphatgiao as $key => $value) {
+            $value['Chucsacnhatuhanhphatgiao']['chucvu'] = '';
+            if ($value['Chucsacnhatuhanhphatgiao']['hoatdongtongiao_chucvuhiennay_trutri'] == true) {
+                $value['Chucsacnhatuhanhphatgiao']['chucvu'] = 'Trụ trì';
+            }
+            if ($value['Chucsacnhatuhanhphatgiao']['hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaphuyen'] == true) {
+                $value['Chucsacnhatuhanhphatgiao']['chucvu'] = 'Thành viên Ban Trị sự cấp huyện';
+            }
+            if ($value['Chucsacnhatuhanhphatgiao']['hoatdongtongiao_chucvuhiennay_chungminhbantrisucaphuyen'] == true) {
+                $value['Chucsacnhatuhanhphatgiao']['chucvu'] = 'Chứng minh Ban Trị sự cấp huyện';
+            }
+            if ($value['Chucsacnhatuhanhphatgiao']['hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaptinh'] == true) {
+                $value['Chucsacnhatuhanhphatgiao']['chucvu'] = 'Thành viên Ban Trị sự cấp tỉnh';
+            }
+            if ($value['Chucsacnhatuhanhphatgiao']['cm_bantrisu_captinh'] == true) {
+                $value['Chucsacnhatuhanhphatgiao']['chucvu'] = 'Chứng minh Ban Trị sự cấp tỉnh';
+            }
+            if ($value['Chucsacnhatuhanhphatgiao']['tv_hoidong_trisu'] == true) {
+                $value['Chucsacnhatuhanhphatgiao']['chucvu'] = 'Thành viên Hội đồng Trị sự';
+            }
+            if ($value['Chucsacnhatuhanhphatgiao']['tv_hoidong_chungminh'] == true) {
+                $value['Chucsacnhatuhanhphatgiao']['chucvu'] = 'Thành viên Hội đồng Chứng minh';
+            }
+            $cosotongiaodanghoatdong = array(
+                $value['Chucsacnhatuhanhphatgiao']['tencosohoatdongtongiao_tencoso'],
+                $value['Chucsacnhatuhanhphatgiao']['tencosohoatdongtongiao_diachi_so'],
+                $value['Chucsacnhatuhanhphatgiao']['tencosohoatdongtongiao_diachi_duong'],
+                $value['Chucsacnhatuhanhphatgiao']['tencosohoatdongtongiao_diachi_ap'],
+                $value['Chucsacnhatuhanhphatgiao']['tencosohoatdongtongiao_diachi_xa'],
+                $value['Chucsacnhatuhanhphatgiao']['tencosohoatdongtongiao_diachi_huyen'],
+                $value['Chucsacnhatuhanhphatgiao']['tencosohoatdongtongiao_diachi_tinh']
+            );
+            $cosotongiaodanghoatdong = array_filter($cosotongiaodanghoatdong, 'strlen');
+            foreach ($fields as $field => $text) {
+                if ($value['Chucsacnhatuhanhphatgiao'][$field] == true) {
+                    $chuc_sac_nha_tu_hanh_phat_giao[] = array(
+                        'hovaten' => $value['Chucsacnhatuhanhphatgiao']['hovaten'],
+                        'tengoitheotongiao' => $value['Chucsacnhatuhanhphatgiao']['phapdanh'],
+                        'thuoctochuctongiao' => $value['Chucsacnhatuhanhphatgiao']['taicoso'],
+                        'dantoc' => '',
+                        'ngaythangnamsinh' => $value['Chucsacnhatuhanhphatgiao']['ngaythangnamsinh'],
+                        'gioitinh' => '',
+                        'chungminhnhandan' => $value['Chucsacnhatuhanhphatgiao']['chungminhnhandan'],
+                        'chucvu' => $value['Chucsacnhatuhanhphatgiao']['chucvu'],
+                        'namduocphongchuc' => '',
+                        'phamtrat' => '',
+                        'namduocphongpham' => '',
+                        'trinhdohocvan' => '',
+                        'trinhdochuyenmon' => '',
+                        'trinhdotongiao' => '',
+                        'thamgiatochucchinhtrixahoi' => $text,
+                        'quequan' => $value['Chucsacnhatuhanhphatgiao']['noisinh'],
+                        'cosotongiaodanghoatdong' => implode(",\n", $cosotongiaodanghoatdong)
+                    );
+                }
+            }
+        }
+        
+        return $chuc_sac_nha_tu_hanh_phat_giao;
+    }
 }

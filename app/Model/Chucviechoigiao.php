@@ -153,4 +153,94 @@ class Chucviechoigiao extends AppModel {
         
         return $chuc_viec_hoi_giao;
     }
+    
+    /**
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP XÃ
+     */
+    public function getDataExcelDSCSTHAMGIACTXHCAPXA() {
+        $conditions = array(
+            'hovaten <>' => '',
+            'is_add' => 1,
+            'OR' => array(
+                'hoidongnhandan_capxa' => true,
+                'ubmttqvn_capxa' => true,
+                'hoichuthapdo_capxa' => true,
+                'hoinongdan_capxa' => true,
+                'hoilienhiepphunu_capxa' => true,
+                'doanthanhnien_capxa' => true,
+                'tochuckhac_capxa' => true
+            )
+        );
+        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions);
+        return $data;
+    }
+    
+    /**
+     * Lay du lieu cho file excel:
+     * - DS CS THAM GIA CT-XH CAP XA
+     */
+    public function getDataExcelDSCSTHAMGIACTXH($conditions) {
+        $chucviechoigiao = $this->find('all', array(
+            'fields' => array('hovaten', 'tengoitheotongiao', 'dantoc', 'taicoso', 'ngaythangnamsinh', 'chungminhnhandan', 
+            'noisinh', 
+            //CHỨC VỤ
+            'chucvuhiennay_thanhvienbangiaoca',
+            //CSTG ĐANG HOẠT ĐỘNG
+            'hoatdongtongiaotai', 'hoatdongtongiaotai_diachi_so', 'hoatdongtongiaotai_diachi_ap', 'hoatdongtongiaotai_diachi_xa', 'hoatdongtongiaotai_diachi_huyen', 'hoatdongtongiaotai_diachi_tinh',
+            'is_add'
+            ),
+            'conditions' => $conditions
+        ));
+        
+        $chuc_viec_hoi_giao = $cosotongiaodanghoatdong = array();
+        foreach ($chucviechoigiao as $key => $value) {
+            $value['Chucviechoigiao']['chucvu'] = '';
+            if ($value['Chucviechoigiao']['chucvuhiennay_thanhvienbangiaoca'] == true) {
+                $value['Chucviechoigiao']['chucvu'] = 'Thành viên Ban Giáo cả/Ban Quản trị';
+            }
+            $cosotongiaodanghoatdong = array(
+                $value['Chucviechoigiao']['hoatdongtongiaotai'],
+                $value['Chucviechoigiao']['hoatdongtongiaotai_diachi_so'],
+                $value['Chucviechoigiao']['hoatdongtongiaotai_diachi_ap'],
+                $value['Chucviechoigiao']['hoatdongtongiaotai_diachi_xa'],
+                $value['Chucviechoigiao']['hoatdongtongiaotai_diachi_huyen'],
+                $value['Chucviechoigiao']['hoatdongtongiaotai_diachi_tinh']
+            );
+            $fields = array(
+                'hoidongnhandan_capxa' => 'HĐND xã',
+                'ubmttqvn_capxa' => 'UBMTTQ xã',
+                'hoinongdan_capxa' => 'Hội Chữ thập đỏ',
+                'hoichuthapdo_capxa' => 'Hội Nông dân xã',
+                'doanthanhnien_capxa' => 'Đoàn thanh niên xã',
+                'hoilienhiepphunu_capxa' => 'Hội Liên hiệp Thanh niên xã',
+                'tochuckhac_capxa' => 'Các tổ chức khác Cấp xã'
+            );
+            $cosotongiaodanghoatdong = array_filter($cosotongiaodanghoatdong, 'strlen');
+            foreach ($fields as $field => $text) {
+                if ($value['Chucviechoigiao'][$field] == true) {
+                    $chuc_viec_hoi_giao[] = array(
+                        'hovaten' => $value['Chucviechoigiao']['hovaten'],
+                        'tengoitheotongiao' => $value['Chucviechoigiao']['tengoitheotongiao'],
+                        'thuoctochuctongiao' => $value['Chucviechoigiao']['tencosotinnguongdanghoatdong'],
+                        'dantoc' => $value['Chucviechoigiao']['dantoc'],
+                        'ngaythangnamsinh' => $value['Chucviechoigiao']['ngaythangnamsinh'],
+                        'gioitinh' => '',
+                        'chungminhnhandan' => $value['Chucviechoigiao']['chungminhnhandan'],
+                        'chucvu' => $value['Chucviechoigiao']['chucvu'],
+                        'namduocphongchuc' => '',
+                        'phamtrat' => '',
+                        'namduocphongpham' => '',
+                        'trinhdohocvan' => '',
+                        'trinhdochuyenmon' => '',
+                        'trinhdotongiao' => '',
+                        'thamgiatochucchinhtrixahoi' => $text,
+                        'quequan' => $value['Chucviechoigiao']['noisinh'],
+                        'cosotongiaodanghoatdong' => $value['Chucviechoigiao']['tencosotinnguongdanghoatdong']
+                    );
+                }
+            }
+        }
+        
+        return $chuc_viec_hoi_giao;
+    }
 }
