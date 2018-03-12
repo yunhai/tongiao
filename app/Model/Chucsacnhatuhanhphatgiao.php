@@ -270,9 +270,40 @@ class Chucsacnhatuhanhphatgiao extends AppModel {
     }
     
     /**
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP TỈNH
+     */
+    public function getDataExcelDSCSTHAMGIACTXHCAPTINH() {
+        $conditions = array(
+            'hovaten <>' => '',
+            'is_add' => 1,
+            'OR' => array(
+                'hoatdongtongiao_thamgia_hoidongnhandan_captinh' => true,
+                'hoatdongtongiao_thamgia_ubmttqvn_captinh' => true,
+                'hoatdongtongiao_thamgia_hoichuthapdo_captinh' => true,
+                'hoatdongtongiao_thamgia_hoinongdan_captinh' => true,
+                'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh' => true,
+                'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh' => true,
+                'hoatdongtongiao_thamgia_cactochuckhac_captinh' => true
+            )
+        );
+        $fields = array(
+            'hoatdongtongiao_thamgia_hoidongnhandan_captinh' => 'HĐND tỉnh',
+            'hoatdongtongiao_thamgia_ubmttqvn_captinh' => 'UBMTTQ tỉnh',
+            'hoatdongtongiao_thamgia_hoichuthapdo_captinh' => 'Hội Chữ thập đỏ tỉnh',
+            'hoatdongtongiao_thamgia_hoinongdan_captinh' => 'Hội Nông dân tỉnh',
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh' => 'Hội Liên hiệp Thanh niên tỉnh',
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh' => 'Hội Liên hiệp Phụ nữ tỉnh',
+            'hoatdongtongiao_thamgia_cactochuckhac_captinh' => 'Các tổ chức khác Cấp tỉnh'
+        );
+        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions, $fields);
+        return $data;
+    }
+    
+    /**
      * Lay du lieu cho file excel:
      * - DS CS THAM GIA CT-XH CAP XA
      * - DS CS THAM GIA CT-XH CAP HUYEN
+     * - DS CS THAM GIA CT-XH CAP TINH
      */
     public function getDataExcelDSCSTHAMGIACTXH($conditions, $fields) {
         $chucsacnhatuhanhphatgiao = $this->find('all', array(
@@ -300,6 +331,14 @@ class Chucsacnhatuhanhphatgiao extends AppModel {
             'hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen',
             'hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen',
             'hoatdongtongiao_thamgia_cactochuckhac_caphuyen',
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI CẤP TỈNH
+            'hoatdongtongiao_thamgia_hoidongnhandan_captinh',
+            'hoatdongtongiao_thamgia_ubmttqvn_captinh',
+            'hoatdongtongiao_thamgia_hoichuthapdo_captinh',
+            'hoatdongtongiao_thamgia_hoinongdan_captinh',
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh',
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh',
+            'hoatdongtongiao_thamgia_cactochuckhac_captinh',
             'is_add'
             ),
             'conditions' => $conditions

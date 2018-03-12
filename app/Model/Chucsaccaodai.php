@@ -230,9 +230,40 @@ class Chucsaccaodai extends AppModel {
     }
     
     /**
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP TỈNH
+     */
+    public function getDataExcelDSCSTHAMGIACTXHCAPTINH() {
+        $conditions = array(
+            'hovaten <>' => '',
+            'is_add' => 1,
+            'OR' => array(
+                'thamgiacactcctxh_hoidongnhandan_captinh' => true,
+                'thamgiacactcctxh_uybanmttqvn_captinh' => true,
+                'thamgiacactcctxh_hoichuthapdo_captinh' => true,
+                'thamgiacactcctxh_hoinongdan_captinh' => true,
+                'thamgiacactcctxh_hoilienhiepphunu_captinh' => true,
+                'thamgiacactcctxh_doanthanhnien_captinh' => true,
+                'thamgiacactcctxh_tochuckhac_captinh' => true
+            )
+        );
+        $fields = array(
+            'thamgiacactcctxh_hoidongnhandan_captinh' => 'HĐND tỉnh',
+            'thamgiacactcctxh_uybanmttqvn_captinh' => 'UBMTTQ tỉnh',
+            'thamgiacactcctxh_hoichuthapdo_captinh' => 'Hội Chữ thập đỏ tỉnh',
+            'thamgiacactcctxh_hoinongdan_captinh' => 'Hội Nông dân tỉnh',
+            'thamgiacactcctxh_doanthanhnien_captinh' => 'Đoàn thanh niên tỉnh',
+            'thamgiacactcctxh_hoilienhiepphunu_captinh' => 'Hội Liên hiệp Phụ nữ tỉnh',
+            'thamgiacactcctxh_tochuckhac_captinh' => 'Các tổ chức khác Cấp tỉnh'
+        );
+        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions, $fields);
+        return $data;
+    }
+    
+    /**
      * Lay du lieu cho file excel:
      * - DS CS THAM GIA CT-XH CAP XA
      * - DS CS THAM GIA CT-XH CAP HUYEN
+     * - DS CS THAM GIA CT-XH CAP TINH
      */
     public function getDataExcelDSCSTHAMGIACTXH($conditions, $fields) {
         $chucsaccaodai = $this->find('all', array(
@@ -242,7 +273,7 @@ class Chucsaccaodai extends AppModel {
             'chucvuhiennay_phobancaiquan', 'chucvuhiennay_caiquan', 'chucvuhiennay_thanhvienbddct',
             //CSTG ĐANG HOẠT ĐỘNG
             'hoatdongtongiaotai', 'hoatdongtongiaotai_diachi_so', 'hoatdongtongiaotai_diachi_ap', 'hoatdongtongiaotai_diachi_xa', 'hoatdongtongiaotai_diachi_huyen', 'hoatdongtongiaotai_diachi_tinh',
-            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI XÃ
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI CẤP XÃ
             'thamgiacactcctxh_hoidongnhandan_capxa', 
             'thamgiacactcctxh_uybanmttqvn_capxa', 
             'thamgiacactcctxh_hoichuthapdo_capxa', 
@@ -250,7 +281,7 @@ class Chucsaccaodai extends AppModel {
             'thamgiacactcctxh_hoilienhiepphunu_capxa', 
             'thamgiacactcctxh_doanthanhnien_capxa', 
             'thamgiacactcctxh_tochuckhac_capxa',
-            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI HUYỆN
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI CẤP HUYỆN
             'thamgiacactcctxh_hoidongnhandan_caphuyen', 
             'thamgiacactcctxh_uybanmttqvn_caphuyen', 
             'thamgiacactcctxh_hoichuthapdo_caphuyen',
@@ -258,6 +289,14 @@ class Chucsaccaodai extends AppModel {
             'thamgiacactcctxh_doanthanhnien_caphuyen', 
             'thamgiacactcctxh_hoilienhiepphunu_caphuyen',
             'thamgiacactcctxh_tochuckhac_caphuyen',
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI CẤP TỈNH
+            'thamgiacactcctxh_hoidongnhandan_captinh',
+            'thamgiacactcctxh_uybanmttqvn_captinh',
+            'thamgiacactcctxh_hoichuthapdo_captinh',
+            'thamgiacactcctxh_hoinongdan_captinh',
+            'thamgiacactcctxh_hoilienhiepphunu_captinh',
+            'thamgiacactcctxh_doanthanhnien_captinh',
+            'thamgiacactcctxh_tochuckhac_captinh',
             'is_add'
             ),
             'conditions' => $conditions

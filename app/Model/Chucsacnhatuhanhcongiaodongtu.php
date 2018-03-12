@@ -289,9 +289,40 @@ class Chucsacnhatuhanhcongiaodongtu extends AppModel {
     }
     
     /**
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP TỈNH
+     */
+    public function getDataExcelDSCSTHAMGIACTXHCAPTINH() {
+        $conditions = array(
+            'hovaten <>' => '',
+            'is_add' => 1,
+            'OR' => array(
+                'hoatdongtongiao_thamgia_hoidongnhandan_captinh' => true,
+                'hoatdongtongiao_thamgia_ubmttqvn_captinh' => true,
+                'hoatdongtongiao_thamgia_hoichuthapdo_captinh' => true,
+                'hoatdongtongiao_thamgia_hoinongdan_captinh' => true,
+                'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh' => true,
+                'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh' => true,
+                'hoatdongtongiao_thamgia_cactochuckhac_captinh' => true
+            )
+        );
+        $fields = array(
+            'hoatdongtongiao_thamgia_hoidongnhandan_captinh' => 'HĐND tỉnh',
+            'hoatdongtongiao_thamgia_ubmttqvn_captinh' => 'UBMTTQ tỉnh',
+            'hoatdongtongiao_thamgia_hoichuthapdo_captinh' => 'Hội Chữ thập đỏ tỉnh',
+            'hoatdongtongiao_thamgia_hoinongdan_captinh' => 'Hội Nông dân tỉnh',
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh' => 'Hội Liên hiệp Thanh niên tỉnh',
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh' => 'Hội Liên hiệp Phụ nữ tỉnh',
+            'hoatdongtongiao_thamgia_cactochuckhac_captinh' => 'Các tổ chức khác Cấp tỉnh'
+        );
+        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions, $fields);
+        return $data;
+    }
+    
+    /**
      * Lay du lieu cho file excel:
      * - DS CS THAM GIA CT-XH CAP XA
      * - DS CS THAM GIA CT-XH CAP HUYEN
+     * - DS CS THAM GIA CT-XH CAP TINH
      */
     public function getDataExcelDSCSTHAMGIACTXH($conditions, $fields) {
         $chucsacnhatuhanhcongiaodongtu = $this->find('all', array(
@@ -302,14 +333,26 @@ class Chucsacnhatuhanhcongiaodongtu extends AppModel {
             'noisinh',
             //CSTG ĐANG HOẠT ĐỘNG
             'tencosodanghoatdongtongiao', 'tenquocte', 'diachi_so', 'diachi_ap', 'diachi_xa', 'diachi_huyen', 'diachi_tinh',
-            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI XÃ
-            'hoatdongtongiao_thamgia_hoidongnhandan_capxa', 'hoatdongtongiao_thamgia_ubmttqvn_capxa', 'hoatdongtongiao_thamgia_hoichuthapdo_capxa', 
-            'hoatdongtongiao_thamgia_hoinongdan_capxa', 'hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa', 'hoatdongtongiao_thamgia_hoilienhiepphunu_capxa', 
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI CẤP XÃ
+            'hoatdongtongiao_thamgia_hoidongnhandan_capxa', 
+            'hoatdongtongiao_thamgia_ubmttqvn_capxa', 
+            'hoatdongtongiao_thamgia_hoichuthapdo_capxa', 
+            'hoatdongtongiao_thamgia_hoinongdan_capxa', 
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa', 
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_capxa', 
             'hoatdongtongiao_thamgia_cactochuckhac_capxa',
-            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI HUYỆN
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI CẤP HUYỆN
             'hoatdongtongiao_thamgia_hoidongnhandan_caphuyen', 'hoatdongtongiao_thamgia_ubmttqvn_caphuyen', 
             'hoatdongtongiao_thamgia_hoichuthapdo_caphuyen', 'hoatdongtongiao_thamgia_hoinongdan_caphuyen', 
             'hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen', 'hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen', 'hoatdongtongiao_thamgia_cactochuckhac_caphuyen',
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI CẤP TỈNH
+            'hoatdongtongiao_thamgia_hoidongnhandan_captinh',
+            'hoatdongtongiao_thamgia_ubmttqvn_captinh',
+            'hoatdongtongiao_thamgia_hoichuthapdo_captinh',
+            'hoatdongtongiao_thamgia_hoinongdan_captinh',
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh',
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh',
+            'hoatdongtongiao_thamgia_cactochuckhac_captinh',
             'is_add'
             ),
             'conditions' => $conditions
