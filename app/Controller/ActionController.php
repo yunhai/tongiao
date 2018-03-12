@@ -2074,7 +2074,6 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_ubbdkcg_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
      * 
      * 3. Bảng chucsacnhatuhanhcongiaodongtu
@@ -2096,7 +2095,6 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_ubbdkcg_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
      * 
      * 4. Bảng chucviecphathoahao
@@ -2196,14 +2194,10 @@ class ActionController extends AppController
      * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
      * LONG THÀNH: diachi_huyen = LONG THÀNH
      * và điều kiện
-     * cột thamgia_dangcongsanvietnam_capxa = true hoặc
      * cột thamgia_hoidongnhandan_capxa = true hoặc
      * cột thamgia_ubmttqvn_capxa = true hoặc
-     * cột thamgia_congdoan_capxa = true hoặc
-     * cột thamgia_hoicuuchienbinh_capxa = true hoặc
      * cột thamgia_hoinongdan_capxa = true hoặc
      * cột thamgia_hoichuthapdo_capxa = true hoặc
-     * cột thamgia_doanthanhnien_capxa = true hoặc
      * cột thamgia_hoilienhiepthanhnien_capxa = true hoặc
      * cột thamgia_hoilienhiepphunu_capxa = true hoặc
      * cột thamgia_cactochuckhac_capxa = true
@@ -2230,6 +2224,14 @@ class ActionController extends AppController
      * cột tochuckhac_capxa = true
      * 
      * Tính tổng dữ liệu trên theo xã
+     * 
+     * CÔNG GIÁO = 2. Bảng chucsacnhatuhanhconggiaotrieu + 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * PHẬT GIÁO = 7. Bảng chucsacnhatuhanhphatgiao + 8. Bảng huynhtruonggiadinhphattu
+     * TIN LÀNH = 1. Bảng chucsactinlanh
+     * CAO ĐÀI = 6. Bảng chucsaccaodai
+     * TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM = 5. Bảng chucviectinhdocusiphathoivietnam
+     * PHẬT GIÁO HÒA HẢO = 4. Bảng chucviecphathoahao
+     * HỒI GIÁO = 9. Bảng chucviechoigiao
      */
     protected function __getType14Data()
     {
@@ -2279,7 +2281,6 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_ubbdkcg_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
      * 
      * 3. Bảng chucsacnhatuhanhcongiaodongtu
@@ -2301,7 +2302,6 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_ubbdkcg_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
      * 
      * 4. Bảng chucviecphathoahao
@@ -2401,14 +2401,10 @@ class ActionController extends AppController
      * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
      * LONG THÀNH: diachi_huyen = LONG THÀNH
      * và điều kiện
-     * cột thamgia_dangcongsanvietnam_caphuyen = true hoặc
      * cột thamgia_hoidongnhandan_caphuyen = true hoặc
      * cột thamgia_ubmttqvn_caphuyen = true hoặc
-     * cột thamgia_congdoan_caphuyen = true hoặc
-     * cột thamgia_hoicuuchienbinh_caphuyen = true hoặc
      * cột thamgia_hoinongdan_caphuyen = true hoặc
      * cột thamgia_hoichuthapdo_caphuyen = true hoặc
-     * cột thamgia_doanthanhnien_caphuyen = true hoặc
      * cột thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
      * cột thamgia_hoilienhiepphunu_caphuyen = true hoặc
      * cột thamgia_cactochuckhac_caphuyen = true
@@ -2433,6 +2429,16 @@ class ActionController extends AppController
      * cột hoilienhiepphunu_caphuyen = true hoặc
      * cột doanthanhnien_caphuyen = true hoặc
      * cột tochuckhac_caphuyen = true
+     * 
+     * Tính tổng dữ liệu trên theo huyện
+     * 
+     * CÔNG GIÁO = 2. Bảng chucsacnhatuhanhconggiaotrieu + 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * PHẬT GIÁO = 7. Bảng chucsacnhatuhanhphatgiao + 8. Bảng huynhtruonggiadinhphattu
+     * TIN LÀNH = 1. Bảng chucsactinlanh
+     * CAO ĐÀI = 6. Bảng chucsaccaodai
+     * TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM = 5. Bảng chucviectinhdocusiphathoivietnam
+     * PHẬT GIÁO HÒA HẢO = 4. Bảng chucviecphathoahao
+     * HỒI GIÁO = 9. Bảng chucviechoigiao
      */
     protected function __getType15Data()
     {
@@ -2482,7 +2488,6 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_ubbdkcg_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
      * 
      * 3. Bảng chucsacnhatuhanhcongiaodongtu
@@ -2504,7 +2509,6 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_ubbdkcg_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
      * 
      * 4. Bảng chucviecphathoahao
@@ -2604,14 +2608,10 @@ class ActionController extends AppController
      * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
      * LONG THÀNH: diachi_huyen = LONG THÀNH
      * và điều kiện
-     * cột thamgia_dangcongsanvietnam_captinh = true hoặc
      * cột thamgia_hoidongnhandan_captinh = true hoặc
      * cột thamgia_ubmttqvn_captinh = true hoặc
-     * cột thamgia_congdoan_captinh = true hoặc
-     * cột thamgia_hoicuuchienbinh_captinh = true hoặc
      * cột thamgia_hoinongdan_captinh = true hoặc
      * cột thamgia_hoichuthapdo_captinh = true hoặc
-     * cột thamgia_doanthanhnien_captinh = true hoặc
      * cột thamgia_hoilienhiepthanhnien_captinh = true hoặc
      * cột thamgia_hoilienhiepphunu_captinh = true hoặc
      * cột thamgia_cactochuckhac_captinh = true
@@ -2636,6 +2636,16 @@ class ActionController extends AppController
      * cột hoilienhiepphunu_captinh = true hoặc
      * cột doanthanhnien_captinh = true hoặc
      * cột tochuckhac_captinh = true
+     * 
+     * Tính tổng dữ liệu trên theo tỉnh
+     * 
+     * CÔNG GIÁO = 2. Bảng chucsacnhatuhanhconggiaotrieu + 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * PHẬT GIÁO = 7. Bảng chucsacnhatuhanhphatgiao + 8. Bảng huynhtruonggiadinhphattu
+     * TIN LÀNH = 1. Bảng chucsactinlanh
+     * CAO ĐÀI = 6. Bảng chucsaccaodai
+     * TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM = 5. Bảng chucviectinhdocusiphathoivietnam
+     * PHẬT GIÁO HÒA HẢO = 4. Bảng chucviecphathoahao
+     * HỒI GIÁO = 9. Bảng chucviechoigiao
      */
     protected function __getType16Data()
     {
