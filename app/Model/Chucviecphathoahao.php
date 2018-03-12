@@ -197,15 +197,55 @@ class Chucviecphathoahao extends AppModel {
                 'tochuckhac_capxa' => true
             )
         );
-        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions);
+        $fields = array(
+            'hoidongnhandan_capxa' => 'HĐND xã',
+            'uybanmttqvn_capxa' => 'UBMTTQ xã',
+            'hoichuthapdo_capxa' => 'Hội Chữ thập đỏ xã',
+            'hoinongdan_capxa' => 'Hội Nông dân xã',
+            'doanthanhnien_capxa' => 'Đoàn thanh niên xã',
+            'hoilienhiepphunu_capxa' => 'Hội Liên hiệp Phụ nữ xã',
+            'tochuckhac_capxa' => 'Các tổ chức khác Cấp xã'
+        );
+        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions, $fields);
+        return $data;
+    }
+    
+    /**
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP HUYỆN
+     */
+    public function getDataExcelDSCSTHAMGIACTXHCAPHUYEN() {
+        $conditions = array(
+            'hovaten <>' => '',
+            'is_add' => 1,
+            'OR' => array(
+                'hoidongnhandan_caphuyen' => true,
+                'uybanmttqvn_caphuyen' => true,
+                'hoichuthapdo_caphuyen' => true,
+                'hoinongdan_caphuyen' => true,
+                'hoilienhiepphunu_caphuyen' => true,
+                'doanthanhnien_caphuyen' => true,
+                'tochuckhac_caphuyen' => true
+            )
+        );
+        $fields = array(
+            'hoidongnhandan_caphuyen' => 'HĐND huyện',
+            'uybanmttqvn_caphuyen' => 'UBMTTQ huyện',
+            'hoichuthapdo_caphuyen' => 'Hội Chữ thập đỏ huyện',
+            'hoinongdan_caphuyen' => 'Hội Nông dân huyện',
+            'doanthanhnien_caphuyen' => 'Đoàn thanh niên huyện',
+            'hoilienhiepphunu_caphuyen' => 'Hội Liên hiệp Phụ nữ huyện',
+            'tochuckhac_capxa' => 'Các tổ chức khác Cấp huyện'
+        );
+        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions, $fields);
         return $data;
     }
     
     /**
      * Lay du lieu cho file excel:
      * - DS CS THAM GIA CT-XH CAP XA
+     * - DS CS THAM GIA CT-XH CAP HUYEN
      */
-    public function getDataExcelDSCSTHAMGIACTXH($conditions) {
+    public function getDataExcelDSCSTHAMGIACTXH($conditions, $fields) {
         $chucviecphathoahao = $this->find('all', array(
             'fields' => array('hovaten', 'taicoso', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 
@@ -213,21 +253,16 @@ class Chucviecphathoahao extends AppModel {
             'phobantrisu', 'truongbantrisu', 'thanhvienbandaidientinh', 'thanhvienbantrisu',
             //CSTG ĐANG HOẠT ĐỘNG
             'hoatdongtongiaotai', 'hoatdongtongiaotai_diachi_so', 'hoatdongtongiaotai_diachi_ap', 'hoatdongtongiaotai_diachi_xa', 'hoatdongtongiaotai_diachi_huyen', 'hoatdongtongiaotai_diachi_tinh',
-            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI
-            'hoidongnhandan_capxa', 'uybanmttqvn_capxa', 'hoichuthapdo_capxa', 'hoinongdan_capxa', 'doanthanhnien_capxa', 'hoilienhiepphunu_capxa', 'tochuckhac_capxa',
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI XÃ
+            'hoidongnhandan_capxa', 'uybanmttqvn_capxa', 'hoichuthapdo_capxa', 'hoinongdan_capxa', 
+            'doanthanhnien_capxa', 'hoilienhiepphunu_capxa', 'tochuckhac_capxa',
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI HUYỆN
+            'hoidongnhandan_caphuyen', 'uybanmttqvn_caphuyen', 'hoichuthapdo_caphuyen',
+            'hoinongdan_caphuyen', 'doanthanhnien_caphuyen', 'hoilienhiepphunu_caphuyen', 'tochuckhac_capxa',
             'is_add'
             ),
             'conditions' => $conditions
         ));
-        $fields = array(
-            'hoidongnhandan_capxa' => 'HĐND xã',
-            'uybanmttqvn_capxa' => 'UBMTTQ xã',
-            'hoichuthapdo_capxa' => 'Hội Chữ thập đỏ',
-            'hoinongdan_capxa' => 'Hội Nông dân xã',
-            'doanthanhnien_capxa' => 'Đoàn thanh niên xã',
-            'hoilienhiepphunu_capxa' => 'Hội Liên hiệp Phụ nữ xã',
-            'tochuckhac_capxa' => 'Các tổ chức khác Cấp xã'
-        );
         $chuc_viec_phat_hoahao = $cosotongiaodanghoatdong = array();
         foreach ($chucviecphathoahao as $key => $value) {
             $value['Chucviecphathoahao']['chucvu'] = '';

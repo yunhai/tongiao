@@ -245,15 +245,55 @@ class Chucsacnhatuhanhcongiaodongtu extends AppModel {
                 'hoatdongtongiao_thamgia_cactochuckhac_capxa' => true
             )
         );
-        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions);
+        $fields = array(
+            'hoatdongtongiao_thamgia_hoidongnhandan_capxa' => 'HĐND xã',
+            'hoatdongtongiao_thamgia_ubmttqvn_capxa' => 'UBMTTQ xã',
+            'hoatdongtongiao_thamgia_hoichuthapdo_capxa' => 'Hội Chữ thập đỏ xã',
+            'hoatdongtongiao_thamgia_hoinongdan_capxa' => 'Hội Nông dân xã',
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa' => 'Hội Liên hiệp Thanh niên xã',
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_capxa' => 'Hội Liên hiệp Phụ nữ xã',
+            'hoatdongtongiao_thamgia_cactochuckhac_capxa' => 'Các tổ chức khác Cấp xã'
+        );
+        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions, $fields);
+        return $data;
+    }
+    
+    /**
+     * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP HUYỆN
+     */
+    public function getDataExcelDSCSTHAMGIACTXHCAPHUYEN() {
+        $conditions = array(
+            'hovaten <>' => '',
+            'is_add' => 1,
+            'OR' => array(
+                'hoatdongtongiao_thamgia_hoidongnhandan_caphuyen' => true,
+                'hoatdongtongiao_thamgia_ubmttqvn_caphuyen' => true,
+                'hoatdongtongiao_thamgia_hoichuthapdo_caphuyen' => true,
+                'hoatdongtongiao_thamgia_hoinongdan_caphuyen' => true,
+                'hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen' => true,
+                'hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen' => true,
+                'hoatdongtongiao_thamgia_cactochuckhac_caphuyen' => true
+            )
+        );
+        $fields = array(
+            'hoatdongtongiao_thamgia_hoidongnhandan_caphuyen' => 'HĐND huyện',
+            'hoatdongtongiao_thamgia_ubmttqvn_caphuyen' => 'UBMTTQ huyện',
+            'hoatdongtongiao_thamgia_hoichuthapdo_caphuyen' => 'Hội Chữ thập đỏ huyện',
+            'hoatdongtongiao_thamgia_hoinongdan_caphuyen' => 'Hội Nông dân huyện',
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen' => 'Hội Liên hiệp Thanh niên huyện',
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen' => 'Hội Liên hiệp Phụ nữ huyện',
+            'hoatdongtongiao_thamgia_cactochuckhac_caphuyen' => 'Các tổ chức khác Cấp huyện'
+        );
+        $data = $this->getDataExcelDSCSTHAMGIACTXH($conditions, $fields);
         return $data;
     }
     
     /**
      * Lay du lieu cho file excel:
      * - DS CS THAM GIA CT-XH CAP XA
+     * - DS CS THAM GIA CT-XH CAP HUYEN
      */
-    public function getDataExcelDSCSTHAMGIACTXH($conditions) {
+    public function getDataExcelDSCSTHAMGIACTXH($conditions, $fields) {
         $chucsacnhatuhanhcongiaodongtu = $this->find('all', array(
             'fields' => array('hovaten', 'tructhuocdongtu', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', //'phamsactrongtongiao', 
             //CHỨC VỤ
@@ -262,21 +302,18 @@ class Chucsacnhatuhanhcongiaodongtu extends AppModel {
             'noisinh',
             //CSTG ĐANG HOẠT ĐỘNG
             'tencosodanghoatdongtongiao', 'tenquocte', 'diachi_so', 'diachi_ap', 'diachi_xa', 'diachi_huyen', 'diachi_tinh',
-            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI
-            'hoatdongtongiao_thamgia_hoidongnhandan_capxa', 'hoatdongtongiao_thamgia_ubmttqvn_capxa', 'hoatdongtongiao_thamgia_hoichuthapdo_capxa', 'hoatdongtongiao_thamgia_hoinongdan_capxa', 'hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa', 'hoatdongtongiao_thamgia_hoilienhiepphunu_capxa', 'hoatdongtongiao_thamgia_cactochuckhac_capxa',
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI XÃ
+            'hoatdongtongiao_thamgia_hoidongnhandan_capxa', 'hoatdongtongiao_thamgia_ubmttqvn_capxa', 'hoatdongtongiao_thamgia_hoichuthapdo_capxa', 
+            'hoatdongtongiao_thamgia_hoinongdan_capxa', 'hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa', 'hoatdongtongiao_thamgia_hoilienhiepphunu_capxa', 
+            'hoatdongtongiao_thamgia_cactochuckhac_capxa',
+            //THAM GIA TỔ CHỨC CHÍNH TRỊ XÃ HỘI HUYỆN
+            'hoatdongtongiao_thamgia_hoidongnhandan_caphuyen', 'hoatdongtongiao_thamgia_ubmttqvn_caphuyen', 
+            'hoatdongtongiao_thamgia_hoichuthapdo_caphuyen', 'hoatdongtongiao_thamgia_hoinongdan_caphuyen', 
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen', 'hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen', 'hoatdongtongiao_thamgia_cactochuckhac_caphuyen',
             'is_add'
             ),
             'conditions' => $conditions
         ));
-        $fields = array(
-            'hoatdongtongiao_thamgia_hoidongnhandan_capxa' => 'HĐND xã',
-            'hoatdongtongiao_thamgia_ubmttqvn_capxa' => 'UBMTTQ xã',
-            'hoatdongtongiao_thamgia_hoichuthapdo_capxa' => 'Hội Chữ thập đỏ',
-            'hoatdongtongiao_thamgia_hoinongdan_capxa' => 'Hội Nông dân xã',
-            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa' => 'Hội Liên hiệp Thanh niên xã',
-            'hoatdongtongiao_thamgia_hoilienhiepphunu_capxa' => 'Hội Liên hiệp Phụ nữ xã',
-            'hoatdongtongiao_thamgia_cactochuckhac_capxa' => 'Các tổ chức khác Cấp xã'
-        );
         $chuc_sac_nha_tu_hanh_con_giao_dong_tu = array();
         foreach ($chucsacnhatuhanhcongiaodongtu as $key => $value) {
             $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'] = '';
