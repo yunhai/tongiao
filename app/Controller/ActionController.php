@@ -2175,7 +2175,6 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_ubbdkcg_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
      * 
      * 3. Bảng chucsacnhatuhanhcongiaodongtu
@@ -2186,7 +2185,6 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_ubbdkcg_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
      * 
      * 4. Bảng chucviecphathoahao
@@ -2231,28 +2229,20 @@ class ActionController extends AppController
      * 
      * 8. Bảng huynhtruonggiadinhphattu
      * - lấy dữ liệu thõa điều kiện sau:
-     * cột thamgia_dangcongsanvietnam_captinh = true hoặc
      * cột thamgia_hoidongnhandan_captinh = true hoặc
      * cột thamgia_ubmttqvn_captinh = true hoặc
-     * cột thamgia_congdoan_captinh = true hoặc
-     * cột thamgia_hoicuuchienbinh_captinh = true hoặc
      * cột thamgia_hoinongdan_captinh = true hoặc
      * cột thamgia_hoichuthapdo_captinh = true hoặc
-     * cột thamgia_doanthanhnien_captinh = true hoặc
      * cột thamgia_hoilienhiepthanhnien_captinh = true hoặc
      * cột thamgia_hoilienhiepphunu_captinh = true hoặc
      * cột thamgia_cactochuckhac_captinh = true
      * 
      * 9. Bảng nguoihoatdongtinnguongchuyennghiep
      * - lấy dữ liệu thõa điều kiện sau:
-     * cột dangcongsanvietnam_captinh = true hoặc
      * cột hoidongnhandan_captinh = true hoặc
      * cột ubmttqvn_captinh = true hoặc
-     * cột congdoan_captinh = true hoặc
-     * cột hoicuuchienbinh_captinh = true hoặc
      * cột hoinongdan_captinh = true hoặc
      * cột hoichuthapdo_captinh = true hoặc
-     * cột doanthanhnien_captinh = true hoặc
      * cột hoilienhiepthanhnien_captinh = true hoặc
      * cột hoilienhiepphunu_captinh = true hoặc
      * cột cactochuckhac_captinh = true
