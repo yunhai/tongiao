@@ -175,6 +175,8 @@ class Chucsacnhatuhanhconggiaotrieu extends AppModel {
     public function getDataExcelChucSacNhaTuHanhCongGiaoDongTrieu24($conditions) {
         $chucsacnhatuhanhconggiaotrieu = $this->find('all', array(
             'fields' => array('id', 'hovaten', 'ngaythangnamsinh', 'chungminhnhandan', 'phamsactrongtongiao', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
             //CHỨC VỤ
             'hoatdongtongiao_chucvuhiennay_chanhxu', 'hoatdongtongiao_chucvuhiennay_phoxu', 'hoatdongtongiao_chucvuhiennay_phutaxu', 
             'hoatdongtongiao_chucvuhiennay_quannhiemxu', 'hoatdongtongiao_chucvuhiennay_hattruong', 'hoatdongtongiao_chucvuhiennay_truongbanchuyenmon', 
@@ -239,7 +241,7 @@ class Chucsacnhatuhanhconggiaotrieu extends AppModel {
                 'namduocphongchuc' => '',
                 'phamtrat' => '',
                 'namduocphongpham' => '',
-                'trinhdohocvan' => '',
+                'trinhdohocvan' => $value['Chucsacnhatuhanhconggiaotrieu']['trinhdohocvan_bangcap'],
                 'trinhdochuyenmon' => '',
                 'trinhdotongiao' => '',
                 'quequan' => $value['Chucsacnhatuhanhconggiaotrieu']['noisinh'],
@@ -349,6 +351,8 @@ class Chucsacnhatuhanhconggiaotrieu extends AppModel {
     public function getDataExcelDSCSTHAMGIACTXH($conditions, $fields) {
         $chucsacnhatuhanhconggiaotrieu = $this->find('all', array(
             'fields' => array('id', 'hovaten', 'ngaythangnamsinh', 'dantoc', 'chungminhnhandan', 'phamsactrongtongiao', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
             //CHỨC VỤ
             'hoatdongtongiao_chucvuhiennay_chanhxu', 'hoatdongtongiao_chucvuhiennay_phoxu', 'hoatdongtongiao_chucvuhiennay_phutaxu', 
             'hoatdongtongiao_chucvuhiennay_quannhiemxu', 'hoatdongtongiao_chucvuhiennay_hattruong', 'hoatdongtongiao_chucvuhiennay_truongbanchuyenmon', 
@@ -439,7 +443,7 @@ class Chucsacnhatuhanhconggiaotrieu extends AppModel {
                         'namduocphongchuc' => '',
                         'phamtrat' => '',
                         'namduocphongpham' => '',
-                        'trinhdohocvan' => '',
+                        'trinhdohocvan' => $value['Chucsacnhatuhanhconggiaotrieu']['trinhdohocvan_bangcap'],
                         'trinhdochuyenmon' => '',
                         'trinhdotongiao' => '',
                         'thamgiatochucchinhtrixahoi' => $text,

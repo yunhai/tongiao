@@ -113,6 +113,8 @@ class Huynhtruonggiadinhphattu extends AppModel {
         $huynhtruonggiadinhphattu = $this->find('all', array(
             'fields' => array('hovaten', 'phapdanh', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
             //CHỨC VỤ
             'chucvutrongdaohiennay',
             //CSTG ĐANG HOẠT ĐỘNG
@@ -170,7 +172,7 @@ class Huynhtruonggiadinhphattu extends AppModel {
                         'namduocphongchuc' => '',
                         'phamtrat' => '',
                         'namduocphongpham' => '',
-                        'trinhdohocvan' => '',
+                        'trinhdohocvan' => $value['Huynhtruonggiadinhphattu']['trinhdohocvan_bangcap'],
                         'trinhdochuyenmon' => '',
                         'trinhdotongiao' => '',
                         'thamgiatochucchinhtrixahoi' => $text,

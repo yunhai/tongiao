@@ -142,6 +142,8 @@ class Chucsacnhatuhanhphatgiao extends AppModel {
         $chucsacnhatuhanhphatgiao = $this->find('all', array(
             'fields' => array('hovaten', 'phapdanh', 'taicoso', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
             //CHỨC VỤ
             'hoatdongtongiao_chucvuhiennay_trutri', 'hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaphuyen', 'hoatdongtongiao_chucvuhiennay_chungminhbantrisucaphuyen', 
             'hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaptinh', 'cm_bantrisu_captinh', 'tv_hoidong_trisu', 'tv_hoidong_chungminh', 
@@ -198,7 +200,7 @@ class Chucsacnhatuhanhphatgiao extends AppModel {
                 'namduocphongchuc' => '',
                 'phamtrat' => '',
                 'namduocphongpham' => '',
-                'trinhdohocvan' => '',
+                'trinhdohocvan' => $value['Chucsacnhatuhanhphatgiao']['trinhdohocvan_bangcap'],
                 'trinhdochuyenmon' => '',
                 'trinhdotongiao' => '',
                 'quequan' => $value['Chucsacnhatuhanhphatgiao']['noisinh'],
@@ -309,6 +311,8 @@ class Chucsacnhatuhanhphatgiao extends AppModel {
         $chucsacnhatuhanhphatgiao = $this->find('all', array(
             'fields' => array('hovaten', 'phapdanh', 'taicoso', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
             //CHỨC VỤ
             'hoatdongtongiao_chucvuhiennay_trutri', 'hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaphuyen', 'hoatdongtongiao_chucvuhiennay_chungminhbantrisucaphuyen', 
             'hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaptinh', 'cm_bantrisu_captinh', 'tv_hoidong_trisu', 'tv_hoidong_chungminh', 
@@ -391,7 +395,7 @@ class Chucsacnhatuhanhphatgiao extends AppModel {
                         'namduocphongchuc' => '',
                         'phamtrat' => '',
                         'namduocphongpham' => '',
-                        'trinhdohocvan' => '',
+                        'trinhdohocvan' => $value['Chucsacnhatuhanhphatgiao']['trinhdohocvan_bangcap'],
                         'trinhdochuyenmon' => '',
                         'trinhdotongiao' => '',
                         'thamgiatochucchinhtrixahoi' => $text,

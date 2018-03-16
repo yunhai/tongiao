@@ -119,6 +119,8 @@ class Chucsaccaodai extends AppModel {
         $chucsaccaodai = $this->find('all', array(
             'fields' => array('hovaten', 'thanhdanh', 'thuoctochuc', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
             //CHỨC VỤ
             'chucvuhiennay_phobancaiquan', 'chucvuhiennay_caiquan', 'chucvuhiennay_thanhvienbddct',
             //CSTG ĐANG HOẠT ĐỘNG
@@ -158,7 +160,7 @@ class Chucsaccaodai extends AppModel {
                 'namduocphongchuc' => '',
                 'phamtrat' => '',
                 'namduocphongpham' => '',
-                'trinhdohocvan' => '',
+                'trinhdohocvan' => $value['Chucsaccaodai']['trinhdohocvan_bangcap'],
                 'trinhdochuyenmon' => '',
                 'trinhdotongiao' => '',
                 'quequan' => $value['Chucsaccaodai']['noisinh'],
@@ -269,6 +271,8 @@ class Chucsaccaodai extends AppModel {
         $chucsaccaodai = $this->find('all', array(
             'fields' => array('hovaten', 'thanhdanh', 'thuoctochuc', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
             //CHỨC VỤ
             'chucvuhiennay_phobancaiquan', 'chucvuhiennay_caiquan', 'chucvuhiennay_thanhvienbddct',
             //CSTG ĐANG HOẠT ĐỘNG
@@ -334,7 +338,7 @@ class Chucsaccaodai extends AppModel {
                         'namduocphongchuc' => '',
                         'phamtrat' => '',
                         'namduocphongpham' => '',
-                        'trinhdohocvan' => '',
+                        'trinhdohocvan' => $value['Chucsaccaodai']['trinhdohocvan_bangcap'],
                         'trinhdochuyenmon' => '',
                         'trinhdotongiao' => '',
                         'thamgiatochucchinhtrixahoi' => $text,

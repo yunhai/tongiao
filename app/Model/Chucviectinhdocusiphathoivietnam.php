@@ -125,6 +125,8 @@ class Chucviectinhdocusiphathoivietnam extends AppModel {
         $chucviectinhdocusiphathoivietnam = $this->find('all', array(
             'fields' => array('hovaten', 'tengoitheotongiao', 'taicoso', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
             //CHỨC VỤ
             'phobanytephuocthien', 'truongbanytephuocthien', 'thanhvienbantrisucaptinh', 'thanhvienbantrisucaptrunguong',
             //CSTG ĐANG HOẠT ĐỘNG
@@ -169,7 +171,7 @@ class Chucviectinhdocusiphathoivietnam extends AppModel {
                 'namduocphongchuc' => '',
                 'phamtrat' => '',
                 'namduocphongpham' => '',
-                'trinhdohocvan' => '',
+                'trinhdohocvan' => $value['Chucviectinhdocusiphathoivietnam']['trinhdohocvan_bangcap'],
                 'trinhdochuyenmon' => '',
                 'trinhdotongiao' => '',
                 'quequan' => $value['Chucviectinhdocusiphathoivietnam']['noisinh'],
@@ -280,6 +282,8 @@ class Chucviectinhdocusiphathoivietnam extends AppModel {
         $chucviectinhdocusiphathoivietnam = $this->find('all', array(
             'fields' => array('hovaten', 'tengoitheotongiao', 'taicoso', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
             //CHỨC VỤ
             'phobanytephuocthien', 'truongbanytephuocthien', 'thanhvienbantrisucaptinh', 'thanhvienbantrisucaptrunguong',
             //CSTG ĐANG HOẠT ĐỘNG
@@ -345,7 +349,7 @@ class Chucviectinhdocusiphathoivietnam extends AppModel {
                         'namduocphongchuc' => '',
                         'phamtrat' => '',
                         'namduocphongpham' => '',
-                        'trinhdohocvan' => '',
+                        'trinhdohocvan' => $value['Chucviectinhdocusiphathoivietnam']['trinhdohocvan_bangcap'],
                         'trinhdochuyenmon' => '',
                         'trinhdotongiao' => '',
                         'thamgiatochucchinhtrixahoi' => $text,
