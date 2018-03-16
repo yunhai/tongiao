@@ -421,4 +421,83 @@ class Chucsacnhatuhanhcongiaodongtu extends AppModel {
         
         return $chuc_sac_nha_tu_hanh_con_giao_dong_tu;
     }
+    
+    /**
+     * DANH SÁCH TU SĨ CÁC TÔN GIÁO
+     */
+    public function getDataExcelDSTSCTG() {
+        $chucsacnhatuhanhcongiaodongtu = $this->find('all', array(
+            'fields' => array('hovaten', 'gioitinh', 'tructhuocdongtu', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', //'phamsactrongtongiao', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
+            //CHỨC VỤ
+            'hoatdongtongiao_betrendong', 'hoatdongtongiao_betrentinhdong', 'hoatdongtongiao_betrenmiendong', 
+            'hoatdongtongiao_betrencongdoan', 'hoatdongtongiao_thanhvienbantuvantgmxl', 'hoatdongtongiao_thanhvienhoidonglinhmuc', 'hoatdongtongiao_linhhuongcuahoidoan',
+            'noisinh',
+            //CSTG ĐANG HOẠT ĐỘNG
+            'tencosodanghoatdongtongiao', 'tenquocte', 'diachi_so', 'diachi_ap', 'diachi_xa', 'diachi_huyen', 'diachi_tinh',
+            //CHỖ Ở HIỆN NAY
+            'noiohiennay', 'noiohiennay_so', 'noiohiennay_duong', 'noiohiennay_ap', 'noiohiennay_xa', 'noiohiennay_huyen', 'noiohiennay_tinh',
+            'is_add'
+            ),
+            'conditions' => array(
+                'hovaten <>' => '',
+                'is_add' => 1
+            )
+        ));
+        $chuc_sac_nha_tu_hanh_con_giao_dong_tu = array();
+        foreach ($chucsacnhatuhanhcongiaodongtu as $key => $value) {
+            $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'] = '';
+            if ($value['Chucsacnhatuhanhcongiaodongtu']['hoatdongtongiao_betrendong'] == true) {
+                $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'] = 'Bề trên Dòng';
+            }
+            if ($value['Chucsacnhatuhanhcongiaodongtu']['hoatdongtongiao_betrentinhdong'] == true) {
+                $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'] = 'Bề trên tỉnh dòng';
+            }
+            if ($value['Chucsacnhatuhanhcongiaodongtu']['hoatdongtongiao_betrenmiendong'] == true) {
+                $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'] = 'Bề trên miền dòng';
+            }
+            if ($value['Chucsacnhatuhanhcongiaodongtu']['hoatdongtongiao_betrencongdoan'] == true) {
+                $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'] = 'Bề trên Cộng đoàn (Tu viện, đan viện)';
+            }
+            if ($value['Chucsacnhatuhanhcongiaodongtu']['hoatdongtongiao_thanhvienbantuvantgmxl'] == true) {
+                $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'] = 'Thành viên Ban tư vấn TGMXL';
+            }
+            if ($value['Chucsacnhatuhanhcongiaodongtu']['hoatdongtongiao_thanhvienhoidonglinhmuc'] == true) {
+                $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'] = 'Thành viên Hội đồng Linh mục';
+            }
+            if ($value['Chucsacnhatuhanhcongiaodongtu']['hoatdongtongiao_linhhuongcuahoidoan'] == true) {
+                $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'] = 'Linh hướng của hội đoàn';
+            }
+            $choohiennay = array(
+                $value['Chucsacnhatuhanhcongiaodongtu']['noiohiennay'],
+                $value['Chucsacnhatuhanhcongiaodongtu']['noiohiennay_so'],
+                $value['Chucsacnhatuhanhcongiaodongtu']['noiohiennay_duong'],
+                $value['Chucsacnhatuhanhcongiaodongtu']['noiohiennay_ap'],
+                $value['Chucsacnhatuhanhcongiaodongtu']['noiohiennay_xa'],
+                $value['Chucsacnhatuhanhcongiaodongtu']['noiohiennay_huyen'],
+                $value['Chucsacnhatuhanhcongiaodongtu']['noiohiennay_tinh']
+            );
+            $choohiennay = array_filter($choohiennay, 'strlen');
+            $chuc_sac_nha_tu_hanh_cong_giao_trieu[] = array(
+                'hovaten' => $value['Chucsacnhatuhanhcongiaodongtu']['hovaten'],
+                'tengoitheotongiao' => '',
+                'thuoctochuctongiao' => '',
+                'ngaythangnamsinh' => $value['Chucsacnhatuhanhcongiaodongtu']['ngaythangnamsinh'],
+                'gioitinh' => $value['Chucsacnhatuhanhcongiaodongtu']['gioitinh'],
+                'chungminhnhandan' => $value['Chucsacnhatuhanhcongiaodongtu']['chungminhnhandan'],
+                'chucvu' => $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'],
+                'namduocphongchuc' => '',
+                'phamtrat' => '',
+                'namduocphongpham' => '',
+                'trinhdohocvan' => $value['Chucsacnhatuhanhcongiaodongtu']['trinhdohocvan_bangcap'],
+                'trinhdochuyenmon' => '',
+                'trinhdotongiao' => '',
+                'quequan' => $value['Chucsacnhatuhanhcongiaodongtu']['noisinh'],
+                'choohiennay' => implode(",\n", $choohiennay)
+            );
+        }
+        
+        return $chuc_sac_nha_tu_hanh_con_giao_dong_tu;
+    }
 }

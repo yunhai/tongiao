@@ -351,4 +351,68 @@ class Chucsaccaodai extends AppModel {
         
         return $chuc_sac_cao_dai;
     }
+    
+    /**
+     * DANH SÁCH TU SĨ CÁC TÔN GIÁO
+     */
+    public function getDataExcelDSTSCTG() {
+        $chucsaccaodai = $this->find('all', array(
+            'fields' => array('hovaten', 'thanhdanh', 'thuoctochuc', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
+            'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
+            //CHỨC VỤ
+            'chucvuhiennay_phobancaiquan', 'chucvuhiennay_caiquan', 'chucvuhiennay_thanhvienbddct',
+            //CSTG ĐANG HOẠT ĐỘNG
+            'hoatdongtongiaotai', 'hoatdongtongiaotai_diachi_so', 'hoatdongtongiaotai_diachi_ap', 'hoatdongtongiaotai_diachi_xa', 'hoatdongtongiaotai_diachi_huyen', 'hoatdongtongiaotai_diachi_tinh',
+            //CHỖ Ở HIỆN NAY
+            'noiohiennay', 'noiohiennay_so', 'noiohiennay_duong', 'noiohiennay_ap', 'noiohiennay_xa', 'noiohiennay_huyen', 'noiohiennay_tinh',
+            'is_add'
+            ),
+            'conditions' => array(
+                'hovaten <>' => '',
+                'is_add' => 1
+            )
+        ));
+        $chuc_sac_cao_dai = $cosotongiaodanghoatdong = array();
+        foreach ($chucsaccaodai as $key => $value) {
+            $value['Chucsaccaodai']['chucvu'] = '';
+            if (!empty($value['Chucsaccaodai']['chucvuhiennay_phobancaiquan'])) {
+                $value['Chucsaccaodai']['chucvu'] = $value['Chucsaccaodai']['chucvuhiennay_phobancaiquan'];
+            } elseif (!empty($value['Chucsaccaodai']['chucvuhiennay_caiquan'])) {
+                $value['Chucsaccaodai']['chucvu'] = $value['Chucsaccaodai']['chucvuhiennay_caiquan'];
+            } else {
+                $value['Chucsaccaodai']['chucvu'] = $value['Chucsaccaodai']['chucvuhiennay_thanhvienbddct'];
+            }
+            $choohiennay = array(
+                $value['Chucsaccaodai']['noiohiennay'],
+                $value['Chucsaccaodai']['noiohiennay_so'],
+                $value['Chucsaccaodai']['noiohiennay_duong'],
+                $value['Chucsaccaodai']['noiohiennay_ap'],
+                $value['Chucsaccaodai']['noiohiennay_xa'],
+                $value['Chucsaccaodai']['noiohiennay_huyen'],
+                $value['Chucsaccaodai']['noiohiennay_tinh']
+            );
+            $choohiennay = array_filter($choohiennay, 'strlen');
+            $chuc_sac_cao_dai[] = array(
+                'hovaten' => $value['Chucsaccaodai']['hovaten'],
+                'tengoitheotongiao' => $value['Chucsaccaodai']['thanhdanh'],
+                'thuoctochuctongiao' => $value['Chucsaccaodai']['thuoctochuc'],
+                'ngaythangnamsinh' => $value['Chucsaccaodai']['ngaythangnamsinh'],
+                'gioitinh' => '',
+                'chungminhnhandan' => $value['Chucsaccaodai']['chungminhnhandan'],
+                'chucvu' => $value['Chucsaccaodai']['chucvu'],
+                'namduocphongchuc' => '',
+                'phamtrat' => '',
+                'namduocphongpham' => '',
+                'trinhdohocvan' => $value['Chucsaccaodai']['trinhdohocvan_bangcap'],
+                'trinhdochuyenmon' => '',
+                'trinhdotongiao' => '',
+                'quequan' => $value['Chucsaccaodai']['noisinh'],
+                'choohiennay' => implode(",\n", $choohiennay)
+            );
+        }
+        
+        return $chuc_sac_cao_dai;
+    }
 }

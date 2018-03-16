@@ -3178,6 +3178,136 @@ class ActionController extends AppController
      */
     protected function __getType23Data()
     {
+        $array = array(
+            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao', 
+            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Huynhtruonggiadinhphattu', 
+            'Nguoihoatdongtinnguongchuyennghiep', 'Chucviechoigiao'
+        );
+        App::import('Model', $array);
+        foreach ($array as $element) {
+            $this->$element = new $element();
+        }
+        $chuc_sac_tin_lanh = $this->Chucsactinlanh->getDataExcelDSTSCTG();
+        $chuc_sac_nha_tu_hanh_cong_giao_trieu = $this->Chucsacnhatuhanhconggiaotrieu->getDataExcelDSTSCTG();
+        $chuc_sac_nha_tu_hanh_con_giao_dong_tu = $this->Chucsacnhatuhanhcongiaodongtu->getDataExcelDSTSCTG();
+        $chuc_viec_phat_hoahao = $this->Chucviecphathoahao->getDataExcelDSTSCTG();
+        $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam = $this->Chucviectinhdocusiphathoivietnam->getDataExcelDSTSCTG();
+        $chuc_sac_cao_dai = $this->Chucsaccaodai->getDataExcelDSTSCTG();
+        $chuc_sac_nha_tu_hanh_phat_giao = $this->Chucsacnhatuhanhphatgiao->getDataExcelDSTSCTG();
+        $huynh_truong_gia_dinh_phat_tu = $this->Huynhtruonggiadinhphattu->getDataExcelDSTSCTG();
+        $nguoi_hoat_dong_tin_nguong_chuyen_nghiep = $this->Nguoihoatdongtinnguongchuyennghiep->getDataExcelDSTSCTG();
+        $chuc_viec_hoi_giao = $this->Chucviechoigiao->getDataExcelDSTSCTG();
+        $data = array_merge(
+            $chuc_sac_tin_lanh,
+            $chuc_sac_nha_tu_hanh_cong_giao_trieu,
+            $chuc_sac_nha_tu_hanh_con_giao_dong_tu,
+            $chuc_viec_phat_hoahao,
+            $chuc_sac_cao_dai,
+            $chuc_sac_nha_tu_hanh_phat_giao,
+            $huynh_truong_gia_dinh_phat_tu,
+            $nguoi_hoat_dong_tin_nguong_chuyen_nghiep,
+            $chuc_viec_hoi_giao
+        );
+        //exit;
+        $this->__createTemplate23($data);
+    }
+    
+    public function __createTemplate23($data)
+    {
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template23.xls";
+        //$filename = "template24";
+        $filename = "{$this->_type_text[23]}";
+        $this->Excel->load($source);
+        //$this->{"__createTemplate{$type}"}();
+        //$this->Excel->save($filename);
+        
+        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 1;
+        for ($c = 'A'; $c <= 'Q'; $c++) {
+            $colIndexes[$index] = $c;
+            $index ++;
+            /*if ($c == $maxCols) {
+                break;
+            }*/
+        }
+        /*print "<pre>";
+        print_r($data);
+        print "</pre>";
+        print "<pre>";
+        print_r($colIndexes);
+        print "</pre>";
+        exit;*/
+        $i = 1;
+        $r = 7;
+        $gioitinh = unserialize(GIOI_TINH);
+        foreach ($data as $key => $value) {
+            $gioi_tinh = isset($gioitinh[$value['gioitinh']]) ? $gioitinh[$value['gioitinh']] : '';
+            foreach ($colIndexes as $k => $c) {
+                switch ($c) {
+                    case "A":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
+                        break;
+                    case "B":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['hovaten']);
+                        break;
+                    case "C":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tengoitheotongiao']);
+                        break;
+                    case "D":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thuoctochuctongiao']);
+                        break;
+                    case "E":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ngaythangnamsinh']);
+                        break;
+                    case "F":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($gioi_tinh);
+                        break;
+                    case "G":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chungminhnhandan']);
+                        break;
+                    case "H":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chucvu']);
+                        break;
+                    case "I":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongchuc']);
+                        break;
+                    case "J":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamtrat']);
+                        break;
+                    case "K":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongpham']);
+                        break;
+                    case "L":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdohocvan']);
+                        break;
+                    case "M":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdochuyenmon']);
+                        break;
+                    case "N":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdotongiao']);
+                        break;
+                    case "O":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['quequan']);
+                        break;
+                    case "P":
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['choohiennay']);
+                        break;
+                    case "Q":
+                        //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ghichu']);
+                        break;
+                    default:
+                        echo "DANH SACH TU SI";
+                }
+            }
+            $i++;
+            $r++;
+        }
+        return $this->Excel->save($filename);
     }
     
     /**

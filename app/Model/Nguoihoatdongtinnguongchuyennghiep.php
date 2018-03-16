@@ -176,4 +176,60 @@ class Nguoihoatdongtinnguongchuyennghiep extends AppModel {
         
         return $nguoi_hoat_dong_tin_nguong_chuyen_nghiep;
     }
+    
+    /**
+     * DANH SÁCH TU SĨ CÁC TÔN GIÁO
+     */
+    public function getDataExcelDSTSCTG() {
+        $nguoihoatdongtinnguongchuyennghiep = $this->find('all', array(
+            'fields' => array('hovaten', 'tengoitheotinnguong', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
+            'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
+            //CHỨC VỤ
+            'chucvu',
+            //CSTG ĐANG HOẠT ĐỘNG
+            'tencosotinnguongdanghoatdong',
+            //CHỖ Ở HIỆN NAY
+            'noiohiennay', 'noiohiennay_sonha', 'noiohiennay_duong', 'noiohiennay_ap', 'noiohiennay_xa', 'noiohiennay_huyen', 'noiohiennay_tinh',
+            'is_add'
+            ),
+            'conditions' => array(
+                'hovaten <>' => '',
+                'is_add' => 1
+            )
+        ));
+        $nguoi_hoat_dong_tin_nguong_chuyen_nghiep = array();
+        foreach ($nguoihoatdongtinnguongchuyennghiep as $key => $value) {
+            $choohiennay = array(
+                $value['Nguoihoatdongtinnguongchuyennghiep']['noiohiennay'],
+                $value['Nguoihoatdongtinnguongchuyennghiep']['noiohiennay_sonha'],
+                $value['Nguoihoatdongtinnguongchuyennghiep']['noiohiennay_duong'],
+                $value['Nguoihoatdongtinnguongchuyennghiep']['noiohiennay_ap'],
+                $value['Nguoihoatdongtinnguongchuyennghiep']['noiohiennay_xa'],
+                $value['Nguoihoatdongtinnguongchuyennghiep']['noiohiennay_huyen'],
+                $value['Nguoihoatdongtinnguongchuyennghiep']['noiohiennay_tinh']
+            );
+            $choohiennay = array_filter($choohiennay, 'strlen');
+            $nguoi_hoat_dong_tin_nguong_chuyen_nghiep[] = array(
+                'hovaten' => $value['Nguoihoatdongtinnguongchuyennghiep']['hovaten'],
+                'tengoitheotongiao' => $value['Nguoihoatdongtinnguongchuyennghiep']['tengoitheotinnguong'],
+                'thuoctochuctongiao' => $value['Nguoihoatdongtinnguongchuyennghiep']['tencosotinnguongdanghoatdong'],
+                'ngaythangnamsinh' => $value['Nguoihoatdongtinnguongchuyennghiep']['ngaythangnamsinh'],
+                'gioitinh' => '',
+                'chungminhnhandan' => $value['Nguoihoatdongtinnguongchuyennghiep']['chungminhnhandan'],
+                'chucvu' => $value['Nguoihoatdongtinnguongchuyennghiep']['chucvu'],
+                'namduocphongchuc' => '',
+                'phamtrat' => '',
+                'namduocphongpham' => '',
+                'trinhdohocvan' => $value['Nguoihoatdongtinnguongchuyennghiep']['trinhdohocvan_bangcap'],
+                'trinhdochuyenmon' => '',
+                'trinhdotongiao' => '',
+                'quequan' => $value['Nguoihoatdongtinnguongchuyennghiep']['noisinh'],
+                'choohiennay' => implode(",\n", $choohiennay)
+            );
+        }
+        
+        return $nguoi_hoat_dong_tin_nguong_chuyen_nghiep;
+    }
 }

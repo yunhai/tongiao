@@ -185,4 +185,60 @@ class Huynhtruonggiadinhphattu extends AppModel {
         
         return $huynh_truong_gia_dinh_phat_tu;
     }
+    
+    /**
+     * DANH SÁCH TU SĨ CÁC TÔN GIÁO
+     */
+    public function getDataExcelDSTSCTG() {
+        $huynhtruonggiadinhphattu = $this->find('all', array(
+            'fields' => array('hovaten', 'phapdanh', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
+            'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
+            //CHỨC VỤ
+            'chucvutrongdaohiennay',
+            //CSTG ĐANG HOẠT ĐỘNG
+            'dangsinhhoattaigdpt', 'thuoctuvien', 'diachi_so', 'diachi_ap', 'diachi_xa', 'diachi_huyen', 'diachi_tinh',
+            //CHỖ Ở HIỆN NAY
+            'noiohiennay', 'noiohiennay_so', 'noiohiennay_duong', 'noiohiennay_ap', 'noiohiennay_xa', 'noiohiennay_huyen', 'noiohiennay_tinh',
+            'is_add'
+            ),
+            'conditions' => array(
+                'hovaten <>' => '',
+                'is_add' => 1
+            )
+        ));
+        $huynh_truong_gia_dinh_phat_tu = $cosotongiaodanghoatdong = array();
+        foreach ($huynhtruonggiadinhphattu as $key => $value) {
+            $choohiennay = array(
+                $value['Huynhtruonggiadinhphattu']['noiohiennay'],
+                $value['Huynhtruonggiadinhphattu']['noiohiennay_so'],
+                $value['Huynhtruonggiadinhphattu']['noiohiennay_duong'],
+                $value['Huynhtruonggiadinhphattu']['noiohiennay_ap'],
+                $value['Huynhtruonggiadinhphattu']['noiohiennay_xa'],
+                $value['Huynhtruonggiadinhphattu']['noiohiennay_huyen'],
+                $value['Huynhtruonggiadinhphattu']['noiohiennay_tinh']
+            );
+            $choohiennay = array_filter($choohiennay, 'strlen');
+            $huynh_truong_gia_dinh_phat_tu[] = array(
+                'hovaten' => $value['Huynhtruonggiadinhphattu']['hovaten'],
+                'tengoitheotongiao' => $value['Huynhtruonggiadinhphattu']['phapdanh'],
+                'thuoctochuctongiao' => $value['Huynhtruonggiadinhphattu']['thuoctuvien'],
+                'ngaythangnamsinh' => $value['Huynhtruonggiadinhphattu']['ngaythangnamsinh'],
+                'gioitinh' => '',
+                'chungminhnhandan' => $value['Huynhtruonggiadinhphattu']['chungminhnhandan'],
+                'chucvu' => $value['Huynhtruonggiadinhphattu']['chucvutrongdaohiennay'],
+                'namduocphongchuc' => '',
+                'phamtrat' => '',
+                'namduocphongpham' => '',
+                'trinhdohocvan' => $value['Huynhtruonggiadinhphattu']['trinhdohocvan_bangcap'],
+                'trinhdochuyenmon' => '',
+                'trinhdotongiao' => '',
+                'quequan' => $value['Huynhtruonggiadinhphattu']['noisinh'],
+                'choohiennay' => implode(",\n", $choohiennay)
+            );
+        }
+        
+        return $huynh_truong_gia_dinh_phat_tu;
+    }
 }

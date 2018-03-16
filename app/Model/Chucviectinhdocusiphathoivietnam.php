@@ -362,4 +362,73 @@ class Chucviectinhdocusiphathoivietnam extends AppModel {
         
         return $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam;
     }
+    
+    /**
+     * DANH SÁCH TU SĨ CÁC TÔN GIÁO
+     */
+    public function getDataExcelDSTSCTG() {
+        $chucviectinhdocusiphathoivietnam = $this->find('all', array(
+            'fields' => array('hovaten', 'tengoitheotongiao', 'taicoso', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
+            'noisinh', 
+            //HỌC VẤN
+            'trinhdohocvan_bangcap',
+            //CHỨC VỤ
+            'phobanytephuocthien', 'truongbanytephuocthien', 'thanhvienbantrisucaptinh', 'thanhvienbantrisucaptrunguong',
+            //CSTG ĐANG HOẠT ĐỘNG
+            'hoatdongtongiaotai', 'hoatdongtongiaotai_diachi_so', 'hoatdongtongiaotai_diachi_ap', 'hoatdongtongiaotai_diachi_xa', 'hoatdongtongiaotai_diachi_huyen', 'hoatdongtongiaotai_diachi_tinh',
+            //CHỖ Ở HIỆN NAY
+            'noiohiennay', 'noiohiennay_so', 'noiohiennay_duong', 'noiohiennay_ap', 'noiohiennay_xa', 'noiohiennay_huyen', 'noiohiennay_tinh',
+            'is_add'
+            ),
+            'conditions' => array(
+                'hovaten <>' => '',
+                'is_add' => 1
+            )
+        ));
+        $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam = $cosotongiaodanghoatdong = array();
+        foreach ($chucviectinhdocusiphathoivietnam as $key => $value) {
+            $value['Chucviectinhdocusiphathoivietnam']['chucvu'] = '';
+            if ($value['Chucviectinhdocusiphathoivietnam']['phobanytephuocthien'] == true) {
+                $value['Chucviectinhdocusiphathoivietnam']['chucvu'] = 'Phó Ban Y tế Phước thiện';
+            }
+            if ($value['Chucviectinhdocusiphathoivietnam']['truongbanytephuocthien'] == true) {
+                $value['Chucviectinhdocusiphathoivietnam']['chucvu'] = 'Trưởng Ban Y tế Phước thiện';
+            }
+            if ($value['Chucviectinhdocusiphathoivietnam']['thanhvienbantrisucaptinh'] == true) {
+                $value['Chucviectinhdocusiphathoivietnam']['chucvu'] = 'Thành viên Ban Trị sự cấp tỉnh';
+            }
+            if ($value['Chucviectinhdocusiphathoivietnam']['thanhvienbantrisucaptrunguong'] == true) {
+                $value['Chucviectinhdocusiphathoivietnam']['chucvu'] = 'Thành viên Ban Trị sự Trưng ương';
+            }
+            $choohiennay = array(
+                $value['Chucviectinhdocusiphathoivietnam']['noiohiennay'],
+                $value['Chucviectinhdocusiphathoivietnam']['noiohiennay_so'],
+                $value['Chucviectinhdocusiphathoivietnam']['noiohiennay_duong'],
+                $value['Chucviectinhdocusiphathoivietnam']['noiohiennay_ap'],
+                $value['Chucviectinhdocusiphathoivietnam']['noiohiennay_xa'],
+                $value['Chucviectinhdocusiphathoivietnam']['noiohiennay_huyen'],
+                $value['Chucviectinhdocusiphathoivietnam']['noiohiennay_tinh']
+            );
+            $choohiennay = array_filter($choohiennay, 'strlen');
+            $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam[] = array(
+                'hovaten' => $value['Chucviectinhdocusiphathoivietnam']['hovaten'],
+                'tengoitheotongiao' => $value['Chucviectinhdocusiphathoivietnam']['tengoitheotongiao'],
+                'thuoctochuctongiao' => $value['Chucviectinhdocusiphathoivietnam']['taicoso'],
+                'ngaythangnamsinh' => $value['Chucviectinhdocusiphathoivietnam']['ngaythangnamsinh'],
+                'gioitinh' => '',
+                'chungminhnhandan' => $value['Chucviectinhdocusiphathoivietnam']['chungminhnhandan'],
+                'chucvu' => $value['Chucviectinhdocusiphathoivietnam']['chucvu'],
+                'namduocphongchuc' => '',
+                'phamtrat' => '',
+                'namduocphongpham' => '',
+                'trinhdohocvan' => $value['Chucviectinhdocusiphathoivietnam']['trinhdohocvan_bangcap'],
+                'trinhdochuyenmon' => '',
+                'trinhdotongiao' => '',
+                'quequan' => $value['Chucviectinhdocusiphathoivietnam']['noisinh'],
+                'choohiennay' => implode(",\n", $choohiennay)
+            );
+        }
+        
+        return $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam;
+    }
 }
