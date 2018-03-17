@@ -48,7 +48,7 @@ class ActionController extends AppController
             BANG_TONG_HOP_TIN_DO => 'BANG TONG HOP TIN DO',
             DS_CSTT => 'ds cstt',
             DSCS_BAO_TRO_XA_HOI => 'DSCS BAO TRO XA HOI',
-            
+
             DS_CS_THAM_GIA_CT_XH_CAP_XA => 'DS CS THAM GIA CT-XH CAP XA',
             DS_CS_THAM_GIA_CT_XH_CAP_HUYEN => 'DS CS THAM GIA CT-XH CAP HUYEN',
             DS_CS_THAM_GIA_CT_XH_CAP_TINH => 'DS CS THAM GIA CT-XH CAP TINH',
@@ -980,14 +980,14 @@ class ActionController extends AppController
         print_r('</pre>');
         exit;
     }
-    
+
     /**
      * TONG HOP DI TICH
      */
     protected function __getType4Data()
     {
     }
-    
+
     /**
      * TONG HOP CSTT XAY DUNG
      */
@@ -1022,51 +1022,29 @@ class ActionController extends AppController
             $data["tong{$i}"] = $sum;
             $i++;
         }
-        
+
         return $data;
     }
-    
+
     /**
      * BANG TONG HOP TIN DO
      */
     protected function __getType7Data()
     {
     }
-    
+
     /**
      * ds cstt
      */
     protected function __getType8Data()
     {
     }
-    
+
     /**
      * DSCS BAO TRO XA HOI
      */
     protected function __getType9Data()
     {
-    }
-
-    public function pandog()
-    {
-        $component = $this->Components->load('Cosotongiao');
-        $data = $component->export();
-
-        $result = $data;
-        $total = [];
-        $i = 2;
-        while ($i <= 29) {
-            $sum = 0;
-            foreach ($result as $key => $value) {
-                $sum += $value[$i];
-            }
-            $total["tong{$i}"] = $sum;
-            $i++;
-        }
-        print_r('<pre>');
-        print_r($total);
-        print_r('</pre>');
-        exit;
     }
 
     public function formatData()
@@ -1672,12 +1650,13 @@ class ActionController extends AppController
 
         return isset($province[$code]) ? $province[$code] : '';
     }
-    
+
     /*====================CHỨC SẮC TÔN GIÁO====================*/
+
     /**
      * DS CS THAM GIA CT-XH CAP XA
      * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP XÃ
-     * 
+     *
      * + Cách lấy dữ liệu
      * 1. Bảng chucsactinlanh
      * - lấy dữ liệu thõa điều kiện sau:
@@ -1688,7 +1667,7 @@ class ActionController extends AppController
      * cột hoilienhiepthanhnien_capxa = true hoặc
      * cột hoilienhiepphunu_capxa = true hoặc
      * cột cactochuckhac_capxa = true
-     * 
+     *
      * 2. Bảng chucsacnhatuhanhconggiaotrieu
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
@@ -1698,7 +1677,7 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
-     * 
+     *
      * 3. Bảng chucsacnhatuhanhcongiaodongtu
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
@@ -1709,7 +1688,7 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_ubbdkcg_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
-     * 
+     *
      * 4. Bảng chucviecphathoahao
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_capxa = true hoặc
@@ -1719,7 +1698,7 @@ class ActionController extends AppController
      * cột hoilienhiepphunu_capxa = true hoặc
      * cột doanthanhnien_capxa = true hoặc
      * cột tochuckhac_capxa = true
-     * 
+     *
      * 5. Bảng chucviectinhdocusiphathoivietnam
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_capxa = true hoặc
@@ -1729,7 +1708,7 @@ class ActionController extends AppController
      * cột hoilienhiepphunu_capxa = true hoặc
      * cột doanthanhnien_capxa = true hoặc
      * cột tochuckhac_capxa = true
-     * 
+     *
      * 6. Bảng chucsaccaodai
      * - lấy dữ liệu thõa điều kiện sau:
      * cột thamgiacactcctxh_hoidongnhandan_capxa = true hoặc
@@ -1739,7 +1718,7 @@ class ActionController extends AppController
      * cột thamgiacactcctxh_hoilienhiepphunu_capxa = true hoặc
      * cột thamgiacactcctxh_doanthanhnien_capxa = true hoặc
      * cột thamgiacactcctxh_tochuckhac_capxa = true
-     * 
+     *
      * 7. Bảng chucsacnhatuhanhphatgiao
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
@@ -1749,7 +1728,7 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
-     * 
+     *
      * 8. Bảng huynhtruonggiadinhphattu
      * - lấy dữ liệu thõa điều kiện sau:
      * cột thamgia_hoidongnhandan_capxa = true hoặc
@@ -1759,7 +1738,7 @@ class ActionController extends AppController
      * cột thamgia_hoilienhiepthanhnien_capxa = true hoặc
      * cột thamgia_hoilienhiepphunu_capxa = true hoặc
      * cột thamgia_cactochuckhac_capxa = true
-     * 
+     *
      * 9. Bảng nguoihoatdongtinnguongchuyennghiep
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_capxa = true hoặc
@@ -1769,7 +1748,7 @@ class ActionController extends AppController
      * cột hoilienhiepthanhnien_capxa = true hoặc
      * cột hoilienhiepphunu_capxa = true hoặc
      * cột cactochuckhac_capxa = true
-     * 
+     *
      * 10. Bảng chucviechoigiao
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_capxa = true hoặc
@@ -1783,8 +1762,8 @@ class ActionController extends AppController
     protected function __getType11Data()
     {
         $array = array(
-            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao', 
-            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Huynhtruonggiadinhphattu', 
+            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao',
+            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Huynhtruonggiadinhphattu',
             'Nguoihoatdongtinnguongchuyennghiep', 'Chucviechoigiao'
         );
         App::import('Model', $array);
@@ -1802,25 +1781,32 @@ class ActionController extends AppController
         $nguoi_hoat_dong_tin_nguong_chuyen_nghiep = $this->Nguoihoatdongtinnguongchuyennghiep->getDataExcelDSCSTHAMGIACTXHCAPXA();
         $chuc_viec_hoi_giao = $this->Chucviechoigiao->getDataExcelDSCSTHAMGIACTXHCAPXA();
         $data = array_merge(
-            $chuc_sac_tin_lanh, $chuc_sac_nha_tu_hanh_cong_giao_trieu, $chuc_sac_nha_tu_hanh_con_giao_dong_tu,
-            $chuc_viec_phat_hoahao, $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam, $chuc_sac_cao_dai,
-            $chuc_sac_nha_tu_hanh_phat_giao, $huynh_truong_gia_dinh_phat_tu, $nguoi_hoat_dong_tin_nguong_chuyen_nghiep, $chuc_viec_hoi_giao
+            $chuc_sac_tin_lanh,
+            $chuc_sac_nha_tu_hanh_cong_giao_trieu,
+            $chuc_sac_nha_tu_hanh_con_giao_dong_tu,
+            $chuc_viec_phat_hoahao,
+            $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam,
+            $chuc_sac_cao_dai,
+            $chuc_sac_nha_tu_hanh_phat_giao,
+            $huynh_truong_gia_dinh_phat_tu,
+            $nguoi_hoat_dong_tin_nguong_chuyen_nghiep,
+            $chuc_viec_hoi_giao
         );
         //exit;
         $this->__createTemplate11($data);
     }
-    
+
     public function __createTemplate11($data)
     {
         $this->autoLayout = false;
         $this->autoRender = false;
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template11.xls";
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template11.xls';
         //$filename = "template17";
         $filename = "{$this->_type_text[11]}";
         $this->Excel->load($source);
         //$this->{"__createTemplate{$type}"}();
         //$this->Excel->save($filename);
-        
+
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
@@ -1847,77 +1833,78 @@ class ActionController extends AppController
             $gioi_tinh = isset($gioitinh[$value['gioitinh']]) ? $gioitinh[$value['gioitinh']] : '';
             foreach ($colIndexes as $k => $c) {
                 switch ($c) {
-                    case "A":
+                    case 'A':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
                         break;
-                    case "B":
+                    case 'B':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['hovaten']);
                         break;
-                    case "C":
+                    case 'C':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tengoitheotongiao']);
                         break;
-                    case "D":
+                    case 'D':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thuoctochuctongiao']);
                         break;
-                    case "E":
+                    case 'E':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['dantoc']);
                         break;
-                    case "F":
+                    case 'F':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ngaythangnamsinh']);
                         break;
-                    case "G":
+                    case 'G':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($gioi_tinh);
                         break;
-                    case "H":
+                    case 'H':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chungminhnhandan']);
                         break;
-                    case "I":
+                    case 'I':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chucvu']);
                         break;
-                    case "J":
+                    case 'J':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongchuc']);
                         break;
-                    case "K":
+                    case 'K':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamtrat']);
                         break;
-                    case "L":
+                    case 'L':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongpham']);
                         break;
-                    case "M":
+                    case 'M':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdohocvan']);
                         break;
-                    case "N":
+                    case 'N':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdochuyenmon']);
                         break;
-                    case "O":
+                    case 'O':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdotongiao']);
                         break;
-                    case "P":
+                    case 'P':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thamgiatochucchinhtrixahoi']);
                         break;
-                    case "Q":
+                    case 'Q':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['quequan']);
                         break;
-                    case "R":
+                    case 'R':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
-                    case "S":
+                    case 'S':
                         //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['']);
                         break;
                     default:
-                        echo "DS CS THAM GIA CT-XH CAP XA";
+                        echo 'DS CS THAM GIA CT-XH CAP XA';
                 }
             }
             $i++;
             $r++;
         }
+
         return $this->Excel->save($filename);
     }
-    
+
     /**
      * DS CS THAM GIA CT-XH CAP HUYEN
      * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP HUYỆN
-     * 
+     *
      * 1. Bảng chucsactinlanh
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_caphuyen = true hoặc
@@ -1927,7 +1914,7 @@ class ActionController extends AppController
      * cột hoilienhiepthanhnien_caphuyen = true hoặc
      * cột hoilienhiepphunu_caphuyen = true hoặc
      * cột cactochuckhac_caphuyen = true
-     * 
+     *
      * 2. Bảng chucsacnhatuhanhconggiaotrieu
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
@@ -1937,7 +1924,7 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
-     * 
+     *
      * 3. Bảng chucsacnhatuhanhcongiaodongtu
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
@@ -1947,7 +1934,7 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
-     * 
+     *
      * 4. Bảng chucviecphathoahao
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_caphuyen = true hoặc
@@ -1957,7 +1944,7 @@ class ActionController extends AppController
      * cột hoilienhiepphunu_caphuyen = true hoặc
      * cột doanthanhnien_caphuyen = true hoặc
      * cột tochuckhac_caphuyen = true
-     * 
+     *
      * 5. Bảng chucviectinhdocusiphathoivietnam
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_caphuyen = true hoặc
@@ -1967,7 +1954,7 @@ class ActionController extends AppController
      * cột hoilienhiepphunu_caphuyen = true hoặc
      * cột doanthanhnien_caphuyen = true hoặc
      * cột tochuckhac_caphuyen = true
-     * 
+     *
      * 6. Bảng chucsaccaodai
      * - lấy dữ liệu thõa điều kiện sau:
      * cột thamgiacactcctxh_hoidongnhandan_caphuyen = true hoặc
@@ -1977,7 +1964,7 @@ class ActionController extends AppController
      * cột thamgiacactcctxh_hoilienhiepphunu_caphuyen = true hoặc
      * cột thamgiacactcctxh_doanthanhnien_caphuyen = true hoặc
      * cột thamgiacactcctxh_tochuckhac_caphuyen = true
-     * 
+     *
      * 7. Bảng chucsacnhatuhanhphatgiao
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
@@ -1987,7 +1974,7 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
-     * 
+     *
      * 8. Bảng huynhtruonggiadinhphattu
      * - lấy dữ liệu thõa điều kiện sau:
      * cột thamgia_hoidongnhandan_caphuyen = true hoặc
@@ -1997,7 +1984,7 @@ class ActionController extends AppController
      * cột thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
      * cột thamgia_hoilienhiepphunu_caphuyen = true hoặc
      * cột thamgia_cactochuckhac_caphuyen = true
-     * 
+     *
      * 9. Bảng nguoihoatdongtinnguongchuyennghiep
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_caphuyen = true hoặc
@@ -2007,7 +1994,7 @@ class ActionController extends AppController
      * cột hoilienhiepthanhnien_caphuyen = true hoặc
      * cột hoilienhiepphunu_caphuyen = true hoặc
      * cột cactochuckhac_caphuyen = true
-     * 
+     *
      * 10. Bảng chucviechoigiao
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_caphuyen = true hoặc
@@ -2021,8 +2008,8 @@ class ActionController extends AppController
     protected function __getType12Data()
     {
         $array = array(
-            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao', 
-            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Huynhtruonggiadinhphattu', 
+            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao',
+            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Huynhtruonggiadinhphattu',
             'Nguoihoatdongtinnguongchuyennghiep', 'Chucviechoigiao'
         );
         App::import('Model', $array);
@@ -2040,25 +2027,32 @@ class ActionController extends AppController
         $nguoi_hoat_dong_tin_nguong_chuyen_nghiep = $this->Nguoihoatdongtinnguongchuyennghiep->getDataExcelDSCSTHAMGIACTXHCAPHUYEN();
         $chuc_viec_hoi_giao = $this->Chucviechoigiao->getDataExcelDSCSTHAMGIACTXHCAPHUYEN();
         $data = array_merge(
-            $chuc_sac_tin_lanh, $chuc_sac_nha_tu_hanh_cong_giao_trieu, $chuc_sac_nha_tu_hanh_con_giao_dong_tu,
-            $chuc_viec_phat_hoahao, $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam, $chuc_sac_cao_dai,
-            $chuc_sac_nha_tu_hanh_phat_giao, $huynh_truong_gia_dinh_phat_tu, $nguoi_hoat_dong_tin_nguong_chuyen_nghiep, $chuc_viec_hoi_giao
+            $chuc_sac_tin_lanh,
+            $chuc_sac_nha_tu_hanh_cong_giao_trieu,
+            $chuc_sac_nha_tu_hanh_con_giao_dong_tu,
+            $chuc_viec_phat_hoahao,
+            $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam,
+            $chuc_sac_cao_dai,
+            $chuc_sac_nha_tu_hanh_phat_giao,
+            $huynh_truong_gia_dinh_phat_tu,
+            $nguoi_hoat_dong_tin_nguong_chuyen_nghiep,
+            $chuc_viec_hoi_giao
         );
         //exit;
         $this->__createTemplate12($data);
     }
-    
+
     public function __createTemplate12($data)
     {
         $this->autoLayout = false;
         $this->autoRender = false;
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template12.xls";
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template12.xls';
         //$filename = "template17";
         $filename = "{$this->_type_text[12]}";
         $this->Excel->load($source);
         //$this->{"__createTemplate{$type}"}();
         //$this->Excel->save($filename);
-        
+
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
@@ -2085,77 +2079,78 @@ class ActionController extends AppController
             $gioi_tinh = isset($gioitinh[$value['gioitinh']]) ? $gioitinh[$value['gioitinh']] : '';
             foreach ($colIndexes as $k => $c) {
                 switch ($c) {
-                    case "A":
+                    case 'A':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
                         break;
-                    case "B":
+                    case 'B':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['hovaten']);
                         break;
-                    case "C":
+                    case 'C':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tengoitheotongiao']);
                         break;
-                    case "D":
+                    case 'D':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thuoctochuctongiao']);
                         break;
-                    case "E":
+                    case 'E':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['dantoc']);
                         break;
-                    case "F":
+                    case 'F':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ngaythangnamsinh']);
                         break;
-                    case "G":
+                    case 'G':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($gioi_tinh);
                         break;
-                    case "H":
+                    case 'H':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chungminhnhandan']);
                         break;
-                    case "I":
+                    case 'I':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chucvu']);
                         break;
-                    case "J":
+                    case 'J':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongchuc']);
                         break;
-                    case "K":
+                    case 'K':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamtrat']);
                         break;
-                    case "L":
+                    case 'L':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongpham']);
                         break;
-                    case "M":
+                    case 'M':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdohocvan']);
                         break;
-                    case "N":
+                    case 'N':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdochuyenmon']);
                         break;
-                    case "O":
+                    case 'O':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdotongiao']);
                         break;
-                    case "P":
+                    case 'P':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thamgiatochucchinhtrixahoi']);
                         break;
-                    case "Q":
+                    case 'Q':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['quequan']);
                         break;
-                    case "R":
+                    case 'R':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
-                    case "S":
+                    case 'S':
                         //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['']);
                         break;
                     default:
-                        echo "DS CS THAM GIA CT-XH CAP HUYEN";
+                        echo 'DS CS THAM GIA CT-XH CAP HUYEN';
                 }
             }
             $i++;
             $r++;
         }
+
         return $this->Excel->save($filename);
     }
-    
+
     /**
      * DS CS THAM GIA CT-XH CAP TINH
      * DANH SÁCH CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP TỈNH
-     * 
+     *
      * 1. Bảng chucsactinlanh
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_captinh = true hoặc
@@ -2165,7 +2160,7 @@ class ActionController extends AppController
      * cột hoilienhiepthanhnien_captinh = true hoặc
      * cột hoilienhiepphunu_captinh = true hoặc
      * cột cactochuckhac_captinh = true
-     * 
+     *
      * 2. Bảng chucsacnhatuhanhconggiaotrieu
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
@@ -2175,7 +2170,7 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
-     * 
+     *
      * 3. Bảng chucsacnhatuhanhcongiaodongtu
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
@@ -2185,7 +2180,7 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
-     * 
+     *
      * 4. Bảng chucviecphathoahao
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_captinh = true hoặc
@@ -2195,7 +2190,7 @@ class ActionController extends AppController
      * cột hoilienhiepphunu_captinh = true hoặc
      * cột doanthanhnien_captinh = true hoặc
      * cột tochuckhac_captinh = true
-     * 
+     *
      * 5. Bảng chucviectinhdocusiphathoivietnam
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_captinh = true hoặc
@@ -2205,7 +2200,7 @@ class ActionController extends AppController
      * cột hoilienhiepphunu_captinh = true hoặc
      * cột doanthanhnien_captinh = true hoặc
      * cột tochuckhac_captinh = true
-     * 
+     *
      * 6. Bảng chucsaccaodai
      * - lấy dữ liệu thõa điều kiện sau:
      * cột thamgiacactcctxh_hoidongnhandan_captinh = true hoặc
@@ -2215,7 +2210,7 @@ class ActionController extends AppController
      * cột thamgiacactcctxh_hoilienhiepphunu_captinh = true hoặc
      * cột thamgiacactcctxh_doanthanhnien_captinh = true hoặc
      * cột thamgiacactcctxh_tochuckhac_captinh = true
-     * 
+     *
      * 7. Bảng chucsacnhatuhanhphatgiao
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
@@ -2225,7 +2220,7 @@ class ActionController extends AppController
      * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
      * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
-     * 
+     *
      * 8. Bảng huynhtruonggiadinhphattu
      * - lấy dữ liệu thõa điều kiện sau:
      * cột thamgia_hoidongnhandan_captinh = true hoặc
@@ -2235,7 +2230,7 @@ class ActionController extends AppController
      * cột thamgia_hoilienhiepthanhnien_captinh = true hoặc
      * cột thamgia_hoilienhiepphunu_captinh = true hoặc
      * cột thamgia_cactochuckhac_captinh = true
-     * 
+     *
      * 9. Bảng nguoihoatdongtinnguongchuyennghiep
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_captinh = true hoặc
@@ -2245,7 +2240,7 @@ class ActionController extends AppController
      * cột hoilienhiepthanhnien_captinh = true hoặc
      * cột hoilienhiepphunu_captinh = true hoặc
      * cột cactochuckhac_captinh = true
-     * 
+     *
      * 10. Bảng chucviechoigiao
      * - lấy dữ liệu thõa điều kiện sau:
      * cột hoidongnhandan_captinh = true hoặc
@@ -2259,8 +2254,8 @@ class ActionController extends AppController
     protected function __getType13Data()
     {
         $array = array(
-            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao', 
-            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Huynhtruonggiadinhphattu', 
+            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao',
+            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Huynhtruonggiadinhphattu',
             'Nguoihoatdongtinnguongchuyennghiep', 'Chucviechoigiao'
         );
         App::import('Model', $array);
@@ -2278,25 +2273,32 @@ class ActionController extends AppController
         $nguoi_hoat_dong_tin_nguong_chuyen_nghiep = $this->Nguoihoatdongtinnguongchuyennghiep->getDataExcelDSCSTHAMGIACTXHCAPTINH();
         $chuc_viec_hoi_giao = $this->Chucviechoigiao->getDataExcelDSCSTHAMGIACTXHCAPTINH();
         $data = array_merge(
-            $chuc_sac_tin_lanh, $chuc_sac_nha_tu_hanh_cong_giao_trieu, $chuc_sac_nha_tu_hanh_con_giao_dong_tu,
-            $chuc_viec_phat_hoahao, $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam, $chuc_sac_cao_dai,
-            $chuc_sac_nha_tu_hanh_phat_giao, $huynh_truong_gia_dinh_phat_tu, $nguoi_hoat_dong_tin_nguong_chuyen_nghiep, $chuc_viec_hoi_giao
+            $chuc_sac_tin_lanh,
+            $chuc_sac_nha_tu_hanh_cong_giao_trieu,
+            $chuc_sac_nha_tu_hanh_con_giao_dong_tu,
+            $chuc_viec_phat_hoahao,
+            $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam,
+            $chuc_sac_cao_dai,
+            $chuc_sac_nha_tu_hanh_phat_giao,
+            $huynh_truong_gia_dinh_phat_tu,
+            $nguoi_hoat_dong_tin_nguong_chuyen_nghiep,
+            $chuc_viec_hoi_giao
         );
         //exit;
         $this->__createTemplate13($data);
     }
-    
+
     public function __createTemplate13($data)
     {
         $this->autoLayout = false;
         $this->autoRender = false;
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template13.xls";
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template13.xls';
         //$filename = "template17";
         $filename = "{$this->_type_text[13]}";
         $this->Excel->load($source);
         //$this->{"__createTemplate{$type}"}();
         //$this->Excel->save($filename);
-        
+
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
@@ -2323,695 +2325,118 @@ class ActionController extends AppController
             $gioi_tinh = isset($gioitinh[$value['gioitinh']]) ? $gioitinh[$value['gioitinh']] : '';
             foreach ($colIndexes as $k => $c) {
                 switch ($c) {
-                    case "A":
+                    case 'A':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
                         break;
-                    case "B":
+                    case 'B':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['hovaten']);
                         break;
-                    case "C":
+                    case 'C':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tengoitheotongiao']);
                         break;
-                    case "D":
+                    case 'D':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thuoctochuctongiao']);
                         break;
-                    case "E":
+                    case 'E':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['dantoc']);
                         break;
-                    case "F":
+                    case 'F':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ngaythangnamsinh']);
                         break;
-                    case "G":
+                    case 'G':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($gioi_tinh);
                         break;
-                    case "H":
+                    case 'H':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chungminhnhandan']);
                         break;
-                    case "I":
+                    case 'I':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chucvu']);
                         break;
-                    case "J":
+                    case 'J':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongchuc']);
                         break;
-                    case "K":
+                    case 'K':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamtrat']);
                         break;
-                    case "L":
+                    case 'L':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongpham']);
                         break;
-                    case "M":
+                    case 'M':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdohocvan']);
                         break;
-                    case "N":
+                    case 'N':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdochuyenmon']);
                         break;
-                    case "O":
+                    case 'O':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdotongiao']);
                         break;
-                    case "P":
+                    case 'P':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thamgiatochucchinhtrixahoi']);
                         break;
-                    case "Q":
+                    case 'Q':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['quequan']);
                         break;
-                    case "R":
+                    case 'R':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
-                    case "S":
+                    case 'S':
                         //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['']);
                         break;
                     default:
-                        echo "DS CS THAM GIA CT-XH CAP HUYEN";
+                        echo 'DS CS THAM GIA CT-XH CAP HUYEN';
                 }
             }
             $i++;
             $r++;
         }
+
         return $this->Excel->save($filename);
     }
-    
+
     /**
      * TH CS THAM GIA CT-XH CAP XA
      * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP XÃ
-     * 
-     * + Cách lấy dữ liệu
-     * 1. Bảng chucsactinlanh
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: diemnhom_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: diemnhom_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: diemnhom_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: diemnhom_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: diemnhom_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: diemnhom_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: diemnhom_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: diemnhom_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: diemnhom_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: diemnhom_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_capxa = true hoặc
-     * cột uybanmttqvn_capxa = true hoặc
-     * cột hoichuthapdo_capxa = true hoặc
-     * cột hoinongdan_capxa = true hoặc
-     * cột hoilienhiepthanhnien_capxa = true hoặc
-     * cột hoilienhiepphunu_capxa = true hoặc
-     * cột cactochuckhac_capxa = true
-     * 
-     * 2. Bảng chucsacnhatuhanhconggiaotrieu
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiao_giaohat_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiao_giaohat_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiao_giaohat_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiao_giaohat_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiao_giaohat_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiao_giaohat_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiao_giaohat_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiao_giaohat_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiao_giaohat_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiao_giaohat_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_ubmttqvn_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoichuthapdo_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
-     * 
-     * 3. Bảng chucsacnhatuhanhcongiaodongtu
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_ubmttqvn_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoichuthapdo_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
-     * 
-     * 4. Bảng chucviecphathoahao
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_capxa = true hoặc
-     * cột uybanmttqvn_capxa = true hoặc
-     * cột hoichuthapdo_capxa = true hoặc
-     * cột hoinongdan_capxa = true hoặc
-     * cột hoilienhiepphunu_capxa = true hoặc
-     * cột doanthanhnien_capxa = true hoặc
-     * cột tochuckhac_capxa = true
-     * 
-     * 5. Bảng chucviectinhdocusiphathoivietnam
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_capxa = true hoặc
-     * cột ubmttqvn_capxa = true hoặc
-     * cột hoichuthapdo_capxa = true hoặc
-     * cột hoinongdan_capxa = true hoặc
-     * cột hoilienhiepphunu_capxa = true hoặc
-     * cột doanthanhnien_capxa = true hoặc
-     * cột tochuckhac_capxa = true
-     * 
-     * 6. Bảng chucsaccaodai
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột thamgiacactcctxh_hoidongnhandan_capxa = true hoặc
-     * cột thamgiacactcctxh_uybanmttqvn_capxa = true hoặc
-     * cột thamgiacactcctxh_hoichuthapdo_capxa = true hoặc
-     * cột thamgiacactcctxh_hoinongdan_capxa = true hoặc
-     * cột thamgiacactcctxh_hoilienhiepphunu_capxa = true hoặc
-     * cột thamgiacactcctxh_doanthanhnien_capxa = true hoặc
-     * cột thamgiacactcctxh_tochuckhac_capxa = true
-     * 
-     * 7. Bảng chucsacnhatuhanhphatgiao
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: tencosohoatdongtongiao_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: tencosohoatdongtongiao_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: tencosohoatdongtongiao_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: tencosohoatdongtongiao_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: tencosohoatdongtongiao_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: tencosohoatdongtongiao_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: tencosohoatdongtongiao_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: tencosohoatdongtongiao_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: tencosohoatdongtongiao_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: tencosohoatdongtongiao_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoatdongtongiao_thamgia_hoidongnhandan_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_ubmttqvn_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoichuthapdo_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoinongdan_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_capxa = true hoặc
-     * cột hoatdongtongiao_thamgia_cactochuckhac_capxa = true
-     * 
-     * 8. Bảng huynhtruonggiadinhphattu
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột thamgia_hoidongnhandan_capxa = true hoặc
-     * cột thamgia_ubmttqvn_capxa = true hoặc
-     * cột thamgia_hoinongdan_capxa = true hoặc
-     * cột thamgia_hoichuthapdo_capxa = true hoặc
-     * cột thamgia_hoilienhiepthanhnien_capxa = true hoặc
-     * cột thamgia_hoilienhiepphunu_capxa = true hoặc
-     * cột thamgia_cactochuckhac_capxa = true
-     * 
-     * 9. Bảng chucviechoigiao
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_capxa = true hoặc
-     * cột ubmttqvn_capxa = true hoặc
-     * cột hoichuthapdo_capxa = true hoặc
-     * cột hoinongdan_capxa = true hoặc
-     * cột hoilienhiepphunu_capxa = true hoặc
-     * cột doanthanhnien_capxa = true hoặc
-     * cột tochuckhac_capxa = true
-     * 
-     * Tính tổng dữ liệu trên theo xã
-     * 
-     * CÔNG GIÁO = 2. Bảng chucsacnhatuhanhconggiaotrieu + 3. Bảng chucsacnhatuhanhcongiaodongtu
-     * PHẬT GIÁO = 7. Bảng chucsacnhatuhanhphatgiao + 8. Bảng huynhtruonggiadinhphattu
-     * TIN LÀNH = 1. Bảng chucsactinlanh
-     * CAO ĐÀI = 6. Bảng chucsaccaodai
-     * TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM = 5. Bảng chucviectinhdocusiphathoivietnam
-     * PHẬT GIÁO HÒA HẢO = 4. Bảng chucviecphathoahao
-     * HỒI GIÁO = 9. Bảng chucviechoigiao
      */
     protected function __getType14Data()
     {
+        $component = $this->Components->load('ExportThCtxhXa');
+
+        return $component->export();
     }
-    
+
     /**
      * TH CS THAM GIA CT-XH CAP HUYEN
      * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP HUYỆN
-     * 
-     * * 1. Bảng chucsactinlanh
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: diemnhom_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: diemnhom_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: diemnhom_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: diemnhom_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: diemnhom_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: diemnhom_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: diemnhom_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: diemnhom_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: diemnhom_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: diemnhom_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_caphuyen = true hoặc
-     * cột uybanmttqvn_caphuyen = true hoặc
-     * cột hoichuthapdo_caphuyen = true hoặc
-     * cột hoinongdan_caphuyen = true hoặc
-     * cột hoilienhiepthanhnien_caphuyen = true hoặc
-     * cột hoilienhiepphunu_caphuyen = true hoặc
-     * cột cactochuckhac_caphuyen = true
-     * 
-     * 2. Bảng chucsacnhatuhanhconggiaotrieu
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiao_giaohat_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiao_giaohat_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiao_giaohat_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiao_giaohat_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiao_giaohat_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiao_giaohat_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiao_giaohat_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiao_giaohat_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiao_giaohat_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiao_giaohat_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_ubmttqvn_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoichuthapdo_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
-     * 
-     * 3. Bảng chucsacnhatuhanhcongiaodongtu
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_ubmttqvn_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoichuthapdo_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
-     * 
-     * 4. Bảng chucviecphathoahao
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_caphuyen = true hoặc
-     * cột uybanmttqvn_caphuyen = true hoặc
-     * cột hoichuthapdo_caphuyen = true hoặc
-     * cột hoinongdan_caphuyen = true hoặc
-     * cột hoilienhiepphunu_caphuyen = true hoặc
-     * cột doanthanhnien_caphuyen = true hoặc
-     * cột tochuckhac_caphuyen = true
-     * 
-     * 5. Bảng chucviectinhdocusiphathoivietnam
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_caphuyen = true hoặc
-     * cột ubmttqvn_caphuyen = true hoặc
-     * cột hoichuthapdo_caphuyen = true hoặc
-     * cột hoinongdan_caphuyen = true hoặc
-     * cột hoilienhiepphunu_caphuyen = true hoặc
-     * cột doanthanhnien_caphuyen = true hoặc
-     * cột tochuckhac_caphuyen = true
-     * 
-     * 6. Bảng chucsaccaodai
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột thamgiacactcctxh_hoidongnhandan_caphuyen = true hoặc
-     * cột thamgiacactcctxh_uybanmttqvn_caphuyen = true hoặc
-     * cột thamgiacactcctxh_hoichuthapdo_caphuyen = true hoặc
-     * cột thamgiacactcctxh_hoinongdan_caphuyen = true hoặc
-     * cột thamgiacactcctxh_hoilienhiepphunu_caphuyen = true hoặc
-     * cột thamgiacactcctxh_doanthanhnien_caphuyen = true hoặc
-     * cột thamgiacactcctxh_tochuckhac_caphuyen = true
-     * 
-     * 7. Bảng chucsacnhatuhanhphatgiao
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: tencosohoatdongtongiao_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: tencosohoatdongtongiao_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: tencosohoatdongtongiao_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: tencosohoatdongtongiao_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: tencosohoatdongtongiao_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: tencosohoatdongtongiao_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: tencosohoatdongtongiao_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: tencosohoatdongtongiao_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: tencosohoatdongtongiao_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: tencosohoatdongtongiao_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoatdongtongiao_thamgia_hoidongnhandan_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_ubmttqvn_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoichuthapdo_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoinongdan_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_caphuyen = true hoặc
-     * cột hoatdongtongiao_thamgia_cactochuckhac_caphuyen = true
-     * 
-     * 8. Bảng huynhtruonggiadinhphattu
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột thamgia_hoidongnhandan_caphuyen = true hoặc
-     * cột thamgia_ubmttqvn_caphuyen = true hoặc
-     * cột thamgia_hoinongdan_caphuyen = true hoặc
-     * cột thamgia_hoichuthapdo_caphuyen = true hoặc
-     * cột thamgia_hoilienhiepthanhnien_caphuyen = true hoặc
-     * cột thamgia_hoilienhiepphunu_caphuyen = true hoặc
-     * cột thamgia_cactochuckhac_caphuyen = true
-     * 
-     * 9. Bảng chucviechoigiao
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_caphuyen = true hoặc
-     * cột ubmttqvn_caphuyen = true hoặc
-     * cột hoichuthapdo_caphuyen = true hoặc
-     * cột hoinongdan_caphuyen = true hoặc
-     * cột hoilienhiepphunu_caphuyen = true hoặc
-     * cột doanthanhnien_caphuyen = true hoặc
-     * cột tochuckhac_caphuyen = true
-     * 
-     * Tính tổng dữ liệu trên theo huyện
-     * 
-     * CÔNG GIÁO = 2. Bảng chucsacnhatuhanhconggiaotrieu + 3. Bảng chucsacnhatuhanhcongiaodongtu
-     * PHẬT GIÁO = 7. Bảng chucsacnhatuhanhphatgiao + 8. Bảng huynhtruonggiadinhphattu
-     * TIN LÀNH = 1. Bảng chucsactinlanh
-     * CAO ĐÀI = 6. Bảng chucsaccaodai
-     * TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM = 5. Bảng chucviectinhdocusiphathoivietnam
-     * PHẬT GIÁO HÒA HẢO = 4. Bảng chucviecphathoahao
-     * HỒI GIÁO = 9. Bảng chucviechoigiao
      */
     protected function __getType15Data()
     {
+        $component = $this->Components->load('ExportThCtxhHuyen');
+
+        return $component->export();
     }
-    
+
     /**
      * TH CS THAM GIA CT-XHCAP TINH
      * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP TỈNH
-     * 
-     * 1. Bảng chucsactinlanh
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: diemnhom_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: diemnhom_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: diemnhom_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: diemnhom_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: diemnhom_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: diemnhom_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: diemnhom_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: diemnhom_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: diemnhom_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: diemnhom_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_captinh = true hoặc
-     * cột uybanmttqvn_captinh = true hoặc
-     * cột hoichuthapdo_captinh = true hoặc
-     * cột hoinongdan_captinh = true hoặc
-     * cột hoilienhiepthanhnien_captinh = true hoặc
-     * cột hoilienhiepphunu_captinh = true hoặc
-     * cột cactochuckhac_captinh = true
-     * 
-     * 2. Bảng chucsacnhatuhanhconggiaotrieu
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiao_giaohat_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiao_giaohat_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiao_giaohat_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiao_giaohat_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiao_giaohat_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiao_giaohat_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiao_giaohat_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiao_giaohat_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiao_giaohat_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiao_giaohat_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_ubmttqvn_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoichuthapdo_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
-     * 
-     * 3. Bảng chucsacnhatuhanhcongiaodongtu
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_ubmttqvn_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoichuthapdo_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
-     * 
-     * 4. Bảng chucviecphathoahao
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_captinh = true hoặc
-     * cột uybanmttqvn_captinh = true hoặc
-     * cột hoichuthapdo_captinh = true hoặc
-     * cột hoinongdan_captinh = true hoặc
-     * cột hoilienhiepphunu_captinh = true hoặc
-     * cột doanthanhnien_captinh = true hoặc
-     * cột tochuckhac_captinh = true
-     * 
-     * 5. Bảng chucviectinhdocusiphathoivietnam
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_captinh = true hoặc
-     * cột ubmttqvn_captinh = true hoặc
-     * cột hoichuthapdo_captinh = true hoặc
-     * cột hoinongdan_captinh = true hoặc
-     * cột hoilienhiepphunu_captinh = true hoặc
-     * cột doanthanhnien_captinh = true hoặc
-     * cột tochuckhac_captinh = true
-     * 
-     * 6. Bảng chucsaccaodai
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột thamgiacactcctxh_hoidongnhandan_captinh = true hoặc
-     * cột thamgiacactcctxh_uybanmttqvn_captinh = true hoặc
-     * cột thamgiacactcctxh_hoichuthapdo_captinh = true hoặc
-     * cột thamgiacactcctxh_hoinongdan_captinh = true hoặc
-     * cột thamgiacactcctxh_hoilienhiepphunu_captinh = true hoặc
-     * cột thamgiacactcctxh_doanthanhnien_captinh = true hoặc
-     * cột thamgiacactcctxh_tochuckhac_captinh = true
-     * 
-     * 7. Bảng chucsacnhatuhanhphatgiao
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: tencosohoatdongtongiao_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: tencosohoatdongtongiao_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: tencosohoatdongtongiao_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: tencosohoatdongtongiao_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: tencosohoatdongtongiao_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: tencosohoatdongtongiao_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: tencosohoatdongtongiao_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: tencosohoatdongtongiao_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: tencosohoatdongtongiao_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: tencosohoatdongtongiao_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoatdongtongiao_thamgia_hoidongnhandan_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_ubmttqvn_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoichuthapdo_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoinongdan_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_hoilienhiepphunu_captinh = true hoặc
-     * cột hoatdongtongiao_thamgia_cactochuckhac_captinh = true
-     * 
-     * 8. Bảng huynhtruonggiadinhphattu
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột thamgia_hoidongnhandan_captinh = true hoặc
-     * cột thamgia_ubmttqvn_captinh = true hoặc
-     * cột thamgia_hoinongdan_captinh = true hoặc
-     * cột thamgia_hoichuthapdo_captinh = true hoặc
-     * cột thamgia_hoilienhiepthanhnien_captinh = true hoặc
-     * cột thamgia_hoilienhiepphunu_captinh = true hoặc
-     * cột thamgia_cactochuckhac_captinh = true
-     * 
-     * 9. Bảng chucviechoigiao
-     * - lấy dữ liệu thõa điều kiện sau:
-     * BIÊN HÒA: hoatdongtongiaotai_diachi_huyen = BIÊN HÒA
-     * LONG KHÁNH: hoatdongtongiaotai_diachi_huyen = LONG KHÁNH
-     * XUÂN LỘC: hoatdongtongiaotai_diachi_huyen = XUÂN LỘC
-     * CẨM MỸ: hoatdongtongiaotai_diachi_huyen = CẨM MỸ
-     * TÂN PHÚ: hoatdongtongiaotai_diachi_huyen = TÂN PHÚ
-     * ĐỊNH QUÁN: hoatdongtongiaotai_diachi_huyen = ĐỊNH QUÁN
-     * THỐNG NHẤT: hoatdongtongiaotai_diachi_huyen = THỐNG NHẤT
-     * TRẢNG BOM: hoatdongtongiaotai_diachi_huyen = TRẢNG BOM
-     * VĨNH CỬU: hoatdongtongiaotai_diachi_huyen = NHƠN TRẠCH
-     * LONG THÀNH: hoatdongtongiaotai_diachi_huyen = LONG THÀNH
-     * và điều kiện
-     * cột hoidongnhandan_captinh = true hoặc
-     * cột ubmttqvn_captinh = true hoặc
-     * cột hoichuthapdo_captinh = true hoặc
-     * cột hoinongdan_captinh = true hoặc
-     * cột hoilienhiepphunu_captinh = true hoặc
-     * cột doanthanhnien_captinh = true hoặc
-     * cột tochuckhac_captinh = true
-     * 
-     * Tính tổng dữ liệu trên theo tỉnh
-     * 
-     * CÔNG GIÁO = 2. Bảng chucsacnhatuhanhconggiaotrieu + 3. Bảng chucsacnhatuhanhcongiaodongtu
-     * PHẬT GIÁO = 7. Bảng chucsacnhatuhanhphatgiao + 8. Bảng huynhtruonggiadinhphattu
-     * TIN LÀNH = 1. Bảng chucsactinlanh
-     * CAO ĐÀI = 6. Bảng chucsaccaodai
-     * TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM = 5. Bảng chucviectinhdocusiphathoivietnam
-     * PHẬT GIÁO HÒA HẢO = 4. Bảng chucviecphathoahao
-     * HỒI GIÁO = 9. Bảng chucviechoigiao
      */
     protected function __getType16Data()
     {
+        $component = $this->Components->load('ExportThCtxhTinh');
+
+        return $component->export();
     }
-    
+
+    public function pandog()
+    {
+        $component = $this->Components->load('ExportThCtxhTinh');
+
+        $data = $component->export();
+        print_r('<pre>');
+        print_r($data);
+        print_r('</pre>');
+        exit;
+    }
+
     /**
      * DS CS ĐT-BD
      * DANH SÁCH CHỨC SẮC ĐÃ THAM GIA CÁC LỚP ĐÀO TẠO, BỒI DƯỠNG TÔN GIÁO
@@ -3019,7 +2444,7 @@ class ActionController extends AppController
     protected function __getType17Data()
     {
         $array = array(
-            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao', 
+            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao',
             'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Chucviechoigiao'
         );
         App::import('Model', $array);
@@ -3035,25 +2460,30 @@ class ActionController extends AppController
         $chuc_sac_nha_tu_hanh_phat_giao = $this->Chucsacnhatuhanhphatgiao->getDataExcelDSCSDTBD();
         $chuc_viec_hoi_giao = $this->Chucviechoigiao->getDataExcelDSCSDTBD();
         $data = array_merge(
-            $chuc_sac_tin_lanh, $chuc_sac_nha_tu_hanh_cong_giao_trieu, $chuc_sac_nha_tu_hanh_con_giao_dong_tu, 
-            $chuc_viec_phat_hoahao, $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam, $chuc_sac_cao_dai, 
-            $chuc_sac_nha_tu_hanh_phat_giao, $chuc_viec_hoi_giao
+            $chuc_sac_tin_lanh,
+            $chuc_sac_nha_tu_hanh_cong_giao_trieu,
+            $chuc_sac_nha_tu_hanh_con_giao_dong_tu,
+            $chuc_viec_phat_hoahao,
+            $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam,
+            $chuc_sac_cao_dai,
+            $chuc_sac_nha_tu_hanh_phat_giao,
+            $chuc_viec_hoi_giao
         );
         //exit;
         $this->__createTemplate17($data);
     }
-    
+
     public function __createTemplate17($data)
     {
         $this->autoLayout = false;
         $this->autoRender = false;
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template17.xls";
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template17.xls';
         //$filename = "template17";
         $filename = "{$this->_type_text[17]}";
         $this->Excel->load($source);
         //$this->{"__createTemplate{$type}"}();
         //$this->Excel->save($filename);
-        
+
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
@@ -3080,58 +2510,59 @@ class ActionController extends AppController
             $gioi_tinh = isset($gioitinh[$value['gioitinh']]) ? $gioitinh[$value['gioitinh']] : '';
             foreach ($colIndexes as $k => $c) {
                 switch ($c) {
-                    case "A":
+                    case 'A':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
                         break;
-                    case "B":
+                    case 'B':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['hovaten']);
                         break;
-                    case "C":
+                    case 'C':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tengoitheotongiao']);
                         break;
-                    case "D":
+                    case 'D':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thuoctochuctongiao']);
                         break;
-                    case "E":
+                    case 'E':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ngaythangnamsinh']);
                         break;
-                    case "F":
+                    case 'F':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($gioi_tinh);
                         break;
-                    case "G":
+                    case 'G':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chungminhnhandan']);
                         break;
-                    case "H":
+                    case 'H':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamsac']);
                         break;
-                    case "I":
+                    case 'I':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chucvu']);
                         break;
-                    case "J":
+                    case 'J':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['nam_dt_bd']);
                         break;
-                    case "K":
+                    case 'K':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tenkhoa_dt_bd']);
                         break;
-                    case "L":
+                    case 'L':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['quequan']);
                         break;
-                    case "M":
+                    case 'M':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
-                    case "M":
+                    case 'M':
                         //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['']);
                         break;
                     default:
-                        echo "DS CS ĐT-BD";
+                        echo 'DS CS ĐT-BD';
                 }
             }
             $i++;
             $r++;
         }
+
         return $this->Excel->save($filename);
     }
-    
+
     /**
      * THBNCS
      * TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO ĐƯỢC BỔ NHIỆM, CHUẨN Y
@@ -3139,7 +2570,7 @@ class ActionController extends AppController
     protected function __getType18Data()
     {
     }
-    
+
     /**
      * DS CHUC SAC PCPP
      * DANH SÁCH CHỨC SẮC TÔN GIÁO ĐƯỢC PHONG CHỨC, PHONG PHẨM
@@ -3147,7 +2578,7 @@ class ActionController extends AppController
     protected function __getType19Data()
     {
     }
-    
+
     /**
      * TH CHUC SAC PCPP
      * TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO ĐƯỢC PHONG CHỨC, PHONG PHẨM
@@ -3155,7 +2586,7 @@ class ActionController extends AppController
     protected function __getType20Data()
     {
     }
-    
+
     /**
      * TH TRINH DO TON GIAO
      * TỔNG HỢP TRÌNH ĐỘ TÔN GIÁO CỦA CHỨC SẮC CÁC TÔN GIÁO
@@ -3163,7 +2594,7 @@ class ActionController extends AppController
     protected function __getType21Data()
     {
     }
-    
+
     /**
      * TH TRINH DO VH
      * TỔNG HỢP TRÌNH ĐỘ VĂN HÓA CỦA CHỨC SẮC CÁC TÔN GIÁO
@@ -3171,7 +2602,7 @@ class ActionController extends AppController
     protected function __getType22Data()
     {
     }
-    
+
     /**
      * DANH SACH TU SI
      * DANH SÁCH TU SĨ CÁC TÔN GIÁO
@@ -3179,8 +2610,8 @@ class ActionController extends AppController
     protected function __getType23Data()
     {
         $array = array(
-            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao', 
-            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Huynhtruonggiadinhphattu', 
+            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao',
+            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Huynhtruonggiadinhphattu',
             'Nguoihoatdongtinnguongchuyennghiep', 'Chucviechoigiao'
         );
         App::import('Model', $array);
@@ -3211,18 +2642,18 @@ class ActionController extends AppController
         //exit;
         $this->__createTemplate23($data);
     }
-    
+
     public function __createTemplate23($data)
     {
         $this->autoLayout = false;
         $this->autoRender = false;
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template23.xls";
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template23.xls';
         //$filename = "template24";
         $filename = "{$this->_type_text[23]}";
         $this->Excel->load($source);
         //$this->{"__createTemplate{$type}"}();
         //$this->Excel->save($filename);
-        
+
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
@@ -3249,67 +2680,68 @@ class ActionController extends AppController
             $gioi_tinh = isset($gioitinh[$value['gioitinh']]) ? $gioitinh[$value['gioitinh']] : '';
             foreach ($colIndexes as $k => $c) {
                 switch ($c) {
-                    case "A":
+                    case 'A':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
                         break;
-                    case "B":
+                    case 'B':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['hovaten']);
                         break;
-                    case "C":
+                    case 'C':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tengoitheotongiao']);
                         break;
-                    case "D":
+                    case 'D':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thuoctochuctongiao']);
                         break;
-                    case "E":
+                    case 'E':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ngaythangnamsinh']);
                         break;
-                    case "F":
+                    case 'F':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($gioi_tinh);
                         break;
-                    case "G":
+                    case 'G':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chungminhnhandan']);
                         break;
-                    case "H":
+                    case 'H':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chucvu']);
                         break;
-                    case "I":
+                    case 'I':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongchuc']);
                         break;
-                    case "J":
+                    case 'J':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamtrat']);
                         break;
-                    case "K":
+                    case 'K':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongpham']);
                         break;
-                    case "L":
+                    case 'L':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdohocvan']);
                         break;
-                    case "M":
+                    case 'M':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdochuyenmon']);
                         break;
-                    case "N":
+                    case 'N':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdotongiao']);
                         break;
-                    case "O":
+                    case 'O':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['quequan']);
                         break;
-                    case "P":
+                    case 'P':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['choohiennay']);
                         break;
-                    case "Q":
+                    case 'Q':
                         //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ghichu']);
                         break;
                     default:
-                        echo "DANH SACH TU SI";
+                        echo 'DANH SACH TU SI';
                 }
             }
             $i++;
             $r++;
         }
+
         return $this->Excel->save($filename);
     }
-    
+
     /**
      * DS CHUC SAC KO CO CHUC VU
      * DANH SÁCH CHỨC SẮC CÁC TÔN GIÁO (KHÔNG CÓ CHỨC VỤ)
@@ -3317,7 +2749,7 @@ class ActionController extends AppController
     protected function __getType24Data()
     {
         $array = array(
-            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao', 
+            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao',
             'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Chucviechoigiao'
         );
         App::import('Model', $array);
@@ -3345,18 +2777,18 @@ class ActionController extends AppController
         //exit;
         $this->__createTemplate24($data);
     }
-    
+
     public function __createTemplate24($data)
     {
         $this->autoLayout = false;
         $this->autoRender = false;
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template24.xls";
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template24.xls';
         //$filename = "template24";
         $filename = "{$this->_type_text[24]}";
         $this->Excel->load($source);
         //$this->{"__createTemplate{$type}"}();
         //$this->Excel->save($filename);
-        
+
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
@@ -3383,64 +2815,65 @@ class ActionController extends AppController
             $gioi_tinh = isset($gioitinh[$value['gioitinh']]) ? $gioitinh[$value['gioitinh']] : '';
             foreach ($colIndexes as $k => $c) {
                 switch ($c) {
-                    case "A":
+                    case 'A':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
                         break;
-                    case "B":
+                    case 'B':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['hovaten']);
                         break;
-                    case "C":
+                    case 'C':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tengoitheotongiao']);
                         break;
-                    case "D":
+                    case 'D':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thuoctochuctongiao']);
                         break;
-                    case "E":
+                    case 'E':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ngaythangnamsinh']);
                         break;
-                    case "F":
+                    case 'F':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($gioi_tinh);
                         break;
-                    case "G":
+                    case 'G':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chungminhnhandan']);
                         break;
-                    case "H":
+                    case 'H':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongchuc']);
                         break;
-                    case "I":
+                    case 'I':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamtrat']);
                         break;
-                    case "J":
+                    case 'J':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongpham']);
                         break;
-                    case "K":
+                    case 'K':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdohocvan']);
                         break;
-                    case "L":
+                    case 'L':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdochuyenmon']);
                         break;
-                    case "M":
+                    case 'M':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdotongiao']);
                         break;
-                    case "N":
+                    case 'N':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['quequan']);
                         break;
-                    case "O":
+                    case 'O':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
-                    case "P":
+                    case 'P':
                         //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ghichu']);
                         break;
                     default:
-                        echo "DS CHUC SAC KO CO CHUC VU";
+                        echo 'DS CHUC SAC KO CO CHUC VU';
                 }
             }
             $i++;
             $r++;
         }
+
         return $this->Excel->save($filename);
     }
-    
+
     /**
      * DS CHUC SAC CO CHUC VU
      * DANH SÁCH CHỨC SẮC CÁC TÔN GIÁO (CÓ CHỨC VỤ)
@@ -3448,7 +2881,7 @@ class ActionController extends AppController
     protected function __getType25Data()
     {
         $array = array(
-            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao', 
+            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao',
             'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Chucviechoigiao'
         );
         App::import('Model', $array);
@@ -3476,18 +2909,18 @@ class ActionController extends AppController
         //exit;
         $this->__createTemplate25($data);
     }
-    
+
     public function __createTemplate25($data)
     {
         $this->autoLayout = false;
         $this->autoRender = false;
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template25.xls";
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template25.xls';
         //$filename = "template25";
         $filename = "{$this->_type_text[25]}";
         $this->Excel->load($source);
         //$this->{"__createTemplate{$type}"}();
         //$this->Excel->save($filename);
-        
+
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
@@ -3514,67 +2947,68 @@ class ActionController extends AppController
             $gioi_tinh = isset($gioitinh[$value['gioitinh']]) ? $gioitinh[$value['gioitinh']] : '';
             foreach ($colIndexes as $k => $c) {
                 switch ($c) {
-                    case "A":
+                    case 'A':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
                         break;
-                    case "B":
+                    case 'B':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['hovaten']);
                         break;
-                    case "C":
+                    case 'C':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tengoitheotongiao']);
                         break;
-                    case "D":
+                    case 'D':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thuoctochuctongiao']);
                         break;
-                    case "E":
+                    case 'E':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ngaythangnamsinh']);
                         break;
-                    case "F":
+                    case 'F':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($gioi_tinh);
                         break;
-                    case "G":
+                    case 'G':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chungminhnhandan']);
                         break;
-                    case "H":
+                    case 'H':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chucvu']);
                         break;
-                    case "I":
+                    case 'I':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongchuc']);
                         break;
-                    case "J":
+                    case 'J':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamtrat']);
                         break;
-                    case "K":
+                    case 'K':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongpham']);
                         break;
-                    case "L":
+                    case 'L':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdohocvan']);
                         break;
-                    case "M":
+                    case 'M':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdochuyenmon']);
                         break;
-                    case "N":
+                    case 'N':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdotongiao']);
                         break;
-                    case "O":
+                    case 'O':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['quequan']);
                         break;
-                    case "P":
+                    case 'P':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
-                    case "Q":
+                    case 'Q':
                         //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ghichu']);
                         break;
                     default:
-                        echo "DS CHUC SAC KO CO CHUC VU";
+                        echo 'DS CHUC SAC KO CO CHUC VU';
                 }
             }
             $i++;
             $r++;
         }
+
         return $this->Excel->save($filename);
     }
-    
+
     /**
      * TONG HOP CHUC VIEC
      * BẢNG TỔNG HỢP CHỨC VIỆC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
@@ -3582,7 +3016,7 @@ class ActionController extends AppController
     protected function __getType26Data()
     {
     }
-    
+
     /**
      * TONG HOP TU SI
      * BẢNG TỔNG HỢP TU SĨ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
@@ -3590,7 +3024,7 @@ class ActionController extends AppController
     protected function __getType27Data()
     {
     }
-    
+
     /**
      * TONG HOP CHUC SAC KO CHUC VU
      * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (KHÔNG CÓ CHỨC VỤ)
@@ -3598,7 +3032,7 @@ class ActionController extends AppController
     protected function __getType28Data()
     {
     }
-    
+
     /**
      * TONG HOP CHUC SAC CO CHUC VU
      * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (CÓ CHỨC VỤ)
@@ -3606,7 +3040,7 @@ class ActionController extends AppController
     protected function __getType29Data()
     {
     }
-    
+
     /**
      * DO TUOI CUA CHAC SAC
      * BẢNG TỔNG HỢP LỨA TUỔI CỦA CHỨC SẮC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
@@ -3614,7 +3048,7 @@ class ActionController extends AppController
     protected function __getType30Data()
     {
     }
-    
+
     /**
      * DO TUOI CUA TU SĨ
      * BẢNG TỔNG HỢP LỨA TUỔI CỦA TU SĨ CÁC TÔN GIÁO

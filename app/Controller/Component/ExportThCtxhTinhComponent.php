@@ -1,0 +1,466 @@
+<?php
+
+class ExportThCtxhTinhComponent extends Component
+{
+    public function __construct()
+    {
+        App::uses('ProvinceComponent', 'Controller/Component');
+        $this->Province = new ProvinceComponent(new ComponentCollection());
+
+        App::uses('UtilityComponent', 'Controller/Component');
+        $this->Utility = new UtilityComponent(new ComponentCollection());
+
+        $this->map_field = [
+            1 => 'hoidongnhandan_captinh',
+            2 => 'uybanmttqvn_captinh',
+            3 => 'hoinongdan_captinh',
+            4 => 'hoilienhiepphunu_captinh',
+            5 => 'hoilienhiepthanhnien_captinh',
+            6 => 'hoichuthapdo_captinh',
+            7 => 'cactochuckhac_captinh'
+        ];
+    }
+
+    public function export()
+    {
+        $export_fields = [
+            [
+                'Chucsacnhatuhanhconggiaotrieu',
+                'Chucsacnhatuhanhcongiaodongtu'
+            ],
+            [
+                'Chucsacnhatuhanhphatgiao',
+                'Huynhtruonggiadinhphattu'
+            ],
+            [
+                'Chucsactinlanh',
+            ],
+            [
+                'Chucsaccaodai'
+            ],
+            [
+                'Chucviectinhdocusiphathoivietnam'
+            ],
+            [
+                'Chucviecphathoahao'
+            ],
+            [
+                'Chucviechoigiao'
+            ]
+        ];
+
+        $province = $this->Province->getProvince();
+
+        $export = $this->init($province);
+
+        foreach ($export_fields as $field_index => $list) {
+            $tmp = $this->__calculate($list);
+            foreach ($province as $provice_code => $name) {
+                $partial = $tmp[$provice_code];
+
+                $index = 0;
+                foreach ($partial as $count) {
+                    $key = $this->map_field[++$index];
+
+                    $export[$provice_code]['total'] += $count;
+                    $export[$provice_code][$key] += $count;
+                    $export[$provice_code][$field_index . '_' . $key] = $count;
+                }
+            }
+        }
+
+        return $export;
+    }
+
+    private function init($province)
+    {
+        $index = 1;
+        $export = [];
+
+        foreach ($province as $code => $name) {
+            $export[$code] = [
+                'index' => $index++,
+                'province' => $name,
+                'total' => 0,
+            ];
+            foreach ($this->map_field as $field) {
+                $export[$code][$field] = 0;
+            }
+        }
+
+        return $export;
+    }
+
+    private function __calculate($list)
+    {
+        $rows = [];
+        foreach ($list as $model) {
+            $func = '__get' . $model;
+            array_push($rows, $this->$func($model));
+        }
+
+        $result = [];
+        foreach ($rows as $row) {
+            foreach ($row as $province => $data) {
+                if (empty($result[$province])) {
+                    $result[$province] = [];
+                }
+
+                $index = 0;
+                foreach ($data as $v) {
+                    ++$index;
+                    if (isset($result[$province][$index])) {
+                        $result[$province][$index] += $v;
+                    } else {
+                        $result[$province][$index] = $v;
+                    }
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    private function __getChucviechoigiao($model)
+    {
+        $fields = [
+            'id',
+            'hoatdongtongiaotai_diachi_huyen'
+        ];
+        $conditions = [
+            'OR' => [
+                'hoidongnhandan_captinh' => 1,
+                'ubmttqvn_captinh' => 1,
+                'hoichuthapdo_captinh' => 1,
+                'hoinongdan_captinh' => 1,
+                'hoilienhiepphunu_captinh' => 1,
+                'doanthanhnien_captinh' => 1,
+                'tochuckhac_captinh' => 1,
+            ]
+        ];
+        $column = [
+            'hoidongnhandan_captinh',
+            'ubmttqvn_captinh',
+            'hoinongdan_captinh',
+            'hoilienhiepphunu_captinh',
+            'doanthanhnien_captinh',
+            'hoichuthapdo_captinh',
+            // 'tochuckhac_captinh'
+        ];
+        $province_field = 'hoatdongtongiaotai_diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+        $data = $this->__getData($model, compact('fields', 'conditions'));
+
+        return $this->__groupData($data, $column, $province_field);
+    }
+
+    private function __getChucviecphathoahao($model)
+    {
+        $fields = [
+            'id',
+            'hoatdongtongiaotai_diachi_huyen'
+        ];
+        $conditions = [
+            'OR' => [
+                'hoidongnhandan_captinh' => 1,
+                'uybanmttqvn_captinh' => 1,
+                'hoichuthapdo_captinh' => 1,
+                'hoinongdan_captinh' => 1,
+                'hoilienhiepphunu_captinh' => 1,
+                'doanthanhnien_captinh' => 1,
+                'tochuckhac_captinh' => 1
+            ]
+        ];
+        $column = [
+            'hoidongnhandan_captinh',
+            'uybanmttqvn_captinh',
+            'hoinongdan_captinh',
+            'hoilienhiepphunu_captinh',
+            'doanthanhnien_captinh',
+            'hoichuthapdo_captinh',
+            'tochuckhac_captinh'
+        ];
+        $province_field = 'hoatdongtongiaotai_diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+        $data = $this->__getData($model, compact('fields', 'conditions'));
+
+        return $this->__groupData($data, $column, $province_field);
+    }
+
+    private function __getChucviectinhdocusiphathoivietnam($model)
+    {
+        $fields = [
+            'id',
+            'hoatdongtongiaotai_diachi_huyen'
+        ];
+        $conditions = [
+            'OR' => [
+                'hoidongnhandan_captinh' => 1,
+                'ubmttqvn_captinh' => 1,
+                'hoichuthapdo_captinh' => 1,
+                'hoinongdan_captinh' => 1,
+                'hoilienhiepphunu_captinh' => 1,
+                'doanthanhnien_captinh' => 1,
+                'tochuckhac_captinh' => 1
+            ]
+        ];
+        $column = [
+            'hoidongnhandan_captinh',
+            'ubmttqvn_captinh',
+            'hoinongdan_captinh',
+            'hoilienhiepphunu_captinh',
+            'doanthanhnien_captinh',
+            'hoichuthapdo_captinh',
+            'tochuckhac_captinh'
+        ];
+        $province_field = 'hoatdongtongiaotai_diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+        $data = $this->__getData($model, compact('fields', 'conditions'));
+
+        return $this->__groupData($data, $column, $province_field);
+    }
+
+    private function __getChucsaccaodai($model)
+    {
+        $fields = [
+            'id',
+            'hoatdongtongiaotai_diachi_huyen'
+        ];
+        $conditions = [
+            'OR' => [
+                'thamgiacactcctxh_hoidongnhandan_captinh' => 1,
+                'thamgiacactcctxh_uybanmttqvn_captinh' => 1,
+                'thamgiacactcctxh_hoichuthapdo_captinh' => 1,
+                'thamgiacactcctxh_hoinongdan_captinh' => 1,
+                'thamgiacactcctxh_hoilienhiepphunu_captinh' => 1,
+                'thamgiacactcctxh_doanthanhnien_captinh' => 1,
+                'thamgiacactcctxh_tochuckhac_captinh' => 1
+            ]
+        ];
+        $column = [
+            'thamgiacactcctxh_hoidongnhandan_captinh',
+            'thamgiacactcctxh_uybanmttqvn_captinh',
+            'thamgiacactcctxh_hoinongdan_captinh',
+            'thamgiacactcctxh_hoilienhiepphunu_captinh',
+            'thamgiacactcctxh_doanthanhnien_captinh',
+            'thamgiacactcctxh_hoichuthapdo_captinh',
+            'thamgiacactcctxh_tochuckhac_captinh'
+        ];
+        $province_field = 'hoatdongtongiaotai_diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+        $data = $this->__getData($model, compact('fields', 'conditions'));
+
+        return $this->__groupData($data, $column, $province_field);
+    }
+
+    private function __getHuynhtruonggiadinhphattu($model)
+    {
+        $fields = [
+            'id',
+            'diachi_huyen'
+        ];
+        $conditions = [
+            'OR' => [
+                'thamgia_hoidongnhandan_captinh' => 1,
+                'thamgia_ubmttqvn_captinh' => 1,
+                'thamgia_hoinongdan_captinh' => 1,
+                'thamgia_hoilienhiepphunu_captinh' => 1,
+                'thamgia_hoilienhiepthanhnien_captinh' => 1,
+                'thamgia_hoichuthapdo_captinh' => 1,
+                'thamgia_cactochuckhac_captinh' => 1
+            ]
+        ];
+        $column = [
+            'thamgia_hoidongnhandan_captinh',
+            'thamgia_ubmttqvn_captinh',
+            'thamgia_hoinongdan_captinh',
+            'thamgia_hoilienhiepphunu_captinh',
+            'thamgia_hoilienhiepthanhnien_captinh',
+            'thamgia_hoichuthapdo_captinh',
+            'thamgia_cactochuckhac_captinh'
+        ];
+        $province_field = 'diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+        $data = $this->__getData($model, compact('fields', 'conditions'));
+
+        return $this->__groupData($data, $column, $province_field);
+    }
+
+    private function __getChucsacnhatuhanhphatgiao($model)
+    {
+        $fields = [
+            'id',
+            'tencosohoatdongtongiao_diachi_huyen'
+        ];
+        $conditions = [
+            'OR' => [
+                'hoatdongtongiao_thamgia_hoidongnhandan_captinh' => 1,
+                'hoatdongtongiao_thamgia_ubmttqvn_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoichuthapdo_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoinongdan_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh' => 1,
+                'hoatdongtongiao_thamgia_cactochuckhac_captinh' => 1
+            ]
+        ];
+        $column = [
+            'hoatdongtongiao_thamgia_hoidongnhandan_captinh',
+            'hoatdongtongiao_thamgia_ubmttqvn_captinh',
+            'hoatdongtongiao_thamgia_hoichuthapdo_captinh',
+            'hoatdongtongiao_thamgia_hoinongdan_captinh',
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh',
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh',
+            'hoatdongtongiao_thamgia_cactochuckhac_captinh'
+        ];
+        $province_field = 'tencosohoatdongtongiao_diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+        $data = $this->__getData($model, compact('fields', 'conditions'));
+
+        return $this->__groupData($data, $column, $province_field);
+    }
+
+    private function __getChucsactinlanh($model)
+    {
+        $fields = [
+            'id',
+            'diemnhom_diachi_huyen'
+        ];
+        $conditions = [
+            'OR' => [
+                'hoidongnhandan_captinh' => 1,
+                'uybanmttqvn_captinh' => 1,
+                'hoichuthapdo_captinh' => 1,
+                'hoinongdan_captinh' => 1,
+                'hoilienhiepthanhnien_captinh' => 1,
+                'hoilienhiepphunu_captinh' => 1,
+                'cactochuckhac_captinh' => 1
+            ]
+        ];
+        $column = [
+            'hoidongnhandan_captinh',
+            'uybanmttqvn_captinh',
+            'hoinongdan_captinh',
+            'hoilienhiepphunu_captinh',
+            'hoilienhiepthanhnien_captinh',
+            'hoichuthapdo_captinh',
+            'cactochuckhac_captinh'
+        ];
+        $province_field = 'diemnhom_diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+        $data = $this->__getData($model, compact('fields', 'conditions'));
+
+        return $this->__groupData($data, $column, $province_field);
+    }
+
+    private function __getChucsacnhatuhanhconggiaotrieu($model)
+    {
+        $fields = [
+            'id',
+            'hoatdongtongiao_giaohat_diachi_huyen'
+        ];
+        $conditions = [
+            'OR' => [
+                'hoatdongtongiao_thamgia_hoidongnhandan_captinh' => 1,
+                'hoatdongtongiao_thamgia_ubmttqvn_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoichuthapdo_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoinongdan_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh' => 1,
+                'hoatdongtongiao_thamgia_cactochuckhac_captinh' => 1
+            ]
+        ];
+        $column = [
+            'hoatdongtongiao_thamgia_hoidongnhandan_captinh',
+            'hoatdongtongiao_thamgia_ubmttqvn_captinh',
+            'hoatdongtongiao_thamgia_hoinongdan_captinh',
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh',
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh',
+            'hoatdongtongiao_thamgia_hoichuthapdo_captinh',
+            'hoatdongtongiao_thamgia_cactochuckhac_captinh'
+        ];
+        $province_field = 'hoatdongtongiao_giaohat_diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+        $data = $this->__getData($model, compact('fields', 'conditions'));
+
+        return $this->__groupData($data, $column, $province_field);
+    }
+
+    private function __getChucsacnhatuhanhcongiaodongtu($model)
+    {
+        $fields = [
+            'id',
+            'diachi_huyen'
+        ];
+
+        $conditions = [
+            'OR' => [
+                'hoatdongtongiao_thamgia_hoidongnhandan_captinh' => 1,
+                'hoatdongtongiao_thamgia_ubmttqvn_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoichuthapdo_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoinongdan_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh' => 1,
+                'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh' => 1,
+                'hoatdongtongiao_thamgia_cactochuckhac_captinh' => 1
+            ]
+        ];
+
+        $column = [
+            'hoatdongtongiao_thamgia_hoidongnhandan_captinh',
+            'hoatdongtongiao_thamgia_ubmttqvn_captinh',
+            'hoatdongtongiao_thamgia_hoinongdan_captinh',
+            'hoatdongtongiao_thamgia_hoilienhiepphunu_captinh',
+            'hoatdongtongiao_thamgia_hoilienhiepthanhnien_captinh',
+            'hoatdongtongiao_thamgia_hoichuthapdo_captinh',
+            'hoatdongtongiao_thamgia_cactochuckhac_captinh'
+        ];
+        $province_field = 'diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+        $data = $this->__getData($model, compact('fields', 'conditions'));
+
+        return $this->__groupData($data, $column, $province_field);
+    }
+
+    private function __getData($model, $option = [])
+    {
+        $obj = ClassRegistry::init($model);
+        $data = $obj->find('all', $option);
+
+        return Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
+    }
+
+    private function __groupData($data, $column, $province_field)
+    {
+        $result = [];
+        $province = $this->Province->getProvince();
+
+        foreach ($province as $provice_code => $name) {
+            foreach ($column as $col) {
+                $result[$provice_code][$col] = 0;
+            }
+        }
+
+        foreach ($data as $id => $item) {
+            $provice_code = $this->Province->retrieveProvinceCode($item[$province_field]);
+            if (!$provice_code) {
+                continue;
+            }
+
+            foreach ($result[$provice_code] as $key => &$count) {
+                if ($item[$key]) {
+                    $count++;
+                }
+            }
+        }
+
+        return $result;
+    }
+}

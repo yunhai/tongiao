@@ -76,4 +76,11 @@ class UtilityComponent extends Component
 
         return mb_strtolower($strNoAccent);
     }
+
+    private function slug2($string)
+    {
+        $string = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
+
+        return strtolower(str_replace(' ', '-', trim($string)));
+    }
 }
