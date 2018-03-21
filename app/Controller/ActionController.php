@@ -3788,6 +3788,310 @@ class ActionController extends AppController
     /**
      * TH TRINH DO TON GIAO
      * TỔNG HỢP TRÌNH ĐỘ TÔN GIÁO CỦA CHỨC SẮC CÁC TÔN GIÁO
+     * 
+     * 1. Bảng chucsactinlanh
+     * A. BIÊN HÒA: 
+     * diemnhom_diachi_huyen = BIÊN HÒA và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * B. LONG KHÁNH: 
+     * diemnhom_diachi_huyen = LONG KHÁNH và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * C. XUÂN LỘC: 
+     * diemnhom_diachi_huyen = XUÂN LỘC và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * D. CẨM MỸ: 
+     * diemnhom_diachi_huyen = CẨM MỸ và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * E. TÂN PHÚ: 
+     * diemnhom_diachi_huyen = TÂN PHÚ và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * F. ĐỊNH QUÁN: 
+     * diemnhom_diachi_huyen = ĐỊNH QUÁN và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * G. THỐNG NHẤT: 
+     * diemnhom_diachi_huyen = THỐNG NHẤT và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * H. TRẢNG BOM: 
+     * diemnhom_diachi_huyen = TRẢNG BOM và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * I. VĨNH CỬU: 
+     * diemnhom_diachi_huyen = NHƠN TRẠCH và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * J. LONG THÀNH: 
+     * diemnhom_diachi_huyen = LONG THÀNH và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * 
+     * 2. Bảng chucsacnhatuhanhconggiaotrieu
+     * A. BIÊN HÒA: 
+     * hoatdongtongiao_giaohat_diachi_huyen = BIÊN HÒA và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * B. LONG KHÁNH: 
+     * hoatdongtongiao_giaohat_diachi_huyen = LONG KHÁNH và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * C. XUÂN LỘC: 
+     * hoatdongtongiao_giaohat_diachi_huyen = XUÂN LỘC và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * D. CẨM MỸ: 
+     * hoatdongtongiao_giaohat_diachi_huyen = CẨM MỸ và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * E. TÂN PHÚ: 
+     * hoatdongtongiao_giaohat_diachi_huyen = TÂN PHÚ và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * F. ĐỊNH QUÁN: 
+     * hoatdongtongiao_giaohat_diachi_huyen = ĐỊNH QUÁN và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * G. THỐNG NHẤT: 
+     * hoatdongtongiao_giaohat_diachi_huyen = THỐNG NHẤT và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * H. TRẢNG BOM: 
+     * hoatdongtongiao_giaohat_diachi_huyen = TRẢNG BOM và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * I. VĨNH CỬU: 
+     * hoatdongtongiao_giaohat_diachi_huyen = NHƠN TRẠCH và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * J. LONG THÀNH: 
+     * hoatdongtongiao_giaohat_diachi_huyen = LONG THÀNH và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * 
+     * 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * A. BIÊN HÒA: 
+     * diachi_huyen = BIÊN HÒA và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * B. LONG KHÁNH: 
+     * diachi_huyen = LONG KHÁNH và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * C. XUÂN LỘC: 
+     * diachi_huyen = XUÂN LỘC và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * D. CẨM MỸ: 
+     * diachi_huyen = CẨM MỸ và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * E. TÂN PHÚ: 
+     * diachi_huyen = TÂN PHÚ và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * F. ĐỊNH QUÁN: 
+     * diachi_huyen = ĐỊNH QUÁN và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * G. THỐNG NHẤT: 
+     * diachi_huyen = THỐNG NHẤT và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * H. TRẢNG BOM: 
+     * diachi_huyen = TRẢNG BOM và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * I. VĨNH CỬU: 
+     * diachi_huyen = NHƠN TRẠCH và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * J. LONG THÀNH: 
+     * diachi_huyen = LONG THÀNH và điều kiện
+     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
+     * 
+     * 4. Bảng chucsacnhatuhanhphatgiao
+     * A. BIÊN HÒA: 
+     * tencosohoatdongtongiao_diachi_huyen = BIÊN HÒA và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * B. LONG KHÁNH: 
+     * tencosohoatdongtongiao_diachi_huyen = LONG KHÁNH và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * C. XUÂN LỘC: 
+     * tencosohoatdongtongiao_diachi_huyen = XUÂN LỘC và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * D. CẨM MỸ: 
+     * tencosohoatdongtongiao_diachi_huyen = CẨM MỸ và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * E. TÂN PHÚ: 
+     * tencosohoatdongtongiao_diachi_huyen = TÂN PHÚ và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * F. ĐỊNH QUÁN: 
+     * tencosohoatdongtongiao_diachi_huyen = ĐỊNH QUÁN và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * G. THỐNG NHẤT: 
+     * tencosohoatdongtongiao_diachi_huyen = THỐNG NHẤT và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * H. TRẢNG BOM: 
+     * tencosohoatdongtongiao_diachi_huyen = TRẢNG BOM và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * I. VĨNH CỬU: 
+     * tencosohoatdongtongiao_diachi_huyen = NHƠN TRẠCH và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * J. LONG THÀNH: 
+     * tencosohoatdongtongiao_diachi_huyen = LONG THÀNH và điều kiện
+     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
+     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
+     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
+     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
+     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
+     * 
+     * 5. Bảng chucsaccaodai
+     * Trả về dữ liệu cố định bằng 0
+     * 
+     * 6. Bảng chucviectinhdocusiphathoivietnam
+     * Trả về dữ liệu cố định bằng 0
+     * 
+     * 7. Bảng chucviechoigiao
+     * Trả về dữ liệu cố định bằng 0
+     * 
+     * CÔNG GIÁO = 2. Bảng chucsacnhatuhanhconggiaotrieu + 3. Bảng chucsacnhatuhanhcongiaodongtu
+     * PHẬT GIÁO = 4. Bảng chucsacnhatuhanhphatgiao
+     * TIN LÀNH = 1. Bảng chucsactinlanh
+     * CAO ĐÀI = 5. Bảng chucsaccaodai
+     * TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM = 6. Bảng chucviectinhdocusiphathoivietnam
+     * HỒI GIÁO = 7. Bảng chucviechoigiao
      */
     protected function __getType21Data()
     {
