@@ -2401,7 +2401,7 @@ class ActionController extends AppController
     {
         $component = $this->Components->load('ExportThCtxhXa');
         $data = $component->export();
-        
+
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template14.xls';
@@ -2444,55 +2444,55 @@ class ActionController extends AppController
             'nhon-trach',
             'long-thanh',
         );
-        $tong = $tong_hoidongnhandan_capxa = $tong_uybanmttqvn_capxa = 
-        $tong_hoinongdan_capxa = $tong_hoilienhiepphunu_capxa = 
-        $tong_hoilienhiepthanhnien_capxa = $tong_hoichuthapdo_capxa = 
-        $tong_cactochuckhac_capxa = 
-        $tong_1_hoidongnhandan_capxa = 
-        $tong_1_uybanmttqvn_capxa = 
-        $tong_1_hoinongdan_capxa = 
-        $tong_1_hoilienhiepphunu_capxa = 
-        $tong_1_hoilienhiepthanhnien_capxa = 
-        $tong_1_hoichuthapdo_capxa = 
-        $tong_1_cactochuckhac_capxa = 
-        
-        $tong_2_hoidongnhandan_capxa = 
-        $tong_2_uybanmttqvn_capxa = 
-        $tong_2_hoinongdan_capxa = 
-        $tong_2_hoilienhiepphunu_capxa = 
-        $tong_2_hoilienhiepthanhnien_capxa = 
-        $tong_2_hoichuthapdo_capxa = 
-        $tong_2_cactochuckhac_capxa = 
-        
-        $tong_3_hoidongnhandan_capxa = 
-        $tong_3_uybanmttqvn_capxa = 
-        $tong_3_hoinongdan_capxa = 
-        $tong_3_hoilienhiepphunu_capxa = 
-        $tong_3_hoilienhiepthanhnien_capxa = 
-        $tong_3_hoichuthapdo_capxa = 
-        $tong_3_cactochuckhac_capxa = 
-        
-        $tong_4_hoidongnhandan_capxa = 
-        $tong_4_uybanmttqvn_capxa = 
-        $tong_4_hoinongdan_capxa = 
+        $tong = $tong_hoidongnhandan_capxa = $tong_uybanmttqvn_capxa =
+        $tong_hoinongdan_capxa = $tong_hoilienhiepphunu_capxa =
+        $tong_hoilienhiepthanhnien_capxa = $tong_hoichuthapdo_capxa =
+        $tong_cactochuckhac_capxa =
+        $tong_1_hoidongnhandan_capxa =
+        $tong_1_uybanmttqvn_capxa =
+        $tong_1_hoinongdan_capxa =
+        $tong_1_hoilienhiepphunu_capxa =
+        $tong_1_hoilienhiepthanhnien_capxa =
+        $tong_1_hoichuthapdo_capxa =
+        $tong_1_cactochuckhac_capxa =
+
+        $tong_2_hoidongnhandan_capxa =
+        $tong_2_uybanmttqvn_capxa =
+        $tong_2_hoinongdan_capxa =
+        $tong_2_hoilienhiepphunu_capxa =
+        $tong_2_hoilienhiepthanhnien_capxa =
+        $tong_2_hoichuthapdo_capxa =
+        $tong_2_cactochuckhac_capxa =
+
+        $tong_3_hoidongnhandan_capxa =
+        $tong_3_uybanmttqvn_capxa =
+        $tong_3_hoinongdan_capxa =
+        $tong_3_hoilienhiepphunu_capxa =
+        $tong_3_hoilienhiepthanhnien_capxa =
+        $tong_3_hoichuthapdo_capxa =
+        $tong_3_cactochuckhac_capxa =
+
+        $tong_4_hoidongnhandan_capxa =
+        $tong_4_uybanmttqvn_capxa =
+        $tong_4_hoinongdan_capxa =
         $tong_4_hoilienhiepphunu_capxa =
-        $tong_4_hoilienhiepthanhnien_capxa = 
-        $tong_4_hoichuthapdo_capxa = 
-        $tong_4_cactochuckhac_capxa = 
-        
-        $tong_5_hoidongnhandan_capxa = 
-        $tong_5_uybanmttqvn_capxa = 
-        $tong_5_hoinongdan_capxa = 
-        $tong_5_hoilienhiepphunu_capxa = 
-        $tong_5_hoilienhiepthanhnien_capxa = 
-        $tong_5_hoichuthapdo_capxa = 
-        $tong_5_cactochuckhac_capxa = 
-        
-        $tong_6_hoidongnhandan_capxa = 
-        $tong_6_uybanmttqvn_capxa = 
-        $tong_6_hoinongdan_capxa = 
-        $tong_6_hoilienhiepphunu_capxa = 
-        $tong_6_hoilienhiepthanhnien_capxa = 
+        $tong_4_hoilienhiepthanhnien_capxa =
+        $tong_4_hoichuthapdo_capxa =
+        $tong_4_cactochuckhac_capxa =
+
+        $tong_5_hoidongnhandan_capxa =
+        $tong_5_uybanmttqvn_capxa =
+        $tong_5_hoinongdan_capxa =
+        $tong_5_hoilienhiepphunu_capxa =
+        $tong_5_hoilienhiepthanhnien_capxa =
+        $tong_5_hoichuthapdo_capxa =
+        $tong_5_cactochuckhac_capxa =
+
+        $tong_6_hoidongnhandan_capxa =
+        $tong_6_uybanmttqvn_capxa =
+        $tong_6_hoinongdan_capxa =
+        $tong_6_hoilienhiepphunu_capxa =
+        $tong_6_hoilienhiepthanhnien_capxa =
         $tong_6_hoichuthapdo_capxa = 0;
         foreach ($tinhs as $tinh) {
             $result = $data[$tinh];
@@ -2678,7 +2678,7 @@ class ActionController extends AppController
             $tong_hoilienhiepthanhnien_capxa += $result['hoilienhiepthanhnien_capxa'];
             $tong_hoichuthapdo_capxa += $result['hoichuthapdo_capxa'];
             $tong_cactochuckhac_capxa += $result['cactochuckhac_capxa'];
-            
+
             $tong_0_hoidongnhandan_capxa += $result['0_hoidongnhandan_capxa'];
             $tong_0_uybanmttqvn_capxa += $result['0_uybanmttqvn_capxa'];
             $tong_0_hoinongdan_capxa += $result['0_hoinongdan_capxa'];
@@ -2686,7 +2686,7 @@ class ActionController extends AppController
             $tong_0_hoilienhiepthanhnien_capxa += $result['0_hoilienhiepthanhnien_capxa'];
             $tong_0_hoichuthapdo_capxa += $result['0_hoichuthapdo_capxa'];
             $tong_0_cactochuckhac_capxa += $result['0_cactochuckhac_capxa'];
-            
+
             $tong_1_hoidongnhandan_capxa += $result['1_hoidongnhandan_capxa'];
             $tong_1_uybanmttqvn_capxa += $result['1_uybanmttqvn_capxa'];
             $tong_1_hoinongdan_capxa += $result['1_hoinongdan_capxa'];
@@ -2694,7 +2694,7 @@ class ActionController extends AppController
             $tong_1_hoilienhiepthanhnien_capxa += $result['1_hoilienhiepthanhnien_capxa'];
             $tong_1_hoichuthapdo_capxa += $result['1_hoichuthapdo_capxa'];
             $tong_1_cactochuckhac_capxa += $result['1_cactochuckhac_capxa'];
-            
+
             $tong_2_hoidongnhandan_capxa += $result['2_hoidongnhandan_capxa'];
             $tong_2_uybanmttqvn_capxa += $result['2_uybanmttqvn_capxa'];
             $tong_2_hoinongdan_capxa += $result['2_hoinongdan_capxa'];
@@ -2702,7 +2702,7 @@ class ActionController extends AppController
             $tong_2_hoilienhiepthanhnien_capxa += $result['2_hoilienhiepthanhnien_capxa'];
             $tong_2_hoichuthapdo_capxa += $result['2_hoichuthapdo_capxa'];
             $tong_2_cactochuckhac_capxa += $result['2_cactochuckhac_capxa'];
-            
+
             $tong_3_hoidongnhandan_capxa += $result['3_hoidongnhandan_capxa'];
             $tong_3_uybanmttqvn_capxa += $result['3_uybanmttqvn_capxa'];
             $tong_3_hoinongdan_capxa += $result['3_hoinongdan_capxa'];
@@ -2710,7 +2710,7 @@ class ActionController extends AppController
             $tong_3_hoilienhiepthanhnien_capxa += $result['3_hoilienhiepthanhnien_capxa'];
             $tong_3_hoichuthapdo_capxa += $result['3_hoichuthapdo_capxa'];
             $tong_3_cactochuckhac_capxa += $result['3_cactochuckhac_capxa'];
-            
+
             $tong_4_hoidongnhandan_capxa += $result['4_hoidongnhandan_capxa'];
             $tong_4_uybanmttqvn_capxa += $result['4_uybanmttqvn_capxa'];
             $tong_4_hoinongdan_capxa += $result['4_hoinongdan_capxa'];
@@ -2718,7 +2718,7 @@ class ActionController extends AppController
             $tong_4_hoilienhiepthanhnien_capxa += $result['4_hoilienhiepthanhnien_capxa'];
             $tong_4_hoichuthapdo_capxa += $result['4_hoichuthapdo_capxa'];
             $tong_4_cactochuckhac_capxa += $result['4_cactochuckhac_capxa'];
-            
+
             $tong_5_hoidongnhandan_capxa += $result['5_hoidongnhandan_capxa'];
             $tong_5_uybanmttqvn_capxa += $result['5_uybanmttqvn_capxa'];
             $tong_5_hoinongdan_capxa += $result['5_hoinongdan_capxa'];
@@ -2726,80 +2726,80 @@ class ActionController extends AppController
             $tong_5_hoilienhiepthanhnien_capxa += $result['5_hoilienhiepthanhnien_capxa'];
             $tong_5_hoichuthapdo_capxa += $result['5_hoichuthapdo_capxa'];
             $tong_5_cactochuckhac_capxa += $result['5_cactochuckhac_capxa'];
-            
+
             $tong_6_hoidongnhandan_capxa += $result['6_hoidongnhandan_capxa'];
             $tong_6_uybanmttqvn_capxa += $result['6_uybanmttqvn_capxa'];
             $tong_6_hoinongdan_capxa += $result['6_hoinongdan_capxa'];
             $tong_6_hoilienhiepphunu_capxa += $result['6_hoilienhiepphunu_capxa'];
             $tong_6_hoilienhiepthanhnien_capxa += $result['6_hoilienhiepthanhnien_capxa'];
             $tong_6_hoichuthapdo_capxa += $result['6_hoichuthapdo_capxa'];
-            
+
             $r++;
         }
-        $this->Excel->ActiveSheet->getCell("C17")->setValue($tong);
-        $this->Excel->ActiveSheet->getCell("D17")->setValue($tong_hoidongnhandan_capxa);
-        $this->Excel->ActiveSheet->getCell("E17")->setValue($tong_uybanmttqvn_capxa);
-        $this->Excel->ActiveSheet->getCell("F17")->setValue($tong_hoinongdan_capxa);
-        $this->Excel->ActiveSheet->getCell("G17")->setValue($tong_hoilienhiepphunu_capxa);
-        $this->Excel->ActiveSheet->getCell("H17")->setValue($tong_hoilienhiepthanhnien_capxa);
-        $this->Excel->ActiveSheet->getCell("I17")->setValue($tong_hoichuthapdo_capxa);
-        $this->Excel->ActiveSheet->getCell("J17")->setValue($tong_cactochuckhac_capxa);
-        
-        $this->Excel->ActiveSheet->getCell("K17")->setValue($tong_0_hoidongnhandan_capxa);
-        $this->Excel->ActiveSheet->getCell("L17")->setValue($tong_0_uybanmttqvn_capxa);
-        $this->Excel->ActiveSheet->getCell("M17")->setValue($tong_0_hoinongdan_capxa);
-        $this->Excel->ActiveSheet->getCell("N17")->setValue($tong_0_hoilienhiepphunu_capxa);
-        $this->Excel->ActiveSheet->getCell("O17")->setValue($tong_0_hoilienhiepthanhnien_capxa);
-        $this->Excel->ActiveSheet->getCell("P17")->setValue($tong_0_hoichuthapdo_capxa);
-        $this->Excel->ActiveSheet->getCell("Q17")->setValue($tong_0_cactochuckhac_capxa);
-        
-        $this->Excel->ActiveSheet->getCell("R17")->setValue($tong_1_hoidongnhandan_capxa);
-        $this->Excel->ActiveSheet->getCell("S17")->setValue($tong_1_uybanmttqvn_capxa);
-        $this->Excel->ActiveSheet->getCell("T17")->setValue($tong_1_hoinongdan_capxa);
-        $this->Excel->ActiveSheet->getCell("U17")->setValue($tong_1_hoilienhiepphunu_capxa);
-        $this->Excel->ActiveSheet->getCell("V17")->setValue($tong_1_hoilienhiepthanhnien_capxa);
-        $this->Excel->ActiveSheet->getCell("W17")->setValue($tong_1_hoichuthapdo_capxa);
-        $this->Excel->ActiveSheet->getCell("X17")->setValue($tong_1_cactochuckhac_capxa);
-        
-        $this->Excel->ActiveSheet->getCell("Y17")->setValue($tong_2_hoidongnhandan_capxa);
-        $this->Excel->ActiveSheet->getCell("Z17")->setValue($tong_2_uybanmttqvn_capxa);
-        $this->Excel->ActiveSheet->getCell("AA17")->setValue($tong_2_hoinongdan_capxa);
-        $this->Excel->ActiveSheet->getCell("AB17")->setValue($tong_2_hoilienhiepphunu_capxa);
-        $this->Excel->ActiveSheet->getCell("AC17")->setValue($tong_2_hoilienhiepthanhnien_capxa);
-        $this->Excel->ActiveSheet->getCell("AD17")->setValue($tong_2_hoichuthapdo_capxa);
-        $this->Excel->ActiveSheet->getCell("AE17")->setValue($tong_2_cactochuckhac_capxa);
-        
-        $this->Excel->ActiveSheet->getCell("AF17")->setValue($tong_3_hoidongnhandan_capxa);
-        $this->Excel->ActiveSheet->getCell("AG17")->setValue($tong_3_uybanmttqvn_capxa);
-        $this->Excel->ActiveSheet->getCell("AH17")->setValue($tong_3_hoinongdan_capxa);
-        $this->Excel->ActiveSheet->getCell("AI17")->setValue($tong_3_hoilienhiepphunu_capxa);
-        $this->Excel->ActiveSheet->getCell("AJ17")->setValue($tong_3_hoilienhiepthanhnien_capxa);
-        $this->Excel->ActiveSheet->getCell("AK17")->setValue($tong_3_hoichuthapdo_capxa);
-        $this->Excel->ActiveSheet->getCell("AL17")->setValue($tong_3_cactochuckhac_capxa);
-        
-        $this->Excel->ActiveSheet->getCell("AM17")->setValue($tong_4_hoidongnhandan_capxa);
-        $this->Excel->ActiveSheet->getCell("AN17")->setValue($tong_4_uybanmttqvn_capxa);
-        $this->Excel->ActiveSheet->getCell("AO17")->setValue($tong_4_hoinongdan_capxa);
-        $this->Excel->ActiveSheet->getCell("AP17")->setValue($tong_4_hoilienhiepphunu_capxa);
-        $this->Excel->ActiveSheet->getCell("AQ17")->setValue($tong_4_hoilienhiepthanhnien_capxa);
-        $this->Excel->ActiveSheet->getCell("AR17")->setValue($tong_4_hoichuthapdo_capxa);
-        $this->Excel->ActiveSheet->getCell("AS17")->setValue($tong_4_cactochuckhac_capxa);
-        
-        $this->Excel->ActiveSheet->getCell("AT17")->setValue($tong_5_hoidongnhandan_capxa);
-        $this->Excel->ActiveSheet->getCell("AU17")->setValue($tong_5_uybanmttqvn_capxa);
-        $this->Excel->ActiveSheet->getCell("AV17")->setValue($tong_5_hoinongdan_capxa);
-        $this->Excel->ActiveSheet->getCell("AW17")->setValue($tong_5_hoilienhiepphunu_capxa);
-        $this->Excel->ActiveSheet->getCell("AX17")->setValue($tong_5_hoilienhiepthanhnien_capxa);
-        $this->Excel->ActiveSheet->getCell("AY17")->setValue($tong_5_hoichuthapdo_capxa);
-        $this->Excel->ActiveSheet->getCell("AZ17")->setValue($tong_5_cactochuckhac_capxa);
-        
-        $this->Excel->ActiveSheet->getCell("BA17")->setValue($tong_6_hoidongnhandan_capxa);
-        $this->Excel->ActiveSheet->getCell("BB17")->setValue($tong_6_uybanmttqvn_capxa);
-        $this->Excel->ActiveSheet->getCell("BC17")->setValue($tong_6_hoinongdan_capxa);
-        $this->Excel->ActiveSheet->getCell("BD17")->setValue($tong_6_hoilienhiepphunu_capxa);
-        $this->Excel->ActiveSheet->getCell("BE17")->setValue($tong_6_hoilienhiepthanhnien_capxa);
-        $this->Excel->ActiveSheet->getCell("BF17")->setValue($tong_6_hoichuthapdo_capxa);
-        
+        $this->Excel->ActiveSheet->getCell('C17')->setValue($tong);
+        $this->Excel->ActiveSheet->getCell('D17')->setValue($tong_hoidongnhandan_capxa);
+        $this->Excel->ActiveSheet->getCell('E17')->setValue($tong_uybanmttqvn_capxa);
+        $this->Excel->ActiveSheet->getCell('F17')->setValue($tong_hoinongdan_capxa);
+        $this->Excel->ActiveSheet->getCell('G17')->setValue($tong_hoilienhiepphunu_capxa);
+        $this->Excel->ActiveSheet->getCell('H17')->setValue($tong_hoilienhiepthanhnien_capxa);
+        $this->Excel->ActiveSheet->getCell('I17')->setValue($tong_hoichuthapdo_capxa);
+        $this->Excel->ActiveSheet->getCell('J17')->setValue($tong_cactochuckhac_capxa);
+
+        $this->Excel->ActiveSheet->getCell('K17')->setValue($tong_0_hoidongnhandan_capxa);
+        $this->Excel->ActiveSheet->getCell('L17')->setValue($tong_0_uybanmttqvn_capxa);
+        $this->Excel->ActiveSheet->getCell('M17')->setValue($tong_0_hoinongdan_capxa);
+        $this->Excel->ActiveSheet->getCell('N17')->setValue($tong_0_hoilienhiepphunu_capxa);
+        $this->Excel->ActiveSheet->getCell('O17')->setValue($tong_0_hoilienhiepthanhnien_capxa);
+        $this->Excel->ActiveSheet->getCell('P17')->setValue($tong_0_hoichuthapdo_capxa);
+        $this->Excel->ActiveSheet->getCell('Q17')->setValue($tong_0_cactochuckhac_capxa);
+
+        $this->Excel->ActiveSheet->getCell('R17')->setValue($tong_1_hoidongnhandan_capxa);
+        $this->Excel->ActiveSheet->getCell('S17')->setValue($tong_1_uybanmttqvn_capxa);
+        $this->Excel->ActiveSheet->getCell('T17')->setValue($tong_1_hoinongdan_capxa);
+        $this->Excel->ActiveSheet->getCell('U17')->setValue($tong_1_hoilienhiepphunu_capxa);
+        $this->Excel->ActiveSheet->getCell('V17')->setValue($tong_1_hoilienhiepthanhnien_capxa);
+        $this->Excel->ActiveSheet->getCell('W17')->setValue($tong_1_hoichuthapdo_capxa);
+        $this->Excel->ActiveSheet->getCell('X17')->setValue($tong_1_cactochuckhac_capxa);
+
+        $this->Excel->ActiveSheet->getCell('Y17')->setValue($tong_2_hoidongnhandan_capxa);
+        $this->Excel->ActiveSheet->getCell('Z17')->setValue($tong_2_uybanmttqvn_capxa);
+        $this->Excel->ActiveSheet->getCell('AA17')->setValue($tong_2_hoinongdan_capxa);
+        $this->Excel->ActiveSheet->getCell('AB17')->setValue($tong_2_hoilienhiepphunu_capxa);
+        $this->Excel->ActiveSheet->getCell('AC17')->setValue($tong_2_hoilienhiepthanhnien_capxa);
+        $this->Excel->ActiveSheet->getCell('AD17')->setValue($tong_2_hoichuthapdo_capxa);
+        $this->Excel->ActiveSheet->getCell('AE17')->setValue($tong_2_cactochuckhac_capxa);
+
+        $this->Excel->ActiveSheet->getCell('AF17')->setValue($tong_3_hoidongnhandan_capxa);
+        $this->Excel->ActiveSheet->getCell('AG17')->setValue($tong_3_uybanmttqvn_capxa);
+        $this->Excel->ActiveSheet->getCell('AH17')->setValue($tong_3_hoinongdan_capxa);
+        $this->Excel->ActiveSheet->getCell('AI17')->setValue($tong_3_hoilienhiepphunu_capxa);
+        $this->Excel->ActiveSheet->getCell('AJ17')->setValue($tong_3_hoilienhiepthanhnien_capxa);
+        $this->Excel->ActiveSheet->getCell('AK17')->setValue($tong_3_hoichuthapdo_capxa);
+        $this->Excel->ActiveSheet->getCell('AL17')->setValue($tong_3_cactochuckhac_capxa);
+
+        $this->Excel->ActiveSheet->getCell('AM17')->setValue($tong_4_hoidongnhandan_capxa);
+        $this->Excel->ActiveSheet->getCell('AN17')->setValue($tong_4_uybanmttqvn_capxa);
+        $this->Excel->ActiveSheet->getCell('AO17')->setValue($tong_4_hoinongdan_capxa);
+        $this->Excel->ActiveSheet->getCell('AP17')->setValue($tong_4_hoilienhiepphunu_capxa);
+        $this->Excel->ActiveSheet->getCell('AQ17')->setValue($tong_4_hoilienhiepthanhnien_capxa);
+        $this->Excel->ActiveSheet->getCell('AR17')->setValue($tong_4_hoichuthapdo_capxa);
+        $this->Excel->ActiveSheet->getCell('AS17')->setValue($tong_4_cactochuckhac_capxa);
+
+        $this->Excel->ActiveSheet->getCell('AT17')->setValue($tong_5_hoidongnhandan_capxa);
+        $this->Excel->ActiveSheet->getCell('AU17')->setValue($tong_5_uybanmttqvn_capxa);
+        $this->Excel->ActiveSheet->getCell('AV17')->setValue($tong_5_hoinongdan_capxa);
+        $this->Excel->ActiveSheet->getCell('AW17')->setValue($tong_5_hoilienhiepphunu_capxa);
+        $this->Excel->ActiveSheet->getCell('AX17')->setValue($tong_5_hoilienhiepthanhnien_capxa);
+        $this->Excel->ActiveSheet->getCell('AY17')->setValue($tong_5_hoichuthapdo_capxa);
+        $this->Excel->ActiveSheet->getCell('AZ17')->setValue($tong_5_cactochuckhac_capxa);
+
+        $this->Excel->ActiveSheet->getCell('BA17')->setValue($tong_6_hoidongnhandan_capxa);
+        $this->Excel->ActiveSheet->getCell('BB17')->setValue($tong_6_uybanmttqvn_capxa);
+        $this->Excel->ActiveSheet->getCell('BC17')->setValue($tong_6_hoinongdan_capxa);
+        $this->Excel->ActiveSheet->getCell('BD17')->setValue($tong_6_hoilienhiepphunu_capxa);
+        $this->Excel->ActiveSheet->getCell('BE17')->setValue($tong_6_hoilienhiepthanhnien_capxa);
+        $this->Excel->ActiveSheet->getCell('BF17')->setValue($tong_6_hoichuthapdo_capxa);
+
         return $this->Excel->save($filename);
     }
 
@@ -2811,7 +2811,7 @@ class ActionController extends AppController
     {
         $component = $this->Components->load('ExportThCtxhHuyen');
         $data = $component->export();
-        
+
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template15.xls';
@@ -2854,55 +2854,55 @@ class ActionController extends AppController
             'nhon-trach',
             'long-thanh',
         );
-        $tong = $tong_hoidongnhandan_caphuyen = $tong_uybanmttqvn_caphuyen = 
-        $tong_hoinongdan_caphuyen = $tong_hoilienhiepphunu_caphuyen = 
-        $tong_hoilienhiepthanhnien_caphuyen = $tong_hoichuthapdo_caphuyen = 
-        $tong_cactochuckhac_caphuyen = 
-        $tong_1_hoidongnhandan_caphuyen = 
-        $tong_1_uybanmttqvn_caphuyen = 
-        $tong_1_hoinongdan_caphuyen = 
-        $tong_1_hoilienhiepphunu_caphuyen = 
-        $tong_1_hoilienhiepthanhnien_caphuyen = 
-        $tong_1_hoichuthapdo_caphuyen = 
-        $tong_1_cactochuckhac_caphuyen = 
-        
-        $tong_2_hoidongnhandan_caphuyen = 
-        $tong_2_uybanmttqvn_caphuyen = 
-        $tong_2_hoinongdan_caphuyen = 
-        $tong_2_hoilienhiepphunu_caphuyen = 
-        $tong_2_hoilienhiepthanhnien_caphuyen = 
-        $tong_2_hoichuthapdo_caphuyen = 
-        $tong_2_cactochuckhac_caphuyen = 
-        
-        $tong_3_hoidongnhandan_caphuyen = 
-        $tong_3_uybanmttqvn_caphuyen = 
-        $tong_3_hoinongdan_caphuyen = 
-        $tong_3_hoilienhiepphunu_caphuyen = 
-        $tong_3_hoilienhiepthanhnien_caphuyen = 
-        $tong_3_hoichuthapdo_caphuyen = 
-        $tong_3_cactochuckhac_caphuyen = 
-        
-        $tong_4_hoidongnhandan_caphuyen = 
-        $tong_4_uybanmttqvn_caphuyen = 
-        $tong_4_hoinongdan_caphuyen = 
+        $tong = $tong_hoidongnhandan_caphuyen = $tong_uybanmttqvn_caphuyen =
+        $tong_hoinongdan_caphuyen = $tong_hoilienhiepphunu_caphuyen =
+        $tong_hoilienhiepthanhnien_caphuyen = $tong_hoichuthapdo_caphuyen =
+        $tong_cactochuckhac_caphuyen =
+        $tong_1_hoidongnhandan_caphuyen =
+        $tong_1_uybanmttqvn_caphuyen =
+        $tong_1_hoinongdan_caphuyen =
+        $tong_1_hoilienhiepphunu_caphuyen =
+        $tong_1_hoilienhiepthanhnien_caphuyen =
+        $tong_1_hoichuthapdo_caphuyen =
+        $tong_1_cactochuckhac_caphuyen =
+
+        $tong_2_hoidongnhandan_caphuyen =
+        $tong_2_uybanmttqvn_caphuyen =
+        $tong_2_hoinongdan_caphuyen =
+        $tong_2_hoilienhiepphunu_caphuyen =
+        $tong_2_hoilienhiepthanhnien_caphuyen =
+        $tong_2_hoichuthapdo_caphuyen =
+        $tong_2_cactochuckhac_caphuyen =
+
+        $tong_3_hoidongnhandan_caphuyen =
+        $tong_3_uybanmttqvn_caphuyen =
+        $tong_3_hoinongdan_caphuyen =
+        $tong_3_hoilienhiepphunu_caphuyen =
+        $tong_3_hoilienhiepthanhnien_caphuyen =
+        $tong_3_hoichuthapdo_caphuyen =
+        $tong_3_cactochuckhac_caphuyen =
+
+        $tong_4_hoidongnhandan_caphuyen =
+        $tong_4_uybanmttqvn_caphuyen =
+        $tong_4_hoinongdan_caphuyen =
         $tong_4_hoilienhiepphunu_caphuyen =
-        $tong_4_hoilienhiepthanhnien_caphuyen = 
-        $tong_4_hoichuthapdo_caphuyen = 
-        $tong_4_cactochuckhac_caphuyen = 
-        
-        $tong_5_hoidongnhandan_caphuyen = 
-        $tong_5_uybanmttqvn_caphuyen = 
-        $tong_5_hoinongdan_caphuyen = 
-        $tong_5_hoilienhiepphunu_caphuyen = 
-        $tong_5_hoilienhiepthanhnien_caphuyen = 
-        $tong_5_hoichuthapdo_caphuyen = 
-        $tong_5_cactochuckhac_caphuyen = 
-        
-        $tong_6_hoidongnhandan_caphuyen = 
-        $tong_6_uybanmttqvn_caphuyen = 
-        $tong_6_hoinongdan_caphuyen = 
-        $tong_6_hoilienhiepphunu_caphuyen = 
-        $tong_6_hoilienhiepthanhnien_caphuyen = 
+        $tong_4_hoilienhiepthanhnien_caphuyen =
+        $tong_4_hoichuthapdo_caphuyen =
+        $tong_4_cactochuckhac_caphuyen =
+
+        $tong_5_hoidongnhandan_caphuyen =
+        $tong_5_uybanmttqvn_caphuyen =
+        $tong_5_hoinongdan_caphuyen =
+        $tong_5_hoilienhiepphunu_caphuyen =
+        $tong_5_hoilienhiepthanhnien_caphuyen =
+        $tong_5_hoichuthapdo_caphuyen =
+        $tong_5_cactochuckhac_caphuyen =
+
+        $tong_6_hoidongnhandan_caphuyen =
+        $tong_6_uybanmttqvn_caphuyen =
+        $tong_6_hoinongdan_caphuyen =
+        $tong_6_hoilienhiepphunu_caphuyen =
+        $tong_6_hoilienhiepthanhnien_caphuyen =
         $tong_6_hoichuthapdo_caphuyen = 0;
         foreach ($tinhs as $tinh) {
             $result = $data[$tinh];
@@ -3088,7 +3088,7 @@ class ActionController extends AppController
             $tong_hoilienhiepthanhnien_caphuyen += $result['hoilienhiepthanhnien_caphuyen'];
             $tong_hoichuthapdo_caphuyen += $result['hoichuthapdo_caphuyen'];
             $tong_cactochuckhac_caphuyen += $result['cactochuckhac_caphuyen'];
-            
+
             $tong_0_hoidongnhandan_caphuyen += $result['0_hoidongnhandan_caphuyen'];
             $tong_0_uybanmttqvn_caphuyen += $result['0_uybanmttqvn_caphuyen'];
             $tong_0_hoinongdan_caphuyen += $result['0_hoinongdan_caphuyen'];
@@ -3096,7 +3096,7 @@ class ActionController extends AppController
             $tong_0_hoilienhiepthanhnien_caphuyen += $result['0_hoilienhiepthanhnien_caphuyen'];
             $tong_0_hoichuthapdo_caphuyen += $result['0_hoichuthapdo_caphuyen'];
             $tong_0_cactochuckhac_caphuyen += $result['0_cactochuckhac_caphuyen'];
-            
+
             $tong_1_hoidongnhandan_caphuyen += $result['1_hoidongnhandan_caphuyen'];
             $tong_1_uybanmttqvn_caphuyen += $result['1_uybanmttqvn_caphuyen'];
             $tong_1_hoinongdan_caphuyen += $result['1_hoinongdan_caphuyen'];
@@ -3104,7 +3104,7 @@ class ActionController extends AppController
             $tong_1_hoilienhiepthanhnien_caphuyen += $result['1_hoilienhiepthanhnien_caphuyen'];
             $tong_1_hoichuthapdo_caphuyen += $result['1_hoichuthapdo_caphuyen'];
             $tong_1_cactochuckhac_caphuyen += $result['1_cactochuckhac_caphuyen'];
-            
+
             $tong_2_hoidongnhandan_caphuyen += $result['2_hoidongnhandan_caphuyen'];
             $tong_2_uybanmttqvn_caphuyen += $result['2_uybanmttqvn_caphuyen'];
             $tong_2_hoinongdan_caphuyen += $result['2_hoinongdan_caphuyen'];
@@ -3112,7 +3112,7 @@ class ActionController extends AppController
             $tong_2_hoilienhiepthanhnien_caphuyen += $result['2_hoilienhiepthanhnien_caphuyen'];
             $tong_2_hoichuthapdo_caphuyen += $result['2_hoichuthapdo_caphuyen'];
             $tong_2_cactochuckhac_caphuyen += $result['2_cactochuckhac_caphuyen'];
-            
+
             $tong_3_hoidongnhandan_caphuyen += $result['3_hoidongnhandan_caphuyen'];
             $tong_3_uybanmttqvn_caphuyen += $result['3_uybanmttqvn_caphuyen'];
             $tong_3_hoinongdan_caphuyen += $result['3_hoinongdan_caphuyen'];
@@ -3120,7 +3120,7 @@ class ActionController extends AppController
             $tong_3_hoilienhiepthanhnien_caphuyen += $result['3_hoilienhiepthanhnien_caphuyen'];
             $tong_3_hoichuthapdo_caphuyen += $result['3_hoichuthapdo_caphuyen'];
             $tong_3_cactochuckhac_caphuyen += $result['3_cactochuckhac_caphuyen'];
-            
+
             $tong_4_hoidongnhandan_caphuyen += $result['4_hoidongnhandan_caphuyen'];
             $tong_4_uybanmttqvn_caphuyen += $result['4_uybanmttqvn_caphuyen'];
             $tong_4_hoinongdan_caphuyen += $result['4_hoinongdan_caphuyen'];
@@ -3128,7 +3128,7 @@ class ActionController extends AppController
             $tong_4_hoilienhiepthanhnien_caphuyen += $result['4_hoilienhiepthanhnien_caphuyen'];
             $tong_4_hoichuthapdo_caphuyen += $result['4_hoichuthapdo_caphuyen'];
             $tong_4_cactochuckhac_caphuyen += $result['4_cactochuckhac_caphuyen'];
-            
+
             $tong_5_hoidongnhandan_caphuyen += $result['5_hoidongnhandan_caphuyen'];
             $tong_5_uybanmttqvn_caphuyen += $result['5_uybanmttqvn_caphuyen'];
             $tong_5_hoinongdan_caphuyen += $result['5_hoinongdan_caphuyen'];
@@ -3136,80 +3136,80 @@ class ActionController extends AppController
             $tong_5_hoilienhiepthanhnien_caphuyen += $result['5_hoilienhiepthanhnien_caphuyen'];
             $tong_5_hoichuthapdo_caphuyen += $result['5_hoichuthapdo_caphuyen'];
             $tong_5_cactochuckhac_caphuyen += $result['5_cactochuckhac_caphuyen'];
-            
+
             $tong_6_hoidongnhandan_caphuyen += $result['6_hoidongnhandan_caphuyen'];
             $tong_6_uybanmttqvn_caphuyen += $result['6_uybanmttqvn_caphuyen'];
             $tong_6_hoinongdan_caphuyen += $result['6_hoinongdan_caphuyen'];
             $tong_6_hoilienhiepphunu_caphuyen += $result['6_hoilienhiepphunu_caphuyen'];
             $tong_6_hoilienhiepthanhnien_caphuyen += $result['6_hoilienhiepthanhnien_caphuyen'];
             $tong_6_hoichuthapdo_caphuyen += $result['6_hoichuthapdo_caphuyen'];
-            
+
             $r++;
         }
-        $this->Excel->ActiveSheet->getCell("C17")->setValue($tong);
-        $this->Excel->ActiveSheet->getCell("D17")->setValue($tong_hoidongnhandan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("E17")->setValue($tong_uybanmttqvn_caphuyen);
-        $this->Excel->ActiveSheet->getCell("F17")->setValue($tong_hoinongdan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("G17")->setValue($tong_hoilienhiepphunu_caphuyen);
-        $this->Excel->ActiveSheet->getCell("H17")->setValue($tong_hoilienhiepthanhnien_caphuyen);
-        $this->Excel->ActiveSheet->getCell("I17")->setValue($tong_hoichuthapdo_caphuyen);
-        $this->Excel->ActiveSheet->getCell("J17")->setValue($tong_cactochuckhac_caphuyen);
-        
-        $this->Excel->ActiveSheet->getCell("K17")->setValue($tong_0_hoidongnhandan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("L17")->setValue($tong_0_uybanmttqvn_caphuyen);
-        $this->Excel->ActiveSheet->getCell("M17")->setValue($tong_0_hoinongdan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("N17")->setValue($tong_0_hoilienhiepphunu_caphuyen);
-        $this->Excel->ActiveSheet->getCell("O17")->setValue($tong_0_hoilienhiepthanhnien_caphuyen);
-        $this->Excel->ActiveSheet->getCell("P17")->setValue($tong_0_hoichuthapdo_caphuyen);
-        $this->Excel->ActiveSheet->getCell("Q17")->setValue($tong_0_cactochuckhac_caphuyen);
-        
-        $this->Excel->ActiveSheet->getCell("R17")->setValue($tong_1_hoidongnhandan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("S17")->setValue($tong_1_uybanmttqvn_caphuyen);
-        $this->Excel->ActiveSheet->getCell("T17")->setValue($tong_1_hoinongdan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("U17")->setValue($tong_1_hoilienhiepphunu_caphuyen);
-        $this->Excel->ActiveSheet->getCell("V17")->setValue($tong_1_hoilienhiepthanhnien_caphuyen);
-        $this->Excel->ActiveSheet->getCell("W17")->setValue($tong_1_hoichuthapdo_caphuyen);
-        $this->Excel->ActiveSheet->getCell("X17")->setValue($tong_1_cactochuckhac_caphuyen);
-        
-        $this->Excel->ActiveSheet->getCell("Y17")->setValue($tong_2_hoidongnhandan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("Z17")->setValue($tong_2_uybanmttqvn_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AA17")->setValue($tong_2_hoinongdan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AB17")->setValue($tong_2_hoilienhiepphunu_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AC17")->setValue($tong_2_hoilienhiepthanhnien_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AD17")->setValue($tong_2_hoichuthapdo_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AE17")->setValue($tong_2_cactochuckhac_caphuyen);
-        
-        $this->Excel->ActiveSheet->getCell("AF17")->setValue($tong_3_hoidongnhandan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AG17")->setValue($tong_3_uybanmttqvn_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AH17")->setValue($tong_3_hoinongdan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AI17")->setValue($tong_3_hoilienhiepphunu_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AJ17")->setValue($tong_3_hoilienhiepthanhnien_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AK17")->setValue($tong_3_hoichuthapdo_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AL17")->setValue($tong_3_cactochuckhac_caphuyen);
-        
-        $this->Excel->ActiveSheet->getCell("AM17")->setValue($tong_4_hoidongnhandan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AN17")->setValue($tong_4_uybanmttqvn_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AO17")->setValue($tong_4_hoinongdan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AP17")->setValue($tong_4_hoilienhiepphunu_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AQ17")->setValue($tong_4_hoilienhiepthanhnien_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AR17")->setValue($tong_4_hoichuthapdo_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AS17")->setValue($tong_4_cactochuckhac_caphuyen);
-        
-        $this->Excel->ActiveSheet->getCell("AT17")->setValue($tong_5_hoidongnhandan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AU17")->setValue($tong_5_uybanmttqvn_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AV17")->setValue($tong_5_hoinongdan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AW17")->setValue($tong_5_hoilienhiepphunu_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AX17")->setValue($tong_5_hoilienhiepthanhnien_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AY17")->setValue($tong_5_hoichuthapdo_caphuyen);
-        $this->Excel->ActiveSheet->getCell("AZ17")->setValue($tong_5_cactochuckhac_caphuyen);
-        
-        $this->Excel->ActiveSheet->getCell("BA17")->setValue($tong_6_hoidongnhandan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("BB17")->setValue($tong_6_uybanmttqvn_caphuyen);
-        $this->Excel->ActiveSheet->getCell("BC17")->setValue($tong_6_hoinongdan_caphuyen);
-        $this->Excel->ActiveSheet->getCell("BD17")->setValue($tong_6_hoilienhiepphunu_caphuyen);
-        $this->Excel->ActiveSheet->getCell("BE17")->setValue($tong_6_hoilienhiepthanhnien_caphuyen);
-        $this->Excel->ActiveSheet->getCell("BF17")->setValue($tong_6_hoichuthapdo_caphuyen);
-        
+        $this->Excel->ActiveSheet->getCell('C17')->setValue($tong);
+        $this->Excel->ActiveSheet->getCell('D17')->setValue($tong_hoidongnhandan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('E17')->setValue($tong_uybanmttqvn_caphuyen);
+        $this->Excel->ActiveSheet->getCell('F17')->setValue($tong_hoinongdan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('G17')->setValue($tong_hoilienhiepphunu_caphuyen);
+        $this->Excel->ActiveSheet->getCell('H17')->setValue($tong_hoilienhiepthanhnien_caphuyen);
+        $this->Excel->ActiveSheet->getCell('I17')->setValue($tong_hoichuthapdo_caphuyen);
+        $this->Excel->ActiveSheet->getCell('J17')->setValue($tong_cactochuckhac_caphuyen);
+
+        $this->Excel->ActiveSheet->getCell('K17')->setValue($tong_0_hoidongnhandan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('L17')->setValue($tong_0_uybanmttqvn_caphuyen);
+        $this->Excel->ActiveSheet->getCell('M17')->setValue($tong_0_hoinongdan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('N17')->setValue($tong_0_hoilienhiepphunu_caphuyen);
+        $this->Excel->ActiveSheet->getCell('O17')->setValue($tong_0_hoilienhiepthanhnien_caphuyen);
+        $this->Excel->ActiveSheet->getCell('P17')->setValue($tong_0_hoichuthapdo_caphuyen);
+        $this->Excel->ActiveSheet->getCell('Q17')->setValue($tong_0_cactochuckhac_caphuyen);
+
+        $this->Excel->ActiveSheet->getCell('R17')->setValue($tong_1_hoidongnhandan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('S17')->setValue($tong_1_uybanmttqvn_caphuyen);
+        $this->Excel->ActiveSheet->getCell('T17')->setValue($tong_1_hoinongdan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('U17')->setValue($tong_1_hoilienhiepphunu_caphuyen);
+        $this->Excel->ActiveSheet->getCell('V17')->setValue($tong_1_hoilienhiepthanhnien_caphuyen);
+        $this->Excel->ActiveSheet->getCell('W17')->setValue($tong_1_hoichuthapdo_caphuyen);
+        $this->Excel->ActiveSheet->getCell('X17')->setValue($tong_1_cactochuckhac_caphuyen);
+
+        $this->Excel->ActiveSheet->getCell('Y17')->setValue($tong_2_hoidongnhandan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('Z17')->setValue($tong_2_uybanmttqvn_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AA17')->setValue($tong_2_hoinongdan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AB17')->setValue($tong_2_hoilienhiepphunu_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AC17')->setValue($tong_2_hoilienhiepthanhnien_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AD17')->setValue($tong_2_hoichuthapdo_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AE17')->setValue($tong_2_cactochuckhac_caphuyen);
+
+        $this->Excel->ActiveSheet->getCell('AF17')->setValue($tong_3_hoidongnhandan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AG17')->setValue($tong_3_uybanmttqvn_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AH17')->setValue($tong_3_hoinongdan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AI17')->setValue($tong_3_hoilienhiepphunu_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AJ17')->setValue($tong_3_hoilienhiepthanhnien_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AK17')->setValue($tong_3_hoichuthapdo_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AL17')->setValue($tong_3_cactochuckhac_caphuyen);
+
+        $this->Excel->ActiveSheet->getCell('AM17')->setValue($tong_4_hoidongnhandan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AN17')->setValue($tong_4_uybanmttqvn_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AO17')->setValue($tong_4_hoinongdan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AP17')->setValue($tong_4_hoilienhiepphunu_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AQ17')->setValue($tong_4_hoilienhiepthanhnien_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AR17')->setValue($tong_4_hoichuthapdo_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AS17')->setValue($tong_4_cactochuckhac_caphuyen);
+
+        $this->Excel->ActiveSheet->getCell('AT17')->setValue($tong_5_hoidongnhandan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AU17')->setValue($tong_5_uybanmttqvn_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AV17')->setValue($tong_5_hoinongdan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AW17')->setValue($tong_5_hoilienhiepphunu_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AX17')->setValue($tong_5_hoilienhiepthanhnien_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AY17')->setValue($tong_5_hoichuthapdo_caphuyen);
+        $this->Excel->ActiveSheet->getCell('AZ17')->setValue($tong_5_cactochuckhac_caphuyen);
+
+        $this->Excel->ActiveSheet->getCell('BA17')->setValue($tong_6_hoidongnhandan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('BB17')->setValue($tong_6_uybanmttqvn_caphuyen);
+        $this->Excel->ActiveSheet->getCell('BC17')->setValue($tong_6_hoinongdan_caphuyen);
+        $this->Excel->ActiveSheet->getCell('BD17')->setValue($tong_6_hoilienhiepphunu_caphuyen);
+        $this->Excel->ActiveSheet->getCell('BE17')->setValue($tong_6_hoilienhiepthanhnien_caphuyen);
+        $this->Excel->ActiveSheet->getCell('BF17')->setValue($tong_6_hoichuthapdo_caphuyen);
+
         return $this->Excel->save($filename);
     }
 
@@ -3221,7 +3221,7 @@ class ActionController extends AppController
     {
         $component = $this->Components->load('ExportThCtxhTinh');
         $data = $component->export();
-        
+
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template15.xls';
@@ -3264,55 +3264,55 @@ class ActionController extends AppController
             'nhon-trach',
             'long-thanh',
         );
-        $tong = $tong_hoidongnhandan_captinh = $tong_uybanmttqvn_captinh = 
-        $tong_hoinongdan_captinh = $tong_hoilienhiepphunu_captinh = 
-        $tong_hoilienhiepthanhnien_captinh = $tong_hoichuthapdo_captinh = 
-        $tong_cactochuckhac_captinh = 
-        $tong_1_hoidongnhandan_captinh = 
-        $tong_1_uybanmttqvn_captinh = 
-        $tong_1_hoinongdan_captinh = 
-        $tong_1_hoilienhiepphunu_captinh = 
-        $tong_1_hoilienhiepthanhnien_captinh = 
-        $tong_1_hoichuthapdo_captinh = 
-        $tong_1_cactochuckhac_captinh = 
-        
-        $tong_2_hoidongnhandan_captinh = 
-        $tong_2_uybanmttqvn_captinh = 
-        $tong_2_hoinongdan_captinh = 
-        $tong_2_hoilienhiepphunu_captinh = 
-        $tong_2_hoilienhiepthanhnien_captinh = 
-        $tong_2_hoichuthapdo_captinh = 
-        $tong_2_cactochuckhac_captinh = 
-        
-        $tong_3_hoidongnhandan_captinh = 
-        $tong_3_uybanmttqvn_captinh = 
-        $tong_3_hoinongdan_captinh = 
-        $tong_3_hoilienhiepphunu_captinh = 
-        $tong_3_hoilienhiepthanhnien_captinh = 
-        $tong_3_hoichuthapdo_captinh = 
-        $tong_3_cactochuckhac_captinh = 
-        
-        $tong_4_hoidongnhandan_captinh = 
-        $tong_4_uybanmttqvn_captinh = 
-        $tong_4_hoinongdan_captinh = 
+        $tong = $tong_hoidongnhandan_captinh = $tong_uybanmttqvn_captinh =
+        $tong_hoinongdan_captinh = $tong_hoilienhiepphunu_captinh =
+        $tong_hoilienhiepthanhnien_captinh = $tong_hoichuthapdo_captinh =
+        $tong_cactochuckhac_captinh =
+        $tong_1_hoidongnhandan_captinh =
+        $tong_1_uybanmttqvn_captinh =
+        $tong_1_hoinongdan_captinh =
+        $tong_1_hoilienhiepphunu_captinh =
+        $tong_1_hoilienhiepthanhnien_captinh =
+        $tong_1_hoichuthapdo_captinh =
+        $tong_1_cactochuckhac_captinh =
+
+        $tong_2_hoidongnhandan_captinh =
+        $tong_2_uybanmttqvn_captinh =
+        $tong_2_hoinongdan_captinh =
+        $tong_2_hoilienhiepphunu_captinh =
+        $tong_2_hoilienhiepthanhnien_captinh =
+        $tong_2_hoichuthapdo_captinh =
+        $tong_2_cactochuckhac_captinh =
+
+        $tong_3_hoidongnhandan_captinh =
+        $tong_3_uybanmttqvn_captinh =
+        $tong_3_hoinongdan_captinh =
+        $tong_3_hoilienhiepphunu_captinh =
+        $tong_3_hoilienhiepthanhnien_captinh =
+        $tong_3_hoichuthapdo_captinh =
+        $tong_3_cactochuckhac_captinh =
+
+        $tong_4_hoidongnhandan_captinh =
+        $tong_4_uybanmttqvn_captinh =
+        $tong_4_hoinongdan_captinh =
         $tong_4_hoilienhiepphunu_captinh =
-        $tong_4_hoilienhiepthanhnien_captinh = 
-        $tong_4_hoichuthapdo_captinh = 
-        $tong_4_cactochuckhac_captinh = 
-        
-        $tong_5_hoidongnhandan_captinh = 
-        $tong_5_uybanmttqvn_captinh = 
-        $tong_5_hoinongdan_captinh = 
-        $tong_5_hoilienhiepphunu_captinh = 
-        $tong_5_hoilienhiepthanhnien_captinh = 
-        $tong_5_hoichuthapdo_captinh = 
-        $tong_5_cactochuckhac_captinh = 
-        
-        $tong_6_hoidongnhandan_captinh = 
-        $tong_6_uybanmttqvn_captinh = 
-        $tong_6_hoinongdan_captinh = 
-        $tong_6_hoilienhiepphunu_captinh = 
-        $tong_6_hoilienhiepthanhnien_captinh = 
+        $tong_4_hoilienhiepthanhnien_captinh =
+        $tong_4_hoichuthapdo_captinh =
+        $tong_4_cactochuckhac_captinh =
+
+        $tong_5_hoidongnhandan_captinh =
+        $tong_5_uybanmttqvn_captinh =
+        $tong_5_hoinongdan_captinh =
+        $tong_5_hoilienhiepphunu_captinh =
+        $tong_5_hoilienhiepthanhnien_captinh =
+        $tong_5_hoichuthapdo_captinh =
+        $tong_5_cactochuckhac_captinh =
+
+        $tong_6_hoidongnhandan_captinh =
+        $tong_6_uybanmttqvn_captinh =
+        $tong_6_hoinongdan_captinh =
+        $tong_6_hoilienhiepphunu_captinh =
+        $tong_6_hoilienhiepthanhnien_captinh =
         $tong_6_hoichuthapdo_captinh = 0;
         foreach ($tinhs as $tinh) {
             $result = $data[$tinh];
@@ -3498,7 +3498,7 @@ class ActionController extends AppController
             $tong_hoilienhiepthanhnien_captinh += $result['hoilienhiepthanhnien_captinh'];
             $tong_hoichuthapdo_captinh += $result['hoichuthapdo_captinh'];
             $tong_cactochuckhac_captinh += $result['cactochuckhac_captinh'];
-            
+
             $tong_0_hoidongnhandan_captinh += $result['0_hoidongnhandan_captinh'];
             $tong_0_uybanmttqvn_captinh += $result['0_uybanmttqvn_captinh'];
             $tong_0_hoinongdan_captinh += $result['0_hoinongdan_captinh'];
@@ -3506,7 +3506,7 @@ class ActionController extends AppController
             $tong_0_hoilienhiepthanhnien_captinh += $result['0_hoilienhiepthanhnien_captinh'];
             $tong_0_hoichuthapdo_captinh += $result['0_hoichuthapdo_captinh'];
             $tong_0_cactochuckhac_captinh += $result['0_cactochuckhac_captinh'];
-            
+
             $tong_1_hoidongnhandan_captinh += $result['1_hoidongnhandan_captinh'];
             $tong_1_uybanmttqvn_captinh += $result['1_uybanmttqvn_captinh'];
             $tong_1_hoinongdan_captinh += $result['1_hoinongdan_captinh'];
@@ -3514,7 +3514,7 @@ class ActionController extends AppController
             $tong_1_hoilienhiepthanhnien_captinh += $result['1_hoilienhiepthanhnien_captinh'];
             $tong_1_hoichuthapdo_captinh += $result['1_hoichuthapdo_captinh'];
             $tong_1_cactochuckhac_captinh += $result['1_cactochuckhac_captinh'];
-            
+
             $tong_2_hoidongnhandan_captinh += $result['2_hoidongnhandan_captinh'];
             $tong_2_uybanmttqvn_captinh += $result['2_uybanmttqvn_captinh'];
             $tong_2_hoinongdan_captinh += $result['2_hoinongdan_captinh'];
@@ -3522,7 +3522,7 @@ class ActionController extends AppController
             $tong_2_hoilienhiepthanhnien_captinh += $result['2_hoilienhiepthanhnien_captinh'];
             $tong_2_hoichuthapdo_captinh += $result['2_hoichuthapdo_captinh'];
             $tong_2_cactochuckhac_captinh += $result['2_cactochuckhac_captinh'];
-            
+
             $tong_3_hoidongnhandan_captinh += $result['3_hoidongnhandan_captinh'];
             $tong_3_uybanmttqvn_captinh += $result['3_uybanmttqvn_captinh'];
             $tong_3_hoinongdan_captinh += $result['3_hoinongdan_captinh'];
@@ -3530,7 +3530,7 @@ class ActionController extends AppController
             $tong_3_hoilienhiepthanhnien_captinh += $result['3_hoilienhiepthanhnien_captinh'];
             $tong_3_hoichuthapdo_captinh += $result['3_hoichuthapdo_captinh'];
             $tong_3_cactochuckhac_captinh += $result['3_cactochuckhac_captinh'];
-            
+
             $tong_4_hoidongnhandan_captinh += $result['4_hoidongnhandan_captinh'];
             $tong_4_uybanmttqvn_captinh += $result['4_uybanmttqvn_captinh'];
             $tong_4_hoinongdan_captinh += $result['4_hoinongdan_captinh'];
@@ -3538,7 +3538,7 @@ class ActionController extends AppController
             $tong_4_hoilienhiepthanhnien_captinh += $result['4_hoilienhiepthanhnien_captinh'];
             $tong_4_hoichuthapdo_captinh += $result['4_hoichuthapdo_captinh'];
             $tong_4_cactochuckhac_captinh += $result['4_cactochuckhac_captinh'];
-            
+
             $tong_5_hoidongnhandan_captinh += $result['5_hoidongnhandan_captinh'];
             $tong_5_uybanmttqvn_captinh += $result['5_uybanmttqvn_captinh'];
             $tong_5_hoinongdan_captinh += $result['5_hoinongdan_captinh'];
@@ -3546,93 +3546,81 @@ class ActionController extends AppController
             $tong_5_hoilienhiepthanhnien_captinh += $result['5_hoilienhiepthanhnien_captinh'];
             $tong_5_hoichuthapdo_captinh += $result['5_hoichuthapdo_captinh'];
             $tong_5_cactochuckhac_captinh += $result['5_cactochuckhac_captinh'];
-            
+
             $tong_6_hoidongnhandan_captinh += $result['6_hoidongnhandan_captinh'];
             $tong_6_uybanmttqvn_captinh += $result['6_uybanmttqvn_captinh'];
             $tong_6_hoinongdan_captinh += $result['6_hoinongdan_captinh'];
             $tong_6_hoilienhiepphunu_captinh += $result['6_hoilienhiepphunu_captinh'];
             $tong_6_hoilienhiepthanhnien_captinh += $result['6_hoilienhiepthanhnien_captinh'];
             $tong_6_hoichuthapdo_captinh += $result['6_hoichuthapdo_captinh'];
-            
+
             $r++;
         }
-        $this->Excel->ActiveSheet->getCell("C17")->setValue($tong);
-        $this->Excel->ActiveSheet->getCell("D17")->setValue($tong_hoidongnhandan_captinh);
-        $this->Excel->ActiveSheet->getCell("E17")->setValue($tong_uybanmttqvn_captinh);
-        $this->Excel->ActiveSheet->getCell("F17")->setValue($tong_hoinongdan_captinh);
-        $this->Excel->ActiveSheet->getCell("G17")->setValue($tong_hoilienhiepphunu_captinh);
-        $this->Excel->ActiveSheet->getCell("H17")->setValue($tong_hoilienhiepthanhnien_captinh);
-        $this->Excel->ActiveSheet->getCell("I17")->setValue($tong_hoichuthapdo_captinh);
-        $this->Excel->ActiveSheet->getCell("J17")->setValue($tong_cactochuckhac_captinh);
-        
-        $this->Excel->ActiveSheet->getCell("K17")->setValue($tong_0_hoidongnhandan_captinh);
-        $this->Excel->ActiveSheet->getCell("L17")->setValue($tong_0_uybanmttqvn_captinh);
-        $this->Excel->ActiveSheet->getCell("M17")->setValue($tong_0_hoinongdan_captinh);
-        $this->Excel->ActiveSheet->getCell("N17")->setValue($tong_0_hoilienhiepphunu_captinh);
-        $this->Excel->ActiveSheet->getCell("O17")->setValue($tong_0_hoilienhiepthanhnien_captinh);
-        $this->Excel->ActiveSheet->getCell("P17")->setValue($tong_0_hoichuthapdo_captinh);
-        $this->Excel->ActiveSheet->getCell("Q17")->setValue($tong_0_cactochuckhac_captinh);
-        
-        $this->Excel->ActiveSheet->getCell("R17")->setValue($tong_1_hoidongnhandan_captinh);
-        $this->Excel->ActiveSheet->getCell("S17")->setValue($tong_1_uybanmttqvn_captinh);
-        $this->Excel->ActiveSheet->getCell("T17")->setValue($tong_1_hoinongdan_captinh);
-        $this->Excel->ActiveSheet->getCell("U17")->setValue($tong_1_hoilienhiepphunu_captinh);
-        $this->Excel->ActiveSheet->getCell("V17")->setValue($tong_1_hoilienhiepthanhnien_captinh);
-        $this->Excel->ActiveSheet->getCell("W17")->setValue($tong_1_hoichuthapdo_captinh);
-        $this->Excel->ActiveSheet->getCell("X17")->setValue($tong_1_cactochuckhac_captinh);
-        
-        $this->Excel->ActiveSheet->getCell("Y17")->setValue($tong_2_hoidongnhandan_captinh);
-        $this->Excel->ActiveSheet->getCell("Z17")->setValue($tong_2_uybanmttqvn_captinh);
-        $this->Excel->ActiveSheet->getCell("AA17")->setValue($tong_2_hoinongdan_captinh);
-        $this->Excel->ActiveSheet->getCell("AB17")->setValue($tong_2_hoilienhiepphunu_captinh);
-        $this->Excel->ActiveSheet->getCell("AC17")->setValue($tong_2_hoilienhiepthanhnien_captinh);
-        $this->Excel->ActiveSheet->getCell("AD17")->setValue($tong_2_hoichuthapdo_captinh);
-        $this->Excel->ActiveSheet->getCell("AE17")->setValue($tong_2_cactochuckhac_captinh);
-        
-        $this->Excel->ActiveSheet->getCell("AF17")->setValue($tong_3_hoidongnhandan_captinh);
-        $this->Excel->ActiveSheet->getCell("AG17")->setValue($tong_3_uybanmttqvn_captinh);
-        $this->Excel->ActiveSheet->getCell("AH17")->setValue($tong_3_hoinongdan_captinh);
-        $this->Excel->ActiveSheet->getCell("AI17")->setValue($tong_3_hoilienhiepphunu_captinh);
-        $this->Excel->ActiveSheet->getCell("AJ17")->setValue($tong_3_hoilienhiepthanhnien_captinh);
-        $this->Excel->ActiveSheet->getCell("AK17")->setValue($tong_3_hoichuthapdo_captinh);
-        $this->Excel->ActiveSheet->getCell("AL17")->setValue($tong_3_cactochuckhac_captinh);
-        
-        $this->Excel->ActiveSheet->getCell("AM17")->setValue($tong_4_hoidongnhandan_captinh);
-        $this->Excel->ActiveSheet->getCell("AN17")->setValue($tong_4_uybanmttqvn_captinh);
-        $this->Excel->ActiveSheet->getCell("AO17")->setValue($tong_4_hoinongdan_captinh);
-        $this->Excel->ActiveSheet->getCell("AP17")->setValue($tong_4_hoilienhiepphunu_captinh);
-        $this->Excel->ActiveSheet->getCell("AQ17")->setValue($tong_4_hoilienhiepthanhnien_captinh);
-        $this->Excel->ActiveSheet->getCell("AR17")->setValue($tong_4_hoichuthapdo_captinh);
-        $this->Excel->ActiveSheet->getCell("AS17")->setValue($tong_4_cactochuckhac_captinh);
-        
-        $this->Excel->ActiveSheet->getCell("AT17")->setValue($tong_5_hoidongnhandan_captinh);
-        $this->Excel->ActiveSheet->getCell("AU17")->setValue($tong_5_uybanmttqvn_captinh);
-        $this->Excel->ActiveSheet->getCell("AV17")->setValue($tong_5_hoinongdan_captinh);
-        $this->Excel->ActiveSheet->getCell("AW17")->setValue($tong_5_hoilienhiepphunu_captinh);
-        $this->Excel->ActiveSheet->getCell("AX17")->setValue($tong_5_hoilienhiepthanhnien_captinh);
-        $this->Excel->ActiveSheet->getCell("AY17")->setValue($tong_5_hoichuthapdo_captinh);
-        $this->Excel->ActiveSheet->getCell("AZ17")->setValue($tong_5_cactochuckhac_captinh);
-        
-        $this->Excel->ActiveSheet->getCell("BA17")->setValue($tong_6_hoidongnhandan_captinh);
-        $this->Excel->ActiveSheet->getCell("BB17")->setValue($tong_6_uybanmttqvn_captinh);
-        $this->Excel->ActiveSheet->getCell("BC17")->setValue($tong_6_hoinongdan_captinh);
-        $this->Excel->ActiveSheet->getCell("BD17")->setValue($tong_6_hoilienhiepphunu_captinh);
-        $this->Excel->ActiveSheet->getCell("BE17")->setValue($tong_6_hoilienhiepthanhnien_captinh);
-        $this->Excel->ActiveSheet->getCell("BF17")->setValue($tong_6_hoichuthapdo_captinh);
-        
+        $this->Excel->ActiveSheet->getCell('C17')->setValue($tong);
+        $this->Excel->ActiveSheet->getCell('D17')->setValue($tong_hoidongnhandan_captinh);
+        $this->Excel->ActiveSheet->getCell('E17')->setValue($tong_uybanmttqvn_captinh);
+        $this->Excel->ActiveSheet->getCell('F17')->setValue($tong_hoinongdan_captinh);
+        $this->Excel->ActiveSheet->getCell('G17')->setValue($tong_hoilienhiepphunu_captinh);
+        $this->Excel->ActiveSheet->getCell('H17')->setValue($tong_hoilienhiepthanhnien_captinh);
+        $this->Excel->ActiveSheet->getCell('I17')->setValue($tong_hoichuthapdo_captinh);
+        $this->Excel->ActiveSheet->getCell('J17')->setValue($tong_cactochuckhac_captinh);
+
+        $this->Excel->ActiveSheet->getCell('K17')->setValue($tong_0_hoidongnhandan_captinh);
+        $this->Excel->ActiveSheet->getCell('L17')->setValue($tong_0_uybanmttqvn_captinh);
+        $this->Excel->ActiveSheet->getCell('M17')->setValue($tong_0_hoinongdan_captinh);
+        $this->Excel->ActiveSheet->getCell('N17')->setValue($tong_0_hoilienhiepphunu_captinh);
+        $this->Excel->ActiveSheet->getCell('O17')->setValue($tong_0_hoilienhiepthanhnien_captinh);
+        $this->Excel->ActiveSheet->getCell('P17')->setValue($tong_0_hoichuthapdo_captinh);
+        $this->Excel->ActiveSheet->getCell('Q17')->setValue($tong_0_cactochuckhac_captinh);
+
+        $this->Excel->ActiveSheet->getCell('R17')->setValue($tong_1_hoidongnhandan_captinh);
+        $this->Excel->ActiveSheet->getCell('S17')->setValue($tong_1_uybanmttqvn_captinh);
+        $this->Excel->ActiveSheet->getCell('T17')->setValue($tong_1_hoinongdan_captinh);
+        $this->Excel->ActiveSheet->getCell('U17')->setValue($tong_1_hoilienhiepphunu_captinh);
+        $this->Excel->ActiveSheet->getCell('V17')->setValue($tong_1_hoilienhiepthanhnien_captinh);
+        $this->Excel->ActiveSheet->getCell('W17')->setValue($tong_1_hoichuthapdo_captinh);
+        $this->Excel->ActiveSheet->getCell('X17')->setValue($tong_1_cactochuckhac_captinh);
+
+        $this->Excel->ActiveSheet->getCell('Y17')->setValue($tong_2_hoidongnhandan_captinh);
+        $this->Excel->ActiveSheet->getCell('Z17')->setValue($tong_2_uybanmttqvn_captinh);
+        $this->Excel->ActiveSheet->getCell('AA17')->setValue($tong_2_hoinongdan_captinh);
+        $this->Excel->ActiveSheet->getCell('AB17')->setValue($tong_2_hoilienhiepphunu_captinh);
+        $this->Excel->ActiveSheet->getCell('AC17')->setValue($tong_2_hoilienhiepthanhnien_captinh);
+        $this->Excel->ActiveSheet->getCell('AD17')->setValue($tong_2_hoichuthapdo_captinh);
+        $this->Excel->ActiveSheet->getCell('AE17')->setValue($tong_2_cactochuckhac_captinh);
+
+        $this->Excel->ActiveSheet->getCell('AF17')->setValue($tong_3_hoidongnhandan_captinh);
+        $this->Excel->ActiveSheet->getCell('AG17')->setValue($tong_3_uybanmttqvn_captinh);
+        $this->Excel->ActiveSheet->getCell('AH17')->setValue($tong_3_hoinongdan_captinh);
+        $this->Excel->ActiveSheet->getCell('AI17')->setValue($tong_3_hoilienhiepphunu_captinh);
+        $this->Excel->ActiveSheet->getCell('AJ17')->setValue($tong_3_hoilienhiepthanhnien_captinh);
+        $this->Excel->ActiveSheet->getCell('AK17')->setValue($tong_3_hoichuthapdo_captinh);
+        $this->Excel->ActiveSheet->getCell('AL17')->setValue($tong_3_cactochuckhac_captinh);
+
+        $this->Excel->ActiveSheet->getCell('AM17')->setValue($tong_4_hoidongnhandan_captinh);
+        $this->Excel->ActiveSheet->getCell('AN17')->setValue($tong_4_uybanmttqvn_captinh);
+        $this->Excel->ActiveSheet->getCell('AO17')->setValue($tong_4_hoinongdan_captinh);
+        $this->Excel->ActiveSheet->getCell('AP17')->setValue($tong_4_hoilienhiepphunu_captinh);
+        $this->Excel->ActiveSheet->getCell('AQ17')->setValue($tong_4_hoilienhiepthanhnien_captinh);
+        $this->Excel->ActiveSheet->getCell('AR17')->setValue($tong_4_hoichuthapdo_captinh);
+        $this->Excel->ActiveSheet->getCell('AS17')->setValue($tong_4_cactochuckhac_captinh);
+
+        $this->Excel->ActiveSheet->getCell('AT17')->setValue($tong_5_hoidongnhandan_captinh);
+        $this->Excel->ActiveSheet->getCell('AU17')->setValue($tong_5_uybanmttqvn_captinh);
+        $this->Excel->ActiveSheet->getCell('AV17')->setValue($tong_5_hoinongdan_captinh);
+        $this->Excel->ActiveSheet->getCell('AW17')->setValue($tong_5_hoilienhiepphunu_captinh);
+        $this->Excel->ActiveSheet->getCell('AX17')->setValue($tong_5_hoilienhiepthanhnien_captinh);
+        $this->Excel->ActiveSheet->getCell('AY17')->setValue($tong_5_hoichuthapdo_captinh);
+        $this->Excel->ActiveSheet->getCell('AZ17')->setValue($tong_5_cactochuckhac_captinh);
+
+        $this->Excel->ActiveSheet->getCell('BA17')->setValue($tong_6_hoidongnhandan_captinh);
+        $this->Excel->ActiveSheet->getCell('BB17')->setValue($tong_6_uybanmttqvn_captinh);
+        $this->Excel->ActiveSheet->getCell('BC17')->setValue($tong_6_hoinongdan_captinh);
+        $this->Excel->ActiveSheet->getCell('BD17')->setValue($tong_6_hoilienhiepphunu_captinh);
+        $this->Excel->ActiveSheet->getCell('BE17')->setValue($tong_6_hoilienhiepthanhnien_captinh);
+        $this->Excel->ActiveSheet->getCell('BF17')->setValue($tong_6_hoichuthapdo_captinh);
+
         return $this->Excel->save($filename);
-        
-    }
-
-    public function pandog()
-    {
-        $component = $this->Components->load('ExportThCtxhTinh');
-
-        $data = $component->export();
-        print_r('<pre>');
-        print_r($data);
-        print_r('</pre>');
-        exit;
     }
 
     /**
@@ -3785,316 +3773,20 @@ class ActionController extends AppController
     {
     }
 
-    /**
-     * TH TRINH DO TON GIAO
-     * TỔNG HỢP TRÌNH ĐỘ TÔN GIÁO CỦA CHỨC SẮC CÁC TÔN GIÁO
-     * 
-     * 1. Bảng chucsactinlanh
-     * A. BIÊN HÒA: 
-     * diemnhom_diachi_huyen = BIÊN HÒA và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * B. LONG KHÁNH: 
-     * diemnhom_diachi_huyen = LONG KHÁNH và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * C. XUÂN LỘC: 
-     * diemnhom_diachi_huyen = XUÂN LỘC và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * D. CẨM MỸ: 
-     * diemnhom_diachi_huyen = CẨM MỸ và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * E. TÂN PHÚ: 
-     * diemnhom_diachi_huyen = TÂN PHÚ và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * F. ĐỊNH QUÁN: 
-     * diemnhom_diachi_huyen = ĐỊNH QUÁN và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * G. THỐNG NHẤT: 
-     * diemnhom_diachi_huyen = THỐNG NHẤT và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * H. TRẢNG BOM: 
-     * diemnhom_diachi_huyen = TRẢNG BOM và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * I. VĨNH CỬU: 
-     * diemnhom_diachi_huyen = NHƠN TRẠCH và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * J. LONG THÀNH: 
-     * diemnhom_diachi_huyen = LONG THÀNH và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * 
-     * 2. Bảng chucsacnhatuhanhconggiaotrieu
-     * A. BIÊN HÒA: 
-     * hoatdongtongiao_giaohat_diachi_huyen = BIÊN HÒA và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * B. LONG KHÁNH: 
-     * hoatdongtongiao_giaohat_diachi_huyen = LONG KHÁNH và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * C. XUÂN LỘC: 
-     * hoatdongtongiao_giaohat_diachi_huyen = XUÂN LỘC và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * D. CẨM MỸ: 
-     * hoatdongtongiao_giaohat_diachi_huyen = CẨM MỸ và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * E. TÂN PHÚ: 
-     * hoatdongtongiao_giaohat_diachi_huyen = TÂN PHÚ và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * F. ĐỊNH QUÁN: 
-     * hoatdongtongiao_giaohat_diachi_huyen = ĐỊNH QUÁN và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * G. THỐNG NHẤT: 
-     * hoatdongtongiao_giaohat_diachi_huyen = THỐNG NHẤT và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * H. TRẢNG BOM: 
-     * hoatdongtongiao_giaohat_diachi_huyen = TRẢNG BOM và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * I. VĨNH CỬU: 
-     * hoatdongtongiao_giaohat_diachi_huyen = NHƠN TRẠCH và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * J. LONG THÀNH: 
-     * hoatdongtongiao_giaohat_diachi_huyen = LONG THÀNH và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * 
-     * 3. Bảng chucsacnhatuhanhcongiaodongtu
-     * A. BIÊN HÒA: 
-     * diachi_huyen = BIÊN HÒA và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * B. LONG KHÁNH: 
-     * diachi_huyen = LONG KHÁNH và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * C. XUÂN LỘC: 
-     * diachi_huyen = XUÂN LỘC và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * D. CẨM MỸ: 
-     * diachi_huyen = CẨM MỸ và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * E. TÂN PHÚ: 
-     * diachi_huyen = TÂN PHÚ và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * F. ĐỊNH QUÁN: 
-     * diachi_huyen = ĐỊNH QUÁN và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * G. THỐNG NHẤT: 
-     * diachi_huyen = THỐNG NHẤT và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * H. TRẢNG BOM: 
-     * diachi_huyen = TRẢNG BOM và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * I. VĨNH CỬU: 
-     * diachi_huyen = NHƠN TRẠCH và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * J. LONG THÀNH: 
-     * diachi_huyen = LONG THÀNH và điều kiện
-     * SƠ CẤP: trinhdothanhoc_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdothanhoc_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdothanhoc_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdothanhoc_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdothanhoc_bangcap LIKE TRÊN ĐẠI HỌC
-     * 
-     * 4. Bảng chucsacnhatuhanhphatgiao
-     * A. BIÊN HÒA: 
-     * tencosohoatdongtongiao_diachi_huyen = BIÊN HÒA và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * B. LONG KHÁNH: 
-     * tencosohoatdongtongiao_diachi_huyen = LONG KHÁNH và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * C. XUÂN LỘC: 
-     * tencosohoatdongtongiao_diachi_huyen = XUÂN LỘC và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * D. CẨM MỸ: 
-     * tencosohoatdongtongiao_diachi_huyen = CẨM MỸ và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * E. TÂN PHÚ: 
-     * tencosohoatdongtongiao_diachi_huyen = TÂN PHÚ và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * F. ĐỊNH QUÁN: 
-     * tencosohoatdongtongiao_diachi_huyen = ĐỊNH QUÁN và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * G. THỐNG NHẤT: 
-     * tencosohoatdongtongiao_diachi_huyen = THỐNG NHẤT và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * H. TRẢNG BOM: 
-     * tencosohoatdongtongiao_diachi_huyen = TRẢNG BOM và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * I. VĨNH CỬU: 
-     * tencosohoatdongtongiao_diachi_huyen = NHƠN TRẠCH và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * J. LONG THÀNH: 
-     * tencosohoatdongtongiao_diachi_huyen = LONG THÀNH và điều kiện
-     * SƠ CẤP: trinhdochuyenmonvetongiao_bangcap LIKE SƠ CẤP
-     * TRUNG CẤP: trinhdochuyenmonvetongiao_bangcap LIKE TRUNG CẤP
-     * CAO ĐẲNG: trinhdochuyenmonvetongiao_bangcap LIKE CAO ĐẲNG
-     * ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE ĐẠI HỌC
-     * TRÊN ĐẠI HỌC: trinhdochuyenmonvetongiao_bangcap LIKE TRÊN ĐẠI HỌC
-     * 
-     * 5. Bảng chucsaccaodai
-     * Trả về dữ liệu cố định bằng 0
-     * 
-     * 6. Bảng chucviectinhdocusiphathoivietnam
-     * Trả về dữ liệu cố định bằng 0
-     * 
-     * 7. Bảng chucviechoigiao
-     * Trả về dữ liệu cố định bằng 0
-     * 
-     * CÔNG GIÁO = 2. Bảng chucsacnhatuhanhconggiaotrieu + 3. Bảng chucsacnhatuhanhcongiaodongtu
-     * PHẬT GIÁO = 4. Bảng chucsacnhatuhanhphatgiao
-     * TIN LÀNH = 1. Bảng chucsactinlanh
-     * CAO ĐÀI = 5. Bảng chucsaccaodai
-     * TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM = 6. Bảng chucviectinhdocusiphathoivietnam
-     * HỒI GIÁO = 7. Bảng chucviechoigiao
-     */
+    //pandog hrere
     protected function __getType21Data()
     {
+        $component = $this->Components->load('ExportThTdTgCs');
+        $data = $component->export();
+        print_r('<pre>1111');
+        print_r($data);
+        print_r('</pre>');
+        exit;
+    }
+
+    public function pandog()
+    {
+        $this->__getType21Data();
     }
 
     /**
