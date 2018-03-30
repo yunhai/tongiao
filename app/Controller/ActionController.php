@@ -3778,7 +3778,7 @@ class ActionController extends AppController
     {
         $component = $this->Components->load('ExportThTdTgCs');
         $data = $component->export();
-        print_r('<pre>1111');
+        print_r('<pre>final');
         print_r($data);
         print_r('</pre>');
         exit;
@@ -3792,7 +3792,7 @@ class ActionController extends AppController
     /**
      * TH TRINH DO VH
      * TỔNG HỢP TRÌNH ĐỘ VĂN HÓA CỦA CHỨC SẮC CÁC TÔN GIÁO
-     * 
+     *
      * 1. Bảng chucsactinlanh
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * diemnhom_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
@@ -3804,7 +3804,7 @@ class ActionController extends AppController
      * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
      * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
      * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     * 
+     *
      * 2. Bảng chucsacnhatuhanhconggiaotrieu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * hoatdongtongiao_giaohat_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
@@ -3816,7 +3816,7 @@ class ActionController extends AppController
      * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
      * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
      * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     * 
+     *
      * 3. Bảng chucsacnhatuhanhcongiaodongtu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
@@ -3828,7 +3828,7 @@ class ActionController extends AppController
      * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
      * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
      * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     * 
+     *
      * 4. Bảng chucsacnhatuhanhphatgiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * tencosohoatdongtongiao_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
@@ -3840,7 +3840,7 @@ class ActionController extends AppController
      * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
      * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
      * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     * 
+     *
      * 5. Bảng chucsaccaodai
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * hoatdongtongiaotai_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
@@ -3852,7 +3852,7 @@ class ActionController extends AppController
      * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
      * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
      * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     * 
+     *
      * 6. Bảng chucviectinhdocusiphathoivietnam
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * hoatdongtongiaotai_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
@@ -3864,7 +3864,7 @@ class ActionController extends AppController
      * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
      * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
      * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     * 
+     *
      * 7. Bảng chucviechoigiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * hoatdongtongiaotai_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
@@ -3876,7 +3876,7 @@ class ActionController extends AppController
      * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
      * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
      * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     * 
+     *
      * CÔNG GIÁO = 2. Bảng chucsacnhatuhanhconggiaotrieu + 3. Bảng chucsacnhatuhanhcongiaodongtu
      * PHẬT GIÁO = 4. Bảng chucsacnhatuhanhphatgiao
      * TIN LÀNH = 1. Bảng chucsactinlanh

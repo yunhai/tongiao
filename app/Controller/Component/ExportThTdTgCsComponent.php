@@ -26,26 +26,23 @@ class ExportThTdTgCsComponent extends Component
         $export_fields = [
             [
                 'Chucsacnhatuhanhconggiaotrieu',
-                // 'Chucsacnhatuhanhcongiaodongtu'
+                'Chucsacnhatuhanhcongiaodongtu'
             ],
-            // [
-            //     'Chucsacnhatuhanhphatgiao'
-            // ],
-            // [
-            //     'Chucsactinlanh',
-            // ],
-            // [
-            //     'Chucsaccaodai'
-            // ],
-            // [
-            //     'Chucviectinhdocusiphathoivietnam'
-            // ],
-            // [
-            //     'Chucviecphathoahao'
-            // ],
-            // [
-            //     'Chucviechoigiao'
-            // ]
+            [
+                'Chucsacnhatuhanhphatgiao'
+            ],
+            [
+                'Chucsactinlanh',
+            ],
+            [
+                'Chucsaccaodai'
+            ],
+            [
+                'Chucviectinhdocusiphathoivietnam'
+            ],
+            [
+                'Chucviechoigiao'
+            ]
         ];
 
         $province = $this->Province->getProvince();
@@ -54,6 +51,7 @@ class ExportThTdTgCsComponent extends Component
 
         foreach ($export_fields as $field_index => $list) {
             $tmp = $this->__calculate($list);
+
             foreach ($province as $provice_code => $name) {
                 $partial = $tmp[$provice_code];
 
@@ -71,68 +69,28 @@ class ExportThTdTgCsComponent extends Component
         return $export;
     }
 
-    private function __getChucsacnhatuhanhconggiaotrieu($model)
+    private function __getChucsaccaodai($model)
     {
-        $fields = [
-            'id',
-        ];
-        $conditions = [
-            'trinhdochuyenmonvetongiao_bangcap <>' => '',
-            'trinhdochuyenmonvetongiao_bangcap IS NOT NULL',
-        ];
-        $column = [
-            'hoatdongtongiao_giaohat_diachi_huyen',
-            'trinhdochuyenmonvetongiao_bangcap',
-        ];
-
-        $province_field = 'hoatdongtongiao_giaohat_diachi_huyen';
-
-        $fields = array_merge($fields, $column);
-
-        $vf = $this->__getChucsacnhatuhanhconggiaotrieuVf();
-        $data = $this->__getData($model, compact('fields', 'conditions'), $vf);
+        $province_field = '';
+        $data = [];
 
         return $this->__groupData($data, $this->map_field, $province_field);
     }
 
-    private function __getChucsacnhatuhanhconggiaotrieuVf()
+    private function __getChucviectinhdocusiphathoivietnam($model)
     {
-        $so_cap = 'WHEN
-						trinhdochuyenmonvetongiao_bangcap LIKE "SƠ CẤP"
-					THEN 1';
+        $province_field = '';
+        $data = [];
 
-        $trung_cap = 'WHEN
-						trinhdochuyenmonvetongiao_bangcap LIKE "TRUNG CẤP"
-					THEN 2';
+        return $this->__groupData($data, $this->map_field, $province_field);
+    }
 
-        $cao_dang = 'WHEN
-						trinhdochuyenmonvetongiao_bangcap LIKE "CAO ĐẲNG"
-					THEN 3';
+    private function __getChucviechoigiao($model)
+    {
+        $province_field = '';
+        $data = [];
 
-        $dai_hoc = 'WHEN
-						trinhdochuyenmonvetongiao_bangcap LIKE "ĐẠI HỌC" OR
-						trinhdochuyenmonvetongiao_bangcap LIKE "Cử nhân"
-					THEN 4';
-
-        $sau_dai_hoc = 'WHEN
-							trinhdochuyenmonvetongiao_bangcap LIKE "Cao học" OR
-							trinhdochuyenmonvetongiao_bangcap LIKE "SAU ĐẠI HỌC" OR
-							trinhdochuyenmonvetongiao_bangcap LIKE "THẠC SỸ" OR
-							trinhdochuyenmonvetongiao_bangcap LIKE "TIẾN SỸ"
-						THEN 5';
-
-        $vf = "
-			CASE
-				{$sau_dai_hoc}
-				{$dai_hoc}
-				{$cao_dang}
-				{$trung_cap}
-				{$so_cap}
-				ELSE 0
-			END
-		";
-
-        return $vf;
+        return $this->__groupData($data, $this->map_field, $province_field);
     }
 
     ////////////////////////////////////////////
@@ -155,6 +113,7 @@ class ExportThTdTgCsComponent extends Component
         $fields = array_merge($fields, $column);
 
         $vf = $this->__getChucsacnhatuhanhconggiaotrieuVf();
+
         $data = $this->__getData($model, compact('fields', 'conditions'), $vf);
 
         return $this->__groupData($data, $this->map_field, $province_field);
@@ -200,12 +159,209 @@ class ExportThTdTgCsComponent extends Component
         return $vf;
     }
 
-    private function __getData($model, $option = [])
+    private function __getChucsacnhatuhanhcongiaodongtu($model)
+    {
+        $fields = [
+            'id',
+        ];
+        $conditions = [
+            'trinhdothanhoc_bangcap <>' => '',
+            'trinhdothanhoc_bangcap IS NOT NULL',
+        ];
+        $column = [
+            'diachi_huyen',
+            'trinhdothanhoc_bangcap',
+        ];
+
+        $province_field = 'diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+
+        $vf = $this->__getChucsacnhatuhanhcongiaodongtuVf();
+
+        $data = $this->__getData($model, compact('fields', 'conditions'), $vf);
+
+        return $this->__groupData($data, $this->map_field, $province_field);
+    }
+
+    private function __getChucsacnhatuhanhcongiaodongtuVf()
+    {
+        $so_cap = 'WHEN
+						trinhdothanhoc_bangcap LIKE "SƠ CẤP"
+					THEN 1';
+
+        $trung_cap = 'WHEN
+						trinhdothanhoc_bangcap LIKE "TRUNG CẤP"
+					THEN 2';
+
+        $cao_dang = 'WHEN
+						trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
+					THEN 3';
+
+        $dai_hoc = 'WHEN
+						trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR
+						trinhdothanhoc_bangcap LIKE "Cử nhân"
+					THEN 4';
+
+        $sau_dai_hoc = 'WHEN
+							trinhdothanhoc_bangcap LIKE "Cao học" OR
+							trinhdothanhoc_bangcap LIKE "SAU ĐẠI HỌC" OR
+							trinhdothanhoc_bangcap LIKE "THẠC SỸ" OR
+							trinhdothanhoc_bangcap LIKE "TIẾN SỸ"
+						THEN 5';
+
+        $vf = "
+			CASE
+				{$sau_dai_hoc}
+				{$dai_hoc}
+				{$cao_dang}
+				{$trung_cap}
+				{$so_cap}
+				ELSE 0
+			END
+		";
+
+        return $vf;
+    }
+
+    private function __getChucsacnhatuhanhphatgiao($model)
+    {
+        $fields = [
+            'id'
+        ];
+        $conditions = [
+            'trinhdochuyenmonvetongiao_bangcap <>' => '',
+            'trinhdochuyenmonvetongiao_bangcap IS NOT NULL',
+        ];
+        $column = [
+            'tencosohoatdongtongiao_diachi_huyen',
+            'trinhdochuyenmonvetongiao_bangcap',
+        ];
+
+        $province_field = 'tencosohoatdongtongiao_diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+
+        $f = "__get{$model}Vf";
+        $vf = $this->$f();
+
+        $data = $this->__getData($model, compact('fields', 'conditions'), $vf);
+
+        return $this->__groupData($data, $this->map_field, $province_field);
+    }
+
+    private function __getChucsacnhatuhanhphatgiaoVf()
+    {
+        $so_cap = 'WHEN
+						trinhdochuyenmonvetongiao_bangcap LIKE "SƠ CẤP"
+					THEN 1';
+
+        $trung_cap = 'WHEN
+						trinhdochuyenmonvetongiao_bangcap LIKE "TRUNG CẤP"
+					THEN 2';
+
+        $cao_dang = 'WHEN
+						trinhdochuyenmonvetongiao_bangcap LIKE "CAO ĐẲNG"
+					THEN 3';
+
+        $dai_hoc = 'WHEN
+						trinhdochuyenmonvetongiao_bangcap LIKE "ĐẠI HỌC" OR
+						trinhdochuyenmonvetongiao_bangcap LIKE "Cử nhân"
+					THEN 4';
+
+        $sau_dai_hoc = 'WHEN
+							trinhdochuyenmonvetongiao_bangcap LIKE "Cao học" OR
+							trinhdochuyenmonvetongiao_bangcap LIKE "SAU ĐẠI HỌC" OR
+							trinhdochuyenmonvetongiao_bangcap LIKE "THẠC SỸ" OR
+							trinhdochuyenmonvetongiao_bangcap LIKE "TIẾN SỸ"
+						THEN 5';
+
+        $vf = "
+			CASE
+				{$sau_dai_hoc}
+				{$dai_hoc}
+				{$cao_dang}
+				{$trung_cap}
+				{$so_cap}
+				ELSE 0
+			END
+		";
+
+        return $vf;
+    }
+
+    private function __getChucsactinlanh($model)
+    {
+        $fields = [
+            'id'
+        ];
+        $conditions = [
+            'trinhdothanhoc_bangcap <>' => '',
+            'trinhdothanhoc_bangcap IS NOT NULL',
+        ];
+        $column = [
+            'diemnhom_diachi_huyen',
+            'trinhdothanhoc_bangcap',
+        ];
+
+        $province_field = 'diemnhom_diachi_huyen';
+
+        $fields = array_merge($fields, $column);
+
+        $f = "__get{$model}Vf";
+        $vf = $this->$f();
+
+        $data = $this->__getData($model, compact('fields', 'conditions'), $vf);
+
+        return $this->__groupData($data, $this->map_field, $province_field);
+    }
+
+    private function __getChucsactinlanhVf()
+    {
+        $so_cap = 'WHEN
+						trinhdothanhoc_bangcap LIKE "SƠ CẤP"
+					THEN 1';
+
+        $trung_cap = 'WHEN
+						trinhdothanhoc_bangcap LIKE "TRUNG CẤP"
+					THEN 2';
+
+        $cao_dang = 'WHEN
+						trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
+					THEN 3';
+
+        $dai_hoc = 'WHEN
+						trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR
+						trinhdothanhoc_bangcap LIKE "Cử nhân"
+					THEN 4';
+
+        $sau_dai_hoc = 'WHEN
+							trinhdothanhoc_bangcap LIKE "Cao học" OR
+							trinhdothanhoc_bangcap LIKE "SAU ĐẠI HỌC" OR
+							trinhdothanhoc_bangcap LIKE "THẠC SỸ" OR
+							trinhdothanhoc_bangcap LIKE "TIẾN SỸ"
+						THEN 5';
+
+        $vf = "
+			CASE
+				{$sau_dai_hoc}
+				{$dai_hoc}
+				{$cao_dang}
+				{$trung_cap}
+				{$so_cap}
+				ELSE 0
+			END
+		";
+
+        return $vf;
+    }
+
+    private function __getData($model, $option = [], $vf)
     {
         $obj = ClassRegistry::init($model);
 
         $obj->virtualFields[$this->trinh_do] = $vf;
-        array_push($option['fields'], 'Chucsacnhatuhanhconggiaotrieu.' . $this->trinh_do);
+        array_push($option['fields'], $model . '.' . $this->trinh_do);
 
         $data = $obj->find('all', $option);
 
