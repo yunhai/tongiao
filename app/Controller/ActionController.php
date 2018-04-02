@@ -3773,15 +3773,310 @@ class ActionController extends AppController
     {
     }
 
-    //pandog hrere
+    /**
+     * TH TRINH DO VH
+     * TỔNG HỢP TRÌNH ĐỘ VĂN HÓA CỦA CHỨC SẮC CÁC TÔN GIÁO
+     */
     protected function __getType21Data()
     {
-        $component = $this->Components->load('ExportThTdTgCs');
+        /*$component = $this->Components->load('ExportThTdTgCs');
         $data = $component->export();
         print_r('<pre>final');
         print_r($data);
         print_r('</pre>');
-        exit;
+        exit;*/
+        $component = $this->Components->load('ExportThTdTgCs');
+        $data = $component->export();
+        
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template21.xls';
+        //$filename = "template17";
+        $filename = "{$this->_type_text[21]}";
+        $this->Excel->load($source);
+        //$this->{"__createTemplate{$type}"}();
+        //$this->Excel->save($filename);
+
+        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 1;
+        for ($c = 'C'; $c <= 'Z'; $c++) {
+            $colIndexes[$index] = $c;
+            $index ++;
+            if ($c == $maxCols) {
+                break;
+            }
+        }
+        /*print "<pre>";
+        print_r($data);
+        print "</pre>";
+        print "<pre>";
+        print_r($colIndexes);
+        print "</pre>";
+        exit;*/
+        $r = 8;
+        $tinhs = array(
+            'bien-hoa',
+            'long-khanh',
+            'xuan-loc',
+            'cam-my',
+            'tan-phu',
+            'dinh-quan',
+            'thong-nhat',
+            'trang-bom',
+            'vinh-cuu',
+            'nhon-trach',
+            'long-thanh',
+        );
+        $tong = 
+        $tong_so_cap = $tong_trung_cap =
+        $tong_cao_dang = $tong_dai_hoc =
+        $tong_sau_dai_hoc =
+        $tong_cactochuckhac_captinh =
+        
+        $tong_0_so_cap =
+        $tong_0_trung_cap =
+        $tong_0_cao_dang =
+        $tong_0_dai_hoc =
+        $tong_0_sau_dai_hoc =
+
+        $tong_1_so_cap =
+        $tong_1_trung_cap =
+        $tong_1_cao_dang =
+        $tong_1_dai_hoc =
+        $tong_1_sau_dai_hoc =
+
+        $tong_2_so_cap =
+        $tong_2_trung_cap =
+        $tong_2_cao_dang =
+        $tong_2_dai_hoc =
+        $tong_2_sau_dai_hoc =
+
+        $tong_3_so_cap =
+        $tong_3_trung_cap =
+        $tong_3_cao_dang =
+        $tong_3_dai_hoc =
+        $tong_3_sau_dai_hoc =
+
+        $tong_4_so_cap =
+        $tong_4_trung_cap =
+        $tong_4_cao_dang =
+        $tong_4_dai_hoc =
+        $tong_4_sau_dai_hoc =
+
+        $tong_5_so_cap =
+        $tong_5_trung_cap =
+        $tong_5_cao_dang =
+        $tong_5_dai_hoc =
+        $tong_5_sau_dai_hoc = 0;
+        foreach ($tinhs as $tinh) {
+            $result = $data[$tinh];
+            foreach ($colIndexes as $k => $c) {
+                switch ($c) {
+                    case 'C'://TỔNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total']);
+                        break;
+                    case 'D':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['so_cap']);
+                        break;
+                    case 'E':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['trung_cap']);
+                        break;
+                    case 'F':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['cao_dang']);
+                        break;
+                    case 'G':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['dai_hoc']);
+                        break;
+                    case 'H':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['sau_dai_hoc']);
+                        break;
+                    case 'I'://CÔNG GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_so_cap']);
+                        break;
+                    case 'J':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_trung_cap']);
+                        break;
+                    case 'K':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_cao_dang']);
+                        break;
+                    case 'L':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_dai_hoc']);
+                        break;
+                    case 'M':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_sau_dai_hoc']);
+                        break;
+                    case 'N'://PHẬT GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_so_cap']);
+                        break;
+                    case 'O':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_trung_cap']);
+                        break;
+                    case 'P':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_cao_dang']);
+                        break;
+                    case 'Q':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_dai_hoc']);
+                        break;
+                    case 'R':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_sau_dai_hoc']);
+                        break;
+                    case 'S'://TIN LÀNH
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_so_cap']);
+                        break;
+                    case 'T':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_trung_cap']);
+                        break;
+                    case 'U':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_cao_dang']);
+                        break;
+                    case 'V':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_dai_hoc']);
+                        break;
+                    case 'W':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_sau_dai_hoc']);
+                        break;
+                    case 'X'://CAO ĐÀI
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_so_cap']);
+                        break;
+                    case 'Y':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_trung_cap']);
+                        break;
+                    case 'Z':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_cao_dang']);
+                        break;
+                    case 'AA':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_dai_hoc']);
+                        break;
+                    case 'AB':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_sau_dai_hoc']);
+                        break;
+                    case 'AC'://TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_so_cap']);
+                        break;
+                    case 'AD':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_trung_cap']);
+                        break;
+                    case 'AE':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_cao_dang']);
+                        break;
+                    case 'AF':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_dai_hoc']);
+                        break;
+                    case 'AG':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_sau_dai_hoc']);
+                        break;
+                    case 'AH'://HỒI GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_so_cap']);
+                        break;
+                    case 'AI':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_trung_cap']);
+                        break;
+                    case 'AJ':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_cao_dang']);
+                        break;
+                    case 'AK':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_dai_hoc']);
+                        break;
+                    case 'AL':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_sau_dai_hoc']);
+                        break;
+                    default:
+                        echo 'TH TRINH DO TON GIAO';
+                }
+            }
+            $tong += $result['total'];
+            $tong_so_cap += $result['so_cap'];
+            $tong_trung_cap += $result['trung_cap'];
+            $tong_cao_dang += $result['cao_dang'];
+            $tong_dai_hoc += $result['dai_hoc'];
+            $tong_sau_dai_hoc += $result['sau_dai_hoc'];
+
+            $tong_0_so_cap += $result['0_so_cap'];
+            $tong_0_trung_cap += $result['0_trung_cap'];
+            $tong_0_cao_dang += $result['0_cao_dang'];
+            $tong_0_dai_hoc += $result['0_dai_hoc'];
+            $tong_0_sau_dai_hoc += $result['0_sau_dai_hoc'];
+
+            $tong_1_so_cap += $result['1_so_cap'];
+            $tong_1_trung_cap += $result['1_trung_cap'];
+            $tong_1_cao_dang += $result['1_cao_dang'];
+            $tong_1_dai_hoc += $result['1_dai_hoc'];
+            $tong_1_sau_dai_hoc += $result['1_sau_dai_hoc'];
+
+            $tong_2_so_cap += $result['2_so_cap'];
+            $tong_2_trung_cap += $result['2_trung_cap'];
+            $tong_2_cao_dang += $result['2_cao_dang'];
+            $tong_2_dai_hoc += $result['2_dai_hoc'];
+            $tong_2_sau_dai_hoc += $result['2_sau_dai_hoc'];
+
+            $tong_3_so_cap += $result['3_so_cap'];
+            $tong_3_trung_cap += $result['3_trung_cap'];
+            $tong_3_cao_dang += $result['3_cao_dang'];
+            $tong_3_dai_hoc += $result['3_dai_hoc'];
+            $tong_3_sau_dai_hoc += $result['3_sau_dai_hoc'];
+
+            $tong_4_so_cap += $result['4_so_cap'];
+            $tong_4_trung_cap += $result['4_trung_cap'];
+            $tong_4_cao_dang += $result['4_cao_dang'];
+            $tong_4_dai_hoc += $result['4_dai_hoc'];
+            $tong_4_sau_dai_hoc += $result['4_sau_dai_hoc'];
+
+            $tong_5_so_cap += $result['5_so_cap'];
+            $tong_5_trung_cap += $result['5_trung_cap'];
+            $tong_5_cao_dang += $result['5_cao_dang'];
+            $tong_5_dai_hoc += $result['5_dai_hoc'];
+            $tong_5_sau_dai_hoc += $result['5_sau_dai_hoc'];
+
+            $r++;
+        }
+        $this->Excel->ActiveSheet->getCell('C19')->setValue($tong);
+        $this->Excel->ActiveSheet->getCell('D19')->setValue($tong_so_cap);
+        $this->Excel->ActiveSheet->getCell('E19')->setValue($tong_trung_cap);
+        $this->Excel->ActiveSheet->getCell('F19')->setValue($tong_cao_dang);
+        $this->Excel->ActiveSheet->getCell('G19')->setValue($tong_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('H19')->setValue($tong_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('I19')->setValue($tong_0_so_cap);
+        $this->Excel->ActiveSheet->getCell('J19')->setValue($tong_0_trung_cap);
+        $this->Excel->ActiveSheet->getCell('K19')->setValue($tong_0_cao_dang);
+        $this->Excel->ActiveSheet->getCell('L19')->setValue($tong_0_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('M19')->setValue($tong_0_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('N19')->setValue($tong_1_so_cap);
+        $this->Excel->ActiveSheet->getCell('O19')->setValue($tong_1_trung_cap);
+        $this->Excel->ActiveSheet->getCell('P19')->setValue($tong_1_cao_dang);
+        $this->Excel->ActiveSheet->getCell('Q19')->setValue($tong_1_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('R19')->setValue($tong_1_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('S19')->setValue($tong_2_so_cap);
+        $this->Excel->ActiveSheet->getCell('T19')->setValue($tong_2_trung_cap);
+        $this->Excel->ActiveSheet->getCell('U19')->setValue($tong_2_cao_dang);
+        $this->Excel->ActiveSheet->getCell('V19')->setValue($tong_2_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('W19')->setValue($tong_2_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('X19')->setValue($tong_3_so_cap);
+        $this->Excel->ActiveSheet->getCell('Y19')->setValue($tong_3_trung_cap);
+        $this->Excel->ActiveSheet->getCell('Z19')->setValue($tong_3_cao_dang);
+        $this->Excel->ActiveSheet->getCell('AA19')->setValue($tong_3_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('AB19')->setValue($tong_3_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('AC19')->setValue($tong_4_so_cap);
+        $this->Excel->ActiveSheet->getCell('AD19')->setValue($tong_4_trung_cap);
+        $this->Excel->ActiveSheet->getCell('AE19')->setValue($tong_4_cao_dang);
+        $this->Excel->ActiveSheet->getCell('AF19')->setValue($tong_4_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('AG19')->setValue($tong_4_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('AH19')->setValue($tong_5_so_cap);
+        $this->Excel->ActiveSheet->getCell('AI19')->setValue($tong_5_trung_cap);
+        $this->Excel->ActiveSheet->getCell('AJ19')->setValue($tong_5_cao_dang);
+        $this->Excel->ActiveSheet->getCell('AK19')->setValue($tong_5_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('AL19')->setValue($tong_5_sau_dai_hoc);
+
+        return $this->Excel->save($filename);
+        
     }
 
     public function pandog()
