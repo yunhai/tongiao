@@ -3786,106 +3786,13 @@ class ActionController extends AppController
 
     public function pandog()
     {
-        $this->__getType21Data();
+        $this->__getType22Data();
     }
 
-    /**
-     * TH TRINH DO VH
-     * TỔNG HỢP TRÌNH ĐỘ VĂN HÓA CỦA CHỨC SẮC CÁC TÔN GIÁO
-     *
-     * 1. Bảng chucsactinlanh
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diemnhom_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * TIỂU HỌC VÀ TƯƠNG ĐƯƠNG  : trinhdohocvan_bangcap nằm trong mảng sau (1,2,3,4,5,1/12,2/12,3/12,4/12,5/12)
-     * THCS VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (6,7,8,9,6/12,7/12,8/12,9/12)
-     * THPT VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (10,11,12,10/12,11/12,12/12)
-     * SƠ CẤP                   : trinhdothanhoc_bangcap LIKE "SƠ CẤP"
-     * TRUNG CẤP                : trinhdothanhoc_bangcap LIKE "TRUNG CẤP"
-     * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
-     * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
-     * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     *
-     * 2. Bảng chucsacnhatuhanhconggiaotrieu
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * hoatdongtongiao_giaohat_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * TIỂU HỌC VÀ TƯƠNG ĐƯƠNG  : trinhdohocvan_bangcap nằm trong mảng sau (1,2,3,4,5,1/12,2/12,3/12,4/12,5/12)
-     * THCS VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (6,7,8,9,6/12,7/12,8/12,9/12)
-     * THPT VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (10,11,12,10/12,11/12,12/12)
-     * SƠ CẤP                   : trinhdothanhoc_bangcap LIKE "SƠ CẤP"
-     * TRUNG CẤP                : trinhdothanhoc_bangcap LIKE "TRUNG CẤP"
-     * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
-     * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
-     * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     *
-     * 3. Bảng chucsacnhatuhanhcongiaodongtu
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * TIỂU HỌC VÀ TƯƠNG ĐƯƠNG  : trinhdohocvan_bangcap nằm trong mảng sau (1,2,3,4,5,1/12,2/12,3/12,4/12,5/12)
-     * THCS VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (6,7,8,9,6/12,7/12,8/12,9/12)
-     * THPT VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (10,11,12,10/12,11/12,12/12)
-     * SƠ CẤP                   : trinhdothanhoc_bangcap LIKE "SƠ CẤP"
-     * TRUNG CẤP                : trinhdothanhoc_bangcap LIKE "TRUNG CẤP"
-     * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
-     * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
-     * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     *
-     * 4. Bảng chucsacnhatuhanhphatgiao
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * tencosohoatdongtongiao_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * TIỂU HỌC VÀ TƯƠNG ĐƯƠNG  : trinhdohocvan_bangcap nằm trong mảng sau (1,2,3,4,5,1/12,2/12,3/12,4/12,5/12)
-     * THCS VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (6,7,8,9,6/12,7/12,8/12,9/12)
-     * THPT VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (10,11,12,10/12,11/12,12/12)
-     * SƠ CẤP                   : trinhdothanhoc_bangcap LIKE "SƠ CẤP"
-     * TRUNG CẤP                : trinhdothanhoc_bangcap LIKE "TRUNG CẤP"
-     * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
-     * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
-     * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     *
-     * 5. Bảng chucsaccaodai
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * hoatdongtongiaotai_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * TIỂU HỌC VÀ TƯƠNG ĐƯƠNG  : trinhdohocvan_bangcap nằm trong mảng sau (1,2,3,4,5,1/12,2/12,3/12,4/12,5/12)
-     * THCS VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (6,7,8,9,6/12,7/12,8/12,9/12)
-     * THPT VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (10,11,12,10/12,11/12,12/12)
-     * SƠ CẤP                   : trinhdothanhoc_bangcap LIKE "SƠ CẤP"
-     * TRUNG CẤP                : trinhdothanhoc_bangcap LIKE "TRUNG CẤP"
-     * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
-     * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
-     * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     *
-     * 6. Bảng chucviectinhdocusiphathoivietnam
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * hoatdongtongiaotai_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * TIỂU HỌC VÀ TƯƠNG ĐƯƠNG  : trinhdohocvan_bangcap nằm trong mảng sau (1,2,3,4,5,1/12,2/12,3/12,4/12,5/12)
-     * THCS VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (6,7,8,9,6/12,7/12,8/12,9/12)
-     * THPT VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (10,11,12,10/12,11/12,12/12)
-     * SƠ CẤP                   : trinhdothanhoc_bangcap LIKE "SƠ CẤP"
-     * TRUNG CẤP                : trinhdothanhoc_bangcap LIKE "TRUNG CẤP"
-     * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
-     * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
-     * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     *
-     * 7. Bảng chucviechoigiao
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * hoatdongtongiaotai_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * TIỂU HỌC VÀ TƯƠNG ĐƯƠNG  : trinhdohocvan_bangcap nằm trong mảng sau (1,2,3,4,5,1/12,2/12,3/12,4/12,5/12)
-     * THCS VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (6,7,8,9,6/12,7/12,8/12,9/12)
-     * THPT VÀ TƯƠNG ĐƯƠNG      : trinhdohocvan_bangcap nằm trong mảng sau (10,11,12,10/12,11/12,12/12)
-     * SƠ CẤP                   : trinhdothanhoc_bangcap LIKE "SƠ CẤP"
-     * TRUNG CẤP                : trinhdothanhoc_bangcap LIKE "TRUNG CẤP"
-     * CAO ĐẲNG                 : trinhdothanhoc_bangcap LIKE "CAO ĐẲNG"
-     * ĐẠI HỌC                  : trinhdothanhoc_bangcap LIKE "ĐẠI HỌC" OR "Cử nhân"
-     * TRÊN ĐẠI HỌC             : trinhdothanhoc_bangcap LIKE "Cao học" OR "SAU ĐẠI HỌC" OR "THẠC SỸ" OR "TIẾN SỸ"
-     *
-     * CÔNG GIÁO = 2. Bảng chucsacnhatuhanhconggiaotrieu + 3. Bảng chucsacnhatuhanhcongiaodongtu
-     * PHẬT GIÁO = 4. Bảng chucsacnhatuhanhphatgiao
-     * TIN LÀNH = 1. Bảng chucsactinlanh
-     * CAO ĐÀI = 5. Bảng chucsaccaodai
-     * TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM = 6. Bảng chucviectinhdocusiphathoivietnam
-     * HỒI GIÁO = 7. Bảng chucviechoigiao
-     */
     protected function __getType22Data()
     {
+        $component = $this->Components->load('ExportThTdVhCs');
+        $data = $component->export();
     }
 
     /**
