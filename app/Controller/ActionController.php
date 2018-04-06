@@ -3774,8 +3774,8 @@ class ActionController extends AppController
     }
 
     /**
-     * TH TRINH DO VH
-     * TỔNG HỢP TRÌNH ĐỘ VĂN HÓA CỦA CHỨC SẮC CÁC TÔN GIÁO
+     * TH TRINH DO TON GIAO
+     * TỔNG HỢP TRÌNH ĐỘ TÔN GIÁO CỦA CHỨC SẮC CÁC TÔN GIÁO
      */
     protected function __getType21Data()
     {
@@ -4084,10 +4084,430 @@ class ActionController extends AppController
         $this->__getType22Data();
     }
 
+    /**
+     * TH TRINH DO VH
+     * TỔNG HỢP TRÌNH ĐỘ VĂN HÓA CỦA CHỨC SẮC CÁC TÔN GIÁO
+     */
     protected function __getType22Data()
     {
         $component = $this->Components->load('ExportThTdVhCs');
         $data = $component->export();
+        
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template22.xls';
+        //$filename = "template17";
+        $filename = "{$this->_type_text[22]}";
+        $this->Excel->load($source);
+        //$this->{"__createTemplate{$type}"}();
+        //$this->Excel->save($filename);
+
+        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 1;
+        for ($c = 'C'; $c <= 'Z'; $c++) {
+            $colIndexes[$index] = $c;
+            $index ++;
+            if ($c == $maxCols) {
+                break;
+            }
+        }
+        /*print "<pre>";
+        print_r($data);
+        print "</pre>";
+        print "<pre>";
+        print_r($colIndexes);
+        print "</pre>";
+        exit;*/
+        $r = 10;
+        $tinhs = array(
+            'bien-hoa',
+            'long-khanh',
+            'xuan-loc',
+            'cam-my',
+            'tan-phu',
+            'dinh-quan',
+            'thong-nhat',
+            'trang-bom',
+            'vinh-cuu',
+            'nhon-trach',
+            'long-thanh',
+        );
+        $tong =
+        $tong_tieu_hoc = 
+        $tong_thcs = 
+        $tong_thpt = 
+        $tong_so_cap = 
+        $tong_trung_cap =
+        $tong_cao_dang = 
+        $tong_dai_hoc =
+        $tong_sau_dai_hoc =
+        
+        $tong_0_tieu_hoc = 
+        $tong_0_thcs = 
+        $tong_0_thpt = 
+        $tong_0_so_cap =
+        $tong_0_trung_cap =
+        $tong_0_cao_dang =
+        $tong_0_dai_hoc =
+        $tong_0_sau_dai_hoc =
+
+        $tong_1_tieu_hoc = 
+        $tong_1_thcs = 
+        $tong_1_thpt = 
+        $tong_1_so_cap =
+        $tong_1_trung_cap =
+        $tong_1_cao_dang =
+        $tong_1_dai_hoc =
+        $tong_1_sau_dai_hoc =
+
+        $tong_2_tieu_hoc = 
+        $tong_2_thcs = 
+        $tong_2_thpt = 
+        $tong_2_so_cap =
+        $tong_2_trung_cap =
+        $tong_2_cao_dang =
+        $tong_2_dai_hoc =
+        $tong_2_sau_dai_hoc =
+
+        $tong_3_tieu_hoc = 
+        $tong_3_thcs = 
+        $tong_3_thpt = 
+        $tong_3_so_cap =
+        $tong_3_trung_cap =
+        $tong_3_cao_dang =
+        $tong_3_dai_hoc =
+        $tong_3_sau_dai_hoc =
+
+        $tong_4_tieu_hoc = 
+        $tong_4_thcs = 
+        $tong_4_thpt = 
+        $tong_4_so_cap =
+        $tong_4_trung_cap =
+        $tong_4_cao_dang =
+        $tong_4_dai_hoc =
+        $tong_4_sau_dai_hoc =
+
+        $tong_5_tieu_hoc = 
+        $tong_5_thcs = 
+        $tong_5_thpt = 
+        $tong_5_so_cap =
+        $tong_5_trung_cap =
+        $tong_5_cao_dang =
+        $tong_5_dai_hoc =
+        $tong_5_sau_dai_hoc = 0;
+        foreach ($tinhs as $tinh) {
+            $result = $data[$tinh];
+            foreach ($colIndexes as $k => $c) {
+                switch ($c) {
+                    case 'C'://TỔNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total']);
+                        break;
+                    case 'D'://TRÌNH ĐỘ - HỌC VẤN
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['tieu_hoc']);
+                        break;
+                    case 'E'://HỌC VẤN
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['thcs']);
+                        break;
+                    case 'F'://HỌC VẤN
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['thpt']);
+                        break;
+                    case 'G'://CHUYÊN MÔN
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['so_cap']);
+                        break;
+                    case 'H'://CHUYÊN MÔN
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['trung_cap']);
+                        break;
+                    case 'I'://CHUYÊN MÔN
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['cao_dang']);
+                        break;
+                    case 'J'://CHUYÊN MÔN
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['dai_hoc']);
+                        break;
+                    case 'K'://CHUYÊN MÔN
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['sau_dai_hoc']);
+                        break;
+                    case 'L'://CÔNG GIÁO - TRÌNH ĐỘ - HỌC VẤN - TIỂU HỌC VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_tieu_hoc']);
+                        break;
+                    case 'M'://CÔNG GIÁO - TRÌNH ĐỘ - HỌC VẤN - THCS VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_thcs']);
+                        break;
+                    case 'N'://CÔNG GIÁO - TRÌNH ĐỘ - HỌC VẤN - THPT VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_thpt']);
+                        break;
+                    case 'O'://CÔNG GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - SƠ CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_so_cap']);
+                        break;
+                    case 'P'://CÔNG GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - TRUNG CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_trung_cap']);
+                        break;
+                    case 'Q'://CÔNG GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - CAO ĐẲNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_cao_dang']);
+                        break;
+                    case 'R'://CÔNG GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_dai_hoc']);
+                        break;
+                    case 'S'://CÔNG GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - TRÊN ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0_sau_dai_hoc']);
+                        break;
+                    case 'T'://PHẬT GIÁO - TRÌNH ĐỘ - HỌC VẤN - TIỂU HỌC VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_tieu_hoc']);
+                        break;
+                    case 'U'://PHẬT GIÁO - TRÌNH ĐỘ - HỌC VẤN - THCS VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_thcs']);
+                        break;
+                    case 'V'://PHẬT GIÁO - TRÌNH ĐỘ - HỌC VẤN - THPT VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_thpt']);
+                        break;
+                    case 'W'://PHẬT GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - SƠ CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_so_cap']);
+                        break;
+                    case 'X'://PHẬT GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - TRUNG CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_trung_cap']);
+                        break;
+                    case 'Y'://PHẬT GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - CAO ĐẲNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_cao_dang']);
+                        break;
+                    case 'Z'://PHẬT GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_dai_hoc']);
+                        break;
+                    case 'AA'://PHẬT GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - TRÊN ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1_sau_dai_hoc']);
+                        break;
+                    case 'AB'://TIN LÀNH - TRÌNH ĐỘ - HỌC VẤN - TIỂU HỌC VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_tieu_hoc']);
+                        break;
+                    case 'AC'://TIN LÀNH - TRÌNH ĐỘ - HỌC VẤN - THCS VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_thcs']);
+                        break;
+                    case 'AD'://TIN LÀNH - TRÌNH ĐỘ - HỌC VẤN - THPT VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_thpt']);
+                        break;
+                    case 'AE'://TIN LÀNH - TRÌNH ĐỘ - CHUYÊN MÔN - SƠ CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_so_cap']);
+                        break;
+                    case 'AF'://TIN LÀNH - TRÌNH ĐỘ - CHUYÊN MÔN - TRUNG CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_trung_cap']);
+                        break;
+                    case 'AG'://TIN LÀNH - TRÌNH ĐỘ - CHUYÊN MÔN - CAO ĐẲNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_cao_dang']);
+                        break;
+                    case 'AH'://TIN LÀNH - TRÌNH ĐỘ - CHUYÊN MÔN - ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_dai_hoc']);
+                        break;
+                    case 'AI'://TIN LÀNH - TRÌNH ĐỘ - CHUYÊN MÔN - TRÊN ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2_sau_dai_hoc']);
+                        break;
+                    case 'AJ'://CAO ĐÀI - TRÌNH ĐỘ - HỌC VẤN - TIỂU HỌC VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_tieu_hoc']);
+                        break;
+                    case 'AK'://CAO ĐÀI - TRÌNH ĐỘ - HỌC VẤN - THCS VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_thcs']);
+                        break;
+                    case 'AL'://CAO ĐÀI - TRÌNH ĐỘ - HỌC VẤN - THPT VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_thpt']);
+                        break;
+                    case 'AM'://CAO ĐÀI - TRÌNH ĐỘ - CHUYÊN MÔN - SƠ CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_so_cap']);
+                        break;
+                    case 'AN'://CAO ĐÀI - TRÌNH ĐỘ - CHUYÊN MÔN - TRUNG CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_trung_cap']);
+                        break;
+                    case 'AO'://CAO ĐÀI - TRÌNH ĐỘ - CHUYÊN MÔN - CAO ĐẲNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_cao_dang']);
+                        break;
+                    case 'AP'://CAO ĐÀI - TRÌNH ĐỘ - CHUYÊN MÔN - ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_dai_hoc']);
+                        break;
+                    case 'AQ'://CAO ĐÀI - TRÌNH ĐỘ - CHUYÊN MÔN - TRÊN ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3_sau_dai_hoc']);
+                        break;
+                    case 'AR'://TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM - TRÌNH ĐỘ - HỌC VẤN - TIỂU HỌC VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_tieu_hoc']);
+                        break;
+                    case 'AS'://TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM - TRÌNH ĐỘ - HỌC VẤN - THCS VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_thcs']);
+                        break;
+                    case 'AT'://TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM - TRÌNH ĐỘ - HỌC VẤN - THPT VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_thpt']);
+                        break;
+                    case 'AU'://TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM - TRÌNH ĐỘ - CHUYÊN MÔN - SƠ CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_so_cap']);
+                        break;
+                    case 'AV'://TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM - TRÌNH ĐỘ - CHUYÊN MÔN - TRUNG CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_trung_cap']);
+                        break;
+                    case 'AW'://TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM - TRÌNH ĐỘ - CHUYÊN MÔN - CAO ĐẲNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_cao_dang']);
+                        break;
+                    case 'AX'://TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM - TRÌNH ĐỘ - CHUYÊN MÔN - ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_dai_hoc']);
+                        break;
+                    case 'AY'://TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM - TRÌNH ĐỘ - CHUYÊN MÔN - TRÊN ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4_sau_dai_hoc']);
+                        break;
+                    case 'AZ'://HỒI GIÁO - TRÌNH ĐỘ - HỌC VẤN - TIỂU HỌC VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_tieu_hoc']);
+                        break;
+                    case 'BA'://HỒI GIÁO - TRÌNH ĐỘ - HỌC VẤN - THCS VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_thcs']);
+                        break;
+                    case 'BB'://HỒI GIÁO - TRÌNH ĐỘ - HỌC VẤN - THPT VÀ TƯƠNG ĐƯƠNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_thpt']);
+                        break;
+                    case 'BC'://HỒI GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - SƠ CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_so_cap']);
+                        break;
+                    case 'BD'://HỒI GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - TRUNG CẤP
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_trung_cap']);
+                        break;
+                    case 'BE'://HỒI GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - CAO ĐẲNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_cao_dang']);
+                        break;
+                    case 'BF'://HỒI GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_dai_hoc']);
+                        break;
+                    case 'BG'://HỒI GIÁO - TRÌNH ĐỘ - CHUYÊN MÔN - TRÊN ĐẠI HỌC
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5_sau_dai_hoc']);
+                        break;
+                    default:
+                        echo 'TH TRINH DO VH';
+                }
+            }
+            $tong += $result['total'];
+            $tong_tieu_hoc += $result['tieu_hoc'];
+            $tong_thcs += $result['thcs'];
+            $tong_thpt += $result['thpt'];
+            $tong_so_cap += $result['so_cap'];
+            $tong_trung_cap += $result['trung_cap'];
+            $tong_cao_dang += $result['cao_dang'];
+            $tong_dai_hoc += $result['dai_hoc'];
+            $tong_sau_dai_hoc += $result['sau_dai_hoc'];
+
+            $tong_0_tieu_hoc += $result['0_tieu_hoc'];
+            $tong_0_thcs += $result['0_thcs'];
+            $tong_0_thpt += $result['0_thpt'];
+            $tong_0_so_cap += $result['0_so_cap'];
+            $tong_0_trung_cap += $result['0_trung_cap'];
+            $tong_0_cao_dang += $result['0_cao_dang'];
+            $tong_0_dai_hoc += $result['0_dai_hoc'];
+            $tong_0_sau_dai_hoc += $result['0_sau_dai_hoc'];
+
+            $tong_1_tieu_hoc += $result['1_tieu_hoc'];
+            $tong_1_thcs += $result['1_thcs'];
+            $tong_1_thpt += $result['1_thpt'];
+            $tong_1_so_cap += $result['1_so_cap'];
+            $tong_1_trung_cap += $result['1_trung_cap'];
+            $tong_1_cao_dang += $result['1_cao_dang'];
+            $tong_1_dai_hoc += $result['1_dai_hoc'];
+            $tong_1_sau_dai_hoc += $result['1_sau_dai_hoc'];
+
+            $tong_2_tieu_hoc += $result['2_tieu_hoc'];
+            $tong_2_thcs += $result['2_thcs'];
+            $tong_2_thpt += $result['2_thpt'];
+            $tong_2_so_cap += $result['2_so_cap'];
+            $tong_2_trung_cap += $result['2_trung_cap'];
+            $tong_2_cao_dang += $result['2_cao_dang'];
+            $tong_2_dai_hoc += $result['2_dai_hoc'];
+            $tong_2_sau_dai_hoc += $result['2_sau_dai_hoc'];
+
+            $tong_3_tieu_hoc += $result['3_tieu_hoc'];
+            $tong_3_thcs += $result['3_thcs'];
+            $tong_3_thpt += $result['3_thpt'];
+            $tong_3_so_cap += $result['3_so_cap'];
+            $tong_3_trung_cap += $result['3_trung_cap'];
+            $tong_3_cao_dang += $result['3_cao_dang'];
+            $tong_3_dai_hoc += $result['3_dai_hoc'];
+            $tong_3_sau_dai_hoc += $result['3_sau_dai_hoc'];
+
+            $tong_4_tieu_hoc += $result['4_tieu_hoc'];
+            $tong_4_thcs += $result['4_thcs'];
+            $tong_4_thpt += $result['4_thpt'];
+            $tong_4_so_cap += $result['4_so_cap'];
+            $tong_4_trung_cap += $result['4_trung_cap'];
+            $tong_4_cao_dang += $result['4_cao_dang'];
+            $tong_4_dai_hoc += $result['4_dai_hoc'];
+            $tong_4_sau_dai_hoc += $result['4_sau_dai_hoc'];
+
+            $tong_5_tieu_hoc += $result['5_tieu_hoc'];
+            $tong_5_thcs += $result['5_thcs'];
+            $tong_5_thpt += $result['5_thpt'];
+            $tong_5_so_cap += $result['5_so_cap'];
+            $tong_5_trung_cap += $result['5_trung_cap'];
+            $tong_5_cao_dang += $result['5_cao_dang'];
+            $tong_5_dai_hoc += $result['5_dai_hoc'];
+            $tong_5_sau_dai_hoc += $result['5_sau_dai_hoc'];
+
+            $r++;
+        }
+        $this->Excel->ActiveSheet->getCell('C21')->setValue($tong);
+        $this->Excel->ActiveSheet->getCell('D21')->setValue($tong_tieu_hoc);
+        $this->Excel->ActiveSheet->getCell('E21')->setValue($tong_thcs);
+        $this->Excel->ActiveSheet->getCell('F21')->setValue($tong_thpt);
+        $this->Excel->ActiveSheet->getCell('G21')->setValue($tong_so_cap);
+        $this->Excel->ActiveSheet->getCell('H21')->setValue($tong_trung_cap);
+        $this->Excel->ActiveSheet->getCell('I21')->setValue($tong_cao_dang);
+        $this->Excel->ActiveSheet->getCell('J21')->setValue($tong_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('K21')->setValue($tong_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('L21')->setValue($tong_0_tieu_hoc);
+        $this->Excel->ActiveSheet->getCell('M21')->setValue($tong_0_thcs);
+        $this->Excel->ActiveSheet->getCell('N21')->setValue($tong_0_thpt);
+        $this->Excel->ActiveSheet->getCell('O21')->setValue($tong_0_so_cap);
+        $this->Excel->ActiveSheet->getCell('P21')->setValue($tong_0_trung_cap);
+        $this->Excel->ActiveSheet->getCell('Q21')->setValue($tong_0_cao_dang);
+        $this->Excel->ActiveSheet->getCell('R21')->setValue($tong_0_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('S21')->setValue($tong_0_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('T21')->setValue($tong_1_tieu_hoc);
+        $this->Excel->ActiveSheet->getCell('U21')->setValue($tong_1_thcs);
+        $this->Excel->ActiveSheet->getCell('V21')->setValue($tong_1_thpt);
+        $this->Excel->ActiveSheet->getCell('W21')->setValue($tong_1_so_cap);
+        $this->Excel->ActiveSheet->getCell('X21')->setValue($tong_1_trung_cap);
+        $this->Excel->ActiveSheet->getCell('Y21')->setValue($tong_1_cao_dang);
+        $this->Excel->ActiveSheet->getCell('Z21')->setValue($tong_1_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('AA21')->setValue($tong_1_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('AB21')->setValue($tong_2_tieu_hoc);
+        $this->Excel->ActiveSheet->getCell('AC21')->setValue($tong_2_thcs);
+        $this->Excel->ActiveSheet->getCell('AD21')->setValue($tong_2_thpt);
+        $this->Excel->ActiveSheet->getCell('AE21')->setValue($tong_2_so_cap);
+        $this->Excel->ActiveSheet->getCell('AF21')->setValue($tong_2_trung_cap);
+        $this->Excel->ActiveSheet->getCell('AG21')->setValue($tong_2_cao_dang);
+        $this->Excel->ActiveSheet->getCell('AH21')->setValue($tong_2_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('AI21')->setValue($tong_2_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('AJ21')->setValue($tong_3_tieu_hoc);
+        $this->Excel->ActiveSheet->getCell('AK21')->setValue($tong_3_thcs);
+        $this->Excel->ActiveSheet->getCell('AL21')->setValue($tong_3_thpt);
+        $this->Excel->ActiveSheet->getCell('AM21')->setValue($tong_3_so_cap);
+        $this->Excel->ActiveSheet->getCell('AN21')->setValue($tong_3_trung_cap);
+        $this->Excel->ActiveSheet->getCell('AO21')->setValue($tong_3_cao_dang);
+        $this->Excel->ActiveSheet->getCell('AP21')->setValue($tong_3_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('AQ21')->setValue($tong_3_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('AR21')->setValue($tong_4_tieu_hoc);
+        $this->Excel->ActiveSheet->getCell('AS21')->setValue($tong_4_thcs);
+        $this->Excel->ActiveSheet->getCell('AT21')->setValue($tong_4_thpt);
+        $this->Excel->ActiveSheet->getCell('AU21')->setValue($tong_4_so_cap);
+        $this->Excel->ActiveSheet->getCell('AV21')->setValue($tong_4_trung_cap);
+        $this->Excel->ActiveSheet->getCell('AW21')->setValue($tong_4_cao_dang);
+        $this->Excel->ActiveSheet->getCell('AX21')->setValue($tong_4_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('AY21')->setValue($tong_4_sau_dai_hoc);
+        
+        $this->Excel->ActiveSheet->getCell('AZ21')->setValue($tong_5_tieu_hoc);
+        $this->Excel->ActiveSheet->getCell('BA21')->setValue($tong_5_thcs);
+        $this->Excel->ActiveSheet->getCell('BB21')->setValue($tong_5_thpt);
+        $this->Excel->ActiveSheet->getCell('BC21')->setValue($tong_5_so_cap);
+        $this->Excel->ActiveSheet->getCell('BD21')->setValue($tong_5_trung_cap);
+        $this->Excel->ActiveSheet->getCell('BE21')->setValue($tong_5_cao_dang);
+        $this->Excel->ActiveSheet->getCell('BF21')->setValue($tong_5_dai_hoc);
+        $this->Excel->ActiveSheet->getCell('BG21')->setValue($tong_5_sau_dai_hoc);
+
+        return $this->Excel->save($filename);
     }
 
     /**
