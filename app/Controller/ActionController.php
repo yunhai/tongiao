@@ -4927,6 +4927,27 @@ class ActionController extends AppController
     /**
      * TONG HOP TU SI
      * BẢNG TỔNG HỢP TU SĨ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
+     * 
+     * 1. Bảng giaoxu
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * TỔNG (CỘT D8 TRONG FILE EXCEL) : sotusi_nam
+     * TU SĨ DÒNG (CỘT E8 TRONG FILE EXCEL) : sotusi_nam
+     * CHỦNG SINH (CỘT F8 TRONG FILE EXCEL) : Để mặc định bằng 0
+     * TU SĨ DÒNG (CỘT G8 TRONG FILE EXCEL) : sotusi_nu
+     * 
+     * 1. Bảng tuvienphatgiao
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * TỔNG (CỘT H8 TRONG FILE EXCEL) : sotusi
+     * ĐẠI ĐỨC (CỘT I8 TRONG FILE EXCEL) : nam_tykheo
+     * SA DI (CỘT J8 TRONG FILE EXCEL) : nam_sadi
+     * TỊNH NHƠN, ĐIỆU (CỘT K8 TRONG FILE EXCEL) : Để mặc định bằng 0
+     * TỲ KHEO NI (CỘT L8 TRONG FILE EXCEL) : nu_tykheoni
+     * THỨC XOA MA NA (CỘT M8 TRONG FILE EXCEL) : nu_thucxoamana
+     * SA DI NI (CỘT N8 TRONG FILE EXCEL) : nu_sadini
+     * TỊNH NHƠN, ĐIỆU (CỘT 08 TRONG FILE EXCEL) : Để mặc định bằng 0
+     * 
      */
     protected function __getType27Data()
     {
