@@ -3812,6 +3812,122 @@ class ActionController extends AppController
      */
     protected function __getType19Data()
     {
+        $array = array(
+            'Chucsactinlanh', 'Chucsacnhatuhanhconggiaotrieu', 'Chucsacnhatuhanhcongiaodongtu', 'Chucviecphathoahao',
+            'Chucviectinhdocusiphathoivietnam', 'Chucsaccaodai', 'Chucsacnhatuhanhphatgiao', 'Huynhtruonggiadinhphattu',
+            'Nguoihoatdongtinnguongchuyennghiep', 'Chucviechoigiao'
+        );
+        App::import('Model', $array);
+        foreach ($array as $element) {
+            $this->$element = new $element();
+        }
+        $chuc_sac_tin_lanh = $this->Chucsactinlanh->getDataExcelDSCHUCSACPCPP();
+        $chuc_sac_nha_tu_hanh_cong_giao_trieu = $this->Chucsacnhatuhanhconggiaotrieu->getDataExcelDSCHUCSACPCPP();
+        $data = array_merge(
+            $chuc_sac_tin_lanh,
+            $chuc_sac_nha_tu_hanh_cong_giao_trieu
+        );
+        //exit;
+        $this->__createTemplate19($data);
+    }
+    
+    public function __createTemplate19($data)
+    {
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template19.xls';
+        //$filename = "template19";
+        $filename = "{$this->_type_text[19]}";
+        $this->Excel->load($source);
+        //$this->{"__createTemplate{$type}"}();
+        //$this->Excel->save($filename);
+
+        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 1;
+        for ($c = 'A'; $c <= 'Q'; $c++) {
+            $colIndexes[$index] = $c;
+            $index ++;
+            /*if ($c == $maxCols) {
+                break;
+            }*/
+        }
+        /*print "<pre>";
+        print_r($data);
+        print "</pre>";
+        print "<pre>";
+        print_r($colIndexes);
+        print "</pre>";
+        exit;*/
+        $i = 1;
+        $r = 7;
+        $gioitinh = unserialize(GIOI_TINH);
+        foreach ($data as $key => $value) {
+            $gioi_tinh = isset($gioitinh[$value['gioitinh']]) ? $gioitinh[$value['gioitinh']] : '';
+            foreach ($colIndexes as $k => $c) {
+                switch ($c) {
+                    case 'A':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
+                        break;
+                    case 'B':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['hovaten']);
+                        break;
+                    case 'C':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['tengoitheotongiao']);
+                        break;
+                    case 'D':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['thuoctochuctongiao']);
+                        break;
+                    case 'E':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ngaythangnamsinh']);
+                        break;
+                    case 'F':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($gioi_tinh);
+                        break;
+                    case 'G':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chungminhnhandan']);
+                        break;
+                    case 'H':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['namduocphongchuc']);
+                        break;
+                    case 'I':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamsactruockhiphong']);
+                        break;
+                    case 'J':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['phamsacduocphong']);
+                        break;
+                    case 'K':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['chucvu']);
+                        break;
+                    case 'L':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdohocvan']);
+                        break;
+                    case 'M':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdochuyenmon']);
+                        break;
+                    case 'N':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['trinhdotongiao']);
+                        break;
+                    case 'O':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['quequan']);
+                        break;
+                    case 'P':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
+                        break;
+                    case 'Q':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue('');
+                        break;
+                    default:
+                        echo 'DS CHUC SAC PCPP';
+                }
+            }
+            $i++;
+            $r++;
+        }
+
+        return $this->Excel->save($filename);
     }
 
     /**
@@ -5022,6 +5138,11 @@ class ActionController extends AppController
     /**
      * TONG HOP CHUC VIEC
      * BẢNG TỔNG HỢP CHỨC VIỆC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
+     * 
+     * I. CÔNG GIÁO
+     * 1. Bảng giaoxu
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
      */
     protected function __getType26Data()
     {
