@@ -5143,6 +5143,43 @@ class ActionController extends AppController
      * 1. Bảng giaoxu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * 
+     * II. PHẬT GIÁO
+     * 2. Bảng tuvienphatgiao
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * BAN HỘ TỰ: banhotu_banhoniem_sothanhvien
+     * BAN HỘ NIỆM: banhotu_banhoniem_sothanhvien
+     * GIA ĐÌNH PHẬT TỬ: giadinhphattu_sodoanvien
+     * 
+     * III. TIN LÀNH
+     * 3. Bảng chihoitinlanh
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * BAN CHẤP SỰ: sothanhvientrongbanchapsu
+     * BAN TRỊ SỰ: Để mặc định bằng 0
+     * 
+     * IV. CAO ĐÀI
+     * 4. Bảng hodaocaodai
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * BAN CAI QUẢN: sothanvien_bancaiquan
+     * BAN TRỊ SỰ: Để mặc định bằng 0
+     * 
+     * V. PHẬT GIÁO HÒA HẢO
+     * 5. Bảng chucviecphathoahao
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * BAN ĐẠI DIỆN: Đếm tất cả với điều kiện cột thanhvienbandaidientinh != null
+     * BAN TRỊ SỰ XÃ, PHƯỜNG, THỊ TRÁN: Đếm tất cả với điều kiện cột phobantrisu != null hoặc cột thanhvienbandaidientinh != null
+     * 
+     * VI. TĐCSPHVN
+     * 6. Bảng chihoitinhdocusiphatgiaovietnam
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * tenchihoi_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * BAN HỘ ĐẠO: sothanhvien_banhodao
+     * BAN CHẤP HÀNH ĐẠO ĐỨC: sothanhvien_banchaphanhdaoduc
+     * 
      */
     protected function __getType26Data()
     {
@@ -5181,7 +5218,7 @@ class ActionController extends AppController
      * TONG HOP CHUC SAC KO CHUC VU
      * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (KHÔNG CÓ CHỨC VỤ)
      * 
-     * * I. CÔNG GIÁO
+     * I. CÔNG GIÁO
      * 1. Bảng chucsacnhatuhanhconggiaotrieu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
