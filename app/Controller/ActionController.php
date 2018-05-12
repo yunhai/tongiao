@@ -984,7 +984,7 @@ class ActionController extends AppController
     /**
      * TONG HOP DI TICH
      * TỔNG HỢP CƠ SỞ TÔN GIÁO, TÍN NGƯỠNG ĐƯỢC XẾP HẠNG DI TÍCH TRÊN ĐỊA BÀN TỈNH
-     * 
+     *
      * I. CÔNG GIÁO
      * 1. Bảng giaoxu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -1024,7 +1024,7 @@ class ActionController extends AppController
      * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
      *      TRUNG ƯƠNG: cosothotu_captrunguong = true
      *      TỈNH      : cosothotu_captinh = true
-     *      
+     *
      * III. TIN LÀNH
      * 3. Bảng chihoitinlanh
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -1044,7 +1044,7 @@ class ActionController extends AppController
      * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
      *      TRUNG ƯƠNG: cosothotu_captrunguong = true
      *      TỈNH      : cosothotu_captinh = true
-     * 
+     *
      * IV. CAO ĐÀI
      * 4. Bảng hodaocaodai
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -1064,7 +1064,7 @@ class ActionController extends AppController
      * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
      *      TRUNG ƯƠNG: cosothotu_captrunguong = true
      *      TỈNH      : cosothotu_captinh = true
-     * 
+     *
      * V. TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM
      * 5. Bảng chihoitinhdocusiphatgiaovietnam
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -1084,14 +1084,14 @@ class ActionController extends AppController
      * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
      *      TRUNG ƯƠNG: cosothotu_captrunguong = true
      *      TỈNH      : cosothotu_captinh = true
-     * 
+     *
      * VI. PHẬT GIÁO HÒA HẢO
      * DI TÍCH LỊCH SỬ: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0
-     * DI TÍCH VĂN HÓA: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0 
+     * DI TÍCH VĂN HÓA: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0
      * DI TÍCH LS-VH: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0
      * DI TÍCH KIẾN TRÚC NGHỆ THUẬT: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0
      * DI TÍCH KHẢO CỔ: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0
-     * 
+     *
      * VII. HỒI GIÁO
      * 7. Bảng cosohoigiaoislam
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -1111,7 +1111,7 @@ class ActionController extends AppController
      * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
      *      TRUNG ƯƠNG: cosothotu_captrunguong = true
      *      TỈNH      : cosothotu_captinh = true
-     * 
+     *
      */
     protected function __getType4Data()
     {
@@ -3881,12 +3881,12 @@ class ActionController extends AppController
     /**
      * THBNCS
      * TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO ĐƯỢC BỔ NHIỆM, CHUẨN Y
-     * 
+     *
      * I. CÔNG GIÁO
      * 1. Bảng chucsacnhatuhanhconggiaotrieu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * CÁC BAN THUỘC TÒA GIÁM  MỤC: hoatdongtongiao_chucvuhiennay_truongbanchuyenmon = true hoặc 
+     * CÁC BAN THUỘC TÒA GIÁM  MỤC: hoatdongtongiao_chucvuhiennay_truongbanchuyenmon = true hoặc
      *                              hoatdongtongiao_chucvuhiennay_thanhvienbantuvan = true hoặc
      *                              hoatdongtongiao_chucvuhiennay_thanhvienhoidonglinhmuc = true hoặc
      *                              hoatdongtongiao_chucvuhiennay_linhhuongcuahoidoan = true
@@ -3894,7 +3894,7 @@ class ActionController extends AppController
      * GIÁO HẠT: hoatdongtongiao_chucvuhiennay_hattruong = true
      * CHÁNH XỨ: hoatdongtongiao_chucvuhiennay_chanhxu = true
      * PHÓ XỨ: hoatdongtongiao_chucvuhiennay_phoxu = true
-     * 
+     *
      * II. PHẬT GIÁO
      * 2. Bảng chucsacnhatuhanhphatgiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -3904,7 +3904,7 @@ class ActionController extends AppController
      * CÁC TRƯỜNG ĐÀO TẠO TÔN GIÁO: Để mặc định bằng 0
      * THÀNH VIÊN BTS CẤP HUYỆN: hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaphuyen = true
      * TRỤ TRÌ: hoatdongtongiao_chucvuhiennay_trutri = true
-     * 
+     *
      * III. TIN LÀNH
      * 3. Bảng chucsactinlanh
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -3912,7 +3912,7 @@ class ActionController extends AppController
      * THÀNH VIÊN BAN ĐẠI DIỆN: tvbandaidiencaptinh = true
      * QUẢN NHIỆM/PHỤ TRÁCH CHI HỘI: quannhiem = true
      * PHỤ TÁ QUẢN NHIỆM CHI HỘI: phutaquannhiem = true
-     * 
+     *
      * IV. CAO ĐÀI
      * 4. Bảng chucsaccaodai
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -3922,14 +3922,14 @@ class ActionController extends AppController
      * TRƯỞNG BAN CAI QUẢN: chucvuhiennay_caiquan != null
      * PHÓ BAN CAI QUẢN: chucvuhiennay_phobancaiquan != null
      * THÀNH VIÊN BAN GIÁO CẢ: chucvuhiennay_thanhvienbddct != null
-     * 
-     * V. TĐCSPHVN: 
+     *
+     * V. TĐCSPHVN:
      * 5. Bảng chucviectinhdocusiphathoivietnam
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
      * THÀNH VIÊN BTS CẤP TỈNH: thanhvienbantrisucaptinh = true
      * THÀNH VIÊN BAN TRỊ SỰ CHI HỘI: thanhvienbantrisucaptrunguong = true
-     * 
+     *
      */
     protected function __getType18Data()
     {
@@ -3959,7 +3959,7 @@ class ActionController extends AppController
         //exit;
         $this->__createTemplate19($data);
     }
-    
+
     public function __createTemplate19($data)
     {
         $this->autoLayout = false;
@@ -4062,14 +4062,14 @@ class ActionController extends AppController
     /**
      * TH CHUC SAC PCPP
      * TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO ĐƯỢC PHONG CHỨC, PHONG PHẨM
-     * 
+     *
      * I. CÔNG GIÁO
      * 1. Bảng chucsacnhatuhanhconggiaotrieu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
      * GIÁM MỤC: phamsactrongtongiao_namphong_giammuc != null
      * LINH MỤC: phamsactrongtongiao_namphong_linhmuc != null
-     * 
+     *
      * II. PHẬT GIÁO
      * 2. Bảng chucsacnhatuhanhphatgiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -4078,7 +4078,7 @@ class ActionController extends AppController
      * THƯỢNG TỌA: phaphieu = 'Nam' và ntn_tanphong_thuongtao_hoac_nisu != null
      * NI TRƯỞNG: phaphieu = 'Nữ' và ntn_tanphong_hoathuong_hoac_nitruong != null
      * NI SƯ: phaphieu = 'Nữ' và ntn_tanphong_thuongtao_hoac_nisu != null
-     * 
+     *
      * III. TIN LÀNH
      * 3. Bảng chucsactinlanh
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -4086,7 +4086,7 @@ class ActionController extends AppController
      * MỤC SƯ: phamsactrongtongiao_ntn_duocphong_mucsu != null
      * MỤC SƯ NHIỆM CHỨC: phamsactrongtongiao_ntn_duocphong_mucsunc != null
      * TRUYỀN ĐẠO: phamsactrongtongiao_ntn_duocphong_truyendao != null
-     * 
+     *
      * IV. CAO ĐÀI
      * 4. Bảng chucsaccaodai
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -4095,7 +4095,7 @@ class ActionController extends AppController
      * GIÁO SƯ: phamsac_ntn_cauthang_giaosu != null
      * GIÁO HỮU: phamsac_ntn_cauthang_giaohuu != null
      * LỄ SANH VÀ TƯƠNG ĐƯƠNG: phamsac_ntn_cauphong_lesanh != null
-     * 
+     *
      * V. HỒI GIÁO
      * 5. Bảng chucviechoigiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -4106,7 +4106,7 @@ class ActionController extends AppController
      * KHOTIP: phamsactrongtongiao_ntn_bonhiem_khotip != null
      * IMAM: phamsactrongtongiao_ntn_bonhiem_imam != null
      * TUON: phamsactrongtongiao_ntn_bonhiem_tuon != null
-     * 
+     *
      * VI. TĐCSPHVN
      * 5. Bảng chucviectinhdocusiphathoivietnam
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -4115,7 +4115,7 @@ class ActionController extends AppController
      * THUYẾT TRÌNH VIÊN: phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien != null
      * Y SĨ: Để mặc định bằng 0
      * Y SINH: Để mặc định bằng 0
-     * 
+     *
      */
     protected function __getType20Data()
     {
@@ -4135,7 +4135,7 @@ class ActionController extends AppController
         exit;*/
         $component = $this->Components->load('ExportThTdTgCs');
         $data = $component->export();
-        
+
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template21.xls';
@@ -4178,12 +4178,12 @@ class ActionController extends AppController
             'nhon-trach',
             'long-thanh',
         );
-        $tong = 
+        $tong =
         $tong_so_cap = $tong_trung_cap =
         $tong_cao_dang = $tong_dai_hoc =
         $tong_sau_dai_hoc =
         $tong_cactochuckhac_captinh =
-        
+
         $tong_0_so_cap =
         $tong_0_trung_cap =
         $tong_0_cao_dang =
@@ -4386,37 +4386,37 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('F19')->setValue($tong_cao_dang);
         $this->Excel->ActiveSheet->getCell('G19')->setValue($tong_dai_hoc);
         $this->Excel->ActiveSheet->getCell('H19')->setValue($tong_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('I19')->setValue($tong_0_so_cap);
         $this->Excel->ActiveSheet->getCell('J19')->setValue($tong_0_trung_cap);
         $this->Excel->ActiveSheet->getCell('K19')->setValue($tong_0_cao_dang);
         $this->Excel->ActiveSheet->getCell('L19')->setValue($tong_0_dai_hoc);
         $this->Excel->ActiveSheet->getCell('M19')->setValue($tong_0_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('N19')->setValue($tong_1_so_cap);
         $this->Excel->ActiveSheet->getCell('O19')->setValue($tong_1_trung_cap);
         $this->Excel->ActiveSheet->getCell('P19')->setValue($tong_1_cao_dang);
         $this->Excel->ActiveSheet->getCell('Q19')->setValue($tong_1_dai_hoc);
         $this->Excel->ActiveSheet->getCell('R19')->setValue($tong_1_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('S19')->setValue($tong_2_so_cap);
         $this->Excel->ActiveSheet->getCell('T19')->setValue($tong_2_trung_cap);
         $this->Excel->ActiveSheet->getCell('U19')->setValue($tong_2_cao_dang);
         $this->Excel->ActiveSheet->getCell('V19')->setValue($tong_2_dai_hoc);
         $this->Excel->ActiveSheet->getCell('W19')->setValue($tong_2_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('X19')->setValue($tong_3_so_cap);
         $this->Excel->ActiveSheet->getCell('Y19')->setValue($tong_3_trung_cap);
         $this->Excel->ActiveSheet->getCell('Z19')->setValue($tong_3_cao_dang);
         $this->Excel->ActiveSheet->getCell('AA19')->setValue($tong_3_dai_hoc);
         $this->Excel->ActiveSheet->getCell('AB19')->setValue($tong_3_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('AC19')->setValue($tong_4_so_cap);
         $this->Excel->ActiveSheet->getCell('AD19')->setValue($tong_4_trung_cap);
         $this->Excel->ActiveSheet->getCell('AE19')->setValue($tong_4_cao_dang);
         $this->Excel->ActiveSheet->getCell('AF19')->setValue($tong_4_dai_hoc);
         $this->Excel->ActiveSheet->getCell('AG19')->setValue($tong_4_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('AH19')->setValue($tong_5_so_cap);
         $this->Excel->ActiveSheet->getCell('AI19')->setValue($tong_5_trung_cap);
         $this->Excel->ActiveSheet->getCell('AJ19')->setValue($tong_5_cao_dang);
@@ -4424,12 +4424,6 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('AL19')->setValue($tong_5_sau_dai_hoc);
 
         return $this->Excel->save($filename);
-        
-    }
-
-    public function pandog()
-    {
-        $this->__getType22Data();
     }
 
     /**
@@ -4440,7 +4434,7 @@ class ActionController extends AppController
     {
         $component = $this->Components->load('ExportThTdVhCs');
         $data = $component->export();
-        
+
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template22.xls';
@@ -4484,63 +4478,63 @@ class ActionController extends AppController
             'long-thanh',
         );
         $tong =
-        $tong_tieu_hoc = 
-        $tong_thcs = 
-        $tong_thpt = 
-        $tong_so_cap = 
+        $tong_tieu_hoc =
+        $tong_thcs =
+        $tong_thpt =
+        $tong_so_cap =
         $tong_trung_cap =
-        $tong_cao_dang = 
+        $tong_cao_dang =
         $tong_dai_hoc =
         $tong_sau_dai_hoc =
-        
-        $tong_0_tieu_hoc = 
-        $tong_0_thcs = 
-        $tong_0_thpt = 
+
+        $tong_0_tieu_hoc =
+        $tong_0_thcs =
+        $tong_0_thpt =
         $tong_0_so_cap =
         $tong_0_trung_cap =
         $tong_0_cao_dang =
         $tong_0_dai_hoc =
         $tong_0_sau_dai_hoc =
 
-        $tong_1_tieu_hoc = 
-        $tong_1_thcs = 
-        $tong_1_thpt = 
+        $tong_1_tieu_hoc =
+        $tong_1_thcs =
+        $tong_1_thpt =
         $tong_1_so_cap =
         $tong_1_trung_cap =
         $tong_1_cao_dang =
         $tong_1_dai_hoc =
         $tong_1_sau_dai_hoc =
 
-        $tong_2_tieu_hoc = 
-        $tong_2_thcs = 
-        $tong_2_thpt = 
+        $tong_2_tieu_hoc =
+        $tong_2_thcs =
+        $tong_2_thpt =
         $tong_2_so_cap =
         $tong_2_trung_cap =
         $tong_2_cao_dang =
         $tong_2_dai_hoc =
         $tong_2_sau_dai_hoc =
 
-        $tong_3_tieu_hoc = 
-        $tong_3_thcs = 
-        $tong_3_thpt = 
+        $tong_3_tieu_hoc =
+        $tong_3_thcs =
+        $tong_3_thpt =
         $tong_3_so_cap =
         $tong_3_trung_cap =
         $tong_3_cao_dang =
         $tong_3_dai_hoc =
         $tong_3_sau_dai_hoc =
 
-        $tong_4_tieu_hoc = 
-        $tong_4_thcs = 
-        $tong_4_thpt = 
+        $tong_4_tieu_hoc =
+        $tong_4_thcs =
+        $tong_4_thpt =
         $tong_4_so_cap =
         $tong_4_trung_cap =
         $tong_4_cao_dang =
         $tong_4_dai_hoc =
         $tong_4_sau_dai_hoc =
 
-        $tong_5_tieu_hoc = 
-        $tong_5_thcs = 
-        $tong_5_thpt = 
+        $tong_5_tieu_hoc =
+        $tong_5_thcs =
+        $tong_5_thpt =
         $tong_5_so_cap =
         $tong_5_trung_cap =
         $tong_5_cao_dang =
@@ -4800,7 +4794,7 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('I21')->setValue($tong_cao_dang);
         $this->Excel->ActiveSheet->getCell('J21')->setValue($tong_dai_hoc);
         $this->Excel->ActiveSheet->getCell('K21')->setValue($tong_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('L21')->setValue($tong_0_tieu_hoc);
         $this->Excel->ActiveSheet->getCell('M21')->setValue($tong_0_thcs);
         $this->Excel->ActiveSheet->getCell('N21')->setValue($tong_0_thpt);
@@ -4809,7 +4803,7 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('Q21')->setValue($tong_0_cao_dang);
         $this->Excel->ActiveSheet->getCell('R21')->setValue($tong_0_dai_hoc);
         $this->Excel->ActiveSheet->getCell('S21')->setValue($tong_0_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('T21')->setValue($tong_1_tieu_hoc);
         $this->Excel->ActiveSheet->getCell('U21')->setValue($tong_1_thcs);
         $this->Excel->ActiveSheet->getCell('V21')->setValue($tong_1_thpt);
@@ -4818,7 +4812,7 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('Y21')->setValue($tong_1_cao_dang);
         $this->Excel->ActiveSheet->getCell('Z21')->setValue($tong_1_dai_hoc);
         $this->Excel->ActiveSheet->getCell('AA21')->setValue($tong_1_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('AB21')->setValue($tong_2_tieu_hoc);
         $this->Excel->ActiveSheet->getCell('AC21')->setValue($tong_2_thcs);
         $this->Excel->ActiveSheet->getCell('AD21')->setValue($tong_2_thpt);
@@ -4827,7 +4821,7 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('AG21')->setValue($tong_2_cao_dang);
         $this->Excel->ActiveSheet->getCell('AH21')->setValue($tong_2_dai_hoc);
         $this->Excel->ActiveSheet->getCell('AI21')->setValue($tong_2_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('AJ21')->setValue($tong_3_tieu_hoc);
         $this->Excel->ActiveSheet->getCell('AK21')->setValue($tong_3_thcs);
         $this->Excel->ActiveSheet->getCell('AL21')->setValue($tong_3_thpt);
@@ -4836,7 +4830,7 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('AO21')->setValue($tong_3_cao_dang);
         $this->Excel->ActiveSheet->getCell('AP21')->setValue($tong_3_dai_hoc);
         $this->Excel->ActiveSheet->getCell('AQ21')->setValue($tong_3_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('AR21')->setValue($tong_4_tieu_hoc);
         $this->Excel->ActiveSheet->getCell('AS21')->setValue($tong_4_thcs);
         $this->Excel->ActiveSheet->getCell('AT21')->setValue($tong_4_thpt);
@@ -4845,7 +4839,7 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('AW21')->setValue($tong_4_cao_dang);
         $this->Excel->ActiveSheet->getCell('AX21')->setValue($tong_4_dai_hoc);
         $this->Excel->ActiveSheet->getCell('AY21')->setValue($tong_4_sau_dai_hoc);
-        
+
         $this->Excel->ActiveSheet->getCell('AZ21')->setValue($tong_5_tieu_hoc);
         $this->Excel->ActiveSheet->getCell('BA21')->setValue($tong_5_thcs);
         $this->Excel->ActiveSheet->getCell('BB21')->setValue($tong_5_thpt);
@@ -5264,60 +5258,21 @@ class ActionController extends AppController
         return $this->Excel->save($filename);
     }
 
-    /**
-     * TONG HOP CHUC VIEC
-     * BẢNG TỔNG HỢP CHỨC VIỆC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
-     * 
-     * I. CÔNG GIÁO
-     * 1. Bảng giaoxu
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * 
-     * II. PHẬT GIÁO
-     * 2. Bảng tuvienphatgiao
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * BAN HỘ TỰ: banhotu_banhoniem_sothanhvien
-     * BAN HỘ NIỆM: banhotu_banhoniem_sothanhvien
-     * GIA ĐÌNH PHẬT TỬ: giadinhphattu_sodoanvien
-     * 
-     * III. TIN LÀNH
-     * 3. Bảng chihoitinlanh
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * BAN CHẤP SỰ: sothanhvientrongbanchapsu
-     * BAN TRỊ SỰ: Để mặc định bằng 0
-     * 
-     * IV. CAO ĐÀI
-     * 4. Bảng hodaocaodai
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * BAN CAI QUẢN: sothanvien_bancaiquan
-     * BAN TRỊ SỰ: Để mặc định bằng 0
-     * 
-     * V. PHẬT GIÁO HÒA HẢO
-     * 5. Bảng chucviecphathoahao
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * BAN ĐẠI DIỆN: Đếm tất cả với điều kiện cột thanhvienbandaidientinh != null
-     * BAN TRỊ SỰ XÃ, PHƯỜNG, THỊ TRÁN: Đếm tất cả với điều kiện cột phobantrisu != null hoặc cột thanhvienbandaidientinh != null
-     * 
-     * VI. TĐCSPHVN
-     * 6. Bảng chihoitinhdocusiphatgiaovietnam
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * tenchihoi_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * BAN HỘ ĐẠO: sothanhvien_banhodao
-     * BAN CHẤP HÀNH ĐẠO ĐỨC: sothanhvien_banchaphanhdaoduc
-     * 
-     */
+
+	 /**
+	  * TONG HOP CHUC VIEC
+	  * BẢNG TỔNG HỢP CHỨC VIỆC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
+	  **/
     protected function __getType26Data()
     {
+		$component = $this->Components->load('ExportThCvTinh');
+		$data = $component->export();
     }
 
     /**
      * TONG HOP TU SI
      * BẢNG TỔNG HỢP TU SĨ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
-     * 
+     *
      * 1. Bảng giaoxu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
@@ -5325,7 +5280,7 @@ class ActionController extends AppController
      * TU SĨ DÒNG (CỘT E8 TRONG FILE EXCEL) : sotusi_nam
      * CHỦNG SINH (CỘT F8 TRONG FILE EXCEL) : Để mặc định bằng 0
      * TU SĨ DÒNG (CỘT G8 TRONG FILE EXCEL) : sotusi_nu
-     * 
+     *
      * 1. Bảng tuvienphatgiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
      * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
@@ -5337,7 +5292,7 @@ class ActionController extends AppController
      * THỨC XOA MA NA (CỘT M8 TRONG FILE EXCEL) : nu_thucxoamana
      * SA DI NI (CỘT N8 TRONG FILE EXCEL) : nu_sadini
      * TỊNH NHƠN, ĐIỆU (CỘT 08 TRONG FILE EXCEL) : Để mặc định bằng 0
-     * 
+     *
      */
     protected function __getType27Data()
     {
@@ -5346,7 +5301,7 @@ class ActionController extends AppController
     /**
      * TONG HOP CHUC SAC KO CHUC VU
      * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (KHÔNG CÓ CHỨC VỤ)
-     * 
+     *
      * I. CÔNG GIÁO
      * 1. Bảng chucsacnhatuhanhconggiaotrieu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5355,7 +5310,7 @@ class ActionController extends AppController
      * BỀ TRÊN TỔNG QUYỀN: Để mặc định bằng 0
      * GIÁM TỈNH: Để mặc định bằng 0
      * LINH MỤC: phamsactrongtongiao_namphong_linhmuc = null
-     * 
+     *
      * II. PHẬT GIÁO
      * 2. Bảng chucsacnhatuhanhphatgiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5364,7 +5319,7 @@ class ActionController extends AppController
      * THƯỢNG TỌA: phaphieu = 'Nam' và ntn_tanphong_thuongtao_hoac_nisu = null
      * NI TRƯỞNG: phaphieu = 'Nữ' và ntn_tanphong_hoathuong_hoac_nitruong = null
      * NI SƯ: phaphieu = 'Nữ' và ntn_tanphong_thuongtao_hoac_nisu = null
-     * 
+     *
      * III. TIN LÀNH
      * 3. Bảng chucsactinlanh
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5372,7 +5327,7 @@ class ActionController extends AppController
      * MỤC SƯ: phamsactrongtongiao_ntn_duocphong_mucsu = null
      * MỤC SƯ NHIỆM CHỨC: phamsactrongtongiao_ntn_duocphong_mucsunc = null
      * TRUYỀN ĐẠO: phamsactrongtongiao_ntn_duocphong_truyendao = null
-     * 
+     *
      * IV. CAO ĐÀI
      * 4. Bảng chucsaccaodai
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5381,7 +5336,7 @@ class ActionController extends AppController
      * GIÁO SƯ: phamsac_ntn_cauthang_giaosu = null
      * GIÁO HỮU: phamsac_ntn_cauthang_giaohuu = null
      * LỄ SANH VÀ TƯƠNG ĐƯƠNG: phamsac_ntn_cauphong_lesanh = null
-     * 
+     *
      * V. HỒI GIÁO
      * 5. Bảng chucviechoigiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5392,7 +5347,7 @@ class ActionController extends AppController
      * KHOTIP: phamsactrongtongiao_ntn_bonhiem_khotip = null
      * IMAM: phamsactrongtongiao_ntn_bonhiem_imam = null
      * TUON: phamsactrongtongiao_ntn_bonhiem_tuon = null
-     * 
+     *
      * VI. TĐCSPHVN
      * 5. Bảng chucviectinhdocusiphathoivietnam
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5409,7 +5364,7 @@ class ActionController extends AppController
     /**
      * TONG HOP CHUC SAC CO CHUC VU
      * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (CÓ CHỨC VỤ)
-     * 
+     *
      * I. CÔNG GIÁO
      * 1. Bảng chucsacnhatuhanhconggiaotrieu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5418,7 +5373,7 @@ class ActionController extends AppController
      * BỀ TRÊN TỔNG QUYỀN: Để mặc định bằng 0
      * GIÁM TỈNH: Để mặc định bằng 0
      * LINH MỤC: phamsactrongtongiao_namphong_linhmuc != null
-     * 
+     *
      * II. PHẬT GIÁO
      * 2. Bảng chucsacnhatuhanhphatgiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5427,7 +5382,7 @@ class ActionController extends AppController
      * THƯỢNG TỌA: phaphieu = 'Nam' và ntn_tanphong_thuongtao_hoac_nisu != null
      * NI TRƯỞNG: phaphieu = 'Nữ' và ntn_tanphong_hoathuong_hoac_nitruong != null
      * NI SƯ: phaphieu = 'Nữ' và ntn_tanphong_thuongtao_hoac_nisu != null
-     * 
+     *
      * III. TIN LÀNH
      * 3. Bảng chucsactinlanh
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5435,7 +5390,7 @@ class ActionController extends AppController
      * MỤC SƯ: phamsactrongtongiao_ntn_duocphong_mucsu != null
      * MỤC SƯ NHIỆM CHỨC: phamsactrongtongiao_ntn_duocphong_mucsunc != null
      * TRUYỀN ĐẠO: phamsactrongtongiao_ntn_duocphong_truyendao != null
-     * 
+     *
      * IV. CAO ĐÀI
      * 4. Bảng chucsaccaodai
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5444,7 +5399,7 @@ class ActionController extends AppController
      * GIÁO SƯ: phamsac_ntn_cauthang_giaosu != null
      * GIÁO HỮU: phamsac_ntn_cauthang_giaohuu != null
      * LỄ SANH VÀ TƯƠNG ĐƯƠNG: phamsac_ntn_cauphong_lesanh != null
-     * 
+     *
      * V. HỒI GIÁO
      * 5. Bảng chucviechoigiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5455,7 +5410,7 @@ class ActionController extends AppController
      * KHOTIP: phamsactrongtongiao_ntn_bonhiem_khotip != null
      * IMAM: phamsactrongtongiao_ntn_bonhiem_imam != null
      * TUON: phamsactrongtongiao_ntn_bonhiem_tuon != null
-     * 
+     *
      * VI. TĐCSPHVN
      * 5. Bảng chucviectinhdocusiphathoivietnam
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5472,7 +5427,7 @@ class ActionController extends AppController
     /**
      * DO TUOI CUA CHAC SAC
      * BẢNG TỔNG HỢP LỨA TUỔI CỦA CHỨC SẮC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
-     * 
+     *
      * I. CÔNG GIÁO
      * 1. Bảng chucsacnhatuhanhconggiaotrieu + chucsacnhatuhanhcongiaodongtu
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5482,7 +5437,7 @@ class ActionController extends AppController
      * 41 đến 61
      * Trên 61
      * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     * 
+     *
      * II. PHẬT GIÁO
      * 2. Bảng chucsacnhatuhanhphatgiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5492,7 +5447,7 @@ class ActionController extends AppController
      * 41 đến 61
      * Trên 61
      * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     * 
+     *
      * III. TIN LÀNH
      * 3. Bảng chucsactinlanh
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5502,7 +5457,7 @@ class ActionController extends AppController
      * 41 đến 61
      * Trên 61
      * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     * 
+     *
      * IV. CAO ĐÀI
      * 4. Bảng chucsaccaodai
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5512,7 +5467,7 @@ class ActionController extends AppController
      * 41 đến 61
      * Trên 61
      * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     * 
+     *
      * V. HỒI GIÁO
      * 5. Bảng chucviechoigiao
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5522,7 +5477,7 @@ class ActionController extends AppController
      * 41 đến 61
      * Trên 61
      * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     * 
+     *
      * VI. TĐCSPHVN
      * 6. Bảng chucviectinhdocusiphathoivietnam
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5532,7 +5487,7 @@ class ActionController extends AppController
      * 41 đến 61
      * Trên 61
      * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     * 
+     *
      * VII. TÍN NGƯỠNG
      * 7. Bảng nguoihoatdongtinnguongchuyennghiep
      * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
@@ -5542,9 +5497,9 @@ class ActionController extends AppController
      * 41 đến 61
      * Trên 61
      * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     * 
+     *
      * cột ngaythangnamsinh có thể lưu dữ liệu kiểu ngày/tháng/năm hoặc tháng/năm hoặc năm, nên tìm cách tính theo định dạnh trên
-     * 
+     *
      */
     protected function __getType30Data()
     {
