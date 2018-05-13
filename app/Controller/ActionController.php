@@ -5303,82 +5303,11 @@ class ActionController extends AppController
     /**
      * DO TUOI CUA CHAC SAC
      * BẢNG TỔNG HỢP LỨA TUỔI CỦA CHỨC SẮC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
-     *
-     * I. CÔNG GIÁO
-     * 1. Bảng chucsacnhatuhanhconggiaotrieu + chucsacnhatuhanhcongiaodongtu
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * Dưới 20
-     * 21 đến 40
-     * 41 đến 61
-     * Trên 61
-     * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     *
-     * II. PHẬT GIÁO
-     * 2. Bảng chucsacnhatuhanhphatgiao
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * Dưới 20
-     * 21 đến 40
-     * 41 đến 61
-     * Trên 61
-     * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     *
-     * III. TIN LÀNH
-     * 3. Bảng chucsactinlanh
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * Dưới 20
-     * 21 đến 40
-     * 41 đến 61
-     * Trên 61
-     * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     *
-     * IV. CAO ĐÀI
-     * 4. Bảng chucsaccaodai
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * Dưới 20
-     * 21 đến 40
-     * 41 đến 61
-     * Trên 61
-     * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     *
-     * V. HỒI GIÁO
-     * 5. Bảng chucviechoigiao
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * Dưới 20
-     * 21 đến 40
-     * 41 đến 61
-     * Trên 61
-     * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     *
-     * VI. TĐCSPHVN
-     * 6. Bảng chucviectinhdocusiphathoivietnam
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * Dưới 20
-     * 21 đến 40
-     * 41 đến 61
-     * Trên 61
-     * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     *
-     * VII. TÍN NGƯỠNG
-     * 7. Bảng nguoihoatdongtinnguongchuyennghiep
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * Dưới 20
-     * 21 đến 40
-     * 41 đến 61
-     * Trên 61
-     * => Lấy năm hiện tại trừ đi cho dữ liệu trong cột ngaythangnamsinh để biết được nằm ở mốc tuổi nào
-     *
-     * cột ngaythangnamsinh có thể lưu dữ liệu kiểu ngày/tháng/năm hoặc tháng/năm hoặc năm, nên tìm cách tính theo định dạnh trên
-     *
      */
     protected function __getType30Data()
     {
+		$component = $this->Components->load('ExportThDtCs');
+		$data = $component->export();
     }
 
     /**
