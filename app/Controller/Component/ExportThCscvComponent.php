@@ -383,10 +383,10 @@ class ExportThCscvComponent extends Component
  * 2. Bảng chucsacnhatuhanhphatgiao
  * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
  * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
- * HÒA THƯỢNG: phaphieu = 'Nam' và ntn_tanphong_hoathuong_hoac_nitruong != null
- * THƯỢNG TỌA: phaphieu = 'Nam' và ntn_tanphong_thuongtao_hoac_nisu != null
- * NI TRƯỞNG: phaphieu = 'Nữ' và ntn_tanphong_hoathuong_hoac_nitruong != null
- * NI SƯ: phaphieu = 'Nữ' và ntn_tanphong_thuongtao_hoac_nisu != null
+ * HÒA THƯỢNG: (phapdanh NOT LIKE 'TN' và NOT LIKE 'Thích nữ') và ntn_tanphong_hoathuong_hoac_nitruong != null
+ * THƯỢNG TỌA: (phapdanh NOT LIKE 'TN' và NOT LIKE 'Thích nữ') và ntn_tanphong_thuongtao_hoac_nisu != null
+ * NI TRƯỞNG: (phapdanh LIKE 'TN' hoặc LIKE 'Thích nữ') và ntn_tanphong_hoathuong_hoac_nitruong != null
+ * NI SƯ: (phapdanh LIKE 'TN' hoặc LIKE 'Thích nữ') và ntn_tanphong_thuongtao_hoac_nisu != null
  *
  * III. TIN LÀNH
  * 3. Bảng chucsactinlanh
