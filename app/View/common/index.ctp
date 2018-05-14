@@ -84,7 +84,7 @@
                             <?php
                                 echo $this->Form->button(LOCAL_EDIT, array(
                                     'type' => 'button',
-                                    "style" => "margin-right:10px;",
+                                    "style" => "margin-right: 5px;",
                                     'class' => 'btn btn-info btn-sm',
                                     'onclick' =>
                                     'window.location.href =  \'' . Router::url(array('controller' => $controller, 'action' => 'add', $val[$model]["id"]), true) . '\'; '
