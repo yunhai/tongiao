@@ -5447,6 +5447,129 @@ class ActionController extends AppController
     {
 		$component = $this->Components->load('ExportThTs');
 		$data = $component->export();
+		
+		$this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template27.xls';
+        //$filename = "template27";
+        $filename = "{$this->_type_text[27]}";
+        $this->Excel->load($source);
+        //$this->{"__createTemplate{$type}"}();
+        //$this->Excel->save($filename);
+
+        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 1;
+        for ($c = 'C'; $c <= 'O'; $c++) {
+            $colIndexes[$index] = $c;
+            $index ++;
+            if ($c == $maxCols) {
+                break;
+            }
+        }
+        /*print "<pre>";
+        print_r($data);
+        print "</pre>";
+        print "<pre>";
+        print_r($colIndexes);
+        print "</pre>";
+        exit;*/
+        $r = 10;
+        $tinhs = array(
+            'bien-hoa',
+            'long-khanh',
+            'xuan-loc',
+            'cam-my',
+            'tan-phu',
+            'dinh-quan',
+            'thong-nhat',
+            'trang-bom',
+            'vinh-cuu',
+            'nhon-trach',
+            'long-thanh',
+        );
+        foreach ($tinhs as $tinh) {
+            $result = $data[$tinh];
+            foreach ($colIndexes as $k => $c) {
+                switch ($c) {
+                    case 'C'://TỔNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total']);
+                        break;
+                    case 'D'://CÔNG GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_total']);
+                        break;
+                    case 'E':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_sotusi_nam']);
+                        break;
+                    case 'F':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_chungsinh']);
+                        break;
+                    case 'G':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_sotusi_nu']);
+                        break;
+                    case 'H'://PHẬT GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_total']);
+                        break;
+                    case 'I':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_nam_tykheo']);
+                        break;
+                    case 'J':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_nam_sadi']);
+                        break;
+                    case 'K':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_nam_tinhnhon_dieu']);
+                        break;
+                    case 'L':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_nu_tykheoni']);
+                        break;
+                    case 'M':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_nu_thucxoamana']);
+                        break;
+                    case 'N':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_nu_sadini']);
+                        break;
+                    case 'O':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_tinhnhon_dieu']);
+                        break;
+                    default:
+                        echo 'TONG HOP TU SI';
+                }
+            }
+            $tong += $result['total'];
+            $tong_conggiao_tong += $result['Giaoxu_total'];
+            $tong_conggiao_nam_tusidong += $result['Giaoxu_sotusi_nam'];
+            $tong_conggiao_nam_chungsinh += $result['Giaoxu_chungsinh'];
+            $tong_conggiao_nu_tusidong += $result['Giaoxu_sotusi_nu'];
+            
+            $tong_phatgiao_tong += $result['Tuvienphatgiao_total'];
+            $tong_phatgiao_nam_daiduc += $result['Tuvienphatgiao_nam_tykheo'];
+            $tong_phatgiao_nam_sadi += $result['Tuvienphatgiao_nam_sadi'];
+            $tong_phatgiao_nam_tinhnhondieu += $result['Tuvienphatgiao_nam_tinhnhon_dieu'];
+            $tong_phatgiao_nu_tykheoni += $result['Tuvienphatgiao_nu_tykheoni'];
+            $tong_phatgiao_nu_thucxoamana += $result['Tuvienphatgiao_nu_thucxoamana'];
+            $tong_phatgiao_nu_sadini += $result['Tuvienphatgiao_nu_sadini'];
+            $tong_phatgiao_nu_tinhnhon_dieu += $result['Tuvienphatgiao_tinhnhon_dieu'];
+            
+            $r++;
+        }
+        $this->Excel->ActiveSheet->getCell('C20')->setValue($tong);
+		$this->Excel->ActiveSheet->getCell('D20')->setValue($tong_conggiao_tong);
+		$this->Excel->ActiveSheet->getCell('E20')->setValue($tong_conggiao_nam_tusidong);
+		$this->Excel->ActiveSheet->getCell('F20')->setValue($tong_conggiao_nam_chungsinh);
+		$this->Excel->ActiveSheet->getCell('G20')->setValue($tong_conggiao_nu_tusidong);
+		
+		$this->Excel->ActiveSheet->getCell('H20')->setValue($tong_phatgiao_tong);
+		$this->Excel->ActiveSheet->getCell('I20')->setValue($tong_phatgiao_nam_daiduc);
+		$this->Excel->ActiveSheet->getCell('J20')->setValue($tong_phatgiao_nam_sadi);
+		$this->Excel->ActiveSheet->getCell('K20')->setValue($tong_phatgiao_nam_tinhnhondieu);
+		$this->Excel->ActiveSheet->getCell('L20')->setValue($tong_phatgiao_nu_tykheoni);
+		$this->Excel->ActiveSheet->getCell('M20')->setValue($tong_phatgiao_nu_thucxoamana);
+		$this->Excel->ActiveSheet->getCell('N20')->setValue($tong_phatgiao_nu_sadini);
+		$this->Excel->ActiveSheet->getCell('O20')->setValue($tong_phatgiao_nu_tinhnhon_dieu);
+		
+		return $this->Excel->save($filename);
     }
 
     /**
