@@ -6053,6 +6053,236 @@ class ActionController extends AppController
     {
 		$component = $this->Components->load('ExportThDtCs');
 		$data = $component->export();
+		
+		$this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template30.xls';
+        //$filename = "template30";
+        $filename = "{$this->_type_text[30]}";
+        $this->Excel->load($source);
+        //$this->{"__createTemplate{$type}"}();
+        //$this->Excel->save($filename);
+
+        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 1;
+        for ($c = 'C'; $c <= 'Z'; $c++) {
+            $colIndexes[$index] = $c;
+            $index ++;
+            if ($c == $maxCols) {
+                break;
+            }
+        }
+        /*print "<pre>";
+        print_r($data);
+        print "</pre>";
+        print "<pre>";
+        print_r($colIndexes);
+        print "</pre>";
+        exit;*/
+        $r = 9;
+        $tinhs = array(
+            'bien-hoa',
+            'long-khanh',
+            'xuan-loc',
+            'cam-my',
+            'tan-phu',
+            'dinh-quan',
+            'thong-nhat',
+            'trang-bom',
+            'vinh-cuu',
+            'nhon-trach',
+            'long-thanh',
+        );
+        foreach ($tinhs as $tinh) {
+            $result = $data[$tinh];
+            foreach ($colIndexes as $k => $c) {
+                switch ($c) {
+                    case 'C'://TỔNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total_1']);
+                        break;
+                    case 'D'://CÔNG GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total_2']);
+                        break;
+                    case 'E':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total_3']);
+                        break;
+                    case 'F':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total_4']);
+                        break;
+                    case 'G':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0']);
+                        break;
+                    case 'H':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1']);
+                        break;
+                    case 'I'://PHẬT GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2']);
+                        break;
+                    case 'J':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3']);
+                        break;
+                    case 'K':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4']);
+                        break;
+                    case 'L':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5']);
+                        break;
+                    case 'M':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['6']);
+                        break;
+                    case 'N'://TIN LÀNH
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['7']);
+                        break;
+                    case 'O':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['8']);
+                        break;
+                    case 'P':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['9']);
+                        break;
+                    case 'Q':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['10']);
+                        break;
+                    case 'R':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['11']);
+                        break;
+                    case 'S':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['12']);
+                        break;
+                    case 'T':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['13']);
+                        break;
+                    case 'U':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['14']);
+                        break;
+                    case 'V':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['15']);
+                        break;
+                    case 'W'://HỒI GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['16']);
+                        break;
+                    case 'X':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['17']);
+                        break;
+                    case 'Y':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['18']);
+                        break;
+                    case 'Z':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['19']);
+                        break;
+                    case 'AA':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['20']);
+                        break;
+                    case 'AB':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['21']);
+                        break;
+                    case 'AC':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['22']);
+                        break;
+                    case 'AD'://TĐCSPHVN
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['23']);
+                        break;
+                    case 'AE':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['24']);
+                        break;
+                    case 'AF':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['25']);
+                        break;
+                    case 'AG':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['26']);
+                        break;
+                    case 'AH':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['27']);
+                        break;
+                    default:
+                        echo 'TONG HOP CHUC SAC CO CHUC VU';
+                }
+            }
+            $tong_total_1 += $result['total_1'];
+            $tong_total_2 += $result['total_2'];
+            $tong_total_3 += $result['total_3'];
+            $tong_total_4 += $result['total_4'];
+            
+            $tong_conggiao_duoi20 += $result['0'];
+            $tong_conggiao_21den40 += $result['1'];
+            $tong_conggiao_41den61 += $result['2'];
+            $tong_conggiao_tren61 += $result['3'];
+            
+            $tong_phatgiao_duoi20 += $result['4'];
+            $tong_phatgiao_21den40 += $result['5'];
+            $tong_phatgiao_41den61 += $result['6'];
+            $tong_phatgiao_tren61 += $result['7'];
+            
+            $tong_tinlanh_duoi20 += $result['8'];
+            $tong_tinlanh_21den40 += $result['9'];
+            $tong_tinlanh_41den61 += $result['10'];
+            $tong_tinlanh_tren61 += $result['11'];
+            
+            $tong_caodai_duoi20 += $result['12'];
+            $tong_caodai_21den40 += $result['13'];
+            $tong_caodai_41den61 += $result['14'];
+            $tong_caodai_tren61 += $result['15'];
+            
+            $tong_hoigiao_duoi20 += $result['16'];
+            $tong_hoigiao_21den40 += $result['17'];
+            $tong_hoigiao_41den61 += $result['18'];
+            $tong_hoigiao_tren61 += $result['19'];
+            
+            $tong_tdcsphvn_duoi20 += $result['20'];
+            $tong_tdcsphvn_21den40 += $result['21'];
+            $tong_tdcsphvn_41den61 += $result['22'];
+            $tong_tdcsphvn_tren61 += $result['23'];
+            
+            $tong_tinnguong_duoi20 += $result['24'];
+            $tong_tinnguong_21den40 += $result['25'];
+            $tong_tinnguong_41den61 += $result['26'];
+            $tong_tinnguong_tren61 += $result['27'];
+            
+            $r++;
+        }
+        $this->Excel->ActiveSheet->getCell('C20')->setValue($tong_total_1);
+        $this->Excel->ActiveSheet->getCell('D20')->setValue($tong_total_2);
+        $this->Excel->ActiveSheet->getCell('E20')->setValue($tong_total_3);
+        $this->Excel->ActiveSheet->getCell('F20')->setValue($tong_total_4);
+            
+        $this->Excel->ActiveSheet->getCell('G20')->setValue($tong_conggiao_duoi20);
+        $this->Excel->ActiveSheet->getCell('H20')->setValue($tong_conggiao_21den40);
+        $this->Excel->ActiveSheet->getCell('I20')->setValue($tong_conggiao_41den61);
+        $this->Excel->ActiveSheet->getCell('J20')->setValue($tong_conggiao_tren61);
+        
+        $this->Excel->ActiveSheet->getCell('K20')->setValue($tong_phatgiao_duoi20);
+        $this->Excel->ActiveSheet->getCell('L20')->setValue($tong_phatgiao_21den40);
+        $this->Excel->ActiveSheet->getCell('M20')->setValue($tong_phatgiao_41den61);
+        $this->Excel->ActiveSheet->getCell('N20')->setValue($tong_phatgiao_tren61);
+        
+        $this->Excel->ActiveSheet->getCell('O20')->setValue($tong_tinlanh_duoi20);
+        $this->Excel->ActiveSheet->getCell('P20')->setValue($tong_tinlanh_21den40);
+        $this->Excel->ActiveSheet->getCell('Q20')->setValue($tong_tinlanh_41den61);
+        $this->Excel->ActiveSheet->getCell('R20')->setValue($tong_tinlanh_tren61);
+        
+        $this->Excel->ActiveSheet->getCell('S20')->setValue($tong_caodai_duoi20);
+        $this->Excel->ActiveSheet->getCell('T20')->setValue($tong_caodai_21den40);
+        $this->Excel->ActiveSheet->getCell('U20')->setValue($tong_caodai_41den61);
+        $this->Excel->ActiveSheet->getCell('V20')->setValue($tong_caodai_tren61);
+        
+        $this->Excel->ActiveSheet->getCell('W20')->setValue($tong_hoigiao_duoi20);
+        $this->Excel->ActiveSheet->getCell('X20')->setValue($tong_hoigiao_21den40);
+        $this->Excel->ActiveSheet->getCell('Y20')->setValue($tong_hoigiao_41den61);
+        $this->Excel->ActiveSheet->getCell('Z20')->setValue($tong_hoigiao_tren61);
+        
+        $this->Excel->ActiveSheet->getCell('AA20')->setValue($tong_tdcsphvn_duoi20);
+        $this->Excel->ActiveSheet->getCell('AB20')->setValue($tong_tdcsphvn_21den40);
+        $this->Excel->ActiveSheet->getCell('AC20')->setValue($tong_tdcsphvn_41den61);
+        $this->Excel->ActiveSheet->getCell('AD20')->setValue($tong_tdcsphvn_tren61);
+        
+        $this->Excel->ActiveSheet->getCell('AE20')->setValue($tong_tinnguong_duoi20);
+        $this->Excel->ActiveSheet->getCell('AF20')->setValue($tong_tinnguong_21den40);
+        $this->Excel->ActiveSheet->getCell('AG20')->setValue($tong_tinnguong_41den61);
+        $this->Excel->ActiveSheet->getCell('AH20')->setValue($tong_tinnguong_tren61);
+        
+        return $this->Excel->save($filename);
     }
 
     /**
