@@ -6103,7 +6103,7 @@ class ActionController extends AppController
                     case 'C'://TỔNG
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total_1']);
                         break;
-                    case 'D'://CÔNG GIÁO
+                    case 'D':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total_2']);
                         break;
                     case 'E':
@@ -6112,19 +6112,19 @@ class ActionController extends AppController
                     case 'F':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total_4']);
                         break;
-                    case 'G':
+                    case 'G'://CÔNG GIÁO
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['0']);
                         break;
                     case 'H':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['1']);
                         break;
-                    case 'I'://PHẬT GIÁO
+                    case 'I':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2']);
                         break;
                     case 'J':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3']);
                         break;
-                    case 'K':
+                    case 'K'://PHẬT GIÁO
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4']);
                         break;
                     case 'L':
@@ -6133,10 +6133,10 @@ class ActionController extends AppController
                     case 'M':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['6']);
                         break;
-                    case 'N'://TIN LÀNH
+                    case 'N':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['7']);
                         break;
-                    case 'O':
+                    case 'O'://TIN LÀNH
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['8']);
                         break;
                     case 'P':
@@ -6148,7 +6148,7 @@ class ActionController extends AppController
                     case 'R':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['11']);
                         break;
-                    case 'S':
+                    case 'S'://CAO ĐÀI
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['12']);
                         break;
                     case 'T':
@@ -6172,7 +6172,7 @@ class ActionController extends AppController
                     case 'Z':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['19']);
                         break;
-                    case 'AA':
+                    case 'AA'://TĐCSPHVN
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['20']);
                         break;
                     case 'AB':
@@ -6181,10 +6181,10 @@ class ActionController extends AppController
                     case 'AC':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['22']);
                         break;
-                    case 'AD'://TĐCSPHVN
+                    case 'AD':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['23']);
                         break;
-                    case 'AE':
+                    case 'AE'://TÍN NGƯỠNG
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['24']);
                         break;
                     case 'AF':
@@ -6197,7 +6197,7 @@ class ActionController extends AppController
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['27']);
                         break;
                     default:
-                        echo 'TONG HOP CHUC SAC CO CHUC VU';
+                        echo 'DO TUOI CUA CHAC SAC';
                 }
             }
             $tong_total_1 += $result['total_1'];
