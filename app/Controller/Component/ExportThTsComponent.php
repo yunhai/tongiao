@@ -176,7 +176,7 @@ class ExportThTsComponent extends Component
  * 1. Bảng giaoxu
  * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
  * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
- * TỔNG (CỘT D8 TRONG FILE EXCEL) : sotusi_nam
+ * TỔNG (CỘT D8 TRONG FILE EXCEL) : sotusi
  * TU SĨ DÒNG (CỘT E8 TRONG FILE EXCEL) : sotusi_nam
  * CHỦNG SINH (CỘT F8 TRONG FILE EXCEL) : Để mặc định bằng 0
  * TU SĨ DÒNG (CỘT G8 TRONG FILE EXCEL) : sotusi_nu
