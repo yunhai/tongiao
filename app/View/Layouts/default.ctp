@@ -264,9 +264,11 @@
 
             <div id="page-wrapper">
                 <div class="row">
+                    <?php if ($this->Session->flash()):?>
                     <div style="margin-left: 5px; padding-top:10px;">
                         <?php echo $this->Session->flash(); ?>
                     </div>
+                    <?php endif;?>
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             <?php echo $title_for_layout; ?>
@@ -274,15 +276,14 @@
                     </div>
                     <?php
                     if (!empty($is_show_add)) {
-                        echo $this->Form->submit(
-                                LOCAL_STORE, array(
-                            'type' => 'submit',
-                            'class' => 'btn  btn-info',
-                            'div' => false,
-                            'id' => 'ac_store',
-                            "style" => "position: fixed; z-index: 3000; float: right; right: 10px;",
-                            'label' => false
-                                )
+                        echo $this->Form->submit(LOCAL_STORE, array(
+                                'type' => 'submit',
+                                'class' => 'btn btn-info',
+                                'div' => false,
+                                'id' => 'ac_store',
+                                "style" => "position: fixed; z-index: 3000; float: right; right: 10px;",
+                                'label' => false
+                            )
                         );
                     }
                     ?>
