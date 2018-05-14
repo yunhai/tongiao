@@ -57,9 +57,9 @@
             <tbody>
                 <tr>
                     <?php foreach ($showField as $key => $val) { ?>
-                        <th class="aside aligncenter"><?php echo $key; ?></th>
+                        <th class="aside aligncenter info"><?php echo $key; ?></th>
                     <?php } ?>
-                    <td class="aside aligncenter" style="width: 17% !important;"> <?php echo LOCAL_ACTION; ?> </td>
+                    <td class="aside aligncenter info" style="width: 17% !important;"> <?php echo LOCAL_ACTION; ?> </td>
                 </tr>
                 <?php
                 if (empty($data)) {
