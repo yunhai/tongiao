@@ -270,9 +270,9 @@
                     </div>
                     <?php endif;?>
                     <div class="col-lg-12">
-                        <h1 class="page-header">
+                        <h2 class="page-header">
                             <?php echo $title_for_layout; ?>
-                        </h1>
+                        </h2>
                     </div>
                     <?php
                     if (!empty($is_show_add)) {
