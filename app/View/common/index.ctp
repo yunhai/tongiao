@@ -35,7 +35,7 @@
         <?php
             echo $this->Form->submit(LOCAL_SEARCH, array(
                 'type' => 'submit',
-                'class' => 'btn btn-default btn-sm',
+                'class' => 'btn btn-primary btn-sm',
                 'div' => false,
                 'label' => false
                 )
@@ -53,13 +53,13 @@
         </span>
         <?php echo $this->Form->end();?>
         </p>
-        <table class="table table-bordered" >
+        <table class="table table-bordered table-condensed table-striped table-hover">
             <tbody>
                 <tr>
                     <?php foreach ($showField as $key => $val) { ?>
                         <th class="aside aligncenter info"><?php echo $key; ?></th>
                     <?php } ?>
-                    <td class="aside aligncenter info" style="width: 17% !important;"> <?php echo LOCAL_ACTION; ?> </td>
+                    <td class="aside aligncenter info" style="width: 12% !important;"> <?php echo LOCAL_ACTION; ?> </td>
                 </tr>
                 <?php
                 if (empty($data)) {
@@ -84,7 +84,7 @@
                             <?php
                                 echo $this->Form->button(LOCAL_EDIT, array(
                                     'type' => 'button',
-                                    "style" => "margin-right: 5px;",
+                                    "style" => "margin-right: 8px;",
                                     'class' => 'btn btn-info btn-sm',
                                     'onclick' =>
                                     'window.location.href =  \'' . Router::url(array('controller' => $controller, 'action' => 'add', $val[$model]["id"]), true) . '\'; '
