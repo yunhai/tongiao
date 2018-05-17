@@ -277,10 +277,7 @@ class ExportThCscvComponent extends Component
             $total = array_sum($item);
             $item = array_merge(['total' => $total], $item);
         }
-        print('<pre>');
-        print_r($result);
-        print('</pre>');
-        exit;
+
         return $result;
     }
 
