@@ -14,12 +14,12 @@ class ExportThCscvComponent extends Component
     public function export()
     {
         $export_fields = [
-			'Chucsacnhatuhanhconggiaotrieu',
-			'Chucsacnhatuhanhphatgiao',
-			'Chucsactinlanh',
-			'Chucsaccaodai',
-			'Chucviechoigiao',
-			'Chucviectinhdocusiphathoivietnam'
+            'Chucsacnhatuhanhconggiaotrieu',
+            'Chucsacnhatuhanhphatgiao',
+            'Chucsactinlanh',
+            'Chucsaccaodai',
+            'Chucviechoigiao',
+            'Chucviectinhdocusiphathoivietnam'
         ];
 
         $province = $this->Province->getProvince();
@@ -27,19 +27,18 @@ class ExportThCscvComponent extends Component
         $export = $this->init($province);
 
         foreach ($export_fields as $field_index => $model) {
-			$func = '__get' . $model;
+            $func = '__get' . $model;
             $tmp = $this->$func($model);
 
             foreach ($province as $provice_code => $name) {
                 $partial = $tmp[$provice_code];
 
-
-				foreach($partial as $field => $value) {
-					if ($field === 'total') {
-						$export[$provice_code]['total'] += $value;
-					}
-					$export[$provice_code][$model . '_' . $field] = $value;
-				}
+                foreach ($partial as $field => $value) {
+                    if ($field === 'total') {
+                        $export[$provice_code]['total'] += $value;
+                    }
+                    $export[$provice_code][$model . '_' . $field] = $value;
+                }
             }
         }
 
@@ -62,272 +61,318 @@ class ExportThCscvComponent extends Component
         return $export;
     }
 
-	private function __getChucviectinhdocusiphathoivietnam($model)
-	{
-		$fields = [
-			'id',
-			'noiohiennay_huyen'
-		];
-		$conditions = [
-			'noiohiennay_huyen <>' => '',
-			'noiohiennay_huyen is not null',
-			'or' => [
-				'phamsactrongtongiao_ntn_bonhiem_phogiangsu is not null',
-				'phamsactrongtongiao_ntn_bonhiem_phogiangsu <>' => '',
-				'phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien is not null',
-				'phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien <>' => '',
-			]
-		];
-		$column = [
-			'phamsactrongtongiao_ntn_bonhiem_phogiangsu',
-			'phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien',
-		];
-		$province_field = 'noiohiennay_huyen';
+    private function __getChucviectinhdocusiphathoivietnam($model)
+    {
+        $fields = [
+            'id',
+            'noiohiennay_huyen'
+        ];
+        $conditions = [
+            'noiohiennay_huyen <>' => '',
+            'noiohiennay_huyen is not null',
+            'or' => [
+                'phamsactrongtongiao_ntn_bonhiem_phogiangsu is not null',
+                'phamsactrongtongiao_ntn_bonhiem_phogiangsu <>' => '',
+                'phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien is not null',
+                'phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien <>' => '',
+            ]
+        ];
+        $column = [
+            'phamsactrongtongiao_ntn_bonhiem_phogiangsu',
+            'phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien',
+        ];
+        $province_field = 'noiohiennay_huyen';
 
-		$fields = array_merge($fields, $column);
+        $fields = array_merge($fields, $column);
 
-		$data = $this->__getData($model, compact('fields', 'conditions'));
+        $data = $this->__getData($model, compact('fields', 'conditions'));
 
-		$result = $this->__groupData($data, $column, $province_field);
-		foreach($result as &$item) {
-			$total = array_sum($item);
-			$item = array(
-				'total' => $total,
-				'phamsactrongtongiao_ntn_bonhiem_phogiangsu' => $item['phamsactrongtongiao_ntn_bonhiem_phogiangsu'],
-				'phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien' => $item['phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien'],
-				'ysi' => 0,
-				'ysinh' => 0,
-			);
-		}
+        $result = $this->__groupData($data, $column, $province_field);
+        foreach ($result as &$item) {
+            $total = array_sum($item);
+            $item = array(
+                'total' => $total,
+                'phamsactrongtongiao_ntn_bonhiem_phogiangsu' => $item['phamsactrongtongiao_ntn_bonhiem_phogiangsu'],
+                'phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien' => $item['phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien'],
+                'ysi' => 0,
+                'ysinh' => 0,
+            );
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
-	private function __getChucviechoigiao($model)
-	{
-		$fields = [
-			'id',
-			'noiohiennay_huyen'
-		];
-		$conditions = [
-			'noiohiennay_huyen <>' => '',
-			'noiohiennay_huyen is not null',
-			'or' => [
-				'phamsactrongtongiao_ntn_bonhiem_hakim is not null',
-				'phamsactrongtongiao_ntn_bonhiem_hakim <>' => '',
-				'phamsactrongtongiao_ntn_bonhiem_naep is not null',
-				'phamsactrongtongiao_ntn_bonhiem_naep <>' => '',
-				'phamsactrongtongiao_ntn_bonhiem_khotip is not null',
-				'phamsactrongtongiao_ntn_bonhiem_khotip <>' => '',
-				'phamsactrongtongiao_ntn_bonhiem_imam is not null',
-				'phamsactrongtongiao_ntn_bonhiem_imam <>' => '',
-				'phamsactrongtongiao_ntn_bonhiem_tuon is not null',
-				'phamsactrongtongiao_ntn_bonhiem_tuon <>' => '',
-			]
-		];
-		$column = [
-			'phamsactrongtongiao_ntn_bonhiem_hakim',
-			'phamsactrongtongiao_ntn_bonhiem_naep',
-			'phamsactrongtongiao_ntn_bonhiem_khotip',
-			'phamsactrongtongiao_ntn_bonhiem_imam',
-			'phamsactrongtongiao_ntn_bonhiem_tuon',
-		];
-		$province_field = 'noiohiennay_huyen';
+    private function __getChucviechoigiao($model)
+    {
+        $fields = [
+            'id',
+            'noiohiennay_huyen'
+        ];
+        $conditions = [
+            'noiohiennay_huyen <>' => '',
+            'noiohiennay_huyen is not null',
+            'or' => [
+                'phamsactrongtongiao_ntn_bonhiem_hakim is not null',
+                'phamsactrongtongiao_ntn_bonhiem_hakim <>' => '',
+                'phamsactrongtongiao_ntn_bonhiem_naep is not null',
+                'phamsactrongtongiao_ntn_bonhiem_naep <>' => '',
+                'phamsactrongtongiao_ntn_bonhiem_khotip is not null',
+                'phamsactrongtongiao_ntn_bonhiem_khotip <>' => '',
+                'phamsactrongtongiao_ntn_bonhiem_imam is not null',
+                'phamsactrongtongiao_ntn_bonhiem_imam <>' => '',
+                'phamsactrongtongiao_ntn_bonhiem_tuon is not null',
+                'phamsactrongtongiao_ntn_bonhiem_tuon <>' => '',
+            ]
+        ];
+        $column = [
+            'phamsactrongtongiao_ntn_bonhiem_hakim',
+            'phamsactrongtongiao_ntn_bonhiem_naep',
+            'phamsactrongtongiao_ntn_bonhiem_khotip',
+            'phamsactrongtongiao_ntn_bonhiem_imam',
+            'phamsactrongtongiao_ntn_bonhiem_tuon',
+        ];
+        $province_field = 'noiohiennay_huyen';
 
-		$fields = array_merge($fields, $column);
+        $fields = array_merge($fields, $column);
 
-		$data = $this->__getData($model, compact('fields', 'conditions'));
+        $data = $this->__getData($model, compact('fields', 'conditions'));
 
-		$result = $this->__groupData($data, $column, $province_field);
-		foreach($result as &$item) {
-			$total = array_sum($item);
-			$item = array(
-				'total' => $total,
-				'phamsactrongtongiao_ntn_bonhiem_hakim' => $item['phamsactrongtongiao_ntn_bonhiem_hakim'],
-				'phamsactrongtongiao_ntn_bonhiem_naep' => $item['phamsactrongtongiao_ntn_bonhiem_naep'],
-				'ahly' => 0,
-				'phamsactrongtongiao_ntn_bonhiem_khotip' => $item['phamsactrongtongiao_ntn_bonhiem_khotip'],
-				'phamsactrongtongiao_ntn_bonhiem_imam' => $item['phamsactrongtongiao_ntn_bonhiem_imam'],
-				'phamsactrongtongiao_ntn_bonhiem_tuon' => $item['phamsactrongtongiao_ntn_bonhiem_tuon'],
-			);
-		}
+        $result = $this->__groupData($data, $column, $province_field);
+        foreach ($result as &$item) {
+            $total = array_sum($item);
+            $item = array(
+                'total' => $total,
+                'phamsactrongtongiao_ntn_bonhiem_hakim' => $item['phamsactrongtongiao_ntn_bonhiem_hakim'],
+                'phamsactrongtongiao_ntn_bonhiem_naep' => $item['phamsactrongtongiao_ntn_bonhiem_naep'],
+                'ahly' => 0,
+                'phamsactrongtongiao_ntn_bonhiem_khotip' => $item['phamsactrongtongiao_ntn_bonhiem_khotip'],
+                'phamsactrongtongiao_ntn_bonhiem_imam' => $item['phamsactrongtongiao_ntn_bonhiem_imam'],
+                'phamsactrongtongiao_ntn_bonhiem_tuon' => $item['phamsactrongtongiao_ntn_bonhiem_tuon'],
+            );
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
-	private function __getChucsaccaodai($model)
-	{
-		$fields = [
-			'id',
-			'noiohiennay_huyen'
-		];
-		$conditions = [
-			'noiohiennay_huyen <>' => '',
-			'noiohiennay_huyen is not null',
-			'or' => [
-				'phamsac_ntn_cauthang_phosu is not null',
-				'phamsac_ntn_cauthang_phosu <>' => '',
-				'phamsac_ntn_cauthang_giaosu is not null',
-				'phamsac_ntn_cauthang_giaosu <>' => '',
-				'phamsac_ntn_cauthang_giaohuu is not null',
-				'phamsac_ntn_cauthang_giaohuu <>' => '',
-				'phamsac_ntn_cauphong_lesanh is not null',
-				'phamsac_ntn_cauphong_lesanh' => '',
-			]
-		];
-		$column = [
-			'phamsac_ntn_cauthang_phosu',
-			'phamsac_ntn_cauthang_giaosu',
-			'phamsac_ntn_cauthang_giaohuu',
-			'phamsac_ntn_cauphong_lesanh'
-		];
-		$province_field = 'noiohiennay_huyen';
+    private function __getChucsaccaodai($model)
+    {
+        $fields = [
+            'id',
+            'noiohiennay_huyen'
+        ];
+        $conditions = [
+            'noiohiennay_huyen <>' => '',
+            'noiohiennay_huyen is not null',
+            'or' => [
+                'phamsac_ntn_cauthang_phosu is not null',
+                'phamsac_ntn_cauthang_phosu <>' => '',
+                'phamsac_ntn_cauthang_giaosu is not null',
+                'phamsac_ntn_cauthang_giaosu <>' => '',
+                'phamsac_ntn_cauthang_giaohuu is not null',
+                'phamsac_ntn_cauthang_giaohuu <>' => '',
+                'phamsac_ntn_cauphong_lesanh is not null',
+                'phamsac_ntn_cauphong_lesanh' => '',
+            ]
+        ];
+        $column = [
+            'phamsac_ntn_cauthang_phosu',
+            'phamsac_ntn_cauthang_giaosu',
+            'phamsac_ntn_cauthang_giaohuu',
+            'phamsac_ntn_cauphong_lesanh'
+        ];
+        $province_field = 'noiohiennay_huyen';
 
-		$fields = array_merge($fields, $column);
+        $fields = array_merge($fields, $column);
 
-		$data = $this->__getData($model, compact('fields', 'conditions'));
+        $data = $this->__getData($model, compact('fields', 'conditions'));
 
-		$result = $this->__groupData($data, $column, $province_field);
-		foreach($result as &$item) {
-			$total = array_sum($item);
-			$item = array(
-				'total' => $total,
-				'phamsac_ntn_cauthang_phosu' => $item['phamsac_ntn_cauthang_phosu'],
-				'phamsac_ntn_cauthang_giaosu' => $item['phamsac_ntn_cauthang_giaosu'],
-				'phamsac_ntn_cauthang_giaohuu' => $item['phamsac_ntn_cauthang_giaohuu'],
-				'phamsac_ntn_cauphong_lesanh' => $item['phamsac_ntn_cauphong_lesanh'],
-			);
-		}
+        $result = $this->__groupData($data, $column, $province_field);
+        foreach ($result as &$item) {
+            $total = array_sum($item);
+            $item = array(
+                'total' => $total,
+                'phamsac_ntn_cauthang_phosu' => $item['phamsac_ntn_cauthang_phosu'],
+                'phamsac_ntn_cauthang_giaosu' => $item['phamsac_ntn_cauthang_giaosu'],
+                'phamsac_ntn_cauthang_giaohuu' => $item['phamsac_ntn_cauthang_giaohuu'],
+                'phamsac_ntn_cauphong_lesanh' => $item['phamsac_ntn_cauphong_lesanh'],
+            );
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
-	private function __getChucsactinlanh($model)
-	{
-		$fields = [
-			'id',
-			'noiohiennay_huyen'
-		];
-		$conditions = [
-			'noiohiennay_huyen <>' => '',
-			'noiohiennay_huyen is not null',
-			'or' => [
-				'phamsactrongtongiao_ntn_duocphong_mucsu is not null',
-				'phamsactrongtongiao_ntn_duocphong_mucsu <>' => '',
-				'phamsactrongtongiao_ntn_duocphong_mucsunc is not null',
-				'phamsactrongtongiao_ntn_duocphong_mucsunc <>' => '',
-				'phamsactrongtongiao_ntn_duocphong_truyendao is not null',
-				'phamsactrongtongiao_ntn_duocphong_truyendao <>' => '',
-			]
-		];
-		$column = [
-			'phamsactrongtongiao_ntn_duocphong_mucsu',
-			'phamsactrongtongiao_ntn_duocphong_mucsunc',
-			'phamsactrongtongiao_ntn_duocphong_truyendao',
-		];
-		$province_field = 'noiohiennay_huyen';
+    private function __getChucsactinlanh($model)
+    {
+        $fields = [
+            'id',
+            'noiohiennay_huyen'
+        ];
+        $conditions = [
+            'noiohiennay_huyen <>' => '',
+            'noiohiennay_huyen is not null',
+            'or' => [
+                'phamsactrongtongiao_ntn_duocphong_mucsu is not null',
+                'phamsactrongtongiao_ntn_duocphong_mucsu <>' => '',
+                'phamsactrongtongiao_ntn_duocphong_mucsunc is not null',
+                'phamsactrongtongiao_ntn_duocphong_mucsunc <>' => '',
+                'phamsactrongtongiao_ntn_duocphong_truyendao is not null',
+                'phamsactrongtongiao_ntn_duocphong_truyendao <>' => '',
+            ]
+        ];
+        $column = [
+            'phamsactrongtongiao_ntn_duocphong_mucsu',
+            'phamsactrongtongiao_ntn_duocphong_mucsunc',
+            'phamsactrongtongiao_ntn_duocphong_truyendao',
+        ];
+        $province_field = 'noiohiennay_huyen';
 
-		$fields = array_merge($fields, $column);
+        $fields = array_merge($fields, $column);
 
-		$data = $this->__getData($model, compact('fields', 'conditions'));
+        $data = $this->__getData($model, compact('fields', 'conditions'));
 
-		$result = $this->__groupData($data, $column, $province_field);
-		foreach($result as &$item) {
-			$total = array_sum($item);
-			$item = array(
-				'total' => $total,
-				'phamsactrongtongiao_ntn_duocphong_mucsu' => $item['phamsactrongtongiao_ntn_duocphong_mucsu'],
-				'phamsactrongtongiao_ntn_duocphong_mucsunc' => $item['phamsactrongtongiao_ntn_duocphong_mucsunc'],
-				'phamsactrongtongiao_ntn_duocphong_truyendao' => $item['phamsactrongtongiao_ntn_duocphong_truyendao'],
-			);
-		}
+        $result = $this->__groupData($data, $column, $province_field);
+        foreach ($result as &$item) {
+            $total = array_sum($item);
+            $item = array(
+                'total' => $total,
+                'phamsactrongtongiao_ntn_duocphong_mucsu' => $item['phamsactrongtongiao_ntn_duocphong_mucsu'],
+                'phamsactrongtongiao_ntn_duocphong_mucsunc' => $item['phamsactrongtongiao_ntn_duocphong_mucsunc'],
+                'phamsactrongtongiao_ntn_duocphong_truyendao' => $item['phamsactrongtongiao_ntn_duocphong_truyendao'],
+            );
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
-	private function __getChucsacnhatuhanhphatgiao($model)
-	{
-		$fields = [
-			'id',
-			'noiohiennay_huyen'
-		];
-		$conditions = [
-			'noiohiennay_huyen <>' => '',
-			'noiohiennay_huyen is not null',
-			'or' => [
-				'ntn_tanphong_hoathuong_hoac_nitruong is not null',
-				'ntn_tanphong_hoathuong_hoac_nitruong <>' => '',
-				'ntn_tanphong_thuongtao_hoac_nisu is not null',
-				'ntn_tanphong_thuongtao_hoac_nisu <>' => '',
-			]
-		];
-		$column = [
-			'ntn_tanphong_hoathuong_hoac_nitruong',
-			'ntn_tanphong_thuongtao_hoac_nisu',
-		];
-		$province_field = 'noiohiennay_huyen';
+    private function __getChucsacnhatuhanhphatgiao($model)
+    {
+        $fields = [
+            'id',
+            'noiohiennay_huyen'
+        ];
+        $conditions = [
+            'noiohiennay_huyen <>' => '',
+            'noiohiennay_huyen is not null',
+            'or' => [
+                'ntn_tanphong_hoathuong_hoac_nitruong is not null',
+                'ntn_tanphong_hoathuong_hoac_nitruong <>' => '',
+                'ntn_tanphong_thuongtao_hoac_nisu is not null',
+                'ntn_tanphong_thuongtao_hoac_nisu <>' => '',
+            ]
+        ];
+        $column = [
+            'ntn_tanphong_hoathuong_hoac_nitruong',
+            'ntn_tanphong_thuongtao_hoac_nisu',
+            'phapdanh'
+        ];
+        $province_field = 'noiohiennay_huyen';
 
-		$fields = array_merge($fields, $column);
+        $fields = array_merge($fields, $column);
 
-		$data = $this->__getData($model, compact('fields', 'conditions'));
+        $data = $this->__getData($model, compact('fields', 'conditions'));
 
-		$result = $this->__groupData($data, $column, $province_field);
+        $result = $this->__groupChucsacnhatuhanhphatgiaoData($data, $column, $province_field);
 
-		foreach($result as &$item) {
-			$total = array_sum($item);
-			$item = array(
-				'total' => 0,
-				'hoathuong' => 0,
-				'thuongtoa' => 0,
-				'nitruong' => 0,
-				'nisu' => 0
-			);
-		}
+        foreach ($result as &$item) {
+            $total = array_sum($item);
+            $item = array_merge(['total' => $total], $item);
+        }
+        print('<pre>');
+        print_r($result);
+        print('</pre>');
+        exit;
+        return $result;
+    }
 
-		return $result;
-	}
+    private function __groupChucsacnhatuhanhphatgiaoData($data, $column, $province_field)
+    {
+        $result = [];
+        $province = $this->Province->getProvince();
 
-	private function __getChucsacnhatuhanhconggiaotrieu($model)
-	{
-		$fields = [
-			'id',
-			'noiohiennay_huyen'
-		];
-		$conditions = [
-			'noiohiennay_huyen <>' => '',
-			'noiohiennay_huyen is not null',
-			'or' => [
-				'phamsactrongtongiao_namphong_giammuc is not null',
-				'phamsactrongtongiao_namphong_giammuc <>' => '',
-				'phamsactrongtongiao_namphong_linhmuc is not null',
-				'phamsactrongtongiao_namphong_linhmuc <>' => '',
-			]
-		];
-		$column = [
-			'phamsactrongtongiao_namphong_giammuc',
-			'phamsactrongtongiao_namphong_linhmuc'
-		];
-		$province_field = 'noiohiennay_huyen';
+        foreach ($province as $provice_code => $name) {
+            $result[$provice_code] = array(
+                'hoathuong' => 0,
+                'thuongtoa' => 0,
+                'nitruong' => 0,
+                'nisu' => 0
+            );
+        }
 
-		$fields = array_merge($fields, $column);
+        foreach ($data as $id => $item) {
+            $provice_code = $this->Province->retrieveProvinceCode($item[$province_field]);
+            if (!$provice_code) {
+                continue;
+            }
+            $field = $this->__getChucsacnhatuhanhphatgiaoField($item);
+            if ($field) {
+                $result[$provice_code][$field] = $result[$provice_code][$field] + 1;
+            }
+        }
 
-		$data = $this->__getData($model, compact('fields', 'conditions'));
+        return $result;
+    }
 
-		$result = $this->__groupData($data, $column, $province_field);
+    private function __getChucsacnhatuhanhphatgiaoField($target)
+    {
+        $detect = $this->Utility->slug($target['phapdanh']);
 
-		foreach($result as &$item) {
-			$total = array_sum($item);
-			$item = array(
-				'total' => $total,
-				'phamsactrongtongiao_namphong_giammuc' => $item['phamsactrongtongiao_namphong_giammuc'],
-				'betrentongquyen' => 0,
-				'giamtinh' => 0,
-				'phamsactrongtongiao_namphong_linhmuc' => $item['phamsactrongtongiao_namphong_linhmuc']
-			);
-		}
+        $gender = 1; // male
+        if (strpos($detect, 'tn') !== false || strpos($detect, 'thich-nu') !== false) {
+            $gender = 0; // female
+        }
 
-		return $result;
-	}
+        if ($target['ntn_tanphong_hoathuong_hoac_nitruong']) {
+            return $gender ? 'hoathuong' : 'nitruong';
+        }
+
+        if ($target['ntn_tanphong_thuongtao_hoac_nisu']) {
+            return $gender ? 'thuongtoa' : 'nisu';
+        }
+
+        return '';
+    }
+
+    private function __getChucsacnhatuhanhconggiaotrieu($model)
+    {
+        $fields = [
+            'id',
+            'noiohiennay_huyen'
+        ];
+        $conditions = [
+            'noiohiennay_huyen <>' => '',
+            'noiohiennay_huyen is not null',
+            'or' => [
+                'phamsactrongtongiao_namphong_giammuc is not null',
+                'phamsactrongtongiao_namphong_giammuc <>' => '',
+                'phamsactrongtongiao_namphong_linhmuc is not null',
+                'phamsactrongtongiao_namphong_linhmuc <>' => '',
+            ]
+        ];
+        $column = [
+            'phamsactrongtongiao_namphong_giammuc',
+            'phamsactrongtongiao_namphong_linhmuc'
+        ];
+        $province_field = 'noiohiennay_huyen';
+
+        $fields = array_merge($fields, $column);
+
+        $data = $this->__getData($model, compact('fields', 'conditions'));
+
+        $result = $this->__groupData($data, $column, $province_field);
+
+        foreach ($result as &$item) {
+            $total = array_sum($item);
+            $item = array(
+                'total' => $total,
+                'phamsactrongtongiao_namphong_giammuc' => $item['phamsactrongtongiao_namphong_giammuc'],
+                'betrentongquyen' => 0,
+                'giamtinh' => 0,
+                'phamsactrongtongiao_namphong_linhmuc' => $item['phamsactrongtongiao_namphong_linhmuc']
+            );
+        }
+
+        return $result;
+    }
 
     private function __getData($model, $option = [])
     {
@@ -344,7 +389,7 @@ class ExportThCscvComponent extends Component
 
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = array();
-			foreach ($column as $col) {
+            foreach ($column as $col) {
                 $result[$provice_code][$col] = 0;
             }
         }
@@ -357,7 +402,7 @@ class ExportThCscvComponent extends Component
 
             foreach ($result[$provice_code] as $key => &$count) {
                 if ($item[$key]) {
-					$count++;
+                    $count++;
                 }
             }
         }
