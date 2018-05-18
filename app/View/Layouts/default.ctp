@@ -62,7 +62,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand"  href="<?php echo $this->Html->url('/', true) ?>">
-                        TÔN GIÁO
+                        BAN TÔN GIÁO TỈNH ĐỒNG NAI
                     </a>
                 </div>
                 <!-- /.navbar-header -->
@@ -251,7 +251,7 @@
                             </li>
                             <li>
                                 <a href="<?php echo $this->Html->url('/', true) ?>Exports">
-                                    <i class="fa fa-tag fa-fw"></i> TỔNG HỢP
+                                    <i class="fa fa-tag fa-fw"></i> BẢNG TỔNG HỢP
                                 </a>
                             </li>
                         </ul>

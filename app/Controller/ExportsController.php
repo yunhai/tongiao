@@ -16,7 +16,7 @@ class ExportsController extends DataController {
             '2' => 'THỐNG KÊ TỔ CHỨC TÔN GIÁO CƠ SỞ TRÊN ĐỊA BÀN TỈNH',
             '3' => 'TỔNG HỢP CƠ SỞ TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH',//TH CO SO TON GIAO
             '4' => 'TỔNG HỢP CƠ SỞ TÔN GIÁO, TÍN NGƯỠNG ĐƯỢC XẾP HẠNG DI TÍCH TRÊN ĐỊA BÀN TỈNH',//TONG HOP DI TICH
-            '5' => 'TỔNG HỢP  CƠ SỞ THỜ TỰ TÔN GIÁO, TÍN NGƯỠNG ĐƯỢC XÂY DỰNG MỚI',//TONG HOP CSTT XAY DUNG
+            //'5' => 'TỔNG HỢP  CƠ SỞ THỜ TỰ TÔN GIÁO, TÍN NGƯỠNG ĐƯỢC XÂY DỰNG MỚI',//TONG HOP CSTT XAY DUNG
             '6' => 'TỔNG HỢP CƠ SỞ THỜ TỰ TÔN GIÁO, TÍN NGƯỠNG ĐÃ ĐƯỢC TRÙNG TU, TÔN TẠO',//TONG HOP CSTG TRUNG TU
             '7' => 'BẢNG TỔNG HỢP TÍN ĐỒ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH',// BANG TONG HOP TIN DO
             '8' => 'DANH SÁCH CƠ SỞ THỜ TỰ TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH',//ds cstt
@@ -44,7 +44,7 @@ class ExportsController extends DataController {
             '28' => 'BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (KHÔNG CÓ CHỨC VỤ)',//TONG HOP CHUC SAC KO CHUC VU
             '29' => 'BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (CÓ CHỨC VỤ)',//TONG HOP CHUC SAC CO CHUC VU
             '30' => 'BẢNG TỔNG HỢP LỨA TUỔI CỦA CHỨC SẮC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH',//DO TUOI CUA CHAC SAC
-            '31' => 'BẢNG TỔNG HỢP LỨA TUỔI CỦA TU SĨ CÁC TÔN GIÁO'//DO TUOI CUA TU SĨ
+            //'31' => 'BẢNG TỔNG HỢP LỨA TUỔI CỦA TU SĨ CÁC TÔN GIÁO'//DO TUOI CUA TU SĨ
         );
 
         $result = array(

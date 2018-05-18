@@ -43,7 +43,7 @@ class ActionController extends AppController
             TH_TON_GIAO_CO_SO => 'TH TON GIAO CO SO',
             TH_CO_SO_TON_GIAO => 'TH CO SO TON GIAO',
             TONG_HOP_DI_TICH => 'TONG HOP DI TICH',
-            TONG_HOP_CSTT_XAY_DUNG => 'TONG HOP CSTT XAY DUNG',
+            //TONG_HOP_CSTT_XAY_DUNG => 'TONG HOP CSTT XAY DUNG',
             TONG_HOP_CSTG_TRUNG_TU => 'TONG HOP CSTG TRUNG TU',
             BANG_TONG_HOP_TIN_DO => 'BANG TONG HOP TIN DO',
             DS_CSTT => 'ds cstt',
@@ -69,7 +69,7 @@ class ActionController extends AppController
             TONG_HOP_CHUC_SAC_KO_CHUC_VU => 'TONG HOP CHUC SAC KO CHUC VU',
             TONG_HOP_CHUC_SAC_CO_CHUC_VU => 'TONG HOP CHUC SAC CO CHUC VU',
             DO_TUOI_CUA_CHAC_SAC => 'DO TUOI CUA CHAC SAC',
-            DO_TUOI_CUA_TU_SI => 'DO TUOI CUA TU SĨ'
+            //DO_TUOI_CUA_TU_SI => 'DO TUOI CUA TU SĨ'
         );
     }
 
@@ -1114,13 +1114,6 @@ class ActionController extends AppController
      *
      */
     protected function __getType4Data()
-    {
-    }
-
-    /**
-     * TONG HOP CSTT XAY DUNG
-     */
-    protected function __getType5Data()
     {
     }
 
@@ -5110,7 +5103,7 @@ class ActionController extends AppController
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
                     case 'P':
-                        //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ghichu']);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue('');
                         break;
                     default:
                         echo 'DS CHUC SAC KO CO CHUC VU';
@@ -6283,13 +6276,5 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('AH20')->setValue($tong_tinnguong_tren61);
         
         return $this->Excel->save($filename);
-    }
-
-    /**
-     * DO TUOI CUA TU SĨ
-     * BẢNG TỔNG HỢP LỨA TUỔI CỦA TU SĨ CÁC TÔN GIÁO
-     */
-    protected function __getType31Data()
-    {
     }
 }
