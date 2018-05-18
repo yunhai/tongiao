@@ -1148,69 +1148,13 @@ class ActionController extends AppController
         return $data;
     }
 
-    /**
-     * BẢNG TỔNG HỢP TÍN ĐỒ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
-     * 
-     * I. CÔNG GIÁO
-     * 1. Bảng giaoxu
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: giaodan_sonhankhau
-     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: giaodan_sonhankhau
-     * LÀ DÂN TỘC THIỂU SỐ: Lấy cột giaodandantocthieuso_sonhankhau
-     * 
-     * II. PHẬT GIÁO
-     * 2. Bảng tuvienphatgiao
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột daquyy
-     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột soluongtindo -  cột daquyy
-     * LÀ DÂN TỘC THIỂU SỐ: Lấy dữ liệu từ cột phattu_dantoc_thieuso
-     * 
-     * III. TIN LÀNH
-     * 3. Bảng chihoitinlanh
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột tongsotindo_baptem
-     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột tongsotindo_chuabaptem
-     * LÀ DÂN TỘC THIỂU SỐ: Lấy dữ liệu từ cột sotindo_dantoc_thieuso
-     * 
-     * IV. CAO ĐÀI
-     * 4. Bảng hodaocaodai
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * tenhodao_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột tongsotindo_cosocaudao
-     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột tongsotindo_chuacosocaudao
-     * LÀ DÂN TỘC THIỂU SỐ: Lấy dữ liệu từ cột sotindo_dantoc_thieuso
-     * 
-     * V. TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM
-     * 5. Bảng chihoitinhdocusiphatgiaovietnam
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * tenchihoi_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột soluonghoivien_tindo
-     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột soluonghoivien_tindo
-     * LÀ DÂN TỘC THIỂU SỐ: Lấy dữ liệu từ cột sotindo_dantoc_thieuso
-     * 
-     * VI. PHẬT GIÁO HÒA HẢO
-     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Để mặc định bằng 0
-     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Để mặc định bằng 0
-     * LÀ DÂN TỘC THIỂU SỐ: Để mặc định bằng 0
-     * 
-     * VII. HỒI GIÁO
-     * 7. Bảng cosohoigiaoislam
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * tenthanhduong_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO:  Lấy cột tongsotindo
-     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO:  Lấy cột tongsotindo
-     * LÀ DÂN TỘC THIỂU SỐ:  Lấy cột sotindo_dantoc_thieuso
-     * 
-     * VIII. CÁC TÔN GIÁO KHÁC
-     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Để mặc định bằng 0
-     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Để mặc định bằng 0
-     * LÀ DÂN TỘC THIỂU SỐ: Để mặc định bằng 0
-     */
+	/**
+	 * BẢNG TỔNG HỢP TÍN ĐỒ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
+	 */
     protected function __getType7Data()
     {
+		$component = $this->Components->load('ExportThTdTg');
+		$data = $component->export();
     }
 
     /**
@@ -5318,7 +5262,7 @@ class ActionController extends AppController
     {
 		$component = $this->Components->load('ExportThCvTinh');
 		$data = $component->export();
-		
+
 		$this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template26.xls';
@@ -5438,27 +5382,27 @@ class ActionController extends AppController
             $tong_conggiao_thuongvubhg += $result['Giaoxu_1'];
             $tong_conggiao_lanhdaocachoidoantucapgiaoxutrolen += $result['Giaoxu_2'];
             $tong_conggiao_khac += $result['Giaoxu_3'];
-            
+
             $tong_phatgiao_tong += $result['Tuvienphatgiao_total'];
             $tong_phatgiao_banhotu += $result['Tuvienphatgiao_banhotu'];
             $tong_phatgiao_banhoniem += $result['Tuvienphatgiao_banhotu_banhoniem_sothanhvien'];
             $tong_phatgiao_giadinhphattu += $result['Tuvienphatgiao_giadinhphattu_sodoanvien'];
-            
+
             $tong_tinlanh_banchapsu += $result['Chihoitinlanh_sothanhvientrongbanchapsu'];
             $tong_tinlanh_bantrisu += $result['Chihoitinlanh_bantrisu'];
-            
+
             $tong_caodai_tong += $result['Hodaocaodai_total'];
             $tong_caodai_bancaiquan += $result['Hodaocaodai_sothanvien_bancaiquan'];
             $tong_caodai_bantrisu += $result['Hodaocaodai_bantrisu'];
-            
+
             $tong_phatgiaohoahao_tong += $result['Chucviecphathoahao_total'];
             $tong_phatgiaohoahao_bandaidien += $result['Chucviecphathoahao_thanhvienbandaidientinh'];
             $tong_phatgiaohoahao_bantrisuxaphuongthitran += $result['Chucviecphathoahao_phobantrisu'];
-            
+
             $tong_tdcsphvn_tong += $result['Chihoitinhdocusiphatgiaovietnam_total'];
             $tong_tdcsphvn_banhodao += $result['Chihoitinhdocusiphatgiaovietnam_sothanhvien_banhodao'];
             $tong_tdcsphvn_banchaphanhdaoduc += $result['Chihoitinhdocusiphatgiaovietnam_sothanhvien_banchaphanhdaoduc'];
-            
+
             $r++;
         }
         $this->Excel->ActiveSheet->getCell('C20')->setValue($tong);
@@ -5467,22 +5411,22 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('F20')->setValue($tong_conggiao_thuongvubhg);
         $this->Excel->ActiveSheet->getCell('G20')->setValue($tong_conggiao_lanhdaocachoidoantucapgiaoxutrolen);
         $this->Excel->ActiveSheet->getCell('H20')->setValue($tong_conggiao_khac);
-        
+
         $this->Excel->ActiveSheet->getCell('I20')->setValue($tong_phatgiao_tong);
         $this->Excel->ActiveSheet->getCell('J20')->setValue($tong_phatgiao_banhotu);
         $this->Excel->ActiveSheet->getCell('K20')->setValue($tong_phatgiao_banhoniem);
         $this->Excel->ActiveSheet->getCell('L20')->setValue($tong_phatgiao_giadinhphattu);
-        
+
         $this->Excel->ActiveSheet->getCell('M20')->setValue($tong_tinlanh_banchapsu);
         $this->Excel->ActiveSheet->getCell('N20')->setValue($tong_tinlanh_bantrisu);
         $this->Excel->ActiveSheet->getCell('O20')->setValue($tong_caodai_tong);
         $this->Excel->ActiveSheet->getCell('P20')->setValue($tong_caodai_bancaiquan);
         $this->Excel->ActiveSheet->getCell('Q20')->setValue($tong_caodai_bantrisu);
-        
+
         $this->Excel->ActiveSheet->getCell('R20')->setValue($tong_phatgiaohoahao_tong);
         $this->Excel->ActiveSheet->getCell('S20')->setValue($tong_phatgiaohoahao_bandaidien);
         $this->Excel->ActiveSheet->getCell('T20')->setValue($tong_phatgiaohoahao_bantrisuxaphuongthitran);
-        
+
         $this->Excel->ActiveSheet->getCell('U20')->setValue($tong_tdcsphvn_tong);
         $this->Excel->ActiveSheet->getCell('V20')->setValue($tong_tdcsphvn_banhodao);
         $this->Excel->ActiveSheet->getCell('W20')->setValue($tong_tdcsphvn_banchaphanhdaoduc);
@@ -5498,7 +5442,7 @@ class ActionController extends AppController
     {
 		$component = $this->Components->load('ExportThTs');
 		$data = $component->export();
-		
+
 		$this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template27.xls';
@@ -5593,7 +5537,7 @@ class ActionController extends AppController
             $tong_conggiao_nam_tusidong += $result['Giaoxu_sotusi_nam'];
             $tong_conggiao_nam_chungsinh += $result['Giaoxu_chungsinh'];
             $tong_conggiao_nu_tusidong += $result['Giaoxu_sotusi_nu'];
-            
+
             $tong_phatgiao_tong += $result['Tuvienphatgiao_total'];
             $tong_phatgiao_nam_daiduc += $result['Tuvienphatgiao_nam_tykheo'];
             $tong_phatgiao_nam_sadi += $result['Tuvienphatgiao_nam_sadi'];
@@ -5602,7 +5546,7 @@ class ActionController extends AppController
             $tong_phatgiao_nu_thucxoamana += $result['Tuvienphatgiao_nu_thucxoamana'];
             $tong_phatgiao_nu_sadini += $result['Tuvienphatgiao_nu_sadini'];
             $tong_phatgiao_nu_tinhnhon_dieu += $result['Tuvienphatgiao_tinhnhon_dieu'];
-            
+
             $r++;
         }
         $this->Excel->ActiveSheet->getCell('C20')->setValue($tong);
@@ -5610,7 +5554,7 @@ class ActionController extends AppController
 		$this->Excel->ActiveSheet->getCell('E20')->setValue($tong_conggiao_nam_tusidong);
 		$this->Excel->ActiveSheet->getCell('F20')->setValue($tong_conggiao_nam_chungsinh);
 		$this->Excel->ActiveSheet->getCell('G20')->setValue($tong_conggiao_nu_tusidong);
-		
+
 		$this->Excel->ActiveSheet->getCell('H20')->setValue($tong_phatgiao_tong);
 		$this->Excel->ActiveSheet->getCell('I20')->setValue($tong_phatgiao_nam_daiduc);
 		$this->Excel->ActiveSheet->getCell('J20')->setValue($tong_phatgiao_nam_sadi);
@@ -5619,7 +5563,7 @@ class ActionController extends AppController
 		$this->Excel->ActiveSheet->getCell('M20')->setValue($tong_phatgiao_nu_thucxoamana);
 		$this->Excel->ActiveSheet->getCell('N20')->setValue($tong_phatgiao_nu_sadini);
 		$this->Excel->ActiveSheet->getCell('O20')->setValue($tong_phatgiao_nu_tinhnhon_dieu);
-		
+
 		return $this->Excel->save($filename);
     }
 
@@ -5631,7 +5575,7 @@ class ActionController extends AppController
     {
 		$component = $this->Components->load('ExportThCskcv');
 		$data = $component->export();
-		
+
 		$this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template28.xls';
@@ -5784,24 +5728,24 @@ class ActionController extends AppController
             $tong_conggiao_betrentongquyen += $result['Chucsacnhatuhanhconggiaotrieu_betrentongquyen'];
             $tong_conggiao_giamtinh += $result['Chucsacnhatuhanhconggiaotrieu_giamtinh'];
             $tong_conggiao_linhmuc += $result['Chucsacnhatuhanhconggiaotrieu_phamsactrongtongiao_namphong_linhmuc'];
-            
+
             $tong_phatgiao_tong += $result['Chucsacnhatuhanhphatgiao_total'];
             $tong_phatgiao_hoathuong += $result['Chucsacnhatuhanhphatgiao_hoathuong'];
             $tong_phatgiao_thuongtoa += $result['Chucsacnhatuhanhphatgiao_thuongtoa'];
             $tong_phatgiao_nitruong += $result['Chucsacnhatuhanhphatgiao_nitruong'];
             $tong_phatgiao_nisu += $result['Chucsacnhatuhanhphatgiao_nisu'];
-            
+
             $tong_tinlanh_tong += $result['Chucsactinlanh_total'];
             $tong_tinlanh_mucsu += $result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_mucsu'];
             $tong_tinlanh_mucsunhiemchuc += $result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_mucsunc'];
             $tong_tinlanh_truyendao += $result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_truyendao'];
-            
+
             $tong_caodai_tong += $result['Chucsaccaodai_total'];
             $tong_caodai_phoisu += $result['Chucsaccaodai_phamsac_ntn_cauthang_phosu'];
             $tong_caodai_giaosu += $result['Chucsaccaodai_phamsac_ntn_cauthang_giaosu'];
             $tong_caodai_giaohuu += $result['Chucsaccaodai_phamsac_ntn_cauthang_giaohuu'];
             $tong_caodai_lesanh += $result['Chucsaccaodai_phamsac_ntn_cauphong_lesanh'];
-            
+
             $tong_hoigiao_tong += $result['Chucviechoigiao_total'];
             $tong_hoigiao_hakim += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_hakim'];
             $tong_hoigiao_naep += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_naep'];
@@ -5809,13 +5753,13 @@ class ActionController extends AppController
             $tong_hoigiao_khotip += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_khotip'];
             $tong_hoigiao_imam += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_imam'];
             $tong_hoigiao_tuon += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_tuon'];
-            
+
             $tong_tdcsphvn_tong += $result['Chucviectinhdocusiphathoivietnam_total'];
             $tong_tdcsphvn_giangsu += $result['Chucviectinhdocusiphathoivietnam_phamsactrongtongiao_ntn_bonhiem_phogiangsu'];
             $tong_tdcsphvn_thuyettrinhvien += $result['Chucviectinhdocusiphathoivietnam_phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien'];
             $tong_tdcsphvn_ysi += $result['Chucviectinhdocusiphathoivietnam_ysi'];
             $tong_tdcsphvn_ysinh += $result['Chucviectinhdocusiphathoivietnam_ysinh'];
-            
+
             $r++;
         }
         $this->Excel->ActiveSheet->getCell('C20')->setValue($tong);
@@ -5824,24 +5768,24 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('F20')->setValue($tong_conggiao_betrentongquyen);
         $this->Excel->ActiveSheet->getCell('G20')->setValue($tong_conggiao_giamtinh);
         $this->Excel->ActiveSheet->getCell('H20')->setValue($tong_conggiao_linhmuc);
-        
+
         $this->Excel->ActiveSheet->getCell('I20')->setValue($tong_phatgiao_tong);
 		$this->Excel->ActiveSheet->getCell('J20')->setValue($tong_phatgiao_hoathuong);
 		$this->Excel->ActiveSheet->getCell('K20')->setValue($tong_phatgiao_thuongtoa);
 		$this->Excel->ActiveSheet->getCell('L20')->setValue($tong_phatgiao_nitruong);
 		$this->Excel->ActiveSheet->getCell('M20')->setValue($tong_phatgiao_nisu);
-		
+
 		$this->Excel->ActiveSheet->getCell('N20')->setValue($tong_tinlanh_tong);
 		$this->Excel->ActiveSheet->getCell('O20')->setValue($tong_tinlanh_mucsu);
 		$this->Excel->ActiveSheet->getCell('P20')->setValue($tong_tinlanh_mucsunhiemchuc);
 		$this->Excel->ActiveSheet->getCell('Q20')->setValue($tong_tinlanh_truyendao);
-		
+
 		$this->Excel->ActiveSheet->getCell('R20')->setValue($tong_caodai_tong);
 		$this->Excel->ActiveSheet->getCell('S20')->setValue($tong_caodai_phoisu);
 		$this->Excel->ActiveSheet->getCell('T20')->setValue($tong_caodai_giaosu);
 		$this->Excel->ActiveSheet->getCell('U20')->setValue($tong_caodai_giaohuu);
 		$this->Excel->ActiveSheet->getCell('V20')->setValue($tong_caodai_lesanh);
-		
+
 		$this->Excel->ActiveSheet->getCell('W20')->setValue($tong_hoigiao_tong);
 		$this->Excel->ActiveSheet->getCell('X20')->setValue($tong_hoigiao_hakim);
 		$this->Excel->ActiveSheet->getCell('Y20')->setValue($tong_hoigiao_naep);
@@ -5849,13 +5793,13 @@ class ActionController extends AppController
 		$this->Excel->ActiveSheet->getCell('AA20')->setValue($tong_hoigiao_khotip);
 		$this->Excel->ActiveSheet->getCell('AB20')->setValue($tong_hoigiao_imam);
 		$this->Excel->ActiveSheet->getCell('AC20')->setValue($tong_hoigiao_tuon);
-		
+
 		$this->Excel->ActiveSheet->getCell('AD20')->setValue($tong_tdcsphvn_tong);
 		$this->Excel->ActiveSheet->getCell('AE20')->setValue($tong_tdcsphvn_giangsu);
 		$this->Excel->ActiveSheet->getCell('AF20')->setValue($tong_tdcsphvn_thuyettrinhvien);
 		$this->Excel->ActiveSheet->getCell('AG20')->setValue($tong_tdcsphvn_ysi);
 		$this->Excel->ActiveSheet->getCell('AH20')->setValue($tong_tdcsphvn_ysinh);
-		
+
 		return $this->Excel->save($filename);
     }
 
@@ -5868,7 +5812,7 @@ class ActionController extends AppController
     {
 		$component = $this->Components->load('ExportThCscv');
 		$data = $component->export();
-		
+
 		$this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template29.xls';
@@ -6021,24 +5965,24 @@ class ActionController extends AppController
             $tong_conggiao_betrentongquyen += $result['Chucsacnhatuhanhconggiaotrieu_betrentongquyen'];
             $tong_conggiao_giamtinh += $result['Chucsacnhatuhanhconggiaotrieu_giamtinh'];
             $tong_conggiao_linhmuc += $result['Chucsacnhatuhanhconggiaotrieu_phamsactrongtongiao_namphong_linhmuc'];
-            
+
             $tong_phatgiao_tong += $result['Chucsacnhatuhanhphatgiao_total'];
             $tong_phatgiao_hoathuong += $result['Chucsacnhatuhanhphatgiao_hoathuong'];
             $tong_phatgiao_thuongtoa += $result['Chucsacnhatuhanhphatgiao_thuongtoa'];
             $tong_phatgiao_nitruong += $result['Chucsacnhatuhanhphatgiao_nitruong'];
             $tong_phatgiao_nisu += $result['Chucsacnhatuhanhphatgiao_nisu'];
-            
+
             $tong_tinlanh_tong += $result['Chucsactinlanh_total'];
             $tong_tinlanh_mucsu += $result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_mucsu'];
             $tong_tinlanh_mucsunhiemchuc += $result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_mucsunc'];
             $tong_tinlanh_truyendao += $result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_truyendao'];
-            
+
             $tong_caodai_tong += $result['Chucsaccaodai_total'];
             $tong_caodai_phoisu += $result['Chucsaccaodai_phamsac_ntn_cauthang_phosu'];
             $tong_caodai_giaosu += $result['Chucsaccaodai_phamsac_ntn_cauthang_giaosu'];
             $tong_caodai_giaohuu += $result['Chucsaccaodai_phamsac_ntn_cauthang_giaohuu'];
             $tong_caodai_lesanh += $result['Chucsaccaodai_phamsac_ntn_cauphong_lesanh'];
-            
+
             $tong_hoigiao_tong += $result['Chucviechoigiao_total'];
             $tong_hoigiao_hakim += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_hakim'];
             $tong_hoigiao_naep += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_naep'];
@@ -6046,13 +5990,13 @@ class ActionController extends AppController
             $tong_hoigiao_khotip += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_khotip'];
             $tong_hoigiao_imam += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_imam'];
             $tong_hoigiao_tuon += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_tuon'];
-            
+
             $tong_tdcsphvn_tong += $result['Chucviectinhdocusiphathoivietnam_total'];
             $tong_tdcsphvn_giangsu += $result['Chucviectinhdocusiphathoivietnam_phamsactrongtongiao_ntn_bonhiem_phogiangsu'];
             $tong_tdcsphvn_thuyettrinhvien += $result['Chucviectinhdocusiphathoivietnam_phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien'];
             $tong_tdcsphvn_ysi += $result['Chucviectinhdocusiphathoivietnam_ysi'];
             $tong_tdcsphvn_ysinh += $result['Chucviectinhdocusiphathoivietnam_ysinh'];
-            
+
             $r++;
         }
         $this->Excel->ActiveSheet->getCell('C20')->setValue($tong);
@@ -6061,24 +6005,24 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('F20')->setValue($tong_conggiao_betrentongquyen);
         $this->Excel->ActiveSheet->getCell('G20')->setValue($tong_conggiao_giamtinh);
         $this->Excel->ActiveSheet->getCell('H20')->setValue($tong_conggiao_linhmuc);
-        
+
         $this->Excel->ActiveSheet->getCell('I20')->setValue($tong_phatgiao_tong);
         $this->Excel->ActiveSheet->getCell('J20')->setValue($tong_phatgiao_hoathuong);
         $this->Excel->ActiveSheet->getCell('K20')->setValue($tong_phatgiao_thuongtoa);
         $this->Excel->ActiveSheet->getCell('L20')->setValue($tong_phatgiao_nitruong);
         $this->Excel->ActiveSheet->getCell('M20')->setValue($tong_phatgiao_nisu);
-        
+
         $this->Excel->ActiveSheet->getCell('N20')->setValue($tong_tinlanh_tong);
         $this->Excel->ActiveSheet->getCell('O20')->setValue($tong_tinlanh_mucsu);
         $this->Excel->ActiveSheet->getCell('P20')->setValue($tong_tinlanh_mucsunhiemchuc);
         $this->Excel->ActiveSheet->getCell('Q20')->setValue($tong_tinlanh_truyendao);
-        
+
         $this->Excel->ActiveSheet->getCell('R20')->setValue($tong_caodai_tong);
         $this->Excel->ActiveSheet->getCell('S20')->setValue($tong_caodai_phoisu);
         $this->Excel->ActiveSheet->getCell('T20')->setValue($tong_caodai_giaosu);
         $this->Excel->ActiveSheet->getCell('U20')->setValue($tong_caodai_giaohuu);
         $this->Excel->ActiveSheet->getCell('V20')->setValue($tong_caodai_lesanh);
-        
+
         $this->Excel->ActiveSheet->getCell('W20')->setValue($tong_hoigiao_tong);
         $this->Excel->ActiveSheet->getCell('X20')->setValue($tong_hoigiao_hakim);
         $this->Excel->ActiveSheet->getCell('Y20')->setValue($tong_hoigiao_naep);
@@ -6086,13 +6030,13 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('AA20')->setValue($tong_hoigiao_khotip);
         $this->Excel->ActiveSheet->getCell('AB20')->setValue($tong_hoigiao_imam);
         $this->Excel->ActiveSheet->getCell('AC20')->setValue($tong_hoigiao_tuon);
-        
+
         $this->Excel->ActiveSheet->getCell('AD20')->setValue($tong_tdcsphvn_tong);
         $this->Excel->ActiveSheet->getCell('AE20')->setValue($tong_tdcsphvn_giangsu);
         $this->Excel->ActiveSheet->getCell('AF20')->setValue($tong_tdcsphvn_thuyettrinhvien);
         $this->Excel->ActiveSheet->getCell('AG20')->setValue($tong_tdcsphvn_ysi);
         $this->Excel->ActiveSheet->getCell('AH20')->setValue($tong_tdcsphvn_ysinh);
-        
+
         return $this->Excel->save($filename);
     }
 
@@ -6104,7 +6048,7 @@ class ActionController extends AppController
     {
 		$component = $this->Components->load('ExportThDtCs');
 		$data = $component->export();
-		
+
 		$this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template30.xls';
@@ -6255,84 +6199,84 @@ class ActionController extends AppController
             $tong_total_2 += $result['total_2'];
             $tong_total_3 += $result['total_3'];
             $tong_total_4 += $result['total_4'];
-            
+
             $tong_conggiao_duoi20 += $result['0'];
             $tong_conggiao_21den40 += $result['1'];
             $tong_conggiao_41den61 += $result['2'];
             $tong_conggiao_tren61 += $result['3'];
-            
+
             $tong_phatgiao_duoi20 += $result['4'];
             $tong_phatgiao_21den40 += $result['5'];
             $tong_phatgiao_41den61 += $result['6'];
             $tong_phatgiao_tren61 += $result['7'];
-            
+
             $tong_tinlanh_duoi20 += $result['8'];
             $tong_tinlanh_21den40 += $result['9'];
             $tong_tinlanh_41den61 += $result['10'];
             $tong_tinlanh_tren61 += $result['11'];
-            
+
             $tong_caodai_duoi20 += $result['12'];
             $tong_caodai_21den40 += $result['13'];
             $tong_caodai_41den61 += $result['14'];
             $tong_caodai_tren61 += $result['15'];
-            
+
             $tong_hoigiao_duoi20 += $result['16'];
             $tong_hoigiao_21den40 += $result['17'];
             $tong_hoigiao_41den61 += $result['18'];
             $tong_hoigiao_tren61 += $result['19'];
-            
+
             $tong_tdcsphvn_duoi20 += $result['20'];
             $tong_tdcsphvn_21den40 += $result['21'];
             $tong_tdcsphvn_41den61 += $result['22'];
             $tong_tdcsphvn_tren61 += $result['23'];
-            
+
             $tong_tinnguong_duoi20 += $result['24'];
             $tong_tinnguong_21den40 += $result['25'];
             $tong_tinnguong_41den61 += $result['26'];
             $tong_tinnguong_tren61 += $result['27'];
-            
+
             $r++;
         }
         $this->Excel->ActiveSheet->getCell('C20')->setValue($tong_total_1);
         $this->Excel->ActiveSheet->getCell('D20')->setValue($tong_total_2);
         $this->Excel->ActiveSheet->getCell('E20')->setValue($tong_total_3);
         $this->Excel->ActiveSheet->getCell('F20')->setValue($tong_total_4);
-            
+
         $this->Excel->ActiveSheet->getCell('G20')->setValue($tong_conggiao_duoi20);
         $this->Excel->ActiveSheet->getCell('H20')->setValue($tong_conggiao_21den40);
         $this->Excel->ActiveSheet->getCell('I20')->setValue($tong_conggiao_41den61);
         $this->Excel->ActiveSheet->getCell('J20')->setValue($tong_conggiao_tren61);
-        
+
         $this->Excel->ActiveSheet->getCell('K20')->setValue($tong_phatgiao_duoi20);
         $this->Excel->ActiveSheet->getCell('L20')->setValue($tong_phatgiao_21den40);
         $this->Excel->ActiveSheet->getCell('M20')->setValue($tong_phatgiao_41den61);
         $this->Excel->ActiveSheet->getCell('N20')->setValue($tong_phatgiao_tren61);
-        
+
         $this->Excel->ActiveSheet->getCell('O20')->setValue($tong_tinlanh_duoi20);
         $this->Excel->ActiveSheet->getCell('P20')->setValue($tong_tinlanh_21den40);
         $this->Excel->ActiveSheet->getCell('Q20')->setValue($tong_tinlanh_41den61);
         $this->Excel->ActiveSheet->getCell('R20')->setValue($tong_tinlanh_tren61);
-        
+
         $this->Excel->ActiveSheet->getCell('S20')->setValue($tong_caodai_duoi20);
         $this->Excel->ActiveSheet->getCell('T20')->setValue($tong_caodai_21den40);
         $this->Excel->ActiveSheet->getCell('U20')->setValue($tong_caodai_41den61);
         $this->Excel->ActiveSheet->getCell('V20')->setValue($tong_caodai_tren61);
-        
+
         $this->Excel->ActiveSheet->getCell('W20')->setValue($tong_hoigiao_duoi20);
         $this->Excel->ActiveSheet->getCell('X20')->setValue($tong_hoigiao_21den40);
         $this->Excel->ActiveSheet->getCell('Y20')->setValue($tong_hoigiao_41den61);
         $this->Excel->ActiveSheet->getCell('Z20')->setValue($tong_hoigiao_tren61);
-        
+
         $this->Excel->ActiveSheet->getCell('AA20')->setValue($tong_tdcsphvn_duoi20);
         $this->Excel->ActiveSheet->getCell('AB20')->setValue($tong_tdcsphvn_21den40);
         $this->Excel->ActiveSheet->getCell('AC20')->setValue($tong_tdcsphvn_41den61);
         $this->Excel->ActiveSheet->getCell('AD20')->setValue($tong_tdcsphvn_tren61);
-        
+
         $this->Excel->ActiveSheet->getCell('AE20')->setValue($tong_tinnguong_duoi20);
         $this->Excel->ActiveSheet->getCell('AF20')->setValue($tong_tinnguong_21den40);
         $this->Excel->ActiveSheet->getCell('AG20')->setValue($tong_tinnguong_41den61);
         $this->Excel->ActiveSheet->getCell('AH20')->setValue($tong_tinnguong_tren61);
-        
+
         return $this->Excel->save($filename);
     }
 }
