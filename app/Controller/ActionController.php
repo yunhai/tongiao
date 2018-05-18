@@ -1149,7 +1149,65 @@ class ActionController extends AppController
     }
 
     /**
-     * BANG TONG HOP TIN DO
+     * BẢNG TỔNG HỢP TÍN ĐỒ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
+     * 
+     * I. CÔNG GIÁO
+     * 1. Bảng giaoxu
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: giaodan_sonhankhau
+     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: giaodan_sonhankhau
+     * LÀ DÂN TỘC THIỂU SỐ: Lấy cột giaodandantocthieuso_sonhankhau
+     * 
+     * II. PHẬT GIÁO
+     * 2. Bảng tuvienphatgiao
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột daquyy
+     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột soluongtindo -  cột daquyy
+     * LÀ DÂN TỘC THIỂU SỐ: Lấy dữ liệu từ cột phattu_dantoc_thieuso
+     * 
+     * III. TIN LÀNH
+     * 3. Bảng chihoitinlanh
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột tongsotindo_baptem
+     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột tongsotindo_chuabaptem
+     * LÀ DÂN TỘC THIỂU SỐ: Lấy dữ liệu từ cột sotindo_dantoc_thieuso
+     * 
+     * IV. CAO ĐÀI
+     * 4. Bảng hodaocaodai
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * tenhodao_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột tongsotindo_cosocaudao
+     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột tongsotindo_chuacosocaudao
+     * LÀ DÂN TỘC THIỂU SỐ: Lấy dữ liệu từ cột sotindo_dantoc_thieuso
+     * 
+     * V. TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM
+     * 5. Bảng chihoitinhdocusiphatgiaovietnam
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * tenchihoi_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột soluonghoivien_tindo
+     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Lấy cột soluonghoivien_tindo
+     * LÀ DÂN TỘC THIỂU SỐ: Lấy dữ liệu từ cột sotindo_dantoc_thieuso
+     * 
+     * VI. PHẬT GIÁO HÒA HẢO
+     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Để mặc định bằng 0
+     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Để mặc định bằng 0
+     * LÀ DÂN TỘC THIỂU SỐ: Để mặc định bằng 0
+     * 
+     * VII. HỒI GIÁO
+     * 7. Bảng cosohoigiaoislam
+     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
+     * tenthanhduong_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
+     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO:  Lấy cột tongsotindo
+     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO:  Lấy cột tongsotindo
+     * LÀ DÂN TỘC THIỂU SỐ:  Lấy cột sotindo_dantoc_thieuso
+     * 
+     * VIII. CÁC TÔN GIÁO KHÁC
+     * ĐÃ THỰC HIỆN LỄ NGHI TÔN GIÁO: Để mặc định bằng 0
+     * CHƯA THỰC HIỆN LỄ NGHI TÔN GIÁO: Để mặc định bằng 0
+     * LÀ DÂN TỘC THIỂU SỐ: Để mặc định bằng 0
      */
     protected function __getType7Data()
     {
