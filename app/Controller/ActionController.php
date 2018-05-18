@@ -181,7 +181,7 @@ class ActionController extends AppController
         $title_for_layout = mb_strtolower($this->title_for_layout);
         $fiedlAuto = implode(',', $this->fiedlAuto);
         $this->set(array(
-              'is_show_add' => 1,
+            'is_show_add' => 1,
             'fiedlAuto' => $fiedlAuto,
             'is_add' => !empty($this->request->data[$this->model]['is_add']) ? $this->request->data[$this->model]['is_add'] : 0,
             'title_for_layout' => "{$str} {$title_for_layout}",
