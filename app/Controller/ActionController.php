@@ -981,140 +981,14 @@ class ActionController extends AppController
         exit;
     }
 
-    /**
-     * TONG HOP DI TICH
-     * TỔNG HỢP CƠ SỞ TÔN GIÁO, TÍN NGƯỠNG ĐƯỢC XẾP HẠNG DI TÍCH TRÊN ĐỊA BÀN TỈNH
-     *
-     * I. CÔNG GIÁO
-     * 1. Bảng giaoxu
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * DI TÍCH LỊCH SỬ: cosothotu_ditichlichsu = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH VĂN HÓA: cosothotu_ditichvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH LS-VH: cosothotu_ditichlichsuvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KIẾN TRÚC NGHỆ THUẬT: cosothotu_ditichkientrucnghethuat = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     *
-     * II. PHẬT GIÁO
-     * 2. Bảng tuvienphatgiao
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * DI TÍCH LỊCH SỬ: cosothotu_ditichlichsu = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH VĂN HÓA: cosothotu_ditichvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH LS-VH: cosothotu_ditichlichsuvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KIẾN TRÚC NGHỆ THUẬT: cosothotu_ditichkientrucnghethuat = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     *
-     * III. TIN LÀNH
-     * 3. Bảng chihoitinlanh
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * DI TÍCH LỊCH SỬ: cosothotu_ditichlichsu = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH VĂN HÓA: cosothotu_ditichvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH LS-VH: cosothotu_ditichlichsuvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KIẾN TRÚC NGHỆ THUẬT: cosothotu_ditichkientrucnghethuat = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     *
-     * IV. CAO ĐÀI
-     * 4. Bảng hodaocaodai
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * tenhodao_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * DI TÍCH LỊCH SỬ: cosothotu_ditichlichsu = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH VĂN HÓA: cosothotu_ditichvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH LS-VH: cosothotu_ditichlichsuvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KIẾN TRÚC NGHỆ THUẬT: cosothotu_ditichkientrucnghethuat = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     *
-     * V. TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM
-     * 5. Bảng chihoitinhdocusiphatgiaovietnam
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * tenchihoi_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * DI TÍCH LỊCH SỬ: cosothotu_ditichlichsu = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH VĂN HÓA: cosothotu_ditichvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH LS-VH: cosothotu_ditichlichsuvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KIẾN TRÚC NGHỆ THUẬT: cosothotu_ditichkientrucnghethuat = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     *
-     * VI. PHẬT GIÁO HÒA HẢO
-     * DI TÍCH LỊCH SỬ: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0
-     * DI TÍCH VĂN HÓA: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0
-     * DI TÍCH LS-VH: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0
-     * DI TÍCH KIẾN TRÚC NGHỆ THUẬT: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0
-     * DI TÍCH KHẢO CỔ: Để mặc định cho TRUNG ƯƠNG và TỈNH bằng 0
-     *
-     * VII. HỒI GIÁO
-     * 7. Bảng cosohoigiaoislam
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * tenthanhduong_diachi_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * DI TÍCH LỊCH SỬ: cosothotu_ditichlichsu = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH VĂN HÓA: cosothotu_ditichvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH LS-VH: cosothotu_ditichlichsuvanhoa = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KIẾN TRÚC NGHỆ THUẬT: cosothotu_ditichkientrucnghethuat = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     * DI TÍCH KHẢO CỔ: cosothotu_ditichkhaoco = true
-     *      TRUNG ƯƠNG: cosothotu_captrunguong = true
-     *      TỈNH      : cosothotu_captinh = true
-     *
-     */
+	/**
+	 * TONG HOP DI TICH
+	 * TỔNG HỢP CƠ SỞ TÔN GIÁO, TÍN NGƯỠNG ĐƯỢC XẾP HẠNG DI TÍCH TRÊN ĐỊA BÀN TỈNH
+	 */
     protected function __getType4Data()
     {
+		$component = $this->Components->load('ExportThDt');
+        $data = $component->export();
     }
 
     /**
@@ -1173,19 +1047,6 @@ class ActionController extends AppController
 
     public function formatData()
     {
-        /**
-         * Exports/formatData/Giaoxu
-         *
-         * Cosotinnguong            OK
-         * Diemnhomtinlanh          OK
-         * Cosohoigiaoislam         OK
-         * Hodaocaodai              OK
-         * Chihoitinhdocusiphatgiaovietnam
-         * Chihoitinlanh            OK
-         * Dongtuconggiao           OK
-         * Giaoxu                   OK
-         * Tuvienphatgiao           OK
-         */
         $request = $this->request;
         $pass = $request->params['pass'];
         $modelName = $pass[0];
@@ -1239,13 +1100,7 @@ class ActionController extends AppController
                 'dsdmdk_dacap_gcn_quyensudungdat'
             );
         }
-        //Cosohoigiaoislam
-        //Hodaocaodai
-        //Chihoitinhdocusiphatgiaovietnam
-        //Chihoitinlanh
-        //Dongtuconggiao
-        //Giaoxu
-        //Tuvienphatgiao
+
         if (in_array(
             $modelName,
             array('Cosohoigiaoislam', 'Hodaocaodai', 'Chihoitinhdocusiphatgiaovietnam', 'Chihoitinlanh', 'Dongtuconggiao', 'Giaoxu', 'Tuvienphatgiao')
@@ -1342,15 +1197,10 @@ class ActionController extends AppController
             );
         }
 
-        $data = $this->$modelName->find('all', array(
+        return $this->$modelName->find('all', array(
             'fields' => $fields,
             'conditions' => $conditions
         ));
-
-        print '<pre>';
-        print_r($data);
-        print '</pre>';
-        exit;
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -1916,7 +1766,7 @@ class ActionController extends AppController
             $nguoi_hoat_dong_tin_nguong_chuyen_nghiep,
             $chuc_viec_hoi_giao
         );
-        //exit;
+
         $this->__createTemplate11($data);
     }
 
@@ -1943,13 +1793,7 @@ class ActionController extends AppController
                 break;
             }*/
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
+
         $i = 1;
         $r = 7;
         $gioitinh = unserialize(GIOI_TINH);
@@ -2189,13 +2033,7 @@ class ActionController extends AppController
                 break;
             }*/
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
+
         $i = 1;
         $r = 7;
         $gioitinh = unserialize(GIOI_TINH);
