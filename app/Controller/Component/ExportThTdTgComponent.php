@@ -131,7 +131,7 @@ class ExportThTdTgComponent extends Component
         $result = $this->__groupData($data, $column, $province_field);
 
         foreach ($result as &$item) {
-            $total = $item['tongsotindo_cosocaudao'] + $item['sotindo_dantoc_thieuso'];
+            $total = $item['soluonghoivien_tindo'] + $item['sotindo_dantoc_thieuso'];
             $item = [
                 'total' => $total,
                 'dathuchiennghiletongiao' => $item['soluonghoivien_tindo'],
