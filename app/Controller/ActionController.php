@@ -1060,8 +1060,37 @@ class ActionController extends AppController
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
      *          Mục đích sử dụng đất TG: 
+     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) + 
+     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
      *          Mục đích sử dụng khác: 
-     *      Chưa được cấp GCNQSD đất
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
+     *              (dattrongkhuonvien_nghiadia_dientich - dattrongkhuonvien_nghiadia_chuacap_dientich) + 
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_nghiadia_dientich_1 - datngoaikhuonvien_nghiadia_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_nghiadia_dientich_2 - datngoaikhuonvien_nghiadia_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_2 - datngoaikhuonvien_dsdmdk_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_nghiadia_dientich_3 - datngoaikhuonvien_nghiadia_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+     *      Chưa được cấp GCNQSD đất: 
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_nghiadia_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_nghiadia_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_nghiadia_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
+     *           
      * Kiến trúc: 
      * Di tích
      *      Xếp hạng di tích: 
@@ -1107,8 +1136,38 @@ class ActionController extends AppController
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
      *          Mục đích sử dụng đất TG: 
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
      *          Mục đích sử dụng khác: 
-     *      Chưa được cấp GCNQSD đất
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+     *      Chưa được cấp GCNQSD đất: 
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
      * Kiến trúc: 
      * Di tích
      *      Xếp hạng di tích: 
@@ -1153,8 +1212,37 @@ class ActionController extends AppController
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
      *          Mục đích sử dụng đất TG: 
+     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) + 
+     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
      *          Mục đích sử dụng khác: 
-     *      Chưa được cấp GCNQSD đất
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
+     *              (dattrongkhuonvien_nghiadia_dientich - dattrongkhuonvien_nghiadia_chuacap_dientich) + 
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_nghiadia_dientich_1 - datngoaikhuonvien_nghiadia_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_nghiadia_dientich_2 - datngoaikhuonvien_nghiadia_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_2 - datngoaikhuonvien_dsdmdk_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_nghiadia_dientich_3 - datngoaikhuonvien_nghiadia_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+     *      Chưa được cấp GCNQSD đất: 
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_nghiadia_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_nghiadia_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_nghiadia_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_nghiadia_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
+     *          
      * Kiến trúc: 
      * Di tích
      *      Xếp hạng di tích: 
@@ -1199,8 +1287,31 @@ class ActionController extends AppController
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
      *          Mục đích sử dụng đất TG: 
+     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) + 
+     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
      *          Mục đích sử dụng khác: 
-     *      Chưa được cấp GCNQSD đất
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+     *      Chưa được cấp GCNQSD đất: 
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
      * Kiến trúc: 
      * Di tích
      *      Xếp hạng di tích: 
@@ -1246,8 +1357,31 @@ class ActionController extends AppController
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
      *          Mục đích sử dụng đất TG: 
+     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) + 
+     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
      *          Mục đích sử dụng khác: 
-     *      Chưa được cấp GCNQSD đất
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+     *      Chưa được cấp GCNQSD đất: 
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
      * Kiến trúc: 
      * Di tích
      *      Xếp hạng di tích: 
@@ -1293,8 +1427,31 @@ class ActionController extends AppController
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
      *          Mục đích sử dụng đất TG: 
+     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) + 
+     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
      *          Mục đích sử dụng khác: 
-     *      Chưa được cấp GCNQSD đất
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+     *      Chưa được cấp GCNQSD đất: 
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
      * Kiến trúc: 
      * Di tích
      *      Xếp hạng di tích: 
@@ -1340,8 +1497,14 @@ class ActionController extends AppController
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
      *          Mục đích sử dụng đất TG: 
+     *              tongiao_dientich - tongiao_chuacap_dientich
      *          Mục đích sử dụng khác: 
-     *      Chưa được cấp GCNQSD đất
+     *              (nnlnntts_dientich - nnlnntts_chuacap_dientich) + 
+     *              (gdyt_dientich - gdyt_chuacap_dientich) + 
+     *              (dsdmdk_dientich - dsdmdk_chuacap_dientich)
+     *      Chưa được cấp GCNQSD đất: 
+     *          tongiao_chuacap_dientich + nnlnntts_chuacap_dientich + 
+     *          gdyt_chuacap_dientich + dsdmdk_chuacap_dientich
      * Kiến trúc: 
      * Di tích
      *      Xếp hạng di tích: 
