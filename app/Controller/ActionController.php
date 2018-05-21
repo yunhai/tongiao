@@ -1091,7 +1091,7 @@ class ActionController extends AppController
      *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_nghiadia_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
      *           
-     * Kiến trúc: 
+     * Kiến trúc: Để mặc định là rỗng
      * Di tích
      *      Xếp hạng di tích: 
      *          if cosothotu_ditichlichsu == true
@@ -1168,7 +1168,7 @@ class ActionController extends AppController
      *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
      *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
-     * Kiến trúc: 
+     * Kiến trúc: Để mặc định là rỗng
      * Di tích
      *      Xếp hạng di tích: 
      *          if cosothotu_ditichlichsu == true
@@ -1243,7 +1243,7 @@ class ActionController extends AppController
      *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_nghiadia_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
      *          
-     * Kiến trúc: 
+     * Kiến trúc: Để mặc định là rỗng
      * Di tích
      *      Xếp hạng di tích: 
      *          if cosothotu_ditichlichsu == true
@@ -1312,7 +1312,7 @@ class ActionController extends AppController
      *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
      *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
-     * Kiến trúc: 
+     * Kiến trúc: Để mặc định là rỗng
      * Di tích
      *      Xếp hạng di tích: 
      *          if cosothotu_ditichlichsu == true
@@ -1382,7 +1382,7 @@ class ActionController extends AppController
      *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
      *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
-     * Kiến trúc: 
+     * Kiến trúc: Để mặc định là rỗng
      * Di tích
      *      Xếp hạng di tích: 
      *          if cosothotu_ditichlichsu == true
@@ -1452,7 +1452,7 @@ class ActionController extends AppController
      *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
      *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
-     * Kiến trúc: 
+     * Kiến trúc: Để mặc định là rỗng
      * Di tích
      *      Xếp hạng di tích: 
      *          if cosothotu_ditichlichsu == true
@@ -1505,7 +1505,7 @@ class ActionController extends AppController
      *      Chưa được cấp GCNQSD đất: 
      *          tongiao_chuacap_dientich + nnlnntts_chuacap_dientich + 
      *          gdyt_chuacap_dientich + dsdmdk_chuacap_dientich
-     * Kiến trúc: 
+     * Kiến trúc: Để mặc định là rỗng
      * Di tích
      *      Xếp hạng di tích: 
      *          if cosothotu_ditichlichsu == true
