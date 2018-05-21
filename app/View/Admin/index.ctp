@@ -48,7 +48,7 @@ echo $this->Html->script(array('admin/dist/js/sb-admin-2.js'));
                         echo $this->Form->submit(
                                 "Đăng nhập", array(
                             'type' => 'submit',
-                            'class' => 'btn btn-lg btn-success btn-block',
+                            'class' => 'btn btn-lg btn-primary btn-block',
                             'div' => false,
                             'label' => false
                                 )

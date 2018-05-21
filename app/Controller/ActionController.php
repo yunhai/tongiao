@@ -1032,14 +1032,121 @@ class ActionController extends AppController
     }
 
     /**
-     * ds cstt
+     * DANH SÁCH CƠ SỞ THỜ TỰ TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
      */
     protected function __getType8Data()
     {
     }
 
     /**
-     * DSCS BAO TRO XA HOI
+     * DANH SÁCH CƠ SỞ HOẠT ĐỘNG XÃ HỘI CỦA CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
+     * 
+     * I. CÔNG GIÁO
+     * 1. Bảng giaoxu
+     * Tên cơ sở thờ tự: tengiaoxu
+       Địa chỉ: diachi_so, diachi_duong, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
+       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Công Giáo'
+     * Lấy dữ liệu từ cột cachoatdongbacai_dogiaoxu, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
+     *      hoatdongbatai_linhvuchoatdong______:Lĩnh vực hoạt động 1______,hoatdongbatai_sogiaychungnhan______:GCN1______,hoatdongbatai_ngaycap______:11/11/2011______,hoatdongbatai_coquancap______:CQCDN______;
+            hoatdongbatai_linhvuchoatdong______:Lĩnh vực hoạt động 2______,hoatdongbatai_dangkyhoatdong______:1______,hoatdongbatai_sogiaychungnhan______:GCN2______,hoatdongbatai_ngaycap______:12/12/2012______,hoatdongbatai_coquancap______:CQCDN
+            Sau khi parse xong, lấy dữ liệu excel như sau:
+                Thuộc lĩnh vực: hoatdongbatai_linhvuchoatdong
+                Cơ sở họp pháp/chưa hợp pháp: if hoatdongbatai_dangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
+                Cơ quan công nhận: hoatdongbatai_coquancap
+                Giấy chứng nhận: hoatdongbatai_sogiaychungnhan
+                Ghi chú: Bỏ trống
+     * 
+     * II. PHẬT GIÁO 
+     * 2. Bảng tuvienphatgiao
+     * Tên cơ sở thờ tự: tentuvien
+       Địa chỉ: diachi_so, diachi_duong, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
+       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Phật Giáo'
+       Lấy dữ liệu từ cột cachoatdongbacai, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
+            cachoatdong_linhvuchoatdong______:Lĩnh vực hoạt động 1______,cachoatdong_sogiaychungnhan______:GCN1______,cachoatdong_sogiaychungnhan_ngaycap______:22/12/2012______,cachoatdong_sogiaychungnhan_coquancap______:CQC
+            Sau khi parse xong, lấy dữ liệu excel như sau:
+                Thuộc lĩnh vực: cachoatdong_linhvuchoatdong
+                Cơ sở họp pháp/chưa hợp pháp: if cachoatdong_dangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
+                Cơ quan công nhận: cachoatdong_sogiaychungnhan_coquancap
+                Giấy chứng nhận: cachoatdong_sogiaychungnhan
+                Ghi chú: Bỏ trống
+            
+     * III. TIN LÀNH
+     * 3. Bảng chihoitinlanh
+     * Tên cơ sở thờ tự: tenchihoi
+       Địa chỉ: diachi_so, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
+       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Tin Lành'
+       Lấy dữ liệu từ cột cachoatdongbacai, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
+            cachoatdong_linhvuchoatdong______:Lĩnh vực hoạt động 1______,cachoatdong_sogiaychungnhan______:GCN1______,cachoatdong_sogiaychungnhan_ngaycap______:11/11/2011______,cachoatdong_sogiaychungnhan_coquancap______:CQC1______;
+            cachoatdong_linhvuchoatdong______:Lĩnh vực hoạt động 2______,cachoatdong_sogiaychungnhan______:GCN2______,cachoatdong_sogiaychungnhan_ngaycap______:11/11/2012______,cachoatdong_sogiaychungnhan_coquancap______:CQC2
+            Sau khi parse xong, lấy dữ liệu excel như sau:
+                Thuộc lĩnh vực: cachoatdong_linhvuchoatdong
+                Cơ sở họp pháp/chưa hợp pháp: if cachoatdong_dangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
+                Cơ quan công nhận: cachoatdong_sogiaychungnhan_coquancap
+                Giấy chứng nhận: cachoatdong_sogiaychungnhan
+                Ghi chú: Bỏ trống
+     * 
+     * IV. CAO ĐÀI
+     * 4. Bảng hodaocaodai
+     * Tên cơ sở thờ tự: tenhodao
+       Địa chỉ: tenhodao_diachi_so, tenhodao_diachi_duong, tenhodao_diachi_ap, tenhodao_diachi_xa, tenhodao_diachi_huyen, tenhodao_diachi_tinh
+       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Cao Đài'
+       Lấy dữ liệu từ cột cachoatdongbacai, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
+            cachoatdongbacai_linhvuchoatdong______:Lĩnh vực hoạt động 1______,cachoatdongbacai_capdangkyhoatdong______:1______,cachoatdongbacai_sogiaychungnhan______:GCN1______,cachoatdongbacai_ngaycap______:11/11/2011______,cachoatdongbacai_coquancap______:CQC1______;
+            cachoatdongbacai_linhvuchoatdong______:Lĩnh vực hoạt động______,cachoatdongbacai_sogiaychungnhan______:GCN2______,cachoatdongbacai_ngaycap______:11/11/2012______,cachoatdongbacai_coquancap______:CQC2
+                Sau khi parse xong, lấy dữ liệu excel như sau:
+                Thuộc lĩnh vực: cachoatdongbacai_linhvuchoatdong
+                Cơ sở họp pháp/chưa hợp pháp: if cachoatdongbacai_capdangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
+                Cơ quan công nhận: cachoatdongbacai_coquancap
+                Giấy chứng nhận: cachoatdongbacai_sogiaychungnhan
+                Ghi chú: Bỏ trống
+     *
+     * V. TĐCSPHVN
+     * 5. Bảng chihoitinhdocusiphatgiaovietnam
+     * Tên cơ sở thờ tự: tenchihoi
+       Địa chỉ: tenchihoi_diachi_so, tenchihoi_diachi_duong, tenchihoi_diachi_ap, tenchihoi_diachi_xa, tenchihoi_diachi_huyen, tenchihoi_diachi_tinh
+       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Tịnh độ cư sĩ phật hội'
+       Lấy dữ liệu từ cột cachoatdongbacai, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
+            cachoatdongbacai_linhvuchoatdong______:Lĩnh vực hoạt động 1______,cachoatdongbacai_sogiaychungnhan______:GCN1______,cachoatdongbacai_ngaycap______:11/11/2011______,cachoatdongbacai_coquancap______:CQC1
+                Sau khi parse xong, lấy dữ liệu excel như sau:
+                Thuộc lĩnh vực: cachoatdongbacai_linhvuchoatdong
+                Cơ sở họp pháp/chưa hợp pháp: if cachoatdongbacai_capdangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
+                Cơ quan công nhận: cachoatdongbacai_coquancap
+                Giấy chứng nhận: cachoatdongbacai_sogiaychungnhan
+                Ghi chú: Bỏ trống
+     *
+     * Đây là phải excel lấy danh sách, nên chỉ cần lấy dữ liệu trả về mảng như định dạng sau là được
+     *      $array = array (
+     *          0 => array (
+     *              tencosothotu => $Tên cơ sở thờ tự,
+     *              diachi => $Địa chỉ,
+     *              thuoctochuctongiaocoso => $Thuộc tổ chức tôn giáo cơ sở,
+     *              thuoclinhvuc => $Thuộc lĩnh vực,
+     *              cosohopphapchuahopphap => $Cơ sở họp pháp/chưa hợp pháp,
+     *              coquancongnhan => $Cơ quan công nhận,
+     *              giaychungnhan => $Giấy chứng nhận,
+     *              ghichu => $Ghi chú
+     *          ),
+     *          1 => array (
+     *              tencosothotu => $Tên cơ sở thờ tự,
+     *              diachi => $Địa chỉ,
+     *              thuoctochuctongiaocoso => $Thuộc tổ chức tôn giáo cơ sở,
+     *              thuoclinhvuc => $Thuộc lĩnh vực,
+     *              cosohopphapchuahopphap => $Cơ sở họp pháp/chưa hợp pháp,
+     *              coquancongnhan => $Cơ quan công nhận,
+     *              giaychungnhan => $Giấy chứng nhận,
+     *              ghichu => $Ghi chú
+     *          ),
+     *          n => array (
+     *              tencosothotu => $Tên cơ sở thờ tự,
+     *              diachi => $Địa chỉ,
+     *              thuoctochuctongiaocoso => $Thuộc tổ chức tôn giáo cơ sở,
+     *              thuoclinhvuc => $Thuộc lĩnh vực,
+     *              cosohopphapchuahopphap => $Cơ sở họp pháp/chưa hợp pháp,
+     *              coquancongnhan => $Cơ quan công nhận,
+     *              giaychungnhan => $Giấy chứng nhận,
+     *              ghichu => $Ghi chú
+     *          )
+     *      ) 
      */
     protected function __getType9Data()
     {
