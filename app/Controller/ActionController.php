@@ -989,6 +989,112 @@ class ActionController extends AppController
     {
 		$component = $this->Components->load('ExportThDt');
         $data = $component->export();
+        
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template4.xls';
+        //$filename = "template7";
+        $filename = "{$this->_type_text[4]}";
+        $this->Excel->load($source);
+        //$this->{"__createTemplate{$type}"}();
+        //$this->Excel->save($filename);
+
+        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 1;
+        for ($c = 'D'; $c <= 'Z'; $c++) {
+            $colIndexes[$index] = $c;
+            $index ++;
+            if ($c == $maxCols) {
+                break;
+            }
+        }
+        /*print "<pre>";
+        print_r($data);
+        print "</pre>";
+        print "<pre>";
+        print_r($colIndexes);
+        print "</pre>";
+        exit;*/
+        $r = 10;
+        foreach ($data as $result) {
+            foreach ($colIndexes as $k => $c) {
+                switch ($c) {
+                    case 'D':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total_tw']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_total_tw']);
+                        break;
+                    case 'E':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total_tinh']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_total_tinh']);
+                        break;
+                    case 'F'://CÔNG GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_tw']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Giaoxu_tw']);
+                        break;
+                    case 'G':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_tinh']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Giaoxu_tinh']);
+                        break;
+                    case 'H'://PHẬT GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_tw']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Tuvienphatgiao_tw']);
+                        break;
+                    case 'I':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_tinh']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Tuvienphatgiao_tinh']);
+                        break;
+                    case 'J'://TIN LÀNH
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chihoitinlanh_tw']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Chihoitinlanh_tw']);
+                        break;
+                    case 'K':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chihoitinlanh_tinh']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Chihoitinlanh_tinh']);
+                        break;
+                    case 'L'://CAO ĐÀI
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Hodaocaodai_tw']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Hodaocaodai_tw']);
+                        break;
+                    case 'M':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Hodaocaodai_tinh']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Hodaocaodai_tinh']);
+                        break;
+                    case 'N'://TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chihoitinhdocusiphatgiaovietnam_tw']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Chihoitinhdocusiphatgiaovietnam_tw']);
+                        break;
+                    case 'O':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chihoitinhdocusiphatgiaovietnam_tinh']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Chihoitinhdocusiphatgiaovietnam_tinh']);
+                        break;
+                    case 'P'://PHẬT GIÁO HÒA HẢO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Hoahao_tw']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Hoahao_tw']);
+                        break;
+                    case 'Q':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Hoahao_tinh']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Hoahao_tinh']);
+                        break;
+                    case 'R'://HỒI GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Cosohoigiaoislam_tw']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Cosohoigiaoislam_tw']);
+                        break;
+                    case 'S':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Cosohoigiaoislam_tinh']);
+                        $this->Excel->ActiveSheet->getCell("{$c}65")->setValue($result['total_Cosohoigiaoislam_tinh']);
+                        break;
+                    default:
+                        echo 'TONG HOP DI TICH';
+                }
+            }
+
+            $r++;
+        }
+
+        return $this->Excel->save($filename);
     }
 
     /**
@@ -2577,8 +2683,8 @@ class ActionController extends AppController
         $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam = $this->Chucviectinhdocusiphathoivietnam->getDataExcelDSCSTHAMGIACTXHCAPXA();
         $chuc_sac_cao_dai = $this->Chucsaccaodai->getDataExcelDSCSTHAMGIACTXHCAPXA();
         $chuc_sac_nha_tu_hanh_phat_giao = $this->Chucsacnhatuhanhphatgiao->getDataExcelDSCSTHAMGIACTXHCAPXA();
-        $huynh_truong_gia_dinh_phat_tu = $this->Huynhtruonggiadinhphattu->getDataExcelDSCSTHAMGIACTXHCAPXA();
-        $nguoi_hoat_dong_tin_nguong_chuyen_nghiep = $this->Nguoihoatdongtinnguongchuyennghiep->getDataExcelDSCSTHAMGIACTXHCAPXA();
+        //$huynh_truong_gia_dinh_phat_tu = $this->Huynhtruonggiadinhphattu->getDataExcelDSCSTHAMGIACTXHCAPXA();
+        //$nguoi_hoat_dong_tin_nguong_chuyen_nghiep = $this->Nguoihoatdongtinnguongchuyennghiep->getDataExcelDSCSTHAMGIACTXHCAPXA();
         $chuc_viec_hoi_giao = $this->Chucviechoigiao->getDataExcelDSCSTHAMGIACTXHCAPXA();
         $data = array_merge(
             $chuc_sac_tin_lanh,
@@ -2588,8 +2694,8 @@ class ActionController extends AppController
             $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam,
             $chuc_sac_cao_dai,
             $chuc_sac_nha_tu_hanh_phat_giao,
-            $huynh_truong_gia_dinh_phat_tu,
-            $nguoi_hoat_dong_tin_nguong_chuyen_nghiep,
+            //$huynh_truong_gia_dinh_phat_tu,
+            //$nguoi_hoat_dong_tin_nguong_chuyen_nghiep,
             $chuc_viec_hoi_giao
         );
 
@@ -4523,8 +4629,8 @@ class ActionController extends AppController
                     case 'M':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
-                    case 'M':
-                        //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['']);
+                    case 'N':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue('');
                         break;
                     default:
                         echo 'DS CS ĐT-BD';
