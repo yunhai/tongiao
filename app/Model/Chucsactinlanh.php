@@ -472,9 +472,9 @@ class Chucsactinlanh extends AppModel {
     public function getDataExcelDSTSCTG() {
         $chucsactinlanh = $this->find('all', array(
             'fields' => array('hovaten', 'gioitinh', 'thuoctochuc', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
-            'noisinh', 'gioitinh', 'phamsactrongtongiao', 
+            'noisinh', 'gioitinh', 'phamsactrongtongiao', 'phamsactrongtongiao_ntn_duocphong_truyendao',
             //HỌC VẤN
-            'trinhdohocvan_bangcap',
+            'trinhdohocvan_bangcap', 'trinhdothanhoc_bangcap',
             //CHỨC VỤ
             'phutrachdiemnhom', 'phutaquannhiem', 'quannhiem', 'tvbandaidiencaptinh', 'tvbanchaphanh',
             //CSTG ĐANG HOẠT ĐỘNG
@@ -522,15 +522,15 @@ class Chucsactinlanh extends AppModel {
                 'tengoitheotongiao' => '',
                 'thuoctochuctongiao' => $value['Chucsactinlanh']['thuoctochuc'],
                 'ngaythangnamsinh' => $value['Chucsactinlanh']['ngaythangnamsinh'],
-                'gioitinh' => $value['Chucsactinlanh']['gioitinh'],
+                'gioitinh' => ($value['Chucsactinlanh']['gioitinh'] == 1 ? 'Nữ' : 'Nam'),
                 'chungminhnhandan' => $value['Chucsactinlanh']['chungminhnhandan'],
                 'chucvu' => $value['Chucsactinlanh']['chucvu'],
-                'namduocphongchuc' => '',
+                'namduocphongchuc' => $value['Chucsactinlanh']['phamsactrongtongiao_ntn_duocphong_truyendao'],
                 'phamtrat' => '',
                 'namduocphongpham' => '',
                 'trinhdohocvan' => $value['Chucsactinlanh']['trinhdohocvan_bangcap'],
-                'trinhdochuyenmon' => '',
-                'trinhdotongiao' => '',
+                'trinhdochuyenmon' => $value['Chucsactinlanh']['trinhdohocvan_bangcap'],
+                'trinhdotongiao' => $value['Chucsactinlanh']['trinhdothanhoc_bangcap'],
                 'quequan' => $value['Chucsactinlanh']['noisinh'],
                 'choohiennay' => implode(",\n", $choohiennay)
             );

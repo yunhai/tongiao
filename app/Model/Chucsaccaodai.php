@@ -270,7 +270,7 @@ class Chucsaccaodai extends AppModel {
     public function getDataExcelDSCSTHAMGIACTXH($conditions, $fields) {
         $chucsaccaodai = $this->find('all', array(
             'fields' => array('hovaten', 'thanhdanh', 'thuoctochuc', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
-            'noisinh', 
+            'noisinh', 'phamsac_ntn_cauphong_lesanh',
             //HỌC VẤN
             'trinhdohocvan_bangcap',
             //CHỨC VỤ
@@ -335,7 +335,7 @@ class Chucsaccaodai extends AppModel {
                         'gioitinh' => '',
                         'chungminhnhandan' => $value['Chucsaccaodai']['chungminhnhandan'],
                         'chucvu' => $value['Chucsaccaodai']['chucvu'],
-                        'namduocphongchuc' => '',
+                        'namduocphongchuc' => $value['Chucsaccaodai']['phamsac_ntn_cauphong_lesanh'],
                         'phamtrat' => '',
                         'namduocphongpham' => '',
                         'trinhdohocvan' => $value['Chucsaccaodai']['trinhdohocvan_bangcap'],

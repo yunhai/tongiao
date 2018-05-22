@@ -5639,8 +5639,8 @@ class ActionController extends AppController
         $chuc_viec_tinh_do_cu_si_phat_hoi_viet_nam = $this->Chucviectinhdocusiphathoivietnam->getDataExcelDSTSCTG();
         $chuc_sac_cao_dai = $this->Chucsaccaodai->getDataExcelDSTSCTG();
         $chuc_sac_nha_tu_hanh_phat_giao = $this->Chucsacnhatuhanhphatgiao->getDataExcelDSTSCTG();
-        $huynh_truong_gia_dinh_phat_tu = $this->Huynhtruonggiadinhphattu->getDataExcelDSTSCTG();
-        $nguoi_hoat_dong_tin_nguong_chuyen_nghiep = $this->Nguoihoatdongtinnguongchuyennghiep->getDataExcelDSTSCTG();
+        //$huynh_truong_gia_dinh_phat_tu = $this->Huynhtruonggiadinhphattu->getDataExcelDSTSCTG();
+        //$nguoi_hoat_dong_tin_nguong_chuyen_nghiep = $this->Nguoihoatdongtinnguongchuyennghiep->getDataExcelDSTSCTG();
         $chuc_viec_hoi_giao = $this->Chucviechoigiao->getDataExcelDSTSCTG();
         $data = array_merge(
             $chuc_sac_tin_lanh,
@@ -5649,8 +5649,8 @@ class ActionController extends AppController
             $chuc_viec_phat_hoahao,
             $chuc_sac_cao_dai,
             $chuc_sac_nha_tu_hanh_phat_giao,
-            $huynh_truong_gia_dinh_phat_tu,
-            $nguoi_hoat_dong_tin_nguong_chuyen_nghiep,
+            //$huynh_truong_gia_dinh_phat_tu,
+            //$nguoi_hoat_dong_tin_nguong_chuyen_nghiep,
             $chuc_viec_hoi_giao
         );
         //exit;
@@ -5676,9 +5676,9 @@ class ActionController extends AppController
         for ($c = 'A'; $c <= 'Q'; $c++) {
             $colIndexes[$index] = $c;
             $index ++;
-            /*if ($c == $maxCols) {
+            if ($c == $maxCols) {
                 break;
-            }*/
+            }
         }
         /*print "<pre>";
         print_r($data);

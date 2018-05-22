@@ -369,7 +369,7 @@ class Chucviectinhdocusiphathoivietnam extends AppModel {
     public function getDataExcelDSTSCTG() {
         $chucviectinhdocusiphathoivietnam = $this->find('all', array(
             'fields' => array('hovaten', 'tengoitheotongiao', 'taicoso', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
-            'noisinh', 
+            'noisinh', 'phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien',
             //HỌC VẤN
             'trinhdohocvan_bangcap',
             //CHỨC VỤ
@@ -418,11 +418,11 @@ class Chucviectinhdocusiphathoivietnam extends AppModel {
                 'gioitinh' => '',
                 'chungminhnhandan' => $value['Chucviectinhdocusiphathoivietnam']['chungminhnhandan'],
                 'chucvu' => $value['Chucviectinhdocusiphathoivietnam']['chucvu'],
-                'namduocphongchuc' => '',
+                'namduocphongchuc' => $value['Chucviectinhdocusiphathoivietnam']['phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien'],
                 'phamtrat' => '',
                 'namduocphongpham' => '',
                 'trinhdohocvan' => $value['Chucviectinhdocusiphathoivietnam']['trinhdohocvan_bangcap'],
-                'trinhdochuyenmon' => '',
+                'trinhdochuyenmon' => $value['Chucviectinhdocusiphathoivietnam']['trinhdohocvan_bangcap'],
                 'trinhdotongiao' => '',
                 'quequan' => $value['Chucviectinhdocusiphathoivietnam']['noisinh'],
                 'choohiennay' => implode(",\n", $choohiennay)

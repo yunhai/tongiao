@@ -427,9 +427,9 @@ class Chucsacnhatuhanhcongiaodongtu extends AppModel {
      */
     public function getDataExcelDSTSCTG() {
         $chucsacnhatuhanhcongiaodongtu = $this->find('all', array(
-            'fields' => array('hovaten', 'gioitinh', 'tructhuocdongtu', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', //'phamsactrongtongiao', 
+            'fields' => array('hovaten', 'gioitinh', 'tructhuocdongtu', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 'phamsactongiao_namphong_phote', //'phamsactrongtongiao', 
             //HỌC VẤN
-            'trinhdohocvan_bangcap',
+            'trinhdohocvan_bangcap', 'trinhdothanhoc_bangcap',
             //CHỨC VỤ
             'hoatdongtongiao_betrendong', 'hoatdongtongiao_betrentinhdong', 'hoatdongtongiao_betrenmiendong', 
             'hoatdongtongiao_betrencongdoan', 'hoatdongtongiao_thanhvienbantuvantgmxl', 'hoatdongtongiao_thanhvienhoidonglinhmuc', 'hoatdongtongiao_linhhuongcuahoidoan',
@@ -484,15 +484,15 @@ class Chucsacnhatuhanhcongiaodongtu extends AppModel {
                 'tengoitheotongiao' => '',
                 'thuoctochuctongiao' => '',
                 'ngaythangnamsinh' => $value['Chucsacnhatuhanhcongiaodongtu']['ngaythangnamsinh'],
-                'gioitinh' => $value['Chucsacnhatuhanhcongiaodongtu']['gioitinh'],
+                'gioitinh' => ($value['Chucsacnhatuhanhcongiaodongtu']['gioitinh'] == 1 ? 'Nữ' : 'Nam'),
                 'chungminhnhandan' => $value['Chucsacnhatuhanhcongiaodongtu']['chungminhnhandan'],
                 'chucvu' => $value['Chucsacnhatuhanhcongiaodongtu']['chucvu'],
-                'namduocphongchuc' => '',
+                'namduocphongchuc' => $value['Chucsacnhatuhanhcongiaodongtu']['phamsactongiao_namphong_phote'],
                 'phamtrat' => '',
                 'namduocphongpham' => '',
                 'trinhdohocvan' => $value['Chucsacnhatuhanhcongiaodongtu']['trinhdohocvan_bangcap'],
-                'trinhdochuyenmon' => '',
-                'trinhdotongiao' => '',
+                'trinhdochuyenmon' => $value['Chucsacnhatuhanhcongiaodongtu']['trinhdohocvan_bangcap'],
+                'trinhdotongiao' => $value['Chucsacnhatuhanhcongiaodongtu']['trinhdothanhoc_bangcap'],
                 'quequan' => $value['Chucsacnhatuhanhcongiaodongtu']['noisinh'],
                 'choohiennay' => implode(",\n", $choohiennay)
             );

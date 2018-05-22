@@ -394,7 +394,7 @@ class Chucviechoigiao extends AppModel {
                 'phamtrat' => '',
                 'namduocphongpham' => '',
                 'trinhdohocvan' => $value['Chucviechoigiao']['trinhdohocvan_bangcap'],
-                'trinhdochuyenmon' => '',
+                'trinhdochuyenmon' => $value['Chucviechoigiao']['trinhdohocvan_bangcap'],
                 'trinhdotongiao' => '',
                 'quequan' => $value['Chucviechoigiao']['noisinh'],
                 'choohiennay' => implode(",\n", $choohiennay)
