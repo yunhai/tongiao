@@ -126,7 +126,7 @@ class Chucviectinhdocusiphathoivietnam extends AppModel {
             'fields' => array('hovaten', 'tengoitheotongiao', 'taicoso', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 
             //HỌC VẤN
-            'trinhdohocvan_bangcap',
+            'trinhdohocvan_bangcap', 
             //CHỨC VỤ
             'phobanytephuocthien', 'truongbanytephuocthien', 'thanhvienbantrisucaptinh', 'thanhvienbantrisucaptrunguong',
             //CSTG ĐANG HOẠT ĐỘNG
@@ -172,7 +172,7 @@ class Chucviectinhdocusiphathoivietnam extends AppModel {
                 'phamtrat' => '',
                 'namduocphongpham' => '',
                 'trinhdohocvan' => $value['Chucviectinhdocusiphathoivietnam']['trinhdohocvan_bangcap'],
-                'trinhdochuyenmon' => '',
+                'trinhdochuyenmon' => $value['Chucviectinhdocusiphathoivietnam']['trinhdohocvan_bangcap'],
                 'trinhdotongiao' => '',
                 'quequan' => $value['Chucviectinhdocusiphathoivietnam']['noisinh'],
                 'cosotongiaodanghoatdong' => implode(",\n", $cosotongiaodanghoatdong)

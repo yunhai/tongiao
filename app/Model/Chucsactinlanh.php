@@ -212,9 +212,9 @@ class Chucsactinlanh extends AppModel {
 	public function getDataExcelChucSacTinLanh24($conditions) {
         $chucsactinlanh = $this->find('all', array(
             'fields' => array('hovaten', 'gioitinh', 'thuoctochuc', 'ngaythangnamsinh', 'chungminhnhandan', 
-            'noisinh', 'gioitinh', 'phamsactrongtongiao', 
+            'noisinh', 'gioitinh', 'phamsactrongtongiao', 'phamsactrongtongiao_ntn_duocphong_truyendao',
             //HỌC VẤN
-            'trinhdohocvan_bangcap',
+            'trinhdohocvan_bangcap', 'trinhdothanhoc_bangcap',
             //CHỨC VỤ
             'phutrachdiemnhom', 'phutaquannhiem', 'quannhiem', 'tvbandaidiencaptinh', 'tvbanchaphanh',
             //CSTG ĐANG HOẠT ĐỘNG
@@ -259,20 +259,17 @@ class Chucsactinlanh extends AppModel {
                 'gioitinh' => $value['Chucsactinlanh']['gioitinh'],
                 'chungminhnhandan' => $value['Chucsactinlanh']['chungminhnhandan'],
                 'chucvu' => $value['Chucsactinlanh']['chucvu'],
-                'namduocphongchuc' => '',
+                'namduocphongchuc' => $value['Chucsactinlanh']['phamsactrongtongiao_ntn_duocphong_truyendao'],
                 'phamtrat' => '',
                 'namduocphongpham' => '',
                 'trinhdohocvan' => $value['Chucsactinlanh']['trinhdohocvan_bangcap'],
-                'trinhdochuyenmon' => '',
-                'trinhdotongiao' => '',
+                'trinhdochuyenmon' => $value['Chucsactinlanh']['trinhdohocvan_bangcap'],
+                'trinhdotongiao' => $value['Chucsactinlanh']['trinhdothanhoc_bangcap'],
                 'quequan' => $value['Chucsactinlanh']['noisinh'],
                 'cosotongiaodanghoatdong' => implode(",\n", $cosotongiaodanghoatdong)
             );
         }
-        /*print "<pre>";
-        print_r($chuc_sac_tin_lanh);
-        print "</pre>";
-        exit;*/
+        
         return $chuc_sac_tin_lanh;
 	}
 	
