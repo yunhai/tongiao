@@ -27,8 +27,8 @@ App::uses('Controller', 'Controller');
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
- * @package		app.Controller
- * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
+ * @package        app.Controller
+ * @link        http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class ActionController extends AppController
 {
@@ -981,15 +981,15 @@ class ActionController extends AppController
         exit;
     }
 
-	/**
-	 * TONG HOP DI TICH
-	 * TỔNG HỢP CƠ SỞ TÔN GIÁO, TÍN NGƯỠNG ĐƯỢC XẾP HẠNG DI TÍCH TRÊN ĐỊA BÀN TỈNH
-	 */
+    /**
+     * TONG HOP DI TICH
+     * TỔNG HỢP CƠ SỞ TÔN GIÁO, TÍN NGƯỠNG ĐƯỢC XẾP HẠNG DI TÍCH TRÊN ĐỊA BÀN TỈNH
+     */
     protected function __getType4Data()
     {
-		$component = $this->Components->load('ExportThDt');
+        $component = $this->Components->load('ExportThDt');
         $data = $component->export();
-        
+
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template4.xls';
@@ -1128,15 +1128,15 @@ class ActionController extends AppController
         return $data;
     }
 
-	/**
-	 * BẢNG TỔNG HỢP TÍN ĐỒ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
-	 */
+    /**
+     * BẢNG TỔNG HỢP TÍN ĐỒ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
+     */
     protected function __getType7Data()
     {
-		$component = $this->Components->load('ExportThTdTg');
-		$data = $component->export();
-		
-		$this->autoLayout = false;
+        $component = $this->Components->load('ExportThTdTg');
+        $data = $component->export();
+
+        $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template7.xls';
         //$filename = "template7";
@@ -1294,7 +1294,7 @@ class ActionController extends AppController
                         echo 'BANG TONG HOP TIN DO';
                 }
             }
-            
+
             $this->Excel->ActiveSheet->getCell('C23')->setValue($tong3 += $result['total_total']);
             $this->Excel->ActiveSheet->getCell('D23')->setValue($tong4 += $result['total_dathuchiennghiletongiao']);
             $this->Excel->ActiveSheet->getCell('E23')->setValue($tong5 += $result['total_chuathuchiennghiletongiao']);
@@ -1340,7 +1340,7 @@ class ActionController extends AppController
 
     /**
      * DANH SÁCH CƠ SỞ THỜ TỰ TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
-     * 
+     *
      * I. CÔNG GIÁO
      * 1. Bảng giaoxu
      * Tên cơ sở thờ tự: tengiaoxu
@@ -1366,41 +1366,41 @@ class ActionController extends AppController
      *      Số tiền lần cuối: ttttcs_tongkinhphi
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
-     *          Mục đích sử dụng đất TG: 
-     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) + 
-     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) + 
+     *          Mục đích sử dụng đất TG:
+     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) +
+     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) +
      *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
-     *          Mục đích sử dụng khác: 
-     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
-     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
-     *              (dattrongkhuonvien_nghiadia_dientich - dattrongkhuonvien_nghiadia_chuacap_dientich) + 
-     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_nghiadia_dientich_1 - datngoaikhuonvien_nghiadia_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_nghiadia_dientich_2 - datngoaikhuonvien_nghiadia_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_dsdmdk_dientich_2 - datngoaikhuonvien_dsdmdk_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
-     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
-     *              (datngoaikhuonvien_nghiadia_dientich_3 - datngoaikhuonvien_nghiadia_chuacap_dientich_3) + 
+     *          Mục đích sử dụng khác:
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+     *              (dattrongkhuonvien_nghiadia_dientich - dattrongkhuonvien_nghiadia_chuacap_dientich) +
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_nghiadia_dientich_1 - datngoaikhuonvien_nghiadia_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_nghiadia_dientich_2 - datngoaikhuonvien_nghiadia_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_dsdmdk_dientich_2 - datngoaikhuonvien_dsdmdk_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
+     *              (datngoaikhuonvien_nghiadia_dientich_3 - datngoaikhuonvien_nghiadia_chuacap_dientich_3) +
      *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
-     *      Chưa được cấp GCNQSD đất: 
-     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
-     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_nghiadia_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
+     *      Chưa được cấp GCNQSD đất:
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_nghiadia_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
      *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_nghiadia_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_nghiadia_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
-     *           
+     *
      * Kiến trúc: Để mặc định là rỗng
      * Di tích
-     *      Xếp hạng di tích: 
+     *      Xếp hạng di tích:
      *          if cosothotu_ditichlichsu == true
      *              Xếp hạng di tích: 'Di tích lịch sử'
      *          if cosothotu_ditichvanhoa == true
@@ -1417,7 +1417,7 @@ class ActionController extends AppController
      *          if cosothotu_captinh == true
      *              Cấp công nhận: 'Cấp tỉnh'
      *
-     * II. PHẬT GIÁO 
+     * II. PHẬT GIÁO
      * 2. Bảng tuvienphatgiao
      * Tên cơ sở thờ tự: tentuvien
      * Địa chỉ: diachi_so, diachi_duong, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
@@ -1442,42 +1442,42 @@ class ActionController extends AppController
      *      Số tiền lần cuối: ttttcs_tongkinhphi
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
-     *          Mục đích sử dụng đất TG: 
-     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
-     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
-     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
-     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *          Mục đích sử dụng đất TG:
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
      *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
-     *          Mục đích sử dụng khác: 
-     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
-     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
-     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
-     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *          Mục đích sử dụng khác:
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
      *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
-     *      Chưa được cấp GCNQSD đất: 
-     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
-     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *      Chưa được cấp GCNQSD đất:
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
      * Kiến trúc: Để mặc định là rỗng
      * Di tích
-     *      Xếp hạng di tích: 
+     *      Xếp hạng di tích:
      *          if cosothotu_ditichlichsu == true
      *              Xếp hạng di tích: 'Di tích lịch sử'
      *          if cosothotu_ditichvanhoa == true
@@ -1518,41 +1518,41 @@ class ActionController extends AppController
      *      Số tiền lần cuối: ttttcs_tongkinhphi
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
-     *          Mục đích sử dụng đất TG: 
-     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) + 
-     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) + 
+     *          Mục đích sử dụng đất TG:
+     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) +
+     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) +
      *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
-     *          Mục đích sử dụng khác: 
-     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
-     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
-     *              (dattrongkhuonvien_nghiadia_dientich - dattrongkhuonvien_nghiadia_chuacap_dientich) + 
-     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_nghiadia_dientich_1 - datngoaikhuonvien_nghiadia_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_nghiadia_dientich_2 - datngoaikhuonvien_nghiadia_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_dsdmdk_dientich_2 - datngoaikhuonvien_dsdmdk_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
-     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
-     *              (datngoaikhuonvien_nghiadia_dientich_3 - datngoaikhuonvien_nghiadia_chuacap_dientich_3) + 
+     *          Mục đích sử dụng khác:
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+     *              (dattrongkhuonvien_nghiadia_dientich - dattrongkhuonvien_nghiadia_chuacap_dientich) +
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_nghiadia_dientich_1 - datngoaikhuonvien_nghiadia_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_nghiadia_dientich_2 - datngoaikhuonvien_nghiadia_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_dsdmdk_dientich_2 - datngoaikhuonvien_dsdmdk_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
+     *              (datngoaikhuonvien_nghiadia_dientich_3 - datngoaikhuonvien_nghiadia_chuacap_dientich_3) +
      *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
-     *      Chưa được cấp GCNQSD đất: 
-     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
-     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_nghiadia_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_nghiadia_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_nghiadia_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *      Chưa được cấp GCNQSD đất:
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_nghiadia_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_nghiadia_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_nghiadia_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_nghiadia_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
-     *          
+     *
      * Kiến trúc: Để mặc định là rỗng
      * Di tích
-     *      Xếp hạng di tích: 
+     *      Xếp hạng di tích:
      *          if cosothotu_ditichlichsu == true
      *              Xếp hạng di tích: 'Di tích lịch sử'
      *          if cosothotu_ditichvanhoa == true
@@ -1593,35 +1593,35 @@ class ActionController extends AppController
      *      Số tiền lần cuối: ttttcs_tongkinhphi
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
-     *          Mục đích sử dụng đất TG: 
-     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) + 
-     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) + 
+     *          Mục đích sử dụng đất TG:
+     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) +
+     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) +
      *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
-     *          Mục đích sử dụng khác: 
-     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
-     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
-     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
-     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *          Mục đích sử dụng khác:
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
      *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
-     *      Chưa được cấp GCNQSD đất: 
-     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
-     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *      Chưa được cấp GCNQSD đất:
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
      * Kiến trúc: Để mặc định là rỗng
      * Di tích
-     *      Xếp hạng di tích: 
+     *      Xếp hạng di tích:
      *          if cosothotu_ditichlichsu == true
      *              Xếp hạng di tích: 'Di tích lịch sử'
      *          if cosothotu_ditichvanhoa == true
@@ -1663,35 +1663,35 @@ class ActionController extends AppController
      *      Số tiền lần cuối: ttttcs_tongkinhphi
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
-     *          Mục đích sử dụng đất TG: 
-     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) + 
-     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) + 
+     *          Mục đích sử dụng đất TG:
+     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) +
+     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) +
      *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
-     *          Mục đích sử dụng khác: 
-     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
-     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
-     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
-     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *          Mục đích sử dụng khác:
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
      *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
-     *      Chưa được cấp GCNQSD đất: 
-     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
-     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *      Chưa được cấp GCNQSD đất:
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
      * Kiến trúc: Để mặc định là rỗng
      * Di tích
-     *      Xếp hạng di tích: 
+     *      Xếp hạng di tích:
      *          if cosothotu_ditichlichsu == true
      *              Xếp hạng di tích: 'Di tích lịch sử'
      *          if cosothotu_ditichvanhoa == true
@@ -1733,35 +1733,35 @@ class ActionController extends AppController
      *      Số tiền lần cuối: ttttcs_tongkinhphi
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
-     *          Mục đích sử dụng đất TG: 
-     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) + 
-     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) + 
+     *          Mục đích sử dụng đất TG:
+     *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) +
+     *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) +
      *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
-     *          Mục đích sử dụng khác: 
-     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) + 
-     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) + 
-     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) + 
-     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) + 
-     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) + 
+     *          Mục đích sử dụng khác:
+     *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+     *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+     *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+     *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+     *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
      *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
-     *      Chưa được cấp GCNQSD đất: 
-     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich + 
-     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 + 
-     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 + 
-     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 + 
+     *      Chưa được cấp GCNQSD đất:
+     *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+     *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+     *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+     *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
      *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
      * Kiến trúc: Để mặc định là rỗng
      * Di tích
-     *      Xếp hạng di tích: 
+     *      Xếp hạng di tích:
      *          if cosothotu_ditichlichsu == true
      *              Xếp hạng di tích: 'Di tích lịch sử'
      *          if cosothotu_ditichvanhoa == true
@@ -1777,7 +1777,7 @@ class ActionController extends AppController
      *              Cấp công nhận: 'Cấp Trung ương'
      *          if cosothotu_captinh == true
      *              Cấp công nhận: 'Cấp tỉnh'
-     * 
+     *
      * VII. TÍN NGƯỠNG
      * 6. Bảng cosotinnguong
      * Tên cơ sở thờ tự: tencoso
@@ -1803,18 +1803,18 @@ class ActionController extends AppController
      *      Số tiền lần cuối: ttttcs_tongkinhphi
      * Diện tích (m2)
      *      Đã cấp GCNQSD đất
-     *          Mục đích sử dụng đất TG: 
+     *          Mục đích sử dụng đất TG:
      *              tongiao_dientich - tongiao_chuacap_dientich
-     *          Mục đích sử dụng khác: 
-     *              (nnlnntts_dientich - nnlnntts_chuacap_dientich) + 
-     *              (gdyt_dientich - gdyt_chuacap_dientich) + 
+     *          Mục đích sử dụng khác:
+     *              (nnlnntts_dientich - nnlnntts_chuacap_dientich) +
+     *              (gdyt_dientich - gdyt_chuacap_dientich) +
      *              (dsdmdk_dientich - dsdmdk_chuacap_dientich)
-     *      Chưa được cấp GCNQSD đất: 
-     *          tongiao_chuacap_dientich + nnlnntts_chuacap_dientich + 
+     *      Chưa được cấp GCNQSD đất:
+     *          tongiao_chuacap_dientich + nnlnntts_chuacap_dientich +
      *          gdyt_chuacap_dientich + dsdmdk_chuacap_dientich
      * Kiến trúc: Để mặc định là rỗng
      * Di tích
-     *      Xếp hạng di tích: 
+     *      Xếp hạng di tích:
      *          if cosothotu_ditichlichsu == true
      *              Xếp hạng di tích: 'Di tích lịch sử'
      *          if cosothotu_ditichvanhoa == true
@@ -1838,143 +1838,11 @@ class ActionController extends AppController
 
     /**
      * DANH SÁCH CƠ SỞ HOẠT ĐỘNG XÃ HỘI CỦA CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
-     * 
-     * I. CÔNG GIÁO
-     * 1. Bảng giaoxu
-     * Tên cơ sở thờ tự: tengiaoxu
-       Địa chỉ: diachi_so, diachi_duong, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
-       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Công Giáo'
-     * Lấy dữ liệu từ cột cachoatdongbacai_dogiaoxu, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
-     *      hoatdongbatai_linhvuchoatdong______:Lĩnh vực hoạt động 1______,hoatdongbatai_sogiaychungnhan______:GCN1______,hoatdongbatai_ngaycap______:11/11/2011______,hoatdongbatai_coquancap______:CQCDN______;
-            hoatdongbatai_linhvuchoatdong______:Lĩnh vực hoạt động 2______,hoatdongbatai_dangkyhoatdong______:1______,hoatdongbatai_sogiaychungnhan______:GCN2______,hoatdongbatai_ngaycap______:12/12/2012______,hoatdongbatai_coquancap______:CQCDN
-            Sau khi parse xong, lấy dữ liệu excel như sau:
-                Thuộc lĩnh vực: hoatdongbatai_linhvuchoatdong
-                Cơ sở họp pháp/chưa hợp pháp: if hoatdongbatai_dangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
-                Cơ quan công nhận: hoatdongbatai_coquancap
-                Giấy chứng nhận: hoatdongbatai_sogiaychungnhan
-                Ghi chú: Bỏ trống
-     * 
-     * II. PHẬT GIÁO 
-     * 2. Bảng tuvienphatgiao
-     * Tên cơ sở thờ tự: tentuvien
-       Địa chỉ: diachi_so, diachi_duong, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
-       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Phật Giáo'
-       Lấy dữ liệu từ cột cachoatdongbacai, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
-            cachoatdong_linhvuchoatdong______:Lĩnh vực hoạt động 1______,cachoatdong_sogiaychungnhan______:GCN1______,cachoatdong_sogiaychungnhan_ngaycap______:22/12/2012______,cachoatdong_sogiaychungnhan_coquancap______:CQC
-            Sau khi parse xong, lấy dữ liệu excel như sau:
-                Thuộc lĩnh vực: cachoatdong_linhvuchoatdong
-                Cơ sở họp pháp/chưa hợp pháp: if cachoatdong_dangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
-                Cơ quan công nhận: cachoatdong_sogiaychungnhan_coquancap
-                Giấy chứng nhận: cachoatdong_sogiaychungnhan
-                Ghi chú: Bỏ trống
-            
-     * III. TIN LÀNH
-     * 3. Bảng chihoitinlanh
-     * Tên cơ sở thờ tự: tenchihoi
-       Địa chỉ: diachi_so, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
-       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Tin Lành'
-       Lấy dữ liệu từ cột cachoatdongbacai, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
-            cachoatdong_linhvuchoatdong______:Lĩnh vực hoạt động 1______,cachoatdong_sogiaychungnhan______:GCN1______,cachoatdong_sogiaychungnhan_ngaycap______:11/11/2011______,cachoatdong_sogiaychungnhan_coquancap______:CQC1______;
-            cachoatdong_linhvuchoatdong______:Lĩnh vực hoạt động 2______,cachoatdong_sogiaychungnhan______:GCN2______,cachoatdong_sogiaychungnhan_ngaycap______:11/11/2012______,cachoatdong_sogiaychungnhan_coquancap______:CQC2
-            Sau khi parse xong, lấy dữ liệu excel như sau:
-                Thuộc lĩnh vực: cachoatdong_linhvuchoatdong
-                Cơ sở họp pháp/chưa hợp pháp: if cachoatdong_dangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
-                Cơ quan công nhận: cachoatdong_sogiaychungnhan_coquancap
-                Giấy chứng nhận: cachoatdong_sogiaychungnhan
-                Ghi chú: Bỏ trống
-     * 
-     * IV. CAO ĐÀI
-     * 4. Bảng hodaocaodai
-     * Tên cơ sở thờ tự: tenhodao
-       Địa chỉ: tenhodao_diachi_so, tenhodao_diachi_duong, tenhodao_diachi_ap, tenhodao_diachi_xa, tenhodao_diachi_huyen, tenhodao_diachi_tinh
-       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Cao Đài'
-       Lấy dữ liệu từ cột cachoatdongbacai, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
-            cachoatdongbacai_linhvuchoatdong______:Lĩnh vực hoạt động 1______,cachoatdongbacai_capdangkyhoatdong______:1______,cachoatdongbacai_sogiaychungnhan______:GCN1______,cachoatdongbacai_ngaycap______:11/11/2011______,cachoatdongbacai_coquancap______:CQC1______;
-            cachoatdongbacai_linhvuchoatdong______:Lĩnh vực hoạt động______,cachoatdongbacai_sogiaychungnhan______:GCN2______,cachoatdongbacai_ngaycap______:11/11/2012______,cachoatdongbacai_coquancap______:CQC2
-                Sau khi parse xong, lấy dữ liệu excel như sau:
-                Thuộc lĩnh vực: cachoatdongbacai_linhvuchoatdong
-                Cơ sở họp pháp/chưa hợp pháp: if cachoatdongbacai_capdangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
-                Cơ quan công nhận: cachoatdongbacai_coquancap
-                Giấy chứng nhận: cachoatdongbacai_sogiaychungnhan
-                Ghi chú: Bỏ trống
-     *
-     * V. TĐCSPHVN
-     * 5. Bảng chihoitinhdocusiphatgiaovietnam
-     * Tên cơ sở thờ tự: tenchihoi
-       Địa chỉ: tenchihoi_diachi_so, tenchihoi_diachi_duong, tenchihoi_diachi_ap, tenchihoi_diachi_xa, tenchihoi_diachi_huyen, tenchihoi_diachi_tinh
-       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Tịnh độ cư sĩ phật hội'
-       Lấy dữ liệu từ cột cachoatdongbacai, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
-            cachoatdongbacai_linhvuchoatdong______:Lĩnh vực hoạt động 1______,cachoatdongbacai_sogiaychungnhan______:GCN1______,cachoatdongbacai_ngaycap______:11/11/2011______,cachoatdongbacai_coquancap______:CQC1
-                Sau khi parse xong, lấy dữ liệu excel như sau:
-                Thuộc lĩnh vực: cachoatdongbacai_linhvuchoatdong
-                Cơ sở họp pháp/chưa hợp pháp: if cachoatdongbacai_capdangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
-                Cơ quan công nhận: cachoatdongbacai_coquancap
-                Giấy chứng nhận: cachoatdongbacai_sogiaychungnhan
-                Ghi chú: Bỏ trống
-     * VI. HỒI GIÁO
-     * 6. Bảng cosohoigiaoislam
-     * Tên cơ sở thờ tự: tenthanhduong
-       Địa chỉ: tenthanhduong_diachi_so, tenthanhduong_diachi_duong, tenthanhduong_diachi_ap, tenthanhduong_diachi_xa, tenthanhduong_diachi_huyen, tenthanhduong_diachi_tinh
-       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Hồi Giáo'
-       Lấy dữ liệu từ cột cachoatdongbacai, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
-            cachoatdongbacai_linhvuchoatdong______:Lĩnh vực hoạt động 1______,cachoatdongbacai_sogiaychungnhan______:GCN1______,cachoatdongbacai_ngaycap______:11/11/2011______,cachoatdongbacai_coquancap______:CQC1
-                Sau khi parse xong, lấy dữ liệu excel như sau:
-                Thuộc lĩnh vực: cachoatdongbacai_linhvuchoatdong
-                Cơ sở họp pháp/chưa hợp pháp: if cachoatdongbacai_capdangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
-                Cơ quan công nhận: cachoatdongbacai_coquancap
-                Giấy chứng nhận: cachoatdongbacai_sogiaychungnhan
-                Ghi chú: Bỏ trống
-     *
-     * VII. TÍN NGƯỠNG
-     * 7. Bảng cosotinnguong
-     * Tên cơ sở thờ tự: tencoso
-       Địa chỉ: diachi_so, diachi_duong, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
-       Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Tín Ngưỡng'
-       Lấy dữ liệu từ cột cachoatdongbacai, dữ liệu lưu như dưới có thể n+ (n = 1, 2, 3, ...)
-            cachoatdong_linhvuchoatdong______:Lĩnh vực hoạt động 1______,cachoatdong_sogiaychungnhan______:GCN 1______,cachoatdong_sogiaychungnhan_ngaycap______:11//11/2011______,cachoatdong_sogiaychungnhan_coquancap______:CQC1
-                Sau khi parse xong, lấy dữ liệu excel như sau:
-                Thuộc lĩnh vực: cachoatdong_linhvuchoatdong
-                Cơ sở họp pháp/chưa hợp pháp: if cachoatdongbacai_capdangkyhoatdong = true Cơ sở họp pháp else chưa hợp pháp
-                Cơ quan công nhận: cachoatdong_sogiaychungnhan_coquancap
-                Giấy chứng nhận: cachoatdong_sogiaychungnhan
-                Ghi chú: Bỏ trống
-                
-     * Đây là phải excel lấy danh sách, nên chỉ cần lấy dữ liệu trả về mảng như định dạng sau là được
-     *      $array = array (
-     *          0 => array (
-     *              tencosothotu => $Tên cơ sở thờ tự,
-     *              diachi => $Địa chỉ,
-     *              thuoctochuctongiaocoso => $Thuộc tổ chức tôn giáo cơ sở,
-     *              thuoclinhvuc => $Thuộc lĩnh vực,
-     *              cosohopphapchuahopphap => $Cơ sở họp pháp/chưa hợp pháp,
-     *              coquancongnhan => $Cơ quan công nhận,
-     *              giaychungnhan => $Giấy chứng nhận,
-     *              ghichu => $Ghi chú
-     *          ),
-     *          1 => array (
-     *              tencosothotu => $Tên cơ sở thờ tự,
-     *              diachi => $Địa chỉ,
-     *              thuoctochuctongiaocoso => $Thuộc tổ chức tôn giáo cơ sở,
-     *              thuoclinhvuc => $Thuộc lĩnh vực,
-     *              cosohopphapchuahopphap => $Cơ sở họp pháp/chưa hợp pháp,
-     *              coquancongnhan => $Cơ quan công nhận,
-     *              giaychungnhan => $Giấy chứng nhận,
-     *              ghichu => $Ghi chú
-     *          ),
-     *          n => array (
-     *              tencosothotu => $Tên cơ sở thờ tự,
-     *              diachi => $Địa chỉ,
-     *              thuoctochuctongiaocoso => $Thuộc tổ chức tôn giáo cơ sở,
-     *              thuoclinhvuc => $Thuộc lĩnh vực,
-     *              cosohopphapchuahopphap => $Cơ sở họp pháp/chưa hợp pháp,
-     *              coquancongnhan => $Cơ quan công nhận,
-     *              giaychungnhan => $Giấy chứng nhận,
-     *              ghichu => $Ghi chú
-     *          )
-     *      ) 
      */
     protected function __getType9Data()
     {
+        $component = $this->Components->load('ExportThCsHdXh');
+        $data = $component->export();
     }
 
     public function formatData()
@@ -6024,16 +5892,16 @@ class ActionController extends AppController
     }
 
 
-	 /**
-	  * TONG HOP CHUC VIEC
-	  * BẢNG TỔNG HỢP CHỨC VIỆC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
-	  **/
+     /**
+      * TONG HOP CHUC VIEC
+      * BẢNG TỔNG HỢP CHỨC VIỆC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
+      **/
     protected function __getType26Data()
     {
-		$component = $this->Components->load('ExportThCvTinh');
-		$data = $component->export();
+        $component = $this->Components->load('ExportThCvTinh');
+        $data = $component->export();
 
-		$this->autoLayout = false;
+        $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template26.xls';
         //$filename = "template26";
@@ -6210,10 +6078,10 @@ class ActionController extends AppController
      */
     protected function __getType27Data()
     {
-		$component = $this->Components->load('ExportThTs');
-		$data = $component->export();
+        $component = $this->Components->load('ExportThTs');
+        $data = $component->export();
 
-		$this->autoLayout = false;
+        $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template27.xls';
         //$filename = "template27";
@@ -6320,21 +6188,21 @@ class ActionController extends AppController
             $r++;
         }
         $this->Excel->ActiveSheet->getCell('C20')->setValue($tong);
-		$this->Excel->ActiveSheet->getCell('D20')->setValue($tong_conggiao_tong);
-		$this->Excel->ActiveSheet->getCell('E20')->setValue($tong_conggiao_nam_tusidong);
-		$this->Excel->ActiveSheet->getCell('F20')->setValue($tong_conggiao_nam_chungsinh);
-		$this->Excel->ActiveSheet->getCell('G20')->setValue($tong_conggiao_nu_tusidong);
+        $this->Excel->ActiveSheet->getCell('D20')->setValue($tong_conggiao_tong);
+        $this->Excel->ActiveSheet->getCell('E20')->setValue($tong_conggiao_nam_tusidong);
+        $this->Excel->ActiveSheet->getCell('F20')->setValue($tong_conggiao_nam_chungsinh);
+        $this->Excel->ActiveSheet->getCell('G20')->setValue($tong_conggiao_nu_tusidong);
 
-		$this->Excel->ActiveSheet->getCell('H20')->setValue($tong_phatgiao_tong);
-		$this->Excel->ActiveSheet->getCell('I20')->setValue($tong_phatgiao_nam_daiduc);
-		$this->Excel->ActiveSheet->getCell('J20')->setValue($tong_phatgiao_nam_sadi);
-		$this->Excel->ActiveSheet->getCell('K20')->setValue($tong_phatgiao_nam_tinhnhondieu);
-		$this->Excel->ActiveSheet->getCell('L20')->setValue($tong_phatgiao_nu_tykheoni);
-		$this->Excel->ActiveSheet->getCell('M20')->setValue($tong_phatgiao_nu_thucxoamana);
-		$this->Excel->ActiveSheet->getCell('N20')->setValue($tong_phatgiao_nu_sadini);
-		$this->Excel->ActiveSheet->getCell('O20')->setValue($tong_phatgiao_nu_tinhnhon_dieu);
+        $this->Excel->ActiveSheet->getCell('H20')->setValue($tong_phatgiao_tong);
+        $this->Excel->ActiveSheet->getCell('I20')->setValue($tong_phatgiao_nam_daiduc);
+        $this->Excel->ActiveSheet->getCell('J20')->setValue($tong_phatgiao_nam_sadi);
+        $this->Excel->ActiveSheet->getCell('K20')->setValue($tong_phatgiao_nam_tinhnhondieu);
+        $this->Excel->ActiveSheet->getCell('L20')->setValue($tong_phatgiao_nu_tykheoni);
+        $this->Excel->ActiveSheet->getCell('M20')->setValue($tong_phatgiao_nu_thucxoamana);
+        $this->Excel->ActiveSheet->getCell('N20')->setValue($tong_phatgiao_nu_sadini);
+        $this->Excel->ActiveSheet->getCell('O20')->setValue($tong_phatgiao_nu_tinhnhon_dieu);
 
-		return $this->Excel->save($filename);
+        return $this->Excel->save($filename);
     }
 
     /**
@@ -6343,10 +6211,10 @@ class ActionController extends AppController
      */
     protected function __getType28Data()
     {
-		$component = $this->Components->load('ExportThCskcv');
-		$data = $component->export();
+        $component = $this->Components->load('ExportThCskcv');
+        $data = $component->export();
 
-		$this->autoLayout = false;
+        $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template28.xls';
         //$filename = "template28";
@@ -6540,50 +6408,50 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->getCell('H20')->setValue($tong_conggiao_linhmuc);
 
         $this->Excel->ActiveSheet->getCell('I20')->setValue($tong_phatgiao_tong);
-		$this->Excel->ActiveSheet->getCell('J20')->setValue($tong_phatgiao_hoathuong);
-		$this->Excel->ActiveSheet->getCell('K20')->setValue($tong_phatgiao_thuongtoa);
-		$this->Excel->ActiveSheet->getCell('L20')->setValue($tong_phatgiao_nitruong);
-		$this->Excel->ActiveSheet->getCell('M20')->setValue($tong_phatgiao_nisu);
+        $this->Excel->ActiveSheet->getCell('J20')->setValue($tong_phatgiao_hoathuong);
+        $this->Excel->ActiveSheet->getCell('K20')->setValue($tong_phatgiao_thuongtoa);
+        $this->Excel->ActiveSheet->getCell('L20')->setValue($tong_phatgiao_nitruong);
+        $this->Excel->ActiveSheet->getCell('M20')->setValue($tong_phatgiao_nisu);
 
-		$this->Excel->ActiveSheet->getCell('N20')->setValue($tong_tinlanh_tong);
-		$this->Excel->ActiveSheet->getCell('O20')->setValue($tong_tinlanh_mucsu);
-		$this->Excel->ActiveSheet->getCell('P20')->setValue($tong_tinlanh_mucsunhiemchuc);
-		$this->Excel->ActiveSheet->getCell('Q20')->setValue($tong_tinlanh_truyendao);
+        $this->Excel->ActiveSheet->getCell('N20')->setValue($tong_tinlanh_tong);
+        $this->Excel->ActiveSheet->getCell('O20')->setValue($tong_tinlanh_mucsu);
+        $this->Excel->ActiveSheet->getCell('P20')->setValue($tong_tinlanh_mucsunhiemchuc);
+        $this->Excel->ActiveSheet->getCell('Q20')->setValue($tong_tinlanh_truyendao);
 
-		$this->Excel->ActiveSheet->getCell('R20')->setValue($tong_caodai_tong);
-		$this->Excel->ActiveSheet->getCell('S20')->setValue($tong_caodai_phoisu);
-		$this->Excel->ActiveSheet->getCell('T20')->setValue($tong_caodai_giaosu);
-		$this->Excel->ActiveSheet->getCell('U20')->setValue($tong_caodai_giaohuu);
-		$this->Excel->ActiveSheet->getCell('V20')->setValue($tong_caodai_lesanh);
+        $this->Excel->ActiveSheet->getCell('R20')->setValue($tong_caodai_tong);
+        $this->Excel->ActiveSheet->getCell('S20')->setValue($tong_caodai_phoisu);
+        $this->Excel->ActiveSheet->getCell('T20')->setValue($tong_caodai_giaosu);
+        $this->Excel->ActiveSheet->getCell('U20')->setValue($tong_caodai_giaohuu);
+        $this->Excel->ActiveSheet->getCell('V20')->setValue($tong_caodai_lesanh);
 
-		$this->Excel->ActiveSheet->getCell('W20')->setValue($tong_hoigiao_tong);
-		$this->Excel->ActiveSheet->getCell('X20')->setValue($tong_hoigiao_hakim);
-		$this->Excel->ActiveSheet->getCell('Y20')->setValue($tong_hoigiao_naep);
-		$this->Excel->ActiveSheet->getCell('Z20')->setValue($tong_hoigiao_ahly);
-		$this->Excel->ActiveSheet->getCell('AA20')->setValue($tong_hoigiao_khotip);
-		$this->Excel->ActiveSheet->getCell('AB20')->setValue($tong_hoigiao_imam);
-		$this->Excel->ActiveSheet->getCell('AC20')->setValue($tong_hoigiao_tuon);
+        $this->Excel->ActiveSheet->getCell('W20')->setValue($tong_hoigiao_tong);
+        $this->Excel->ActiveSheet->getCell('X20')->setValue($tong_hoigiao_hakim);
+        $this->Excel->ActiveSheet->getCell('Y20')->setValue($tong_hoigiao_naep);
+        $this->Excel->ActiveSheet->getCell('Z20')->setValue($tong_hoigiao_ahly);
+        $this->Excel->ActiveSheet->getCell('AA20')->setValue($tong_hoigiao_khotip);
+        $this->Excel->ActiveSheet->getCell('AB20')->setValue($tong_hoigiao_imam);
+        $this->Excel->ActiveSheet->getCell('AC20')->setValue($tong_hoigiao_tuon);
 
-		$this->Excel->ActiveSheet->getCell('AD20')->setValue($tong_tdcsphvn_tong);
-		$this->Excel->ActiveSheet->getCell('AE20')->setValue($tong_tdcsphvn_giangsu);
-		$this->Excel->ActiveSheet->getCell('AF20')->setValue($tong_tdcsphvn_thuyettrinhvien);
-		$this->Excel->ActiveSheet->getCell('AG20')->setValue($tong_tdcsphvn_ysi);
-		$this->Excel->ActiveSheet->getCell('AH20')->setValue($tong_tdcsphvn_ysinh);
+        $this->Excel->ActiveSheet->getCell('AD20')->setValue($tong_tdcsphvn_tong);
+        $this->Excel->ActiveSheet->getCell('AE20')->setValue($tong_tdcsphvn_giangsu);
+        $this->Excel->ActiveSheet->getCell('AF20')->setValue($tong_tdcsphvn_thuyettrinhvien);
+        $this->Excel->ActiveSheet->getCell('AG20')->setValue($tong_tdcsphvn_ysi);
+        $this->Excel->ActiveSheet->getCell('AH20')->setValue($tong_tdcsphvn_ysinh);
 
-		return $this->Excel->save($filename);
+        return $this->Excel->save($filename);
     }
 
-	/**
-	 * TONG HOP CHUC SAC CO CHUC VU
-	 * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (CÓ CHỨC VỤ)
-	 *
-	 */
+    /**
+     * TONG HOP CHUC SAC CO CHUC VU
+     * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (CÓ CHỨC VỤ)
+     *
+     */
     protected function __getType29Data()
     {
-		$component = $this->Components->load('ExportThCscv');
-		$data = $component->export();
+        $component = $this->Components->load('ExportThCscv');
+        $data = $component->export();
 
-		$this->autoLayout = false;
+        $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template29.xls';
         //$filename = "template29";
@@ -6816,10 +6684,10 @@ class ActionController extends AppController
      */
     protected function __getType30Data()
     {
-		$component = $this->Components->load('ExportThDtCs');
-		$data = $component->export();
+        $component = $this->Components->load('ExportThDtCs');
+        $data = $component->export();
 
-		$this->autoLayout = false;
+        $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template30.xls';
         //$filename = "template30";
