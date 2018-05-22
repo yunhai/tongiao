@@ -350,7 +350,7 @@ class Chucviectinhdocusiphathoivietnam extends AppModel {
                         'phamtrat' => '',
                         'namduocphongpham' => '',
                         'trinhdohocvan' => $value['Chucviectinhdocusiphathoivietnam']['trinhdohocvan_bangcap'],
-                        'trinhdochuyenmon' => '',
+                        'trinhdochuyenmon' => $value['Chucviectinhdocusiphathoivietnam']['trinhdohocvan_bangcap'],
                         'trinhdotongiao' => '',
                         'thamgiatochucchinhtrixahoi' => $text,
                         'quequan' => $value['Chucviectinhdocusiphathoivietnam']['noisinh'],

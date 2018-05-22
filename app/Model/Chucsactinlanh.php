@@ -226,7 +226,7 @@ class Chucsactinlanh extends AppModel {
         $chuc_sac_tin_lanh = $cosotongiaodanghoatdong = array();
         foreach ($chucsactinlanh as $key => $value) {
             $value['Chucsactinlanh']['chucvu'] = '';
-            if ($value['Chucsactinlanh']['phamsactrongtongiao'] == true) {
+            if ($value['Chucsactinlanh']['phutrachdiemnhom'] == true) {
                 $value['Chucsactinlanh']['chucvu'] = 'Phụ trách Điểm nhóm';
             }
             if ($value['Chucsactinlanh']['phutaquannhiem'] == true) {
@@ -377,7 +377,7 @@ class Chucsactinlanh extends AppModel {
             'fields' => array('hovaten', 'gioitinh', 'thuoctochuc', 'dantoc', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 'gioitinh', 'phamsactrongtongiao', 
             //HỌC VẤN
-            'trinhdohocvan_bangcap',
+            'trinhdohocvan_bangcap', 'trinhdothanhoc_bangcap',
             //CHỨC VỤ
             'phutrachdiemnhom', 'phutaquannhiem', 'quannhiem', 'tvbandaidiencaptinh', 'tvbanchaphanh',
             //CSTG ĐANG HOẠT ĐỘNG
@@ -453,8 +453,8 @@ class Chucsactinlanh extends AppModel {
                         'phamtrat' => '',
                         'namduocphongpham' => '',
                         'trinhdohocvan' => $value['Chucsactinlanh']['trinhdohocvan_bangcap'],
-                        'trinhdochuyenmon' => '',
-                        'trinhdotongiao' => '',
+                        'trinhdochuyenmon' => $value['Chucsactinlanh']['trinhdohocvan_bangcap'],
+                        'trinhdotongiao' => $value['Chucsactinlanh']['trinhdothanhoc_bangcap'],
                         'thamgiatochucchinhtrixahoi' => $text,
                         'quequan' => $value['Chucsactinlanh']['noisinh'],
                         'cosotongiaodanghoatdong' => implode(",\n", $cosotongiaodanghoatdong)

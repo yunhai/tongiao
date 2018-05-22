@@ -312,7 +312,7 @@ class Chucsacnhatuhanhphatgiao extends AppModel {
             'fields' => array('hovaten', 'phapdanh', 'taicoso', 'ngaythangnamsinh', 'chungminhnhandan', 
             'noisinh', 
             //HỌC VẤN
-            'trinhdohocvan_bangcap',
+            'trinhdohocvan_bangcap', 'trinhdochuyenmonvetongiao_bangcap',
             //CHỨC VỤ
             'hoatdongtongiao_chucvuhiennay_trutri', 'hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaphuyen', 'hoatdongtongiao_chucvuhiennay_chungminhbantrisucaphuyen', 
             'hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaptinh', 'cm_bantrisu_captinh', 'tv_hoidong_trisu', 'tv_hoidong_chungminh', 
@@ -396,8 +396,8 @@ class Chucsacnhatuhanhphatgiao extends AppModel {
                         'phamtrat' => '',
                         'namduocphongpham' => '',
                         'trinhdohocvan' => $value['Chucsacnhatuhanhphatgiao']['trinhdohocvan_bangcap'],
-                        'trinhdochuyenmon' => '',
-                        'trinhdotongiao' => '',
+                        'trinhdochuyenmon' => $value['Chucsacnhatuhanhphatgiao']['trinhdohocvan_bangcap'],
+                        'trinhdotongiao' => $value['Chucsacnhatuhanhphatgiao']['trinhdohocvan_bangcap'],
                         'thamgiatochucchinhtrixahoi' => $text,
                         'quequan' => $value['Chucsacnhatuhanhphatgiao']['noisinh'],
                         'cosotongiaodanghoatdong' => implode(",\n", $cosotongiaodanghoatdong)

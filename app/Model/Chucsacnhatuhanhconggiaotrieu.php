@@ -352,7 +352,7 @@ class Chucsacnhatuhanhconggiaotrieu extends AppModel {
         $chucsacnhatuhanhconggiaotrieu = $this->find('all', array(
             'fields' => array('id', 'hovaten', 'ngaythangnamsinh', 'dantoc', 'chungminhnhandan', 'phamsactrongtongiao', 
             //HỌC VẤN
-            'trinhdohocvan_bangcap',
+            'trinhdohocvan_bangcap', 'trinhdochuyenmonvetongiao_bangcap',
             //CHỨC VỤ
             'hoatdongtongiao_chucvuhiennay_chanhxu', 'hoatdongtongiao_chucvuhiennay_phoxu', 'hoatdongtongiao_chucvuhiennay_phutaxu', 
             'hoatdongtongiao_chucvuhiennay_quannhiemxu', 'hoatdongtongiao_chucvuhiennay_hattruong', 'hoatdongtongiao_chucvuhiennay_truongbanchuyenmon', 
@@ -444,8 +444,8 @@ class Chucsacnhatuhanhconggiaotrieu extends AppModel {
                         'phamtrat' => '',
                         'namduocphongpham' => '',
                         'trinhdohocvan' => $value['Chucsacnhatuhanhconggiaotrieu']['trinhdohocvan_bangcap'],
-                        'trinhdochuyenmon' => '',
-                        'trinhdotongiao' => '',
+                        'trinhdochuyenmon' => $value['Chucsacnhatuhanhconggiaotrieu']['trinhdohocvan_bangcap'],
+                        'trinhdotongiao' => $value['Chucsacnhatuhanhconggiaotrieu']['trinhdochuyenmonvetongiao_bangcap'],
                         'thamgiatochucchinhtrixahoi' => $text,
                         'quequan' => $value['Chucsacnhatuhanhconggiaotrieu']['noisinh'],
                         'cosotongiaodanghoatdong' => implode(",\n", $cosotongiaodanghoatdong)
