@@ -32,6 +32,7 @@ class ExportThTdTgComponent extends Component
                 $partial = $tmp[$provice_code];
 
                 foreach ($partial as $field => $value) {
+                    $export[$provice_code]['total_' . $field] += $value;
                     $export[$provice_code][$model . '_' . $field] = $value;
                 }
             }
@@ -299,6 +300,10 @@ class ExportThTdTgComponent extends Component
             $export[$code] = [
                 'index' => $index++,
                 'province' => $name,
+                'total_total' => 0,
+                'total_dathuchiennghiletongiao' => 0,
+                'total_chuathuchiennghiletongiao' => 0,
+                'total_dantocthieuso' => 0
             ];
         }
 
