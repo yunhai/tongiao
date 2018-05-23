@@ -1119,13 +1119,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 10;
         foreach ($data as $result) {
             foreach ($colIndexes as $k => $c) {
@@ -1408,13 +1401,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 12;
         $tinhs = array(
             'bien-hoa',
@@ -1618,7 +1604,6 @@ class ActionController extends AppController
                 break;
             }
         }
-
         $r = 8;
         foreach ($data as $result) {
             foreach ($colIndexes as $k => $c) {
@@ -1731,13 +1716,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 8;
         foreach ($data as $result) {
             foreach ($colIndexes as $k => $c) {
@@ -2105,7 +2083,6 @@ class ActionController extends AppController
                 break;
             }*/
         }
-
         $i = 1;
         $r = 7;
         $gioitinh = unserialize(GIOI_TINH);
@@ -2345,7 +2322,6 @@ class ActionController extends AppController
                 break;
             }*/
         }
-
         $i = 1;
         $r = 7;
         $gioitinh = unserialize(GIOI_TINH);
@@ -2585,13 +2561,6 @@ class ActionController extends AppController
                 break;
             }*/
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $i = 1;
         $r = 7;
         $gioitinh = unserialize(GIOI_TINH);
@@ -2697,13 +2666,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 6;
         $tinhs = array(
             'bien-hoa',
@@ -3107,13 +3069,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 6;
         $tinhs = array(
             'bien-hoa',
@@ -3517,13 +3472,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 6;
         $tinhs = array(
             'bien-hoa',
@@ -3956,13 +3904,6 @@ class ActionController extends AppController
                 break;
             }*/
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $i = 1;
         $r = 7;
         $gioitinh = unserialize(GIOI_TINH);
@@ -4234,13 +4175,6 @@ class ActionController extends AppController
                 break;
             }*/
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $i = 1;
         $r = 7;
         $gioitinh = unserialize(GIOI_TINH);
@@ -4495,12 +4429,6 @@ class ActionController extends AppController
      */
     protected function __getType21Data()
     {
-        /*$component = $this->Components->load('ExportThTdTgCs');
-        $data = $component->export();
-        print_r('<pre>final');
-        print_r($data);
-        print_r('</pre>');
-        exit;*/
         $component = $this->Components->load('ExportThTdTgCs');
         $data = $component->export();
 
@@ -4525,13 +4453,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 8;
         $tinhs = array(
             'bien-hoa',
@@ -4824,13 +4745,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 10;
         $tinhs = array(
             'bien-hoa',
@@ -5283,13 +5197,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $i = 1;
         $r = 7;
         $gioitinh = unserialize(GIOI_TINH);
@@ -5418,13 +5325,6 @@ class ActionController extends AppController
                 break;
             }*/
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $i = 1;
         $r = 7;
         $gioitinh = unserialize(GIOI_TINH);
@@ -5550,13 +5450,6 @@ class ActionController extends AppController
                 break;
             }*/
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $i = 1;
         $r = 7;
         $gioitinh = unserialize(GIOI_TINH);
@@ -5657,13 +5550,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 9;
         $tinhs = array(
             'bien-hoa',
@@ -5837,13 +5723,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 10;
         $tinhs = array(
             'bien-hoa',
@@ -5970,13 +5849,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 9;
         $tinhs = array(
             'bien-hoa',
@@ -6207,13 +6079,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 9;
         $tinhs = array(
             'bien-hoa',
@@ -6443,13 +6308,6 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
         $r = 9;
         $tinhs = array(
             'bien-hoa',
