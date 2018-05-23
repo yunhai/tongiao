@@ -1549,38 +1549,38 @@ class ActionController extends AppController
             $this->Excel->ActiveSheet->getCell('D23')->setValue($tong4 += $result['total_dathuchiennghiletongiao']);
             $this->Excel->ActiveSheet->getCell('E23')->setValue($tong5 += $result['total_chuathuchiennghiletongiao']);
             $this->Excel->ActiveSheet->getCell('F23')->setValue($tong6 += $result['total_dantocthieuso']);
-            $this->Excel->ActiveSheet->getCell('G17')->setValue($tong7 += $result['Giaoxu_total']);
-            $this->Excel->ActiveSheet->getCell('H17')->setValue($tong8 += $result['Giaoxu_dathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('I17')->setValue($tong9 += $result['Giaoxu_chuathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('J17')->setValue($tong10 += $result['Giaoxu_dantocthieuso']);
-            $this->Excel->ActiveSheet->getCell('K17')->setValue($tong11 += $result['Tuvienphatgiao_total']);
-            $this->Excel->ActiveSheet->getCell('L17')->setValue($tong12 += $result['Tuvienphatgiao_dathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('M17')->setValue($tong13 += $result['Tuvienphatgiao_chuathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('N17')->setValue($tong14 += $result['Tuvienphatgiao_dantocthieuso']);
-            $this->Excel->ActiveSheet->getCell('O17')->setValue($tong15 += $result['Chihoitinlanh_total']);
-            $this->Excel->ActiveSheet->getCell('P17')->setValue($tong16 += $result['Chihoitinlanh_dathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('Q17')->setValue($tong17 += $result['Chihoitinlanh_chuathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('R17')->setValue($tong18 += $result['Chihoitinlanh_dantocthieuso']);
-            $this->Excel->ActiveSheet->getCell('S17')->setValue($tong19 += $result['Hodaocaodai_total']);
-            $this->Excel->ActiveSheet->getCell('T17')->setValue($tong20 += $result['Hodaocaodai_dathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('U17')->setValue($tong21 += $result['Hodaocaodai_chuathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('V17')->setValue($tong22 += $result['Hodaocaodai_dantocthieuso']);
-            $this->Excel->ActiveSheet->getCell('W17')->setValue($tong23 += $result['Chihoitinhdocusiphatgiaovietnam_total']);
-            $this->Excel->ActiveSheet->getCell('X17')->setValue($tong24 += $result['Chihoitinhdocusiphatgiaovietnam_dathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('Y17')->setValue($tong25 += $result['Chihoitinhdocusiphatgiaovietnam_chuathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('Z17')->setValue($tong26 += $result['Chihoitinhdocusiphatgiaovietnam_dantocthieuso']);
-            $this->Excel->ActiveSheet->getCell('AA17')->setValue($tong27 += $result['Hoahao_total']);
-            $this->Excel->ActiveSheet->getCell('AB17')->setValue($tong28 += $result['Hoahao_dathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('AC17')->setValue($tong29 += $result['Hoahao_chuathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('AD17')->setValue($tong30 += $result['Hoahao_dantocthieuso']);
-            $this->Excel->ActiveSheet->getCell('AE17')->setValue($tong31 += $result['Cosohoigiaoislam_total']);
-            $this->Excel->ActiveSheet->getCell('AF17')->setValue($tong32 += $result['Cosohoigiaoislam_dathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('AG17')->setValue($tong33 += $result['Cosohoigiaoislam_chuathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('AH17')->setValue($tong34 += $result['Cosohoigiaoislam_dantocthieuso']);
-            $this->Excel->ActiveSheet->getCell('AI17')->setValue($tong35 += $result['Tongiaokhac_total']);
-            $this->Excel->ActiveSheet->getCell('AJ17')->setValue($tong36 += $result['Tongiaokhac_dathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('AK17')->setValue($tong37 += $result['Tongiaokhac_chuathuchiennghiletongiao']);
-            $this->Excel->ActiveSheet->getCell('AL17')->setValue($tong38 += $result['Tongiaokhac_dantocthieuso']);
+            $this->Excel->ActiveSheet->getCell('G23')->setValue($tong7 += $result['Giaoxu_total']);
+            $this->Excel->ActiveSheet->getCell('H23')->setValue($tong8 += $result['Giaoxu_dathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('I23')->setValue($tong9 += $result['Giaoxu_chuathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('J23')->setValue($tong10 += $result['Giaoxu_dantocthieuso']);
+            $this->Excel->ActiveSheet->getCell('K23')->setValue($tong11 += $result['Tuvienphatgiao_total']);
+            $this->Excel->ActiveSheet->getCell('L23')->setValue($tong12 += $result['Tuvienphatgiao_dathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('M23')->setValue($tong13 += $result['Tuvienphatgiao_chuathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('N23')->setValue($tong14 += $result['Tuvienphatgiao_dantocthieuso']);
+            $this->Excel->ActiveSheet->getCell('O23')->setValue($tong15 += $result['Chihoitinlanh_total']);
+            $this->Excel->ActiveSheet->getCell('P23')->setValue($tong16 += $result['Chihoitinlanh_dathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('Q23')->setValue($tong17 += $result['Chihoitinlanh_chuathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('R23')->setValue($tong18 += $result['Chihoitinlanh_dantocthieuso']);
+            $this->Excel->ActiveSheet->getCell('S23')->setValue($tong19 += $result['Hodaocaodai_total']);
+            $this->Excel->ActiveSheet->getCell('T23')->setValue($tong20 += $result['Hodaocaodai_dathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('U23')->setValue($tong21 += $result['Hodaocaodai_chuathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('V23')->setValue($tong22 += $result['Hodaocaodai_dantocthieuso']);
+            $this->Excel->ActiveSheet->getCell('W23')->setValue($tong23 += $result['Chihoitinhdocusiphatgiaovietnam_total']);
+            $this->Excel->ActiveSheet->getCell('X23')->setValue($tong24 += $result['Chihoitinhdocusiphatgiaovietnam_dathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('Y23')->setValue($tong25 += $result['Chihoitinhdocusiphatgiaovietnam_chuathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('Z23')->setValue($tong26 += $result['Chihoitinhdocusiphatgiaovietnam_dantocthieuso']);
+            $this->Excel->ActiveSheet->getCell('AA23')->setValue($tong27 += $result['Hoahao_total']);
+            $this->Excel->ActiveSheet->getCell('AB23')->setValue($tong28 += $result['Hoahao_dathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('AC23')->setValue($tong29 += $result['Hoahao_chuathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('AD23')->setValue($tong30 += $result['Hoahao_dantocthieuso']);
+            $this->Excel->ActiveSheet->getCell('AE23')->setValue($tong31 += $result['Cosohoigiaoislam_total']);
+            $this->Excel->ActiveSheet->getCell('AF23')->setValue($tong32 += $result['Cosohoigiaoislam_dathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('AG23')->setValue($tong33 += $result['Cosohoigiaoislam_chuathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('AH23')->setValue($tong34 += $result['Cosohoigiaoislam_dantocthieuso']);
+            $this->Excel->ActiveSheet->getCell('AI23')->setValue($tong35 += $result['Tongiaokhac_total']);
+            $this->Excel->ActiveSheet->getCell('AJ23')->setValue($tong36 += $result['Tongiaokhac_dathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('AK23')->setValue($tong37 += $result['Tongiaokhac_chuathuchiennghiletongiao']);
+            $this->Excel->ActiveSheet->getCell('AL23')->setValue($tong38 += $result['Tongiaokhac_dantocthieuso']);
 
             $r++;
         }
@@ -4739,6 +4739,175 @@ class ActionController extends AppController
     {
         $component = $this->Components->load('ExportThCsPc');
         $data = $component->export();
+        
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template20.xls';
+        //$filename = "template20";
+        $filename = "{$this->_type_text[20]}";
+        $this->Excel->load($source);
+        //$this->{"__createTemplate{$type}"}();
+        //$this->Excel->save($filename);
+
+        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 1;
+        for ($c = 'C'; $c <= 'Z'; $c++) {
+            $colIndexes[$index] = $c;
+            $index ++;
+            if ($c == $maxCols) {
+                break;
+            }
+        }
+        $r = 8;
+        $tinhs = array(
+            'bien-hoa',
+            'long-khanh',
+            'xuan-loc',
+            'cam-my',
+            'tan-phu',
+            'dinh-quan',
+            'thong-nhat',
+            'trang-bom',
+            'vinh-cuu',
+            'nhon-trach',
+            'long-thanh',
+        );
+        foreach ($tinhs as $tinh) {
+            $result = $data[$tinh];
+            foreach ($colIndexes as $k => $c) {
+                switch ($c) {
+                    case 'C'://TỔNG
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['total']);
+                        break;
+                    case 'D'://CÔNG GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsacnhatuhanhconggiaotrieu_total']);
+                        break;
+                    case 'E':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsacnhatuhanhconggiaotrieu_phamsactrongtongiao_namphong_giammuc']);
+                        break;
+                    case 'F':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsacnhatuhanhconggiaotrieu_phamsactrongtongiao_namphong_linhmuc']);
+                        break;
+                    case 'G'://PHẬT GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsacnhatuhanhphatgiao_total']);
+                        break;
+                    case 'H':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsacnhatuhanhphatgiao_hoathuong']);
+                        break;
+                    case 'I':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsacnhatuhanhphatgiao_thuongtoa']);
+                        break;
+                    case 'J':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsacnhatuhanhphatgiao_nitruong']);
+                        break;
+                    case 'K':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsacnhatuhanhphatgiao_nisu']);
+                        break;
+                    case 'L'://TIN LÀNH
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsactinlanh_total']);
+                        break;
+                    case 'M':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_mucsu']);
+                        break;
+                    case 'N':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_mucsunc']);
+                        break;
+                    case 'O':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_truyendao']);
+                        break;
+                    case 'P'://CAO ĐÀI
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsaccaodai_total']);
+                        break;
+                    case 'Q':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsaccaodai_phamsac_ntn_cauthang_phosu']);
+                        break;
+                    case 'R':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsaccaodai_phamsac_ntn_cauthang_giaosu']);
+                        break;
+                    case 'S':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsaccaodai_phamsac_ntn_cauthang_giaohuu']);
+                        break;
+                    case 'T':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucsaccaodai_phamsac_ntn_cauphong_lesanh']);
+                        break;
+                    case 'U'://HỒI GIÁO
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviechoigiao_total']);
+                        break;
+                    case 'V':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_hakim']);
+                        break;
+                    case 'W':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_naep']);
+                        break;
+                    case 'X':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviechoigiao_ahly']);
+                        break;
+                    case 'Y':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_khotip']);
+                        break;
+                    case 'Z':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_imam']);
+                        break;
+                    case 'AA'://TĐCSPHVN
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_tuon']);
+                        break;
+                    case 'AB':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviectinhdocusiphathoivietnam_total']);
+                        break;
+                    case 'AC':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviectinhdocusiphathoivietnam_phamsactrongtongiao_ntn_bonhiem_phogiangsu']);
+                        break;
+                    case 'AD':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviectinhdocusiphathoivietnam_phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien']);
+                        break;
+                    case 'AE':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviectinhdocusiphathoivietnam_ysi']);
+                        break;
+                    case 'AF':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Chucviectinhdocusiphathoivietnam_ysinh']);
+                        break;
+                    default:
+                        echo 'TH CHUC SAC PCPP';
+                }
+            }
+            $this->Excel->ActiveSheet->getCell('C19')->setValue($tong3 += $result['total']);
+            $this->Excel->ActiveSheet->getCell('D19')->setValue($tong4 += $result['Chucsacnhatuhanhconggiaotrieu_total']);
+            $this->Excel->ActiveSheet->getCell('E19')->setValue($tong5 += $result['Chucsacnhatuhanhconggiaotrieu_phamsactrongtongiao_namphong_giammuc']);
+            $this->Excel->ActiveSheet->getCell('F19')->setValue($tong6 += $result['Chucsacnhatuhanhconggiaotrieu_phamsactrongtongiao_namphong_linhmuc']);
+            $this->Excel->ActiveSheet->getCell('G19')->setValue($tong7 += $result['Chucsacnhatuhanhphatgiao_total']);
+            $this->Excel->ActiveSheet->getCell('H19')->setValue($tong8 += $result['Chucsacnhatuhanhphatgiao_hoathuong']);
+            $this->Excel->ActiveSheet->getCell('I19')->setValue($tong9 += $result['Chucsacnhatuhanhphatgiao_thuongtoa']);
+            $this->Excel->ActiveSheet->getCell('J19')->setValue($tong10 += $result['Chucsacnhatuhanhphatgiao_nitruong']);
+            $this->Excel->ActiveSheet->getCell('K19')->setValue($tong11 += $result['Chucsacnhatuhanhphatgiao_nisu']);
+            $this->Excel->ActiveSheet->getCell('L19')->setValue($tong12 += $result['Chucsactinlanh_total']);
+            $this->Excel->ActiveSheet->getCell('M19')->setValue($tong13 += $result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_mucsu']);
+            $this->Excel->ActiveSheet->getCell('N19')->setValue($tong14 += $result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_mucsunc']);
+            $this->Excel->ActiveSheet->getCell('O19')->setValue($tong15 += $result['Chucsactinlanh_phamsactrongtongiao_ntn_duocphong_truyendao']);
+            $this->Excel->ActiveSheet->getCell('P19')->setValue($tong16 += $result['Chucsaccaodai_total']);
+            $this->Excel->ActiveSheet->getCell('Q19')->setValue($tong17 += $result['Chucsaccaodai_phamsac_ntn_cauthang_phosu']);
+            $this->Excel->ActiveSheet->getCell('R19')->setValue($tong18 += $result['Chucsaccaodai_phamsac_ntn_cauthang_giaosu']);
+            $this->Excel->ActiveSheet->getCell('S19')->setValue($tong19 += $result['Chucsaccaodai_phamsac_ntn_cauthang_giaohuu']);
+            $this->Excel->ActiveSheet->getCell('T19')->setValue($tong20 += $result['Chucsaccaodai_phamsac_ntn_cauphong_lesanh']);
+            $this->Excel->ActiveSheet->getCell('U19')->setValue($tong21 += $result['Chucviechoigiao_total']);
+            $this->Excel->ActiveSheet->getCell('V19')->setValue($tong22 += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_hakim']);
+            $this->Excel->ActiveSheet->getCell('W19')->setValue($tong23 += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_naep']);
+            $this->Excel->ActiveSheet->getCell('X19')->setValue($tong24 += $result['Chucviechoigiao_ahly']);
+            $this->Excel->ActiveSheet->getCell('Y19')->setValue($tong25 += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_khotip']);
+            $this->Excel->ActiveSheet->getCell('Z19')->setValue($tong26 += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_imam']);
+            $this->Excel->ActiveSheet->getCell('AA19')->setValue($tong27 += $result['Chucviechoigiao_phamsactrongtongiao_ntn_bonhiem_tuon']);
+            $this->Excel->ActiveSheet->getCell('AB19')->setValue($tong28 += $result['Chucviectinhdocusiphathoivietnam_total']);
+            $this->Excel->ActiveSheet->getCell('AC19')->setValue($tong29 += $result['Chucviectinhdocusiphathoivietnam_phamsactrongtongiao_ntn_bonhiem_phogiangsu']);
+            $this->Excel->ActiveSheet->getCell('AD19')->setValue($tong30 += $result['Chucviectinhdocusiphathoivietnam_phamsactrongtongiao_ntn_bonhiem_thuyettrinhvien']);
+            $this->Excel->ActiveSheet->getCell('AE19')->setValue($tong31 += $result['Chucviectinhdocusiphathoivietnam_ysi']);
+            $this->Excel->ActiveSheet->getCell('AF19')->setValue($tong32 += $result['Chucviectinhdocusiphathoivietnam_ysinh']);
+
+            $r++;
+        }
+
+        return $this->Excel->save($filename);
     }
 
     /**
