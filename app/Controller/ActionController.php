@@ -1618,13 +1618,12 @@ class ActionController extends AppController
             }
         }
 
-        $i = 1;
         $r = 8;
         foreach ($data as $result) {
             foreach ($colIndexes as $k => $c) {
                 switch ($c) {
                     case 'A':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($i);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['stt']);
                         break;
                     case 'B':
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['tencosothotu']);
@@ -1696,7 +1695,6 @@ class ActionController extends AppController
                         echo 'ds cstt';
                 }
             }
-            $i++;
             $r++;
         }
 
