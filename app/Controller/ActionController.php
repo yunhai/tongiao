@@ -2301,7 +2301,7 @@ class ActionController extends AppController
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
                     case 'S':
-                        //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['']);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue('');
                         break;
                     default:
                         echo 'DS CS THAM GIA CT-XH CAP XA';
@@ -2541,7 +2541,7 @@ class ActionController extends AppController
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
                     case 'S':
-                        //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['']);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue('');
                         break;
                     default:
                         echo 'DS CS THAM GIA CT-XH CAP HUYEN';
@@ -2787,7 +2787,7 @@ class ActionController extends AppController
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
                     case 'S':
-                        //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['']);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue('');
                         break;
                     default:
                         echo 'DS CS THAM GIA CT-XH CAP HUYEN';
