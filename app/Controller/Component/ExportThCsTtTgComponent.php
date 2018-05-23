@@ -10,13 +10,13 @@ class ExportThCsTtTgComponent extends Component
     public function export()
     {
         $groups = [
-            // 'Giaoxu',
+            'Giaoxu',
             'Tuvienphatgiao',
-            // 'Chihoitinlanh',
-            // 'Hodaocaodai',
-            // 'Chihoitinhdocusiphatgiaovietnam',
-            // 'Cosohoigiaoislam',
-            // 'Cosotinnguong',
+            'Chihoitinlanh',
+            'Hodaocaodai',
+            'Chihoitinhdocusiphatgiaovietnam',
+            'Cosohoigiaoislam',
+            'Cosotinnguong',
         ];
 
         $export = [];
@@ -28,210 +28,17 @@ class ExportThCsTtTgComponent extends Component
         return $export;
     }
 
-    private function __formatStt($target, $model)
+    private function __getStt($target, $model)
     {
         $index = $this->index;
         $this->index += 1;
         return $index;
     }
 
-    public function __getGiaoxu($model) {
-        $fields = [
-            'id',
-            'tengiaoxu',
-            'diachi_so',
-            'diachi_duong',
-            'diachi_ap',
-            'diachi_xa',
-            'diachi_huyen',
-            'diachi_tinh',
-            'giaodan_sonhankhau',
-            'giaodandantocthieuso_sonhankhau',
-            'sotusi',
-            'sothanhvientrongthuongvu',
-            'namthanhlap',
-            'namxaydungnhatho',
-            'ttttcs_solan',
-            'ttttcs_tongkinhphi',
-            'dattrongkhuonvien_tongiao_dientich',
-            'dattrongkhuonvien_tongiao_chuacap_dientich',
-            'datngoaikhuonvien_tongiao_dientich_1',
-            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
-            'datngoaikhuonvien_tongiao_dientich_2',
-            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
-            'datngoaikhuonvien_tongiao_dientich_3',
-            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
-            'dattrongkhuonvien_nnlnntts_dientich',
-            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
-            'dattrongkhuonvien_gdyt_dientich',
-            'dattrongkhuonvien_gdyt_chuacap_dientich',
-            // 'dattrongkhuonvien_nghiadia_dientich',
-            // 'dattrongkhuonvien_nghiadia_chuacap_dientich',
-            'dattrongkhuonvien_dsdmdk_dientich',
-            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
-            'datngoaikhuonvien_nnlnntts_dientich_1',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
-            'datngoaikhuonvien_gdyt_dientich_1',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
-            'datngoaikhuonvien_nghiadia_dientich_1',
-            'datngoaikhuonvien_nghiadia_chuacap_dientich_1',
-            'datngoaikhuonvien_dsdmdk_dientich_1',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
-            'datngoaikhuonvien_nnlnntts_dientich_2',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
-            'datngoaikhuonvien_gdyt_dientich_2',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
-            'datngoaikhuonvien_nghiadia_dientich_2',
-            'datngoaikhuonvien_nghiadia_chuacap_dientich_2',
-            'datngoaikhuonvien_dsdmdk_dientich_2',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
-            'datngoaikhuonvien_nnlnntts_dientich_3',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
-            'datngoaikhuonvien_gdyt_dientich_3',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
-            'datngoaikhuonvien_nghiadia_dientich_3',
-            'datngoaikhuonvien_nghiadia_chuacap_dientich_3',
-            'datngoaikhuonvien_dsdmdk_dientich_3',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
-            'dattrongkhuonvien_tongiao_chuacap_dientich',
-            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
-            'dattrongkhuonvien_gdyt_chuacap_dientich',
-            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
-            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
-            'datngoaikhuonvien_nghiadia_chuacap_dientich_1',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
-            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
-            'datngoaikhuonvien_nghiadia_chuacap_dientich_2',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
-            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
-            'datngoaikhuonvien_nghiadia_chuacap_dientich_3',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
-            'cosothotu_ditichlichsu',
-            'cosothotu_ditichvanhoa',
-            'cosothotu_ditichlichsuvanhoa',
-            'cosothotu_ditichkientrucnghethuat',
-            'cosothotu_ditichkhaoco',
-            'cosothotu_captrunguong',
-            'cosothotu_captinh'
-        ];
-        $conditions = [
-            'tengiaoxu <> ""',
-            'tengiaoxu IS NOT NULL',
-        ];
-
-        $data = $this->__getData($model, compact('fields', 'conditions'));
-        $result = $this->__statis($data, $model);
-
-        return $result;
-    }
-
-    public function __getTuvienphatgiao($model) {
-        $fields = [
-            'tentuvien',
-            'diachi_so',
-            'diachi_duong',
-            'diachi_ap',
-            'diachi_xa',
-            'diachi_huyen',
-            'diachi_tinh',
-            'daquyy',
-            'soluongtindo',
-            'daquyy',
-            'phattu_dantoc_thieuso',
-            'sochucsac',
-            'sotusi',
-            'namthanhlap',
-            'namxaydung',
-            'ttttcs_solan',
-            'ttttcs_tongkinhphi',
-            'dattrongkhuonvien_nnlnntts_dientich',
-            'dattrongkhuonvien_gdyt_dientich',
-            'dattrongkhuonvien_dsdmdk_dientich',
-            'datngoaikhuonvien_nnlnntts_dientich_1',
-            'datngoaikhuonvien_gdyt_dientich_1',
-            'datngoaikhuonvien_dsdmdk_dientich_1',
-            'datngoaikhuonvien_nnlnntts_dientich_2',
-            'datngoaikhuonvien_gdyt_dientich_2',
-            'datngoaikhuonvien_dsdmdk_dientich_2',
-            'datngoaikhuonvien_nnlnntts_dientich_3',
-            'datngoaikhuonvien_gdyt_dientich_3',
-            'datngoaikhuonvien_dsdmdk_dientich_3',
-            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
-            'dattrongkhuonvien_gdyt_chuacap_dientich',
-            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
-            'dattrongkhuonvien_nnlnntts_dientich',
-            'dattrongkhuonvien_gdyt_dientich',
-            'dattrongkhuonvien_dsdmdk_dientich',
-            'datngoaikhuonvien_nnlnntts_dientich_1',
-            'datngoaikhuonvien_gdyt_dientich_1',
-            'datngoaikhuonvien_dsdmdk_dientich_1',
-            'datngoaikhuonvien_nnlnntts_dientich_2',
-            'datngoaikhuonvien_gdyt_dientich_2',
-            'datngoaikhuonvien_dsdmdk_dientich_2',
-            'datngoaikhuonvien_nnlnntts_dientich_3',
-            'datngoaikhuonvien_gdyt_dientich_3',
-            'datngoaikhuonvien_dsdmdk_dientich_3',
-            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
-            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
-            'dattrongkhuonvien_tongiao_chuacap_dientich',
-            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
-            'dattrongkhuonvien_gdyt_chuacap_dientich',
-            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
-            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
-            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
-            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
-            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
-            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
-            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
-            'cosothotu_ditichlichsu',
-            'cosothotu_ditichvanhoa',
-            'cosothotu_ditichlichsuvanhoa',
-            'cosothotu_ditichkientrucnghethuat',
-            'cosothotu_ditichkhaoco',
-            'cosothotu_captrunguong',
-            'cosothotu_captinh'
-        ];
-        $conditions = [
-            'tentuvien <> ""',
-            'tentuvien IS NOT NULL',
-        ];
-
-        $data = $this->__getData($model, compact('fields', 'conditions'));
-        return $this->__statis($data, $model);
-    }
-
     private function __getInfo($model)
     {
         $fields = [
+            'stt',
             'tencosothotu',
             'diachi',
             'thuoctochuctongiao',
@@ -274,31 +81,32 @@ class ExportThCsTtTgComponent extends Component
 
     private function __getTencosothotu($data, $model)
     {
+        $result = '';
         switch ($model) {
             case 'Giaoxu':
-                $field = 'tengiaoxu';
+                $result = $data['tengiaoxu'];
                 break;
             case 'Tuvienphatgiao':
-                $field = 'tentuvien';
+                $result = $data['tentuvien'];
                 break;
             case 'Chihoitinlanh':
-                $field = 'tenchihoi';
+                $result = $data['tenchihoi'];
                 break;
             case 'Hodaocaodai':
-                $field = 'tenhodao';
+                $result = $data['tenhodao'];
                 break;
             case 'Chihoitinhdocusiphatgiaovietnam':
-                $field = 'tenchihoi';
+                $result = $data['tenchihoi'];
                 break;
             case 'Cosohoigiaoislam':
-                $field = 'tenthanhduong';
+                $result = $data['tenthanhduong'];
                 break;
             case 'Cosotinnguong':
-                $field = 'tencoso';
+                $result = $data['tencoso'];
                 break;
         }
 
-        return $data[$field] ?: '';
+        return $result;
     }
 
     private function __getDiachi($target, $model)
@@ -373,17 +181,25 @@ class ExportThCsTtTgComponent extends Component
                 break;
         }
 
+        $name = [
+              $prefix . 'so' => 'số',
+            $prefix . 'duong' => 'đường',
+            $prefix . 'ap' => 'ấp',
+            $prefix . 'xa' => 'xã',
+            $prefix . 'huyen' => 'huyện',
+            $prefix . 'tinh' => 'tỉnh',
+        ];
+
         $string = '';
         if ($fields) {
             foreach ($fields as $f) {
                 if ($target[$f]) {
-                    $string .= $target[$f] . ', ';
+                    $string .= $name[$f] . ' ' . $target[$f] . ', ';
                 }
             }
         }
         return trim($string, ', ');
     }
-
 
     private function __getThuoctochuctongiao($data, $model)
     {
@@ -411,21 +227,37 @@ class ExportThCsTtTgComponent extends Component
                 $string = 'Tín Ngưỡng';
                 break;
         }
+
         return $string;
     }
 
     private function __getTindodathuchiennghiletongiao($data, $model)
     {
+        $result = '';
         switch($model) {
             case 'Giaoxu':
-                $field = 'giaodan_sonhankhau';
+                $result = $data['giaodan_sonhankhau'];
                 break;
             case 'Tuvienphatgiao':
-                $field = 'daquyy';
+                $result = $data['daquyy'];
                 break;
-
+            case 'Chihoitinlanh':
+                $result = $data['tongsotindo_baptem'];
+                break;
+            case 'Hodaocaodai':
+                $result = $data['tongsotindo_cosocaudao'];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $result = $data['soluonghoivien_tindo'];
+                break;
+            case 'Cosohoigiaoislam':
+                $result = $data['tongsotindo'];
+                break;
+            case 'Cosotinnguong':
+                $result = 0;
+                break;
         }
-        return $field ? $data[$field] : 0;
+        return $result;
     }
 
     private function __getTindochuathuchiennghiletongiao($data, $model)
@@ -433,10 +265,25 @@ class ExportThCsTtTgComponent extends Component
         $result = '';
         switch($model) {
             case 'Giaoxu':
-                $result =0;
+                $result = 0;
                 break;
             case 'Tuvienphatgiao':
                 $result = $data['soluongtindo'] - $data['daquyy'];
+                break;
+            case 'Chihoitinlanh':
+                $result = $data['tongsotindo_chuabaptem'];
+                break;
+            case 'Hodaocaodai':
+                $result = $data['tongsotindo_chuacosocaudao'];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $result = 0;
+                break;
+            case 'Cosohoigiaoislam':
+                $result = 0;
+                break;
+            case 'Cosotinnguong':
+                $result = 0;
                 break;
         }
         return $result;
@@ -446,15 +293,28 @@ class ExportThCsTtTgComponent extends Component
     {
         switch($model) {
             case 'Giaoxu':
-                $result = $data['soluongtindo'];
-                $field = 'giaodandantocthieuso_sonhankhau';
+                $result = $data['giaodandantocthieuso_sonhankhau'];
                 break;
             case 'Tuvienphatgiao':
-                $result = $data['soluongtindo'];
-                $field = 'phattu_dantoc_thieuso';
+                $result = $data['phattu_dantoc_thieuso'];
+                break;
+            case 'Chihoitinlanh':
+                $result = $data['sotindo_dantoc_thieuso'];
+                break;
+            case 'Hodaocaodai':
+                $result = $data['sotindo_dantoc_thieuso'];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $result = $data['sotindo_dantoc_thieuso'];
+                break;
+            case 'Cosohoigiaoislam':
+                $result = $data['sotindo_dantoc_thieuso'];
+                break;
+            case 'Cosotinnguong':
+                $result = 0;
                 break;
         }
-        return $field ? $data[$field] : 0;
+        return $result;
     }
 
     private function __getChucsac($data, $model)
@@ -465,6 +325,24 @@ class ExportThCsTtTgComponent extends Component
                 break;
             case 'Tuvienphatgiao':
                 $result = $data['sochucsac'];
+                break;
+            case 'Chihoitinlanh':
+                $result = $data['sochucsac'];
+                break;
+            case 'Hodaocaodai':
+                $result = $data['sochucsac_phoisu'] +
+                          $data['sochucsac_giaosu'] +
+                          $data['sochucsac_giaohuu'] +
+                          $data['sochucsac_lesanh'];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $result = 0;
+                break;
+            case 'Cosohoigiaoislam':
+                $result = 0;
+                break;
+            case 'Cosotinnguong':
+                $result = 0;
                 break;
         }
         return $result;
@@ -480,6 +358,21 @@ class ExportThCsTtTgComponent extends Component
             case 'Tuvienphatgiao':
                 $result = $data['sotusi'];
                 break;
+            case 'Chihoitinlanh':
+                $result = 0;
+                break;
+            case 'Hodaocaodai':
+                $result = 0;
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $result = 0;
+                break;
+            case 'Cosohoigiaoislam':
+                $result = 0;
+                break;
+            case 'Cosotinnguong':
+                $result = 0;
+                break;
         }
         return $result;
     }
@@ -490,6 +383,11 @@ class ExportThCsTtTgComponent extends Component
         switch($model) {
             case 'Giaoxu':
             case 'Tuvienphatgiao':
+            case 'Chihoitinlanh':
+            case 'Hodaocaodai':
+            case 'Chihoitinhdocusiphatgiaovietnam':
+            case 'Cosohoigiaoislam':
+            case 'Cosotinnguong':
                 $result = 0;
                 break;
         }
@@ -506,6 +404,21 @@ class ExportThCsTtTgComponent extends Component
             case 'Tuvienphatgiao':
                 $result = 0;
                 break;
+            case 'Chihoitinlanh':
+                $result = $data['sothanhvientrongbanchapsu'];
+                break;
+            case 'Hodaocaodai':
+                $result = $data['sothanvien_bancaiquan'];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $result = 0;
+                break;
+            case 'Cosohoigiaoislam':
+                $result = 0;
+                break;
+            case 'Cosotinnguong':
+                $result = 0;
+                break;
         }
         return $result;
     }
@@ -516,6 +429,11 @@ class ExportThCsTtTgComponent extends Component
         switch($model) {
             case 'Giaoxu':
             case 'Tuvienphatgiao':
+            case 'Chihoitinlanh':
+            case 'Hodaocaodai':
+            case 'Chihoitinhdocusiphatgiaovietnam':
+            case 'Cosohoigiaoislam':
+            case 'Cosotinnguong':
                 $result = 0;
                 break;
         }
@@ -528,6 +446,21 @@ class ExportThCsTtTgComponent extends Component
         switch($model) {
             case 'Giaoxu':
             case 'Tuvienphatgiao':
+                $result = $data['namthanhlap'];
+                break;
+            case 'Chihoitinlanh':
+                $result = $data['namgiaohoithanhlap'];
+                break;
+            case 'Hodaocaodai':
+                $result = $data['namhoithanhthanhlap'];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $result = $data['namhoithanhthanhlap'];
+                break;
+            case 'Cosohoigiaoislam':
+                $result = $data['namgiaohoithanhlap'];
+                break;
+            case 'Cosotinnguong':
                 $result = $data['namthanhlap'];
                 break;
         }
@@ -544,6 +477,21 @@ class ExportThCsTtTgComponent extends Component
             case 'Tuvienphatgiao':
                 $result = $data['namxaydung'];
                 break;
+            case 'Chihoitinlanh':
+                $result = $data['ttttcs_namxaydung'];
+                break;
+            case 'Hodaocaodai':
+                $result = $data['ttttcs_namxaydung'];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $result = $data['ttttcs_namxaydung'];
+                break;
+            case 'Cosohoigiaoislam':
+                $result = $data['ttttcs_namxaydung'];
+                break;
+            case 'Cosotinnguong':
+                $result = $data['namxaydung'];
+                break;
         }
         return $result;
     }
@@ -554,6 +502,10 @@ class ExportThCsTtTgComponent extends Component
         switch($model) {
             case 'Giaoxu':
             case 'Tuvienphatgiao':
+            case 'Chihoitinlanh':
+            case 'Hodaocaodai':
+            case 'Cosohoigiaoislam':
+            case 'Cosotinnguong':
                 $result = 0;
                 break;
         }
@@ -570,6 +522,21 @@ class ExportThCsTtTgComponent extends Component
             case 'Tuvienphatgiao':
                 $result = $data['ttttcs_solan'];
                 break;
+            case 'Chihoitinlanh':
+                $result = $data['ttttcs_solan'];
+                break;
+            case 'Hodaocaodai':
+                $result = $data['ttttcs_solan'];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $result = $data['ttttcs_solan'];
+                break;
+            case 'Cosohoigiaoislam':
+                $result = $data['ttttcs_solan'];
+                break;
+            case 'Cosotinnguong':
+                $result = $data['ttttcs_solan'];
+                break;
         }
         return $result;
     }
@@ -582,6 +549,21 @@ class ExportThCsTtTgComponent extends Component
                 $result = $data['ttttcs_tongkinhphi'];
                 break;
             case 'Tuvienphatgiao':
+                $result = $data['ttttcs_tongkinhphi'];
+                break;
+            case 'Chihoitinlanh':
+                $result = $data['ttttcs_tongkinhphi'];
+                break;
+            case 'Hodaocaodai':
+                $result = $data['ttttcs_tongkinhphi'];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $result = $data['ttttcs_tongkinhphi'];
+                break;
+            case 'Cosohoigiaoislam':
+                $result = $data['ttttcs_tongkinhphi'];
+                break;
+            case 'Cosotinnguong':
                 $result = $data['ttttcs_tongkinhphi'];
                 break;
         }
@@ -633,6 +615,70 @@ class ExportThCsTtTgComponent extends Component
                     'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
                     'datngoaikhuonvien_gdyt_chuacap_dientich_3',
                     'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+                ];
+                break;
+            case 'Chihoitinlanh':
+                $field1 = [
+                    'dattrongkhuonvien_tongiao_dientich',
+                    'datngoaikhuonvien_tongiao_dientich_1',
+                    'datngoaikhuonvien_tongiao_dientich_2',
+                    'datngoaikhuonvien_tongiao_dientich_3',
+                ];
+                $field2 = [
+                    'dattrongkhuonvien_tongiao_chuacap_dientich',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+                ];
+                break;
+            case 'Hodaocaodai':
+                $field1 = [
+                    'dattrongkhuonvien_tongiao_dientich',
+                    'datngoaikhuonvien_tongiao_dientich_1',
+                    'datngoaikhuonvien_tongiao_dientich_2',
+                    'datngoaikhuonvien_tongiao_dientich_3',
+                ];
+                $field2 = [
+                    'dattrongkhuonvien_tongiao_chuacap_dientich',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+                ];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $field1 = [
+                    'dattrongkhuonvien_tongiao_dientich',
+                    'datngoaikhuonvien_tongiao_dientich_1',
+                    'datngoaikhuonvien_tongiao_dientich_2',
+                    'datngoaikhuonvien_tongiao_dientich_3',
+                ];
+                $field2 = [
+                    'dattrongkhuonvien_tongiao_chuacap_dientich',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+                ];
+                break;
+            case 'Cosohoigiaoislam':
+                $field1 = [
+                    'dattrongkhuonvien_tongiao_dientich',
+                    'datngoaikhuonvien_tongiao_dientich_1',
+                    'datngoaikhuonvien_tongiao_dientich_2',
+                    'datngoaikhuonvien_tongiao_dientich_3',
+                ];
+                $field2 = [
+                    'dattrongkhuonvien_tongiao_chuacap_dientich',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+                ];
+                break;
+            case 'Cosotinnguong':
+                $field1 = [
+                    'tongiao_dientich',
+                ];
+                $field2 = [
+                    'tongiao_chuacap_dientich',
                 ];
                 break;
         }
@@ -719,6 +765,145 @@ class ExportThCsTtTgComponent extends Component
                     'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
                 ];
                 break;
+            case 'Chihoitinlanh':
+                $field1 = [
+                    'dattrongkhuonvien_nnlnntts_dientich',
+                    'dattrongkhuonvien_gdyt_dientich',
+                    'dattrongkhuonvien_nghiadia_dientich',
+                    'dattrongkhuonvien_dsdmdk_dientich',
+                    'datngoaikhuonvien_nnlnntts_dientich_1',
+                    'datngoaikhuonvien_gdyt_dientich_1',
+                    'datngoaikhuonvien_nghiadia_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_dientich_2',
+                    'datngoaikhuonvien_gdyt_dientich_2',
+                    'datngoaikhuonvien_nghiadia_dientich_2',
+                    'datngoaikhuonvien_dsdmdk_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_dientich_3',
+                    'datngoaikhuonvien_gdyt_dientich_3',
+                    'datngoaikhuonvien_nghiadia_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_dientich_3',
+                ];
+                $field2 = [
+                    'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+                    'dattrongkhuonvien_gdyt_chuacap_dientich',
+                    'dattrongkhuonvien_nghiadia_chuacap_dientich',
+                    'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+                    'datngoaikhuonvien_nghiadia_chuacap_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+                    'datngoaikhuonvien_nghiadia_chuacap_dientich_2',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+                    'datngoaikhuonvien_nghiadia_chuacap_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+                ];
+                break;
+            case 'Hodaocaodai':
+                $field1 = [
+                    'dattrongkhuonvien_nnlnntts_dientich',
+                    'dattrongkhuonvien_gdyt_dientich',
+                    'dattrongkhuonvien_dsdmdk_dientich',
+                    'datngoaikhuonvien_nnlnntts_dientich_1',
+                    'datngoaikhuonvien_gdyt_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_dientich_2',
+                    'datngoaikhuonvien_gdyt_dientich_2',
+                    'datngoaikhuonvien_dsdmdk_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_dientich_3',
+                    'datngoaikhuonvien_gdyt_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_dientich_3',
+                ];
+                $field2 = [
+                    'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+                    'dattrongkhuonvien_gdyt_chuacap_dientich',
+                    'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+                ];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $field1 = [
+                    'dattrongkhuonvien_nnlnntts_dientich',
+                    'dattrongkhuonvien_gdyt_dientich',
+                    'dattrongkhuonvien_dsdmdk_dientich',
+                    'datngoaikhuonvien_nnlnntts_dientich_1',
+                    'datngoaikhuonvien_gdyt_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_dientich_2',
+                    'datngoaikhuonvien_gdyt_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_dientich_3',
+                    'datngoaikhuonvien_gdyt_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_dientich_3',
+                ];
+                $field2 = [
+                    'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+                    'dattrongkhuonvien_gdyt_chuacap_dientich',
+                    'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+                ];
+                break;
+            case 'Cosohoigiaoislam':
+                $field1 = [
+                    'dattrongkhuonvien_nnlnntts_dientich',
+                    'dattrongkhuonvien_gdyt_dientich',
+                    'dattrongkhuonvien_dsdmdk_dientich',
+                    'datngoaikhuonvien_nnlnntts_dientich_1',
+                    'datngoaikhuonvien_gdyt_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_dientich_2',
+                    'datngoaikhuonvien_gdyt_dientich_2',
+                    'datngoaikhuonvien_dsdmdk_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_dientich_3',
+                    'datngoaikhuonvien_gdyt_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_dientich_3',
+                ];
+                $field2 = [
+                    'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+                    'dattrongkhuonvien_gdyt_chuacap_dientich',
+                    'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+                ];
+                break;
+            case 'Cosotinnguong':
+                $field1 = [
+                    'nnlnntts_dientich',
+                    'gdyt_dientich',
+                    'dsdmdk_dientich',
+                ];
+                $field2 = [
+                    'nnlnntts_chuacap_dientich',
+                    'gdyt_chuacap_dientich',
+                    'dsdmdk_chuacap_dientich',
+                ];
+                break;
         }
 
         $result = 0;
@@ -779,6 +964,98 @@ class ExportThCsTtTgComponent extends Component
                     'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
                 ];
                 break;
+            case 'Chihoitinlanh':
+                $field = [
+                    'dattrongkhuonvien_tongiao_chuacap_dientich',
+                    'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+                    'dattrongkhuonvien_gdyt_chuacap_dientich',
+                    'dattrongkhuonvien_nghiadia_chuacap_dientich',
+                    'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+                    'datngoaikhuonvien_nghiadia_chuacap_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+                    'datngoaikhuonvien_nghiadia_chuacap_dientich_2',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+                    'datngoaikhuonvien_nghiadia_chuacap_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+                ];
+                break;
+            case 'Hodaocaodai':
+                $field = [
+                    'dattrongkhuonvien_tongiao_chuacap_dientich',
+                    'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+                    'dattrongkhuonvien_gdyt_chuacap_dientich',
+                    'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+                ];
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                $field = [
+                    'dattrongkhuonvien_tongiao_chuacap_dientich',
+                    'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+                    'dattrongkhuonvien_gdyt_chuacap_dientich',
+                    'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+                ];
+                break;
+            case 'Cosohoigiaoislam':
+                $field = [
+                    'dattrongkhuonvien_tongiao_chuacap_dientich',
+                    'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+                    'dattrongkhuonvien_gdyt_chuacap_dientich',
+                    'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+                    'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+                    'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+                    'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+                    'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+                ];
+                break;
+            case 'Cosotinnguong':
+                $field = [
+                    'tongiao_chuacap_dientich',
+                    'nnlnntts_chuacap_dientich',
+                    'gdyt_chuacap_dientich',
+                    'dsdmdk_chuacap_dientich',
+                ];
+                break;
         }
 
         $result = 0;
@@ -796,7 +1073,16 @@ class ExportThCsTtTgComponent extends Component
             case 'Giaoxu':
                 break;
             case 'Tuvienphatgiao':
-                $result = $data['ttttcs_solan'];
+                break;
+            case 'Chihoitinlanh':
+                break;
+            case 'Hodaocaodai':
+                break;
+            case 'Chihoitinhdocusiphatgiaovietnam':
+                break;
+            case 'Cosohoigiaoislam':
+                break;
+            case 'Cosotinnguong':
                 break;
         }
         return $result;
@@ -1036,6 +1322,445 @@ class ExportThCsTtTgComponent extends Component
         return compact('fields', 'conditions');
     }
 
+    private function __getChihoitinlanhParams()
+    {
+        $location = 'tenchihoi';
+        $prefix = 'diachi_';
+        $fields = [
+            'id',
+            $location,
+            $prefix . 'so',
+            $prefix . 'ap',
+            $prefix . 'xa',
+            $prefix . 'huyen',
+            $prefix . 'tinh',
+            'tongsotindo_baptem',
+            'tongsotindo_chuabaptem',
+            'sotindo_dantoc_thieuso',
+            'sochucsac',
+            'sothanhvientrongbanchapsu',
+            'namgiaohoithanhlap',
+            'ttttcs_namxaydung',
+            'ttttcs_solan',
+            'ttttcs_tongkinhphi',
+
+            ////Đã cấp GCNQSD đất
+            'dattrongkhuonvien_tongiao_dientich',
+            'datngoaikhuonvien_tongiao_dientich_1',
+            'datngoaikhuonvien_tongiao_dientich_2',
+            'datngoaikhuonvien_tongiao_dientich_3',
+            /****/
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+
+            ////Mục đích sử dụng khác:
+            'dattrongkhuonvien_nnlnntts_dientich',
+            'dattrongkhuonvien_gdyt_dientich',
+            'dattrongkhuonvien_nghiadia_dientich',
+            'dattrongkhuonvien_dsdmdk_dientich',
+            'datngoaikhuonvien_nnlnntts_dientich_1',
+            'datngoaikhuonvien_gdyt_dientich_1',
+            'datngoaikhuonvien_nghiadia_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dientich_2',
+            'datngoaikhuonvien_gdyt_dientich_2',
+            'datngoaikhuonvien_nghiadia_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dientich_3',
+            'datngoaikhuonvien_gdyt_dientich_3',
+            'datngoaikhuonvien_nghiadia_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dientich_3',
+            /****/
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_nghiadia_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_nghiadia_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_nghiadia_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_nghiadia_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+
+            //Chưa được cấp GCNQSD đất:
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_nghiadia_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_nghiadia_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_nghiadia_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_nghiadia_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+            'cosothotu_ditichlichsu',
+            'cosothotu_ditichvanhoa',
+            'cosothotu_ditichlichsuvanhoa',
+            'cosothotu_ditichkientrucnghethuat',
+            'cosothotu_ditichkhaoco',
+            'cosothotu_captrunguong',
+            'cosothotu_captinh'
+        ];
+        $conditions = [
+            $location . ' <>' => '',
+            $location . ' is not null',
+        ];
+
+        return compact('fields', 'conditions');
+    }
+
+    private function __getHodaocaodaiParams()
+    {
+        $location = 'tenhodao';
+        $prefix = 'tenhodao_diachi_';
+        $fields = [
+            'id',
+            $location,
+            $prefix . 'so',
+            $prefix . 'duong',
+            $prefix . 'ap',
+            $prefix . 'xa',
+            $prefix . 'huyen',
+            $prefix . 'tinh',
+            'tongsotindo_cosocaudao',
+            'tongsotindo_chuacosocaudao',
+            'sotindo_dantoc_thieuso',
+            'sochucsac_phoisu',
+            'sochucsac_giaosu',
+            'sochucsac_giaohuu',
+            'sochucsac_lesanh',
+            'sothanvien_bancaiquan',
+            'namhoithanhthanhlap',
+            'ttttcs_namxaydung',
+            'ttttcs_solan',
+            'ttttcs_tongkinhphi',
+
+            //Đã cấp GCNQSD đất
+            'dattrongkhuonvien_tongiao_dientich',
+            'datngoaikhuonvien_tongiao_dientich_1',
+            'datngoaikhuonvien_tongiao_dientich_2',
+            'datngoaikhuonvien_tongiao_dientich_3',
+            /***/
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+
+            //Mục đích sử dụng khác:
+            'dattrongkhuonvien_nnlnntts_dientich',
+            'dattrongkhuonvien_gdyt_dientich',
+            'dattrongkhuonvien_dsdmdk_dientich',
+            'datngoaikhuonvien_nnlnntts_dientich_1',
+            'datngoaikhuonvien_gdyt_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dientich_2',
+            'datngoaikhuonvien_gdyt_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dientich_3',
+            'datngoaikhuonvien_gdyt_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dientich_3',
+            /***/
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+
+            //Chưa được cấp GCNQSD đất:
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+            'cosothotu_ditichlichsu',
+            'cosothotu_ditichvanhoa',
+            'cosothotu_ditichlichsuvanhoa',
+            'cosothotu_ditichkientrucnghethuat',
+            'cosothotu_ditichkhaoco',
+            'cosothotu_captrunguong',
+            'cosothotu_captinh'
+        ];
+        $conditions = [
+            $location . ' <>' => '',
+            $location . ' is not null',
+        ];
+
+        return compact('fields', 'conditions');
+    }
+
+    private function __getChihoitinhdocusiphatgiaovietnamParams()
+    {
+        $location = 'tenchihoi';
+        $prefix = 'tenchihoi_diachi_';
+        $fields = [
+            'id',
+            $location,
+            $prefix . 'so',
+            $prefix . 'duong',
+            $prefix . 'ap',
+            $prefix . 'xa',
+            $prefix . 'huyen',
+            $prefix . 'tinh',
+            'soluonghoivien_tindo',
+            'sotindo_dantoc_thieuso',
+            'namhoithanhthanhlap',
+            'ttttcs_namxaydung',
+            'ttttcs_solan',
+            'ttttcs_tongkinhphi',
+
+            // Mục đích sử dụng đất TG:
+            'dattrongkhuonvien_tongiao_dientich',
+            'datngoaikhuonvien_tongiao_dientich_1',
+            'datngoaikhuonvien_tongiao_dientich_2',
+            'datngoaikhuonvien_tongiao_dientich_3',
+            /***/
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+
+             // Mục đích sử dụng khác:
+            'dattrongkhuonvien_nnlnntts_dientich',
+            'dattrongkhuonvien_gdyt_dientich',
+            'dattrongkhuonvien_dsdmdk_dientich',
+            'datngoaikhuonvien_nnlnntts_dientich_1',
+            'datngoaikhuonvien_gdyt_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dientich_2',
+            'datngoaikhuonvien_gdyt_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dientich_3',
+            'datngoaikhuonvien_gdyt_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dientich_3',
+            /**/
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dientich_2',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+
+            // Chưa được cấp GCNQSD đất:
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+
+            'cosothotu_ditichlichsu',
+            'cosothotu_ditichvanhoa',
+            'cosothotu_ditichlichsuvanhoa',
+            'cosothotu_ditichkientrucnghethuat',
+            'cosothotu_ditichkhaoco',
+            'cosothotu_captrunguong',
+            'cosothotu_captinh'
+        ];
+        $conditions = [
+            $location . ' <>' => '',
+            $location . ' is not null',
+        ];
+
+        return compact('fields', 'conditions');
+    }
+
+    private function __getCosohoigiaoislamParams()
+    {
+        $location = 'tenthanhduong';
+        $prefix = 'tenthanhduong_diachi_';
+        $fields = [
+            'id',
+            $location,
+            $prefix . 'so',
+            $prefix . 'duong',
+            $prefix . 'ap',
+            $prefix . 'xa',
+            $prefix . 'huyen',
+            $prefix . 'tinh',
+            'tongsotindo',
+            'sotindo_dantoc_thieuso',
+            'namgiaohoithanhlap',
+            'ttttcs_namxaydung',
+            'ttttcs_solan',
+            'ttttcs_tongkinhphi',
+
+            // Mục đích sử dụng đất TG:
+            'dattrongkhuonvien_tongiao_dientich',
+            'datngoaikhuonvien_tongiao_dientich_1',
+            'datngoaikhuonvien_tongiao_dientich_2',
+            'datngoaikhuonvien_tongiao_dientich_3',
+            /***/
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+
+            // Mục đích sử dụng khác:
+            'dattrongkhuonvien_nnlnntts_dientich',
+            'dattrongkhuonvien_gdyt_dientich',
+            'dattrongkhuonvien_dsdmdk_dientich',
+            'datngoaikhuonvien_nnlnntts_dientich_1',
+            'datngoaikhuonvien_gdyt_dientich_1',
+            'datngoaikhuonvien_dsdmdk_dientich_1',
+            'datngoaikhuonvien_nnlnntts_dientich_2',
+            'datngoaikhuonvien_gdyt_dientich_2',
+            'datngoaikhuonvien_dsdmdk_dientich_2',
+            'datngoaikhuonvien_nnlnntts_dientich_3',
+            'datngoaikhuonvien_gdyt_dientich_3',
+            'datngoaikhuonvien_dsdmdk_dientich_3',
+            /**/
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+
+            // Chưa được cấp GCNQSD đất:
+            'dattrongkhuonvien_tongiao_chuacap_dientich',
+            'dattrongkhuonvien_nnlnntts_chuacap_dientich',
+            'dattrongkhuonvien_gdyt_chuacap_dientich',
+            'dattrongkhuonvien_dsdmdk_chuacap_dientich',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_1',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_1',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_1',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_1',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_2',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_2',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_2',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_2',
+            'datngoaikhuonvien_tongiao_chuacap_dientich_3',
+            'datngoaikhuonvien_nnlnntts_chuacap_dientich_3',
+            'datngoaikhuonvien_gdyt_chuacap_dientich_3',
+            'datngoaikhuonvien_dsdmdk_chuacap_dientich_3',
+
+            'cosothotu_ditichlichsu',
+            'cosothotu_ditichvanhoa',
+            'cosothotu_ditichlichsuvanhoa',
+            'cosothotu_ditichkientrucnghethuat',
+            'cosothotu_ditichkhaoco',
+            'cosothotu_captrunguong',
+            'cosothotu_captinh'
+        ];
+        $conditions = [
+            $location . ' <>' => '',
+            $location . ' is not null',
+        ];
+
+        return compact('fields', 'conditions');
+    }
+
+    private function __getCosotinnguongParams()
+    {
+        $location = 'tencoso';
+        $prefix = 'diachi_';
+        $fields = [
+            'id',
+            $location,
+            $prefix . 'so',
+            $prefix . 'duong',
+            $prefix . 'ap',
+            $prefix . 'xa',
+            $prefix . 'huyen',
+            $prefix . 'tinh',
+            'namthanhlap',
+            'namxaydung',
+            'ttttcs_solan',
+            'ttttcs_tongkinhphi',
+
+            // Mục đích sử dụng đất TG:
+            'tongiao_dientich',
+            /**/
+            'tongiao_chuacap_dientich',
+
+            // Mục đích sử dụng khác:
+            'nnlnntts_dientich',
+            'gdyt_dientich',
+            'dsdmdk_dientich',
+            /**/
+            'nnlnntts_chuacap_dientich',
+            'gdyt_chuacap_dientich',
+            'dsdmdk_chuacap_dientich',
+
+            // Chưa được cấp GCNQSD đất:
+            'tongiao_chuacap_dientich',
+            'nnlnntts_chuacap_dientich',
+            'gdyt_chuacap_dientich',
+            'dsdmdk_chuacap_dientich',
+
+            'cosothotu_ditichlichsu',
+            'cosothotu_ditichvanhoa',
+            'cosothotu_ditichlichsuvanhoa',
+            'cosothotu_ditichkientrucnghethuat',
+            'cosothotu_ditichkhaoco',
+            'cosothotu_captrunguong',
+            'cosothotu_captinh'
+        ];
+        $conditions = [
+            $location . ' <>' => '',
+            $location . ' is not null',
+        ];
+
+        return compact('fields', 'conditions');
+    }
+
     private function __getData($model)
     {
         $f = '__get' . $model. 'Params';
@@ -1046,3 +1771,498 @@ class ExportThCsTtTgComponent extends Component
         return Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
     }
 }
+
+/**
+ * DANH SÁCH CƠ SỞ THỜ TỰ TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
+ *
+ * I. CÔNG GIÁO
+ * 1. Bảng giaoxu
+ * Tên cơ sở thờ tự: tengiaoxu
+ * Địa chỉ: diachi_so, diachi_duong, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
+ * Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Công Giáo'
+ * Số lượng tín đồ
+ *      Đã thực hiện lễ nghi tôn giáo: giaodan_sonhankhau
+ *      Chưa thực hiện lễ nghi tôn giáo: giaodan_sonhankhau
+ *      Là người dân tộc thiểu số: giaodandantocthieuso_sonhankhau
+ * Số lượng chức sắc tu sĩ
+ *      Chức sắc: Để mặc định bằng 0
+ *      Tu sĩ: sotusi
+ *      Chắc sắc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Số lượng chức việc
+ *      Số lượng chức việc: sothanhvientrongthuongvu
+ *      Số lượng chức việc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Năm thành lập: namthanhlap
+ * Về xây dựng
+ *      Năm xây dựng: namxaydungnhatho
+ *      Số tiền: Để mặc định bằng 0
+ * Về trùng tu tôn tạo
+ *      Số lần: ttttcs_solan
+ *      Số tiền lần cuối: ttttcs_tongkinhphi
+ * Diện tích (m2)
+ *      Đã cấp GCNQSD đất
+ *          Mục đích sử dụng đất TG:
+ *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) +
+ *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
+ *          Mục đích sử dụng khác:
+ *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+ *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+ *              (dattrongkhuonvien_nghiadia_dientich - dattrongkhuonvien_nghiadia_chuacap_dientich) +
+ *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_nghiadia_dientich_1 - datngoaikhuonvien_nghiadia_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_nghiadia_dientich_2 - datngoaikhuonvien_nghiadia_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_2 - datngoaikhuonvien_dsdmdk_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_nghiadia_dientich_3 - datngoaikhuonvien_nghiadia_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+ *      Chưa được cấp GCNQSD đất:
+ *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+ *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_nghiadia_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_nghiadia_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_nghiadia_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
+ *
+ * Kiến trúc: Để mặc định là rỗng
+ * Di tích
+ *      Xếp hạng di tích:
+ *          if cosothotu_ditichlichsu == true
+ *              Xếp hạng di tích: 'Di tích lịch sử'
+ *          if cosothotu_ditichvanhoa == true
+ *              Xếp hạng di tích: 'Di tích văn hóa'
+ *          if cosothotu_ditichlichsuvanhoa == true
+ *              Xếp hạng di tích: 'Di tích lịch sử văn hóa'
+ *          if cosothotu_ditichkientrucnghethuat == true
+ *              Xếp hạng di tích: 'Di tích kiến trúc nghệ thuật'
+ *          if cosothotu_ditichkhaoco == true
+ *              Xếp hạng di tích: 'Di tích khảo cổ'
+ *      Cấp công nhận
+ *          if cosothotu_captrunguong == true
+ *              Cấp công nhận: 'Cấp Trung ương'
+ *          if cosothotu_captinh == true
+ *              Cấp công nhận: 'Cấp tỉnh'
+ *
+ * II. PHẬT GIÁO
+ * 2. Bảng tuvienphatgiao
+ * Tên cơ sở thờ tự: tentuvien
+ * Địa chỉ: diachi_so, diachi_duong, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
+ * Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Phật Giáo'
+ * Số lượng tín đồ
+ *      Đã thực hiện lễ nghi tôn giáo: daquyy
+ *      Chưa thực hiện lễ nghi tôn giáo: soluongtindo - daquyy
+ *      Là người dân tộc thiểu số: phattu_dantoc_thieuso
+ * Số lượng chức sắc tu sĩ
+ *      Chức sắc: sochucsac
+ *      Tu sĩ: sotusi
+ *      Chắc sắc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Số lượng chức việc
+ *      Số lượng chức việc: Để mặc định bằng 0
+ *      Số lượng chức việc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Năm thành lập: namthanhlap
+ * Về xây dựng
+ *      Năm xây dựng: namxaydung
+ *      Số tiền: Để mặc định bằng 0
+ * Về trùng tu tôn tạo
+ *      Số lần: ttttcs_solan
+ *      Số tiền lần cuối: ttttcs_tongkinhphi
+ * Diện tích (m2)
+ *      Đã cấp GCNQSD đất
+ *          Mục đích sử dụng đất TG:
+ *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+ *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+ *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+ *          Mục đích sử dụng khác:
+ *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+ *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+ *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+ *      Chưa được cấp GCNQSD đất:
+ *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+ *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
+ * Kiến trúc: Để mặc định là rỗng
+ * Di tích
+ *      Xếp hạng di tích:
+ *          if cosothotu_ditichlichsu == true
+ *              Xếp hạng di tích: 'Di tích lịch sử'
+ *          if cosothotu_ditichvanhoa == true
+ *              Xếp hạng di tích: 'Di tích văn hóa'
+ *          if cosothotu_ditichlichsuvanhoa == true
+ *              Xếp hạng di tích: 'Di tích lịch sử văn hóa'
+ *          if cosothotu_ditichkientrucnghethuat == true
+ *              Xếp hạng di tích: 'Di tích kiến trúc nghệ thuật'
+ *          if cosothotu_ditichkhaoco == true
+ *              Xếp hạng di tích: 'Di tích khảo cổ'
+ *      Cấp công nhận
+ *          if cosothotu_captrunguong == true
+ *              Cấp công nhận: 'Cấp Trung ương'
+ *          if cosothotu_captinh == true
+ *              Cấp công nhận: 'Cấp tỉnh'
+ * III. TIN LÀNH
+ * 3. Bảng chihoitinlanh
+ * Tên cơ sở thờ tự: tenchihoi
+ * Địa chỉ: diachi_so, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
+ * Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Tin Lành'
+ * Số lượng tín đồ
+ *      Đã thực hiện lễ nghi tôn giáo: tongsotindo_baptem
+ *      Chưa thực hiện lễ nghi tôn giáo: tongsotindo_chuabaptem
+ *      Là người dân tộc thiểu số: sotindo_dantoc_thieuso
+ * Số lượng chức sắc tu sĩ
+ *      Chức sắc: sochucsac
+ *      Tu sĩ: Để mặc định bằng 0
+ *      Chắc sắc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Số lượng chức việc
+ *      Số lượng chức việc: sothanhvientrongbanchapsu
+ *      Số lượng chức việc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Năm thành lập: namgiaohoithanhlap
+ * Về xây dựng
+ *      Năm xây dựng: ttttcs_namxaydung
+ *      Số tiền: Để mặc định bằng 0
+ * Về trùng tu tôn tạo
+ *      Số lần: ttttcs_solan
+ *      Số tiền lần cuối: ttttcs_tongkinhphi
+ * Diện tích (m2)
+ *      Đã cấp GCNQSD đất
+ *          Mục đích sử dụng đất TG:
+ *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) +
+ *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
+ *          Mục đích sử dụng khác:
+ *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+ *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+ *              (dattrongkhuonvien_nghiadia_dientich - dattrongkhuonvien_nghiadia_chuacap_dientich) +
+ *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_nghiadia_dientich_1 - datngoaikhuonvien_nghiadia_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_nghiadia_dientich_2 - datngoaikhuonvien_nghiadia_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_2 - datngoaikhuonvien_dsdmdk_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_nghiadia_dientich_3 - datngoaikhuonvien_nghiadia_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+ *      Chưa được cấp GCNQSD đất:
+ *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+ *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_nghiadia_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_nghiadia_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_nghiadia_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_nghiadia_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
+ *
+ * Kiến trúc: Để mặc định là rỗng
+ * Di tích
+ *      Xếp hạng di tích:
+ *          if cosothotu_ditichlichsu == true
+ *              Xếp hạng di tích: 'Di tích lịch sử'
+ *          if cosothotu_ditichvanhoa == true
+ *              Xếp hạng di tích: 'Di tích văn hóa'
+ *          if cosothotu_ditichlichsuvanhoa == true
+ *              Xếp hạng di tích: 'Di tích lịch sử văn hóa'
+ *          if cosothotu_ditichkientrucnghethuat == true
+ *              Xếp hạng di tích: 'Di tích kiến trúc nghệ thuật'
+ *          if cosothotu_ditichkhaoco == true
+ *              Xếp hạng di tích: 'Di tích khảo cổ'
+ *      Cấp công nhận
+ *          if cosothotu_captrunguong == true
+ *              Cấp công nhận: 'Cấp Trung ương'
+ *          if cosothotu_captinh == true
+ *              Cấp công nhận: 'Cấp tỉnh'
+ * IV. CAO ĐÀI
+ * 4. Bảng hodaocaodai
+ * Tên cơ sở thờ tự: tenhodao
+ * Địa chỉ: tenhodao_diachi_so, tenhodao_diachi_duong, tenhodao_diachi_ap, tenhodao_diachi_xa, tenhodao_diachi_huyen, tenhodao_diachi_tinh
+ * Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Cao Đài'
+ * Số lượng tín đồ
+ *      Đã thực hiện lễ nghi tôn giáo: tongsotindo_cosocaudao
+ *      Chưa thực hiện lễ nghi tôn giáo: tongsotindo_chuacosocaudao
+ *      Là người dân tộc thiểu số: sotindo_dantoc_thieuso
+ * Số lượng chức sắc tu sĩ
+ *      Chức sắc: sochucsac_phoisu + sochucsac_giaosu + sochucsac_giaohuu + sochucsac_lesanh
+ *      Tu sĩ: Để mặc định bằng 0
+ *      Chắc sắc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Số lượng chức việc
+ *      Số lượng chức việc: sothanvien_bancaiquan
+ *      Số lượng chức việc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Năm thành lập: namhoithanhthanhlap
+ * Về xây dựng
+ *      Năm xây dựng: ttttcs_namxaydung
+ *      Số tiền: Để mặc định bằng 0
+ * Về trùng tu tôn tạo
+ *      Số lần: ttttcs_solan
+ *      Số tiền lần cuối: ttttcs_tongkinhphi
+ * Diện tích (m2)
+ *      Đã cấp GCNQSD đất
+ *          Mục đích sử dụng đất TG:
+ *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) +
+ *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
+ *          Mục đích sử dụng khác:
+ *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+ *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+ *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+ *      Chưa được cấp GCNQSD đất:
+ *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+ *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
+ * Kiến trúc: Để mặc định là rỗng
+ * Di tích
+ *      Xếp hạng di tích:
+ *          if cosothotu_ditichlichsu == true
+ *              Xếp hạng di tích: 'Di tích lịch sử'
+ *          if cosothotu_ditichvanhoa == true
+ *              Xếp hạng di tích: 'Di tích văn hóa'
+ *          if cosothotu_ditichlichsuvanhoa == true
+ *              Xếp hạng di tích: 'Di tích lịch sử văn hóa'
+ *          if cosothotu_ditichkientrucnghethuat == true
+ *              Xếp hạng di tích: 'Di tích kiến trúc nghệ thuật'
+ *          if cosothotu_ditichkhaoco == true
+ *              Xếp hạng di tích: 'Di tích khảo cổ'
+ *      Cấp công nhận
+ *          if cosothotu_captrunguong == true
+ *              Cấp công nhận: 'Cấp Trung ương'
+ *          if cosothotu_captinh == true
+ *              Cấp công nhận: 'Cấp tỉnh'
+ *
+ * V. TĐCSPHVN
+ * 5. Bảng chihoitinhdocusiphatgiaovietnam
+ * Tên cơ sở thờ tự: tenchihoi
+ * Địa chỉ: tenchihoi_diachi_so, tenchihoi_diachi_duong, tenchihoi_diachi_ap, tenchihoi_diachi_xa, tenchihoi_diachi_huyen, tenchihoi_diachi_tinh
+ * Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Tịnh độ cư sĩ phật hội'
+ * Số lượng tín đồ
+ *      Đã thực hiện lễ nghi tôn giáo: soluonghoivien_tindo
+ *      Chưa thực hiện lễ nghi tôn giáo: soluonghoivien_tindo
+ *      Là người dân tộc thiểu số: sotindo_dantoc_thieuso
+ * Số lượng chức sắc tu sĩ
+ *      Chức sắc: Để mặc định bằng 0
+ *      Tu sĩ: Để mặc định bằng 0
+ *      Chắc sắc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Số lượng chức việc
+ *      Số lượng chức việc: Để mặc định bằng 0
+ *      Số lượng chức việc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Năm thành lập: namhoithanhthanhlap
+ * Về xây dựng
+ *      Năm xây dựng: ttttcs_namxaydung
+ *      Số tiền: Để mặc định bằng 0
+ * Về trùng tu tôn tạo
+ *      Số lần: ttttcs_solan
+ *      Số tiền lần cuối: ttttcs_tongkinhphi
+ * Diện tích (m2)
+ *      Đã cấp GCNQSD đất
+ *          Mục đích sử dụng đất TG:
+ *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) +
+ *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
+ *          Mục đích sử dụng khác:
+ *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+ *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+ *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+ *      Chưa được cấp GCNQSD đất:
+ *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+ *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
+ * Kiến trúc: Để mặc định là rỗng
+ * Di tích
+ *      Xếp hạng di tích:
+ *          if cosothotu_ditichlichsu == true
+ *              Xếp hạng di tích: 'Di tích lịch sử'
+ *          if cosothotu_ditichvanhoa == true
+ *              Xếp hạng di tích: 'Di tích văn hóa'
+ *          if cosothotu_ditichlichsuvanhoa == true
+ *              Xếp hạng di tích: 'Di tích lịch sử văn hóa'
+ *          if cosothotu_ditichkientrucnghethuat == true
+ *              Xếp hạng di tích: 'Di tích kiến trúc nghệ thuật'
+ *          if cosothotu_ditichkhaoco == true
+ *              Xếp hạng di tích: 'Di tích khảo cổ'
+ *      Cấp công nhận
+ *          if cosothotu_captrunguong == true
+ *              Cấp công nhận: 'Cấp Trung ương'
+ *          if cosothotu_captinh == true
+ *              Cấp công nhận: 'Cấp tỉnh'
+ *
+ * VI. HỒI GIÁO
+ * 6. Bảng cosohoigiaoislam
+ * Tên cơ sở thờ tự: tenthanhduong
+ * Địa chỉ: tenthanhduong_diachi_so, tenthanhduong_diachi_duong, tenthanhduong_diachi_ap, tenthanhduong_diachi_xa, tenthanhduong_diachi_huyen, tenthanhduong_diachi_tinh
+ * Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Hồi Giáo'
+ * Số lượng tín đồ
+ *      Đã thực hiện lễ nghi tôn giáo: tongsotindo
+ *      Chưa thực hiện lễ nghi tôn giáo: tongsotindo
+ *      Là người dân tộc thiểu số: sotindo_dantoc_thieuso
+ * Số lượng chức sắc tu sĩ
+ *      Chức sắc: Để mặc định bằng 0
+ *      Tu sĩ: Để mặc định bằng 0
+ *      Chắc sắc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Số lượng chức việc
+ *      Số lượng chức việc: Để mặc định bằng 0
+ *      Số lượng chức việc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Năm thành lập: namgiaohoithanhlap
+ * Về xây dựng
+ *      Năm xây dựng: ttttcs_namxaydung
+ *      Số tiền: Để mặc định bằng 0
+ * Về trùng tu tôn tạo
+ *      Số lần: ttttcs_solan
+ *      Số tiền lần cuối: ttttcs_tongkinhphi
+ * Diện tích (m2)
+ *      Đã cấp GCNQSD đất
+ *          Mục đích sử dụng đất TG:
+ *              (dattrongkhuonvien_tongiao_dientich - dattrongkhuonvien_tongiao_chuacap_dientich) +
+ *              (datngoaikhuonvien_tongiao_dientich_1 - datngoaikhuonvien_tongiao_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_tongiao_dientich_2 - datngoaikhuonvien_tongiao_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_tongiao_dientich_3 - datngoaikhuonvien_tongiao_chuacap_dientich_3)
+ *          Mục đích sử dụng khác:
+ *              (dattrongkhuonvien_nnlnntts_dientich - dattrongkhuonvien_nnlnntts_chuacap_dientich) +
+ *              (dattrongkhuonvien_gdyt_dientich - dattrongkhuonvien_gdyt_chuacap_dientich) +
+ *              (dattrongkhuonvien_dsdmdk_dientich - dattrongkhuonvien_dsdmdk_chuacap_dientich) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_1 - datngoaikhuonvien_nnlnntts_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_gdyt_dientich_1 - datngoaikhuonvien_gdyt_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_1 - datngoaikhuonvien_dsdmdk_chuacap_dientich_1) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_2 - datngoaikhuonvien_nnlnntts_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_gdyt_dientich_2 - datngoaikhuonvien_gdyt_chuacap_dientich_2) +
+ *              (datngoaikhuonvien_nnlnntts_dientich_3 - datngoaikhuonvien_nnlnntts_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_gdyt_dientich_3 - datngoaikhuonvien_gdyt_chuacap_dientich_3) +
+ *              (datngoaikhuonvien_dsdmdk_dientich_3 - datngoaikhuonvien_dsdmdk_chuacap_dientich_3)
+ *      Chưa được cấp GCNQSD đất:
+ *          dattrongkhuonvien_tongiao_chuacap_dientich + dattrongkhuonvien_nnlnntts_chuacap_dientich +
+ *          dattrongkhuonvien_gdyt_chuacap_dientich + dattrongkhuonvien_dsdmdk_chuacap_dientich +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_1 + datngoaikhuonvien_nnlnntts_chuacap_dientich_1 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_1 + datngoaikhuonvien_dsdmdk_chuacap_dientich_1 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_2 + datngoaikhuonvien_nnlnntts_chuacap_dientich_2 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_2 + datngoaikhuonvien_dsdmdk_chuacap_dientich_2 +
+ *          datngoaikhuonvien_tongiao_chuacap_dientich_3 + datngoaikhuonvien_nnlnntts_chuacap_dientich_3 +
+ *          datngoaikhuonvien_gdyt_chuacap_dientich_3 + datngoaikhuonvien_dsdmdk_chuacap_dientich_3
+ * Kiến trúc: Để mặc định là rỗng
+ * Di tích
+ *      Xếp hạng di tích:
+ *          if cosothotu_ditichlichsu == true
+ *              Xếp hạng di tích: 'Di tích lịch sử'
+ *          if cosothotu_ditichvanhoa == true
+ *              Xếp hạng di tích: 'Di tích văn hóa'
+ *          if cosothotu_ditichlichsuvanhoa == true
+ *              Xếp hạng di tích: 'Di tích lịch sử văn hóa'
+ *          if cosothotu_ditichkientrucnghethuat == true
+ *              Xếp hạng di tích: 'Di tích kiến trúc nghệ thuật'
+ *          if cosothotu_ditichkhaoco == true
+ *              Xếp hạng di tích: 'Di tích khảo cổ'
+ *      Cấp công nhận
+ *          if cosothotu_captrunguong == true
+ *              Cấp công nhận: 'Cấp Trung ương'
+ *          if cosothotu_captinh == true
+ *              Cấp công nhận: 'Cấp tỉnh'
+ *
+ * VII. TÍN NGƯỠNG
+ * 6. Bảng cosotinnguong
+ * Tên cơ sở thờ tự: tencoso
+ * Địa chỉ: diachi_so, diachi_duong, diachi_ap, diachi_xa, diachi_huyen, diachi_tinh
+ * Thuộc tổ chức tôn giáo cơ sở: Để mặc định là 'Tín Ngưỡng'
+ * Số lượng tín đồ
+ *      Đã thực hiện lễ nghi tôn giáo: Để mặc định bằng 0
+ *      Chưa thực hiện lễ nghi tôn giáo: Để mặc định bằng 0
+ *      Là người dân tộc thiểu số: Để mặc định bằng 0
+ * Số lượng chức sắc tu sĩ
+ *      Chức sắc: Để mặc định bằng 0
+ *      Tu sĩ: Để mặc định bằng 0
+ *      Chắc sắc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Số lượng chức việc
+ *      Số lượng chức việc: Để mặc định bằng 0
+ *      Số lượng chức việc là người dân tộc thiểu số: Để mặc định bằng 0
+ * Năm thành lập: namthanhlap
+ * Về xây dựng
+ *      Năm xây dựng: namxaydung
+ *      Số tiền: Để mặc định bằng 0
+ * Về trùng tu tôn tạo
+ *      Số lần: ttttcs_solan
+ *      Số tiền lần cuối: ttttcs_tongkinhphi
+ * Diện tích (m2)
+ *      Đã cấp GCNQSD đất
+ *          Mục đích sử dụng đất TG:
+ *              tongiao_dientich - tongiao_chuacap_dientich
+ *          Mục đích sử dụng khác:
+ *              (nnlnntts_dientich - nnlnntts_chuacap_dientich) +
+ *              (gdyt_dientich - gdyt_chuacap_dientich) +
+ *              (dsdmdk_dientich - dsdmdk_chuacap_dientich)
+ *      Chưa được cấp GCNQSD đất:
+ *          tongiao_chuacap_dientich + nnlnntts_chuacap_dientich +
+ *          gdyt_chuacap_dientich + dsdmdk_chuacap_dientich
+ * Kiến trúc: Để mặc định là rỗng
+ * Di tích
+ *      Xếp hạng di tích:
+ *          if cosothotu_ditichlichsu == true
+ *              Xếp hạng di tích: 'Di tích lịch sử'
+ *          if cosothotu_ditichvanhoa == true
+ *              Xếp hạng di tích: 'Di tích văn hóa'
+ *          if cosothotu_ditichlichsuvanhoa == true
+ *              Xếp hạng di tích: 'Di tích lịch sử văn hóa'
+ *          if cosothotu_ditichkientrucnghethuat == true
+ *              Xếp hạng di tích: 'Di tích kiến trúc nghệ thuật'
+ *          if cosothotu_ditichkhaoco == true
+ *              Xếp hạng di tích: 'Di tích khảo cổ'
+ *      Cấp công nhận
+ *          if cosothotu_captrunguong == true
+ *              Cấp công nhận: 'Cấp Trung ương'
+ *          if cosothotu_captinh == true
+ *              Cấp công nhận: 'Cấp tỉnh'
+ *
+ */

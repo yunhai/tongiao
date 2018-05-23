@@ -925,7 +925,7 @@ class ActionController extends AppController
             $total["tong{$i}"] = $sum;
             $i++;
         }
-        
+
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template3.xls';
@@ -1223,7 +1223,7 @@ class ActionController extends AppController
             $total["tong{$i}"] = $sum;
             $i++;
         }
-        
+
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template6.xls';
@@ -1588,10 +1588,6 @@ class ActionController extends AppController
         return $this->Excel->save($filename);
     }
 
-    public function pandog()
-    {
-        $this->__getType8Data();
-    }
     /**
      * DANH SÁCH CƠ SỞ THỜ TỰ TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
      */
@@ -1599,7 +1595,7 @@ class ActionController extends AppController
     {
         $component = $this->Components->load('ExportThCsTtTg');
         $data = $component->export();
-        
+
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template8.xls';
@@ -1621,13 +1617,7 @@ class ActionController extends AppController
                 break;
             }
         }
-        /*print "<pre>";
-        print_r($data);
-        print "</pre>";
-        print "<pre>";
-        print_r($colIndexes);
-        print "</pre>";
-        exit;*/
+
         $i = 1;
         $r = 8;
         foreach ($data as $result) {
@@ -1709,7 +1699,7 @@ class ActionController extends AppController
             $i++;
             $r++;
         }
-        
+
         return $this->Excel->save($filename);
     }
 
@@ -1720,7 +1710,7 @@ class ActionController extends AppController
     {
         $component = $this->Components->load('ExportThCsHdXh');
         $data = $component->export();
-        
+
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template9.xls';
@@ -1786,7 +1776,7 @@ class ActionController extends AppController
             }
             $r++;
         }
-        
+
         return $this->Excel->save($filename);
     }
 
