@@ -441,7 +441,7 @@ class Chucsacnhatuhanhconggiaotrieu extends AppModel {
                         'chungminhnhandan' => $value['Chucsacnhatuhanhconggiaotrieu']['chungminhnhandan'],
                         'chucvu' => $value['Chucsacnhatuhanhconggiaotrieu']['chucvu'],
                         'namduocphongchuc' => '',
-                        'phamtrat' => '',
+                        'phamtrat' => $value['Chucsacnhatuhanhconggiaotrieu']['phamsactrongtongiao'],
                         'namduocphongpham' => '',
                         'trinhdohocvan' => $value['Chucsacnhatuhanhconggiaotrieu']['trinhdohocvan_bangcap'],
                         'trinhdochuyenmon' => $value['Chucsacnhatuhanhconggiaotrieu']['trinhdohocvan_bangcap'],
