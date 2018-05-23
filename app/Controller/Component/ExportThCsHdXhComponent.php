@@ -229,14 +229,24 @@ class ExportThCsHdXhComponent extends Component
                 break;
         }
 
+        $name = [
+            $prefix . 'so' => 'số',
+            $prefix . 'duong' => 'đường',
+            $prefix . 'ap' => 'ấp',
+            $prefix . 'xa' => 'xã',
+            $prefix . 'huyen' => 'huyện',
+            $prefix . 'tinh' => 'tỉnh',
+        ];
+
         $string = '';
         if ($fields) {
-            foreach($fields as $f) {
+            foreach ($fields as $f) {
                 if ($target[$f]) {
-                    $string .= $target[$f] . ', ';
+                    $string .= $name[$f] . ' ' . $target[$f] . ', ';
                 }
             }
         }
+
         return trim($string, ', ');
     }
 

@@ -283,16 +283,19 @@ class ExportThCvTinhComponent extends Component
         $result = [];
         foreach ($fields as $f) {
             if ($data[$f]) {
-                $tmp = explode(',', $data[$f]);
-                foreach ($tmp as $element) {
-                    if (strpos($element, ':') === false) {
-                        continue;
-                    }
+                $group = explode(';', $data[$f]);
+                foreach ($group as $str) {
+                    $tmp = explode(',', $str);
+                    foreach ($tmp as $element) {
+                        if (strpos($element, ':') === false) {
+                            continue;
+                        }
 
-                    list($key, $value) = explode(':', $element);
+                        list($key, $value) = explode(':', $element);
 
-                    if (in_array(trim($key, '_'), $map)) {
-                        $result[trim($key, '_')] = intval($value);
+                        if (in_array(trim($key, '_'), $map)) {
+                            $result[trim($key, '_')] = intval($value);
+                        }
                     }
                 }
             }
