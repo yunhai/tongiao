@@ -327,59 +327,9 @@ class ActionController extends AppController
         $this->Excel->save($filename);
     }
 
-    //TONG HOP CHUC SAC
-    protected function __getType0Data()
-    {
-        $data = array(
-            //BIÊN HÒA
-            'bienhoa_tongconggiao' => 900, 'bienhoa_conggiao_tong' => 900, 'bienhoa_conggiao_giammuc' => 900,
-            'bienhoa_conggiao_betrentongquyen' => 100, 'bienhoa_conggiao_giamtinh' => 200, 'bienhoa_conggiao_linhmuc' => 300,
-
-            //LONG KHÁNH
-            'longkhanh_tongconggiao' => 900, 'longkhanh_conggiao_tong' => 900, 'longkhanh_conggiao_giammuc' => 900,
-            'longkhanh_conggiao_betrentongquyen' => 900, 'longkhanh_conggiao_giamtinh' => 900, 'longkhanh_conggiao_linhmuc' => 900,
-
-            //XUÂN LỘC
-            'xuanloc_tongconggiao' => 900, 'xuanloc_conggiao_tong' => 900, 'xuanloc_conggiao_giammuc' => 900,
-            'xuanloc_conggiao_betrentongquyen' => 900, 'xuanloc_conggiao_giamtinh' => 900, 'xuanloc_conggiao_linhmuc' => 900,
-
-            //CẨM MỸ
-            'cammy_tongconggiao' => 900, 'cammy_conggiao_tong' => 900, 'cammy_conggiao_giammuc' => 900,
-            'cammy_conggiao_betrentongquyen' => 900, 'cammy_conggiao_giamtinh' => 900, 'cammy_conggiao_linhmuc' => 900,
-
-            //TÂN PHÚ
-            'tanphu_tongconggiao' => 900, 'tanphu_conggiao_tong' => 900, 'tanphu_conggiao_giammuc' => 900,
-            'tanphu_conggiao_betrentongquyen' => 900, 'tanphu_conggiao_giamtinh' => 900, 'tanphu_conggiao_linhmuc' => 900,
-
-            //ĐỊNH QUÁN
-            'dinhquan_tongconggiao' => 900, 'dinhquan_conggiao_tong' => 900, 'dinhquan_conggiao_giammuc' => 900,
-            'dinhquan_conggiao_betrentongquyen' => 900, 'dinhquan_conggiao_giamtinh' => 900, 'dinhquan_conggiao_linhmuc' => 900,
-
-            //THỐNG NHẤT
-            'thongnhat_tongconggiao' => 900, 'thongnhat_conggiao_tong' => 900, 'thongnhat_conggiao_giammuc' => 900,
-            'thongnhat_conggiao_betrentongquyen' => 900, 'thongnhat_conggiao_giamtinh' => 900, 'thongnhat_conggiao_linhmuc' => 900,
-
-            //TRẢNG BOM
-            'trangbom_tongconggiao' => 900, 'trangbom_conggiao_tong' => 900, 'trangbom_conggiao_giammuc' => 900,
-            'trangbom_conggiao_betrentongquyen' => 900, 'trangbom_conggiao_giamtinh' => 900, 'trangbom_conggiao_linhmuc' => 900,
-
-            //VĨNH CỬU
-            'vinhcuu_tongconggiao' => 900, 'vinhcuu_conggiao_tong' => 900, 'vinhcuu_conggiao_giammuc' => 900,
-            'vinhcuu_conggiao_betrentongquyen' => 900, 'vinhcuu_conggiao_giamtinh' => 900, 'vinhcuu_conggiao_linhmuc' => 900,
-
-            //NHƠN TRẠCH
-            'nhontrach_tongconggiao' => 900, 'nhontrach_conggiao_tong' => 900, 'nhontrach_conggiao_giammuc' => 900,
-            'nhontrach_conggiao_betrentongquyen' => 900, 'nhontrach_conggiao_giamtinh' => 900, 'nhontrach_conggiao_linhmuc' => 900,
-
-            //LONG THÀNH
-            'longthanh_tongconggiao' => 900, 'longthanh_conggiao_tong' => 900, 'longthanh_conggiao_giammuc' => 900,
-            'longthanh_conggiao_betrentongquyen' => 900, 'longthanh_conggiao_giamtinh' => 900, 'longthanh_conggiao_linhmuc' => 900,
-        );
-
-        return $data;
-    }
-
-    //tổng hop dat dai
+    /**
+     * BẢNG TỔNG HỢP THỐNG KÊ ĐẤT CÁC TỔ CHỨC TÔN GIÁO VÀ CƠ SỞ TÍN NGƯỠNG ĐANG QUẢN LÝ VÀ SỬ DỤNG
+     */
     protected function __getType1Data()
     {
         $result = $this->getExcelData();
