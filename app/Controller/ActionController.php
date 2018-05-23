@@ -4444,61 +4444,13 @@ class ActionController extends AppController
         return $this->Excel->save($filename);
     }
 
-    /**
-     * THBNCS
+    /*
      * TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO ĐƯỢC BỔ NHIỆM, CHUẨN Y
-     *
-     * I. CÔNG GIÁO
-     * 1. Bảng chucsacnhatuhanhconggiaotrieu
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * CÁC BAN THUỘC TÒA GIÁM  MỤC: hoatdongtongiao_chucvuhiennay_truongbanchuyenmon = true hoặc
-     *                              hoatdongtongiao_chucvuhiennay_thanhvienbantuvan = true hoặc
-     *                              hoatdongtongiao_chucvuhiennay_thanhvienhoidonglinhmuc = true hoặc
-     *                              hoatdongtongiao_chucvuhiennay_linhhuongcuahoidoan = true
-     * ĐẠI CHỦNG VIỆN: Để mặc định bằng 0
-     * GIÁO HẠT: hoatdongtongiao_chucvuhiennay_hattruong = true
-     * CHÁNH XỨ: hoatdongtongiao_chucvuhiennay_chanhxu = true
-     * PHÓ XỨ: hoatdongtongiao_chucvuhiennay_phoxu = true
-     *
-     * II. PHẬT GIÁO
-     * 2. Bảng chucsacnhatuhanhphatgiao
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * THÀNH VIÊN BTS CẤP TỈNH: hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaptinh = true
-     * CÁC BAN THUỘC BTS CẤP TỈNH: cm_bantrisu_captinh = true
-     * CÁC TRƯỜNG ĐÀO TẠO TÔN GIÁO: Để mặc định bằng 0
-     * THÀNH VIÊN BTS CẤP HUYỆN: hoatdongtongiao_chucvuhiennay_thanhvienbantrisucaphuyen = true
-     * TRỤ TRÌ: hoatdongtongiao_chucvuhiennay_trutri = true
-     *
-     * III. TIN LÀNH
-     * 3. Bảng chucsactinlanh
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * THÀNH VIÊN BAN ĐẠI DIỆN: tvbandaidiencaptinh = true
-     * QUẢN NHIỆM/PHỤ TRÁCH CHI HỘI: quannhiem = true
-     * PHỤ TÁ QUẢN NHIỆM CHI HỘI: phutaquannhiem = true
-     *
-     * IV. CAO ĐÀI
-     * 4. Bảng chucsaccaodai
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * THÀNH VIÊN BAN ĐẠI DIỆN, ĐẠI DIỆN: chucvuhiennay_thanhvienbddct != null
-     * ĐẦU HỌ ĐẠO: Để mặc định bằng 0
-     * TRƯỞNG BAN CAI QUẢN: chucvuhiennay_caiquan != null
-     * PHÓ BAN CAI QUẢN: chucvuhiennay_phobancaiquan != null
-     * THÀNH VIÊN BAN GIÁO CẢ: chucvuhiennay_thanhvienbddct != null
-     *
-     * V. TĐCSPHVN:
-     * 5. Bảng chucviectinhdocusiphathoivietnam
-     * Tương ứng với từng huyện: BIÊN HÒA/LONG KHÁNH/XUÂN LỘC/CẨM MỸ/TÂN PHÚ/ĐỊNH QUÁN/THỐNG NHẤT/TRẢNG BOM/VĨNH CỬU/NHƠN TRẠCH/LONG THÀNH
-     * noiohiennay_huyen = Tương ứng với từng huyện ở trên và điều kiện
-     * THÀNH VIÊN BTS CẤP TỈNH: thanhvienbantrisucaptinh = true
-     * THÀNH VIÊN BAN TRỊ SỰ CHI HỘI: thanhvienbantrisucaptrunguong = true
-     *
-     */
+    */
     protected function __getType18Data()
     {
+        $component = $this->Components->load('ExportThCsCy');
+        $data = $component->export();
     }
 
     /**
