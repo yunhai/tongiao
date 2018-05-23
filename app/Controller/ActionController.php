@@ -1362,6 +1362,74 @@ class ActionController extends AppController
     {
         $component = $this->Components->load('ExportThCsHdXh');
         $data = $component->export();
+        
+        $this->autoLayout = false;
+        $this->autoRender = false;
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template9.xls';
+        //$filename = "template9";
+        $filename = "{$this->_type_text[9]}";
+        $this->Excel->load($source);
+        //$this->{"__createTemplate{$type}"}();
+        //$this->Excel->save($filename);
+
+        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
+        $colIndexes = array();
+
+        $index = 1;
+        for ($c = 'A'; $c <= 'Z'; $c++) {
+            $colIndexes[$index] = $c;
+            $index ++;
+            if ($c == $maxCols) {
+                break;
+            }
+        }
+        /*print "<pre>";
+        print_r($data);
+        print "</pre>";
+        print "<pre>";
+        print_r($colIndexes);
+        print "</pre>";
+        exit;*/
+        $r = 8;
+        foreach ($data as $result) {
+            foreach ($colIndexes as $k => $c) {
+                switch ($c) {
+                    case 'A':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['stt']);
+                        break;
+                    case 'B':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['tencosothotu']);
+                        break;
+                    case 'C':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['diachi']);
+                        break;
+                    case 'D':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['thuoctochuctongiaocoso']);
+                        break;
+                    case 'E':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['thuoclinhvuc']);
+                        break;
+                    case 'F':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['cosohopphapchuahopphap']);
+                        break;
+                    case 'G':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['coquancongnhan']);
+                        break;
+                    case 'H':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['giaychungnhan']);
+                        break;
+                    case 'I':
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['ghichu']);
+                        break;
+                    default:
+                        echo 'DSCS BAO TRO XA HOI';
+                }
+            }
+            $r++;
+        }
+        
+        return $this->Excel->save($filename);
     }
 
     public function formatData()
