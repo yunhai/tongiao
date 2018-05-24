@@ -5545,16 +5545,16 @@ class ActionController extends AppController
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_total']);
                         break;
                     case 'E':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_0']);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_banhanhgiao']);
                         break;
                     case 'F':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_1']);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_thuongvubhg']);
                         break;
                     case 'G':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_2']);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_lanhdaocachoidoantucapgxtrolen']);
                         break;
                     case 'H':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_3']);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Giaoxu_khac']);
                         break;
                     case 'I'://PHẬT GIÁO
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['Tuvienphatgiao_total']);
@@ -5607,10 +5607,10 @@ class ActionController extends AppController
             }
             $tong += $result['total'];
             $tong_conggiao_tong += $result['Giaoxu_total'];
-            $tong_conggiao_banhanhgiao += $result['Giaoxu_0'];
-            $tong_conggiao_thuongvubhg += $result['Giaoxu_1'];
-            $tong_conggiao_lanhdaocachoidoantucapgiaoxutrolen += $result['Giaoxu_2'];
-            $tong_conggiao_khac += $result['Giaoxu_3'];
+            $tong_conggiao_banhanhgiao += $result['Giaoxu_banhanhgiao'];
+            $tong_conggiao_thuongvubhg += $result['Giaoxu_thuongvubhg'];
+            $tong_conggiao_lanhdaocachoidoantucapgiaoxutrolen += $result['Giaoxu_lanhdaocachoidoantucapgxtrolen'];
+            $tong_conggiao_khac += $result['Giaoxu_khac'];
 
             $tong_phatgiao_tong += $result['Tuvienphatgiao_total'];
             $tong_phatgiao_banhotu += $result['Tuvienphatgiao_banhotu'];
