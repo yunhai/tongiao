@@ -5,7 +5,7 @@
     <div class="col-xs-12 text-left ">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
+                <h4 class="panel-title fa fa-file-excel-o">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<?php echo $key; ?>" aria-expanded="true" aria-controls="collapseOne">
                         <?php echo $value; ?> 
                     </a>

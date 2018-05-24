@@ -251,7 +251,7 @@
                             </li>
                             <li>
                                 <a href="<?php echo $this->Html->url('/', true) ?>Exports">
-                                    <i class="fa fa-tag fa-fw"></i> BẢNG TỔNG HỢP
+                                    <i class="fa fa-file-excel-o fa-fw"></i> BẢNG TỔNG HỢP
                                 </a>
                             </li>
                         </ul>
