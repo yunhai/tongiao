@@ -931,8 +931,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template3.xls';
         $filename = "{$this->_type_text[3]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -1101,8 +1099,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template4.xls';
         $filename = "{$this->_type_text[4]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -1220,8 +1216,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template6.xls';
         $filename = "{$this->_type_text[6]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -1381,8 +1375,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template7.xls';
         $filename = "{$this->_type_text[7]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -1583,8 +1575,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template8.xls';
         $filename = "{$this->_type_text[8]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -1694,8 +1684,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template9.xls';
         $filename = "{$this->_type_text[9]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -2060,8 +2048,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template11.xls';
         $filename = "{$this->_type_text[11]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -2297,8 +2283,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template12.xls';
         $filename = "{$this->_type_text[12]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -2534,8 +2518,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template13.xls';
         $filename = "{$this->_type_text[13]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -2638,8 +2620,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template14.xls';
         $filename = "{$this->_type_text[14]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -3040,8 +3020,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template15.xls';
         $filename = "{$this->_type_text[15]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -3442,8 +3420,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template15.xls';
         $filename = "{$this->_type_text[15]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -3872,8 +3848,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template17.xls';
         $filename = "{$this->_type_text[17]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -3960,8 +3934,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template18.xls';
         $filename = "{$this->_type_text[18]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -4140,8 +4112,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template19.xls';
         $filename = "{$this->_type_text[19]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -4238,8 +4208,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template20.xls';
         $filename = "{$this->_type_text[20]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -4416,8 +4384,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template21.xls';
         $filename = "{$this->_type_text[21]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -4707,8 +4673,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template22.xls';
         $filename = "{$this->_type_text[22]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -5157,8 +5121,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template23.xls';
         $filename = "{$this->_type_text[23]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -5228,7 +5190,7 @@ class ActionController extends AppController
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['choohiennay']);
                         break;
                     case 'Q':
-                        //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ghichu']);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue('');
                         break;
                     default:
                         echo 'DANH SACH TU SI';
@@ -5283,8 +5245,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template24.xls';
         $filename = "{$this->_type_text[24]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -5406,8 +5366,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template25.xls';
         $filename = "{$this->_type_text[25]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -5477,7 +5435,7 @@ class ActionController extends AppController
                         $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['cosotongiaodanghoatdong']);
                         break;
                     case 'Q':
-                        //$this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value['ghichu']);
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue('');
                         break;
                     default:
                         echo 'DS CHUC SAC KO CO CHUC VU';
@@ -5505,8 +5463,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template26.xls';
         $filename = "{$this->_type_text[26]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -5677,8 +5633,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template27.xls';
         $filename = "{$this->_type_text[27]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -5802,8 +5756,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template28.xls';
         $filename = "{$this->_type_text[28]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -6031,8 +5983,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template29.xls';
         $filename = "{$this->_type_text[29]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
@@ -6259,8 +6209,6 @@ class ActionController extends AppController
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template30.xls';
         $filename = "{$this->_type_text[30]}";
         $this->Excel->load($source);
-        //$this->{"__createTemplate{$type}"}();
-        //$this->Excel->save($filename);
 
         //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
