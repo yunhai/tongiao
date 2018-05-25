@@ -313,13 +313,24 @@ class ActionController extends AppController
         //exit;
     }
 
-    public function download($type)
+    public function download($type = null)
     {
+        $conditions = array();
+        if ($this->request->is('post')) {
+            $request = $this->request->data;
+            $type = $request['type'];
+            if (array_key_exists('prefecture_'.$type, $request)) {
+                $conditions['prefecture'] = $request['prefecture_'.$type];
+            }
+            if (array_key_exists('ton_giao_'.$type, $request)) {
+                $conditions['ton_giao'] = $request['ton_giao_'.$type];
+            }
+        }
         $this->autoLayout = false;
         $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template{$type}.xls";
         $filename = "{$this->_type_text[$type]}";
-        $data = $this->{"__getType{$type}Data"}();
+        $data = $this->{"__getType{$type}Data"}($conditions);
         $this->Excel->load($source);
         $this->Excel->setVariableArray($data);
         $this->Excel->compile();
@@ -329,7 +340,7 @@ class ActionController extends AppController
     /**
      * BẢNG TỔNG HỢP THỐNG KÊ ĐẤT CÁC TỔ CHỨC TÔN GIÁO VÀ CƠ SỞ TÍN NGƯỠNG ĐANG QUẢN LÝ VÀ SỬ DỤNG
      */
-    protected function __getType1Data()
+    protected function __getType1Data($conditions)
     {
         $component = $this->Components->load('ExportThTkDat');
         $result = $component->export();
@@ -875,9 +886,9 @@ class ActionController extends AppController
     }
 
     /**
-     * TH TON GIAO CO SO
+     * THỐNG KÊ TỔ CHỨC TÔN GIÁO CƠ SỞ TRÊN ĐỊA BÀN TỈNH
      */
-    protected function __getType2Data()
+    protected function __getType2Data($conditions)
     {
         $component = $this->Components->load('Tongiaocoso');
         $result = $component->export();
@@ -908,7 +919,7 @@ class ActionController extends AppController
      * TỔNG HỢP CƠ SỞ TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
      * sheet 3/9
      */
-    protected function __getType3Data()
+    protected function __getType3Data($conditions)
     {
         $component = $this->Components->load('Cosotongiao');
         $data = $component->export();
@@ -1089,7 +1100,7 @@ class ActionController extends AppController
      * TONG HOP DI TICH
      * TỔNG HỢP CƠ SỞ TÔN GIÁO, TÍN NGƯỠNG ĐƯỢC XẾP HẠNG DI TÍCH TRÊN ĐỊA BÀN TỈNH
      */
-    protected function __getType4Data()
+    protected function __getType4Data($conditions)
     {
         $component = $this->Components->load('ExportThDt');
         $data = $component->export();
@@ -1194,7 +1205,7 @@ class ActionController extends AppController
     /**
      * TỔNG HỢP CƠ SỞ THỜ TỰ TÔN GIÁO, TÍN NGƯỠNG ĐÃ ĐƯỢC TRÙNG TU, TÔN TẠO
      */
-    protected function __getType6Data()
+    protected function __getType6Data($conditions)
     {
         $component = $this->Components->load('Cstgtrungtu');
         $data = $component->export();
@@ -1365,7 +1376,7 @@ class ActionController extends AppController
     /**
      * BẢNG TỔNG HỢP TÍN ĐỒ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
      */
-    protected function __getType7Data()
+    protected function __getType7Data($conditions)
     {
         $component = $this->Components->load('ExportThTdTg');
         $data = $component->export();
@@ -2610,7 +2621,7 @@ class ActionController extends AppController
      * TH CS THAM GIA CT-XH CAP XA
      * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP XÃ
      */
-    protected function __getType14Data()
+    protected function __getType14Data($conditions)
     {
         $component = $this->Components->load('ExportThCtxhXa');
         $data = $component->export();
@@ -3010,7 +3021,7 @@ class ActionController extends AppController
      * TH CS THAM GIA CT-XH CAP HUYEN
      * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP HUYỆN
      */
-    protected function __getType15Data()
+    protected function __getType15Data($conditions)
     {
         $component = $this->Components->load('ExportThCtxhHuyen');
         $data = $component->export();
@@ -3410,7 +3421,7 @@ class ActionController extends AppController
      * TH CS THAM GIA CT-XHCAP TINH
      * TỔNG HỢP CHỨC SẮC TÔN GIÁO THAM GIA CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI CẤP TỈNH
      */
-    protected function __getType16Data()
+    protected function __getType16Data($conditions)
     {
         $component = $this->Components->load('ExportThCtxhTinh');
         $data = $component->export();
@@ -3924,7 +3935,7 @@ class ActionController extends AppController
     /*
      * TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO ĐƯỢC BỔ NHIỆM, CHUẨN Y
     */
-    protected function __getType18Data()
+    protected function __getType18Data($conditions)
     {
         $component = $this->Components->load('ExportThCsCy');
         $data = $component->export();
@@ -4198,7 +4209,7 @@ class ActionController extends AppController
      * TH CHUC SAC PCPP
      * TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO ĐƯỢC PHONG CHỨC, PHONG PHẨM
      */
-    protected function __getType20Data()
+    protected function __getType20Data($conditions)
     {
         $component = $this->Components->load('ExportThCsPc');
         $data = $component->export();
@@ -4374,7 +4385,7 @@ class ActionController extends AppController
      * TH TRINH DO TON GIAO
      * TỔNG HỢP TRÌNH ĐỘ TÔN GIÁO CỦA CHỨC SẮC CÁC TÔN GIÁO
      */
-    protected function __getType21Data()
+    protected function __getType21Data($conditions)
     {
         $component = $this->Components->load('ExportThTdTgCs');
         $data = $component->export();
@@ -4663,7 +4674,7 @@ class ActionController extends AppController
      * TH TRINH DO VH
      * TỔNG HỢP TRÌNH ĐỘ VĂN HÓA CỦA CHỨC SẮC CÁC TÔN GIÁO
      */
-    protected function __getType22Data()
+    protected function __getType22Data($conditions)
     {
         $component = $this->Components->load('ExportThTdVhCs');
         $data = $component->export();
@@ -5453,7 +5464,7 @@ class ActionController extends AppController
      * TONG HOP CHUC VIEC
      * BẢNG TỔNG HỢP CHỨC VIỆC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
      **/
-    protected function __getType26Data()
+    protected function __getType26Data($conditions)
     {
         $component = $this->Components->load('ExportThCvTinh');
         $data = $component->export();
@@ -5623,7 +5634,7 @@ class ActionController extends AppController
      * TONG HOP TU SI
      * BẢNG TỔNG HỢP TU SĨ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
      */
-    protected function __getType27Data()
+    protected function __getType27Data($conditions)
     {
         $component = $this->Components->load('ExportThTs');
         $data = $component->export();
@@ -5746,7 +5757,7 @@ class ActionController extends AppController
      * TONG HOP CHUC SAC KO CHUC VU
      * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (KHÔNG CÓ CHỨC VỤ)
      */
-    protected function __getType28Data()
+    protected function __getType28Data($conditions)
     {
         $component = $this->Components->load('ExportThCskcv');
         $data = $component->export();
@@ -5973,7 +5984,7 @@ class ActionController extends AppController
      * BẢNG TỔNG HỢP CHỨC SẮC CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH (CÓ CHỨC VỤ)
      *
      */
-    protected function __getType29Data()
+    protected function __getType29Data($conditions)
     {
         $component = $this->Components->load('ExportThCscv');
         $data = $component->export();
@@ -6199,7 +6210,7 @@ class ActionController extends AppController
      * DO TUOI CUA CHAC SAC
      * BẢNG TỔNG HỢP LỨA TUỔI CỦA CHỨC SẮC CÁC TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
      */
-    protected function __getType30Data()
+    protected function __getType30Data($conditions)
     {
         $component = $this->Components->load('ExportThDtCs');
         $data = $component->export();

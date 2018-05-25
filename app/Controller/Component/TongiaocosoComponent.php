@@ -91,8 +91,9 @@ class TongiaocosoComponent extends Component
                 continue;
             }
 
-            $keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
-            $keyword = strtolower(str_replace(' ', '-', $keyword));
+            //$keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
+            //$keyword = strtolower(str_replace(' ', '-', $keyword));
+            $keyword = $this->Utility->slug($item['tentuvien']);
 
             foreach ($result[$provice_code] as $key => &$count) {
                 if (strpos($keyword, $key) !== false) {
@@ -164,8 +165,9 @@ class TongiaocosoComponent extends Component
                 continue;
             }
 
-            $keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
-            $keyword = strtolower(str_replace(' ', '-', $keyword));
+            //$keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
+            //$keyword = strtolower(str_replace(' ', '-', $keyword));
+            $keyword = $this->Utility->slug($item['tentuvien']);
             foreach ($result[$provice_code] as $key => &$count) {
                 if (strpos($keyword, $key) !== false) {
                     $count++;

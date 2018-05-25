@@ -1,3 +1,22 @@
+<style>
+.prefecture input {
+    margin-left: 0px !important;
+}
+.ton_giao input {
+    margin-left: 0px !important;
+}
+</style>
+<script>
+$(function(){
+    $('a').click(function(){
+        $('button').click(function(){
+            $('form').append('<input type="hidden" name="type" value="'+$(this).attr('data-value')+'" />');
+        });
+    });
+    
+});
+</script>
+<form action="Exports/download/" method="post">
 <?php
     foreach ($header as $key => $value) {
         ?>
@@ -33,3 +52,4 @@
     </div>
 </div>
 <?php } ?>
+</form>

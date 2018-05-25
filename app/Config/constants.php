@@ -47,3 +47,169 @@ define('TONG_HOP_CHUC_SAC_KO_CHUC_VU', 28); //template28.xls
 define('TONG_HOP_CHUC_SAC_CO_CHUC_VU', 29); //template29.xls
 define('DO_TUOI_CUA_CHAC_SAC', 30); //template30.xls
 define('DO_TUOI_CUA_TU_SI', 31); //template31.xls
+
+define('LOAITONGIAO', serialize(array(
+            1 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'CAO ĐÀI',
+                'TĐCSPHVN',
+                'HỒI GIÁO',
+                'PHẬT GIÁO HÒA HẢO',
+                'TÍN NGƯỠNG'
+            ),
+            2 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'CAO ĐÀI',
+                'TỊNH ĐỘ CƯ SĨ VIỆT NAM',
+                'HỒI GIÁO',
+                'PHẬT GIÁO HÒA HẢO'
+            ),
+            3 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'CAO ĐÀI',
+                'TỊNH ĐỘ CƯ SĨ VIỆT NAM',
+                'HỒI GIÁO',
+                'PHẬT GIÁO HÒA HẢO',
+                'TÍN NGƯỠNG'
+            ),
+            4 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'TỊNH ĐỘ CƯ SĨ VIỆT NAM',
+                'PHẬT GIÁO HÒA HẢO',
+                'HỒI GIÁO'
+            ),
+            5 => array(
+                'Công giáo',
+                'Phật giáo',
+                'Tin lành',
+                'Cao đài',
+                'Tịnh độ Cư sĩ Phật hội VN',
+                'Phật giáo Hòa Hảo',
+                'Hồi giáo',
+                'Tín ngưỡng'
+            ),
+            6 => array(
+                'Công giáo',
+                'Phật giáo',
+                'Tin lành',
+                'Cao đài',
+                'Tịnh độ Cư sĩ Phật hội VN',
+                'Phật giáo Hòa Hảo',
+                'Hồi giáo',
+                'Tín ngưỡng'
+            ),
+            7 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'TĐCSPHVN',
+                'PHẬT GIÁO HÒA HẢO',
+                'HỒI GIÁO',
+                //'CÁC TÔN GIÁO KHÁC'
+            ),
+            14 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM',
+                'PHẬT GIÁO HÒA HẢO',
+                'HỒI GIÁO'
+            ),
+            15 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM',
+                'PHẬT GIÁO HÒA HẢO',
+                'HỒI GIÁO'
+            ),
+            16 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM',
+                'PHẬT GIÁO HÒA HẢO',
+                'HỒI GIÁO'
+            ),
+            18 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'HỒI GIÁO',
+                'TĐCSPHVN'
+            ),
+            20 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'HỒI GIÁO',
+                'TĐCSPHVN'
+            ),
+            21 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM',
+                'HỒI GIÁO'
+            ),
+            22 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'TỊNH ĐỘ CƯ SĨ PHẬT HỘI VIỆT NAM',
+                'HỒI GIÁO'
+            ),
+            26 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'PHẬT GIÁO HÒA HẢO',
+                'TĐCSPHVN'
+            ),
+            27 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+            ),
+            28 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'HỒI GIÁO',
+                'TĐCSPHVN'
+            ),
+            29 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'TIN LÀNH',
+                'CAO ĐÀI',
+                'HỒI GIÁO',
+                'TĐCSPHVN'
+            ),
+            30 => array(
+                'CÔNG GIÁO',
+                'PHẬT GIÁO',
+                'CAO ĐÀI',
+                'TĐCSPHVN',
+                'HỒI GIÁO',
+                'PHẬT GIÁO HÒA HẢO',
+                'TÍN NGƯỠNG'
+            )
+        )
+    )
+);

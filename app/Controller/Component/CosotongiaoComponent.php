@@ -107,8 +107,10 @@ class CosotongiaoComponent extends Component
                 continue;
             }
 
-            $keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
-            $keyword = strtolower(str_replace(' ', '-', $keyword));
+//            $keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
+//            $keyword = strtolower(str_replace(' ', '-', $keyword));
+            $keyword = $this->Utility->slug($item['tentuvien']);
+           
             foreach ($result[$provice_code] as $key => &$count) {
                 if (strpos($keyword, $key) !== false) {
                     $count++;
@@ -148,7 +150,7 @@ class CosotongiaoComponent extends Component
                 continue;
             }
 
-            $keyword = $this->slug($item['tenhodao']);
+            $keyword = $this->Utility->slug($item['tenhodao']);
 
             foreach ($result[$provice_code] as $key => &$count) {
                 if (strpos($keyword, $key) !== false) {
@@ -184,7 +186,7 @@ class CosotongiaoComponent extends Component
                 continue;
             }
 
-            $keyword = $this->slug($item['tenchihoi']);
+            $keyword = $this->Utility->slug($item['tenchihoi']);
 
             foreach ($result[$provice_code] as $key => &$count) {
                 if (strpos($keyword, $key) !== false) {
@@ -221,7 +223,7 @@ class CosotongiaoComponent extends Component
                 continue;
             }
 
-            $keyword = $this->slug($item['tenthanhduong']);
+            $keyword = $this->Utility->slug($item['tenthanhduong']);
 
             foreach ($result[$provice_code] as $key => &$count) {
                 if (strpos($keyword, $key) !== false) {
@@ -266,7 +268,7 @@ class CosotongiaoComponent extends Component
                 continue;
             }
 
-            $keyword = $this->slug($item['hoatdongtongiaotai']);
+            $keyword = $this->Utility->slug($item['hoatdongtongiaotai']);
 
             foreach ($result[$provice_code] as $key => &$count) {
                 if (strpos($keyword, $key) !== false) {
@@ -306,7 +308,7 @@ class CosotongiaoComponent extends Component
                 continue;
             }
 
-            $keyword = $this->slug($item['tencoso']);
+            $keyword = $this->Utility->slug($item['tencoso']);
 
             $result[$provice_code]['khac'] += 1;
             foreach ($result[$provice_code] as $key => &$count) {
