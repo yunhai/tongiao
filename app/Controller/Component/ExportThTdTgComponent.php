@@ -32,6 +32,7 @@ class ExportThTdTgComponent extends Component
                 $partial = $tmp[$provice_code];
 
                 foreach ($partial as $field => $value) {
+					$value = intval($value);
                     $export[$provice_code]['total_' . $field] += $value;
                     $export[$provice_code][$model . '_' . $field] = $value;
                 }
@@ -81,9 +82,8 @@ class ExportThTdTgComponent extends Component
         $result = $this->__groupData($data, $column, $province_field);
 
         foreach ($result as &$item) {
-            $total = $item['tongsotindo'] + $item['sotindo_dantoc_thieuso'];
             $item = [
-                'total' => $total,
+                'total' => $item['tongsotindo'],
                 'dathuchiennghiletongiao' => $item['tongsotindo'],
                 'chuathuchiennghiletongiao' => 0,
                 'dantocthieuso' => $item['sotindo_dantoc_thieuso'],
@@ -134,7 +134,7 @@ class ExportThTdTgComponent extends Component
         foreach ($result as &$item) {
             $total = $item['soluonghoivien_tindo'] + $item['sotindo_dantoc_thieuso'];
             $item = [
-                'total' => $total,
+                'total' => $item['soluonghoivien_tindo'],
                 'dathuchiennghiletongiao' => $item['soluonghoivien_tindo'],
                 'chuathuchiennghiletongiao' => 0,
                 'dantocthieuso' => $item['sotindo_dantoc_thieuso'],
@@ -155,6 +155,7 @@ class ExportThTdTgComponent extends Component
             'tenhodao_diachi_huyen is not null'
         ];
         $column = [
+			'tongsotindo',
             'tongsotindo_cosocaudao',
             'tongsotindo_chuacosocaudao',
             'sotindo_dantoc_thieuso'
@@ -168,9 +169,8 @@ class ExportThTdTgComponent extends Component
         $result = $this->__groupData($data, $column, $province_field);
 
         foreach ($result as &$item) {
-            $total = $item['tongsotindo_cosocaudao'] + $item['tongsotindo_chuacosocaudao'] + $item['sotindo_dantoc_thieuso'];
             $item = [
-                'total' => $total,
+                'total' => $item['tongsotindo'],
                 'dathuchiennghiletongiao' => $item['tongsotindo_cosocaudao'],
                 'chuathuchiennghiletongiao' => $item['tongsotindo_chuacosocaudao'],
                 'dantocthieuso' => $item['sotindo_dantoc_thieuso'],
@@ -191,6 +191,7 @@ class ExportThTdTgComponent extends Component
             'diachi_huyen is not null'
         ];
         $column = [
+			'tongsotindo',
             'tongsotindo_baptem',
             'tongsotindo_chuabaptem',
             'sotindo_dantoc_thieuso'
@@ -204,9 +205,9 @@ class ExportThTdTgComponent extends Component
         $result = $this->__groupData($data, $column, $province_field);
 
         foreach ($result as &$item) {
-            $total = $item['tongsotindo_baptem'] + $item['tongsotindo_chuabaptem'] + $item['sotindo_dantoc_thieuso'];
+            // $total = $item['tongsotindo_baptem'] + $item['tongsotindo_chuabaptem'] + $item['sotindo_dantoc_thieuso'];
             $item = [
-                'total' => $total,
+                'total' => $item['tongsotindo'],
                 'dathuchiennghiletongiao' => $item['tongsotindo_baptem'],
                 'chuathuchiennghiletongiao' => $item['tongsotindo_chuabaptem'],
                 'dantocthieuso' => $item['sotindo_dantoc_thieuso'],
@@ -244,9 +245,8 @@ class ExportThTdTgComponent extends Component
             if ($chuathuchiennghiletongiao < 0) {
                 $chuathuchiennghiletongiao = 0;
             }
-            $total = $item['soluongtindo'] + $item['phattu_dantoc_thieuso'];
             $item = [
-                'total' => $total,
+                'total' => $item['soluongtindo'],
                 'dathuchiennghiletongiao' => $item['daquyy'],
                 'chuathuchiennghiletongiao' => $chuathuchiennghiletongiao,
                 'dantocthieuso' => $item['phattu_dantoc_thieuso'],
@@ -279,9 +279,8 @@ class ExportThTdTgComponent extends Component
         $result = $this->__groupData($data, $column, $province_field);
 
         foreach ($result as &$item) {
-            $total = array_sum($item);
             $item = [
-                'total' => $total,
+                'total' => $item['giaodan_sonhankhau'],
                 'dathuchiennghiletongiao' => $item['giaodan_sonhankhau'],
                 'chuathuchiennghiletongiao' => 0,
                 'dantocthieuso' => $item['giaodandantocthieuso_sonhankhau'],
