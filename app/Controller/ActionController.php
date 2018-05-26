@@ -315,10 +315,23 @@ class ActionController extends AppController
 
     public function download($type = null)
     {
-        $conditions = array();
+		$conditions = array();
+		$request = $this->request->data;
+		$type = 7;
+		if (array_key_exists('prefecture_'.$type, $request)) {
+			$conditions['prefecture'] = $request['prefecture_'.$type];
+		}
+		if (array_key_exists('ton_giao_'.$type, $request)) {
+			$conditions['ton_giao'] = $request['ton_giao_'.$type];
+		}
+		// print_r("<pre>");
+		// print_r($conditions);
+		// print_r("</pre>");
+		// exit;
+
         if ($this->request->is('post')) {
             $request = $this->request->data;
-            $type = $request['type'];
+            // $type = $request['type'];
             if (array_key_exists('prefecture_'.$type, $request)) {
                 $conditions['prefecture'] = $request['prefecture_'.$type];
             }
@@ -1373,13 +1386,18 @@ class ActionController extends AppController
         return $this->Excel->save($filename);
     }
 
+private function __getTypeData($conditions) {
+	return $this->__getType7Data($conditions);
+}
+
+
     /**
      * BẢNG TỔNG HỢP TÍN ĐỒ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
      */
     protected function __getType7Data($conditions)
     {
         $component = $this->Components->load('ExportThTdTg');
-        $data = $component->export();
+        $data = $component->export($conditions);
 
         $this->autoLayout = false;
         $this->autoRender = false;
@@ -1387,7 +1405,6 @@ class ActionController extends AppController
         $filename = "{$this->_type_text[7]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 

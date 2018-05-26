@@ -115,3 +115,40 @@ CakeLog::config('error', array(
 CakeLog::config('default', array(
     'engine' => 'File'
 ));
+
+define('CONG_GIAO', 1);
+define('PHAT_GIAO', 2);
+define('TIN_LANH', 3);
+define('CAO_DAI', 4);
+define('TINH_DO_CU_SI', 5);
+define('HOA_HAO', 6);
+define('HOI_GIAO', 7);
+define('TIN_NGUONG', 8);
+define('KHAC', 99);
+
+$location = [
+	'bien-hoa' => 'BIÊN HÒA',
+	'long-khanh' => 'LONG KHÁNH',
+	'xuan-loc' => 'XUÂN LỘC',
+	'cam-my' => 'CẨM MỸ',
+	'tan-phu' => 'TÂN PHÚ',
+	'dinh-quan' => 'ĐỊNH QUÁN',
+	'thong-nhat' => 'THỐNG NHẤT',
+	'trang-bom' => 'TRẢNG BOM',
+	'vinh-cuu' => 'VĨNH CỬU',
+	'nhon-trach' => 'NHƠN TRẠCH',
+	'long-thanh' => 'LONG THÀNH'
+];
+
+$group = [
+	CONG_GIAO => 'CÔNG GIÁO',
+	PHAT_GIAO => 'PHẬT GIÁO',
+	CAO_DAI => 'CAO ĐÀI',
+	TINH_DO_CU_SI => 'TĐCSPHVN',
+	HOI_GIAO => 'HỒI GIÁO',
+	HOA_HAO => 'PHẬT GIÁO HÒA HẢO',
+	TIN_NGUONG => 'TÍN NGƯỠNG',
+	KHAC => 'Khac',
+];
+
+Configure::write('export.filter', compact('location', 'group'));

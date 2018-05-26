@@ -7,32 +7,46 @@ class ExportThTdTgComponent extends Component
         $this->Province = new ProvinceComponent(new ComponentCollection());
     }
 
-    public function export()
+    public function export($filter = [])
     {
-        $export_fields = [
-            'Giaoxu',
-            'Tuvienphatgiao',
-            'Chihoitinlanh',
-            'Hodaocaodai',
-            'Chihoitinhdocusiphatgiaovietnam',
-            'Hoahao',
-            'Cosohoigiaoislam',
-            'Tongiaokhac',
+        $filter_group = $filter['ton_giao'];
+        // $filter_location = $filter['prefecture'];
+        $filter_location= [
+            'long-khanh',
+            'dinh-quan'
+        ];
+        $groups = [
+            CONG_GIAO => 'Giaoxu',
+            PHAT_GIAO => 'Tuvienphatgiao',
+            TIN_LANH => 'Chihoitinlanh',
+            CAO_DAI => 'Hodaocaodai',
+            TINH_DO_CU_SI => 'Chihoitinhdocusiphatgiaovietnam',
+            HOA_HAO => 'Hoahao',
+            HOI_GIAO => 'Cosohoigiaoislam',
+            KHAC => 'Tongiaokhac',
         ];
 
         $province = $this->Province->getProvince();
 
         $export = $this->init($province);
+        foreach ($groups as $field_index => $model) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
 
-        foreach ($export_fields as $field_index => $model) {
             $func = '__get' . $model;
             $tmp = $this->$func($model);
 
             foreach ($province as $provice_code => $name) {
+                if (!empty($filter_location) && !in_array($provice_code, $filter_location)) {
+                    unset($export[$provice_code]);
+                    continue;
+                }
+
                 $partial = $tmp[$provice_code];
 
                 foreach ($partial as $field => $value) {
-					$value = intval($value);
+                    $value = intval($value);
                     $export[$provice_code]['total_' . $field] += $value;
                     $export[$provice_code][$model . '_' . $field] = $value;
                 }
@@ -109,7 +123,7 @@ class ExportThTdTgComponent extends Component
 
         return $result;
     }
-	private function __getChihoitinhdocusiphatgiaovietnam($model)
+    private function __getChihoitinhdocusiphatgiaovietnam($model)
     {
         $fields = [
             'id',
@@ -155,7 +169,7 @@ class ExportThTdTgComponent extends Component
             'tenhodao_diachi_huyen is not null'
         ];
         $column = [
-			'tongsotindo',
+            'tongsotindo',
             'tongsotindo_cosocaudao',
             'tongsotindo_chuacosocaudao',
             'sotindo_dantoc_thieuso'
@@ -191,7 +205,7 @@ class ExportThTdTgComponent extends Component
             'diachi_huyen is not null'
         ];
         $column = [
-			'tongsotindo',
+            'tongsotindo',
             'tongsotindo_baptem',
             'tongsotindo_chuabaptem',
             'sotindo_dantoc_thieuso'
