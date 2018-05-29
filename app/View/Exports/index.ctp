@@ -8,10 +8,6 @@
 .label_filter {
     margin-bottom: 10px;
 }
-hr {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
 </style>
 <script>
 $(function(){

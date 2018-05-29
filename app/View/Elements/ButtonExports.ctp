@@ -20,7 +20,7 @@ foreach ($array as $key => $value) {
                                         <ul class="list-unstyled">
                                             <li class="label_filter"><label class="label label-primary">Lọc theo huyện</label></li>
                                             <li><hr></li>
-                                            <li><input type="checkbox" class="all"> Chọn tất cả</li>
+                                            <li><label><input type="checkbox" class="all"> Chọn tất cả</label></li>
                                         </ul>
                                         <?php
                                             $filter = Configure::read('export.filter');
@@ -43,7 +43,7 @@ foreach ($array as $key => $value) {
                                         <ul class="list-unstyled">
                                             <li class="label_filter"><label class="label label-primary">Lọc theo tôn giáo</label></li>
                                             <li><hr></li>
-                                            <li><input type="checkbox" class="all"> Chọn tất cả</li>
+                                            <li><label><input type="checkbox" class="all"> Chọn tất cả</label></li>
                                         </ul>
                                         <?php
                                             $ton_giao = $ton_giaos[$key];
