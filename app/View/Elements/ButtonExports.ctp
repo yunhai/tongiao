@@ -1,6 +1,5 @@
 <ul>
 <?php
-$index = 0;
 $ton_giaos = unserialize(TONGIAO);
 foreach ($array as $key => $value) {
     ?>
@@ -69,7 +68,6 @@ foreach ($array as $key => $value) {
             <?php endif;?>
         </li>
     <?php
-    $index ++;
 }
 ?>
 </ul>
