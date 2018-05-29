@@ -38,17 +38,14 @@ class ActionController extends AppController
     {
         //parent::beforeFilter();
         $this->_type_text = array(
-            //TONG_HOP_CHUC_SAC => 'TONG HOP CHUC SAC',
             TONG_HOP_DAT_DAI => 'TONG HOP DAT DAI',
             TH_TON_GIAO_CO_SO => 'TH TON GIAO CO SO',
             TH_CO_SO_TON_GIAO => 'TH CO SO TON GIAO',
             TONG_HOP_DI_TICH => 'TONG HOP DI TICH',
-            //TONG_HOP_CSTT_XAY_DUNG => 'TONG HOP CSTT XAY DUNG',
             TONG_HOP_CSTG_TRUNG_TU => 'TONG HOP CSTG TRUNG TU',
             BANG_TONG_HOP_TIN_DO => 'BANG TONG HOP TIN DO',
             DS_CSTT => 'ds cstt',
             DSCS_BAO_TRO_XA_HOI => 'DSCS BAO TRO XA HOI',
-
             DS_CS_THAM_GIA_CT_XH_CAP_XA => 'DS CS THAM GIA CT-XH CAP XA',
             DS_CS_THAM_GIA_CT_XH_CAP_HUYEN => 'DS CS THAM GIA CT-XH CAP HUYEN',
             DS_CS_THAM_GIA_CT_XH_CAP_TINH => 'DS CS THAM GIA CT-XH CAP TINH',
@@ -69,7 +66,6 @@ class ActionController extends AppController
             TONG_HOP_CHUC_SAC_KO_CHUC_VU => 'TONG HOP CHUC SAC KO CHUC VU',
             TONG_HOP_CHUC_SAC_CO_CHUC_VU => 'TONG HOP CHUC SAC CO CHUC VU',
             DO_TUOI_CUA_CHAC_SAC => 'DO TUOI CUA CHAC SAC',
-            //DO_TUOI_CUA_TU_SI => 'DO TUOI CUA TU SĨ'
         );
     }
 
