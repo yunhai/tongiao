@@ -217,7 +217,7 @@ define('TONGIAO', serialize(array(
                 TINH_DO_CU_SI => 'TĐCSPHVN',
                 HOA_HAO => 'PHẬT GIÁO HÒA HẢO',
                 HOI_GIAO => 'HỒI GIÁO',
-                //'CÁC TÔN GIÁO KHÁC'
+                KHAC => 'CÁC TÔN GIÁO KHÁC'
             ),
             14 => array(
                 CONG_GIAO => 'CÔNG GIÁO',
