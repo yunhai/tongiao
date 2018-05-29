@@ -51,10 +51,10 @@ $(function(){
                     <div class="input-group col-xs-12 ">
                         <?php
                             switch ($key) {
-                                case 0:
+                                case 'a':
                                     echo $this->element("ButtonExports", array("array" => $arrayButtonLable1));
                                     break;
-                                case 1:
+                                case 'b':
                                     echo $this->element("ButtonExports", array("array" => $arrayButtonLable2));
                                     break;
                                 default:
