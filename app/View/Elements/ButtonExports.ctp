@@ -61,7 +61,7 @@ foreach ($array as $key => $value) {
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-sm" data-value="<?php echo $key;?>">Xuất BẢNG TỔNG HỢP</button>
+                        <button type="submit" class="btn btn-primary btn-sm" data-value="<?php echo $key;?>">XUẤT FILE</button>
                     </div> 
                 </div>
             <?php else :?>
