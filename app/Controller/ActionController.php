@@ -1385,7 +1385,6 @@ private function __getTypeData($conditions) {
         $this->Excel->load($source);
         
         $r = 12;
-        //$i = 1;
         $reset = reset($data);
         if (!isset($reset['Tongiaokhac_total'])) {
             $this->removeColumn('AL', 'AI', 8);
@@ -1427,7 +1426,6 @@ private function __getTypeData($conditions) {
                 $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value[$k]);
             }
             $r++;
-            //$i++;
         }
         return $this->Excel->save($filename);
     }
