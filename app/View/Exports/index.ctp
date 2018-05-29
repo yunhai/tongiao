@@ -5,6 +5,13 @@
 .ton_giao input {
     margin-left: 0px !important;
 }
+.label_filter {
+    margin-bottom: 10px;
+}
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 </style>
 <script>
 $(function(){
