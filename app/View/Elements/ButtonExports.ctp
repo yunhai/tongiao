@@ -1,7 +1,7 @@
 <ul>
 <?php
 $index = 0;
-$ton_giaos = unserialize(LOAITONGIAO);
+$ton_giaos = unserialize(TONGIAO);
 foreach ($array as $key => $value) {
     ?>
         <li class='form-group' style="list-style: none;">
@@ -22,26 +22,15 @@ foreach ($array as $key => $value) {
                                           <li><hr></li>
                                         </ul>
                                         <?php
-                                            $options = array(
-                                                '1' => 'BIÊN HÒA',
-                                                '2' => 'LONG KHÁNH',
-                                                '3' => 'XUÂN LỘC',
-                                                '4' => 'CẨM MỸ',
-                                                '5' => 'TÂN PHÚ',
-                                                '6' => 'ĐỊNH QUÁN',
-                                                '7' => 'THỐNG NHẤT',
-                                                '8' => 'TRẢNG BOM',
-                                                '9' => 'VĨNH CỬU',
-                                                '10' => 'NHƠN TRẠCH',
-                                                '11' => 'LONG THÀNH'
-                                            );
+                                            $filter = Configure::read('export.filter');
+                                            $location = $filter['location'];
                                             echo $this->Form->input('prefecture_'.$key, array(
                                                 'label' => false,
                                                 'class' => 'checkbox prefecture',
                                                 'type' => 'select',
                                                 'multiple' => 'checkbox',
                                                 'name' => 'prefecture_'.$key,
-                                                'options' => $options,
+                                                'options' => $location,
                                                 )
                                             );
                                         ?>

@@ -8,12 +8,28 @@
 </style>
 <script>
 $(function(){
-    $('a').click(function(){
-        $('button').click(function(){
-            $('form').append('<input type="hidden" name="type" value="'+$(this).attr('data-value')+'" />');
-        });
+	$('button').click(function(){
+        $('form').append('<input type="hidden" name="type" value="'+$(this).attr('data-value')+'" />');
     });
-    
+    //select all checkboxes
+    $(".all").change(function(){  //"select all" change 
+        $(this).closest('.col-lg-6').find('input[type=checkbox]').prop('checked',$(this).is(':checked'));
+    });
+
+    //".checkbox" change 
+    $('.checkbox input[type=checkbox]').change(function(){ 
+        //uncheck "select all", if one of the listed checkbox item is unchecked
+        if(false == $(this).prop("checked")){ //if this item is unchecked
+            $(this).closest('.col-lg-6').find('.all').prop('checked', false); //change "select all" checked status to false
+        }
+        //check "select all" if all checkbox items are checked
+        /*if ($('.checkbox input[type=checkbox]:checked').length == $('.checkbox input[type=checkbox]').length ){
+        	$(this).closest('.col-lg-6').find('.all').prop('checked', true);
+        }*/
+        if ($(this).closest('.col-lg-6').find('.checkbox input[type=checkbox]:checked').length == $(this).closest('.col-lg-6').find('.checkbox input[type=checkbox]').length ){
+            $(this).closest('.col-lg-6').find('.all').prop('checked', true);
+        }
+    });
 });
 </script>
 <form action="Exports/download/" method="post">
