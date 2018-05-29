@@ -937,8 +937,6 @@ class ActionController extends AppController
             $i++;
         }
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template3.xls';
         $filename = "{$this->_type_text[3]}";
         $this->Excel->load($source);
@@ -1105,8 +1103,6 @@ class ActionController extends AppController
         $component = $this->Components->load('ExportThDt');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template4.xls';
         $filename = "{$this->_type_text[4]}";
         $this->Excel->load($source);
@@ -1222,8 +1218,6 @@ class ActionController extends AppController
             $i++;
         }
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template6.xls';
         $filename = "{$this->_type_text[6]}";
         $this->Excel->load($source);
@@ -1446,8 +1440,6 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThCsTtTg');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template8.xls';
         $filename = "{$this->_type_text[8]}";
         $this->Excel->load($source);
@@ -1555,13 +1547,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThCsHdXh');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template9.xls';
         $filename = "{$this->_type_text[9]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -1919,13 +1908,10 @@ private function __getTypeData($conditions) {
 
     public function __createTemplate11($data)
     {
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template11.xls';
         $filename = "{$this->_type_text[11]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -2154,13 +2140,10 @@ private function __getTypeData($conditions) {
 
     public function __createTemplate12($data)
     {
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template12.xls';
         $filename = "{$this->_type_text[12]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -2389,13 +2372,10 @@ private function __getTypeData($conditions) {
 
     public function __createTemplate13($data)
     {
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template13.xls';
         $filename = "{$this->_type_text[13]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -2491,13 +2471,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThCtxhXa');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template14.xls';
         $filename = "{$this->_type_text[14]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -2891,13 +2868,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThCtxhHuyen');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template15.xls';
         $filename = "{$this->_type_text[15]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -3291,13 +3265,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThCtxhTinh');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template15.xls';
         $filename = "{$this->_type_text[15]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -3719,13 +3690,10 @@ private function __getTypeData($conditions) {
 
     public function __createTemplate17($data)
     {
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template17.xls';
         $filename = "{$this->_type_text[17]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -3805,13 +3773,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThCsCy');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template18.xls';
         $filename = "{$this->_type_text[18]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -3983,13 +3948,10 @@ private function __getTypeData($conditions) {
 
     public function __createTemplate19($data)
     {
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template19.xls';
         $filename = "{$this->_type_text[19]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -4079,13 +4041,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThCsPc');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template20.xls';
         $filename = "{$this->_type_text[20]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -4255,13 +4214,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThTdTgCs');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template21.xls';
         $filename = "{$this->_type_text[21]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -4544,13 +4500,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThTdVhCs');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template22.xls';
         $filename = "{$this->_type_text[22]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -4992,13 +4945,10 @@ private function __getTypeData($conditions) {
 
     public function __createTemplate23($data)
     {
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template23.xls';
         $filename = "{$this->_type_text[23]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -5116,13 +5066,10 @@ private function __getTypeData($conditions) {
 
     public function __createTemplate24($data)
     {
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template24.xls';
         $filename = "{$this->_type_text[24]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -5237,13 +5184,10 @@ private function __getTypeData($conditions) {
 
     public function __createTemplate25($data)
     {
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template25.xls';
         $filename = "{$this->_type_text[25]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -5334,13 +5278,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThCvTinh');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template26.xls';
         $filename = "{$this->_type_text[26]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -5504,13 +5445,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThTs');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template27.xls';
         $filename = "{$this->_type_text[27]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -5627,13 +5565,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThCskcv');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template28.xls';
         $filename = "{$this->_type_text[28]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -5854,13 +5789,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThCscv');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template29.xls';
         $filename = "{$this->_type_text[29]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
@@ -6080,13 +6012,10 @@ private function __getTypeData($conditions) {
         $component = $this->Components->load('ExportThDtCs');
         $data = $component->export();
 
-        $this->autoLayout = false;
-        $this->autoRender = false;
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template30.xls';
         $filename = "{$this->_type_text[30]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
 
