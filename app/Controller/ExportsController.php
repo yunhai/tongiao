@@ -8,8 +8,8 @@ class ExportsController extends DataController {
     
     public function index() {
         $header = array(
-            'a' => ' CƠ SỞ TÔN GIÁO',
-            'b' => 'CHỨC SẮC TÔN GIÁO'
+            ' CƠ SỞ TÔN GIÁO',
+            ' CHỨC SẮC TÔN GIÁO'
         );
         $arrayButtonLable1 = array(
             '1' => 'BẢNG TỔNG HỢP THỐNG KÊ ĐẤT CÁC TỔ CHỨC TÔN GIÁO VÀ CƠ SỞ TÍN NGƯỠNG ĐANG QUẢN LÝ VÀ SỬ DỤNG',
