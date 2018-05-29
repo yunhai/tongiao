@@ -1,4 +1,4 @@
-<ul>
+<ul style="padding-left: 0px; margin-bottom: 0px;">
 <?php
 $ton_giaos = unserialize(TONGIAO);
 foreach ($array as $key => $value) {
