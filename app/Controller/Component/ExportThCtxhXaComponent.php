@@ -7,9 +7,6 @@ class ExportThCtxhXaComponent extends Component
         App::uses('ProvinceComponent', 'Controller/Component');
         $this->Province = new ProvinceComponent(new ComponentCollection());
 
-        App::uses('UtilityComponent', 'Controller/Component');
-        $this->Utility = new UtilityComponent(new ComponentCollection());
-
         $this->map_field = [
             1 => 'hoidongnhandan_capxa',
             2 => 'uybanmttqvn_capxa',
