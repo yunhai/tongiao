@@ -5796,7 +5796,7 @@ class ActionController extends AppController
     protected function __getType29Data($conditions)
     {
         $component = $this->Components->load('ExportThCscv');
-        $data = $component->export();
+        $data = $component->export($conditions);
 
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template29.xls';
         $filename = "{$this->_type_text[29]}";
