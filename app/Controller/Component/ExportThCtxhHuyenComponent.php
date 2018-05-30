@@ -7,9 +7,6 @@ class ExportThCtxhHuyenComponent extends Component
         App::uses('ProvinceComponent', 'Controller/Component');
         $this->Province = new ProvinceComponent(new ComponentCollection());
 
-        App::uses('UtilityComponent', 'Controller/Component');
-        $this->Utility = new UtilityComponent(new ComponentCollection());
-
         $this->map_field = [
             1 => 'hoidongnhandan_caphuyen',
             2 => 'uybanmttqvn_caphuyen',
@@ -21,39 +18,56 @@ class ExportThCtxhHuyenComponent extends Component
         ];
     }
 
-    public function export()
+    public function export($filter = [])
     {
-        $export_fields = [
-            [
+        $groups = [
+            CONG_GIAO => [
                 'Chucsacnhatuhanhconggiaotrieu',
                 'Chucsacnhatuhanhcongiaodongtu'
             ],
-            [
+            PHAT_GIAO => [
                 'Chucsacnhatuhanhphatgiao',
                 'Huynhtruonggiadinhphattu'
             ],
-            [
+            TIN_LANH => [
                 'Chucsactinlanh',
             ],
-            [
+            CAO_DAI => [
                 'Chucsaccaodai'
             ],
-            [
+            TINH_DO_CU_SI => [
                 'Chucviectinhdocusiphathoivietnam'
             ],
-            [
+            HOA_HAO => [
                 'Chucviecphathoahao'
             ],
-            [
+            HOI_GIAO => [
                 'Chucviechoigiao'
             ]
         ];
 
-        $province = $this->Province->getProvince();
+        $map_name = array(
+            CONG_GIAO => 'cong_giao',
+            PHAT_GIAO => 'phat_giao',
+            TIN_LANH => 'tinh_lanh',
+            CAO_DAI => 'cao_dai',
+            TINH_DO_CU_SI => 'tinh_do_cu_si',
+            HOA_HAO => 'hoa_hao',
+            HOI_GIAO => 'hoi_giao'
+        );
+
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
+
+        $province = $this->Province->getProvince($filter_location);
 
         $export = $this->init($province);
 
-        foreach ($export_fields as $field_index => $list) {
+        foreach ($groups as $field_index => $list) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
+
             $tmp = $this->__calculate($list);
             foreach ($province as $provice_code => $name) {
                 $partial = $tmp[$provice_code];
@@ -64,12 +78,36 @@ class ExportThCtxhHuyenComponent extends Component
 
                     $export[$provice_code]['total'] += $count;
                     $export[$provice_code][$key] += $count;
-                    $export[$provice_code][$field_index . '_' . $key] = $count;
+
+                    $fn = $map_name[$field_index];
+                    $export[$provice_code][$fn . '_' . $key] = $count;
                 }
             }
         }
 
-        return $export;
+        return $this->sum($export);
+    }
+
+    private function sum($data, $start = 2)
+    {
+        $total = [];
+
+        foreach ($data as $location => $target) {
+            $index = 0;
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$field}"] = '';
+
+                    continue;
+                }
+
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
+            }
+        }
+        $data['final_total'] = $total;
+
+        return $data;
     }
 
     private function init($province)
@@ -109,6 +147,7 @@ class ExportThCtxhHuyenComponent extends Component
                 $index = 0;
                 foreach ($data as $v) {
                     ++$index;
+                    $v = intval($v);
                     if (isset($result[$province][$index])) {
                         $result[$province][$index] += $v;
                     } else {
