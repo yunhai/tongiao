@@ -7,9 +7,6 @@ class ExportThTdVhCsComponent extends Component
         App::uses('ProvinceComponent', 'Controller/Component');
         $this->Province = new ProvinceComponent(new ComponentCollection());
 
-        App::uses('UtilityComponent', 'Controller/Component');
-        $this->Utility = new UtilityComponent(new ComponentCollection());
-
         $this->map_field = [
             1 => 'tieu_hoc',
             2 => 'thcs',
@@ -24,35 +21,50 @@ class ExportThTdVhCsComponent extends Component
         $this->trinh_do = 'trinh_do';
     }
 
-    public function export()
+    public function export($filter = [])
     {
         $export_fields = [
-            [
+            CONG_GIAO => [
                 'Chucsacnhatuhanhconggiaotrieu',
                 'Chucsacnhatuhanhcongiaodongtu'
             ],
-            [
+            PHAT_GIAO => [
                 'Chucsacnhatuhanhphatgiao'
             ],
-            [
+            TIN_LANH => [
                 'Chucsactinlanh',
             ],
-            [
+            CAO_DAI => [
                 'Chucsaccaodai'
             ],
-            [
+            TINH_DO_CU_SI => [
                 'Chucviectinhdocusiphathoivietnam'
             ],
-            [
+            HOI_GIAO => [
                 'Chucviechoigiao'
             ]
         ];
 
-        $province = $this->Province->getProvince();
+        $map_name = [
+            CONG_GIAO => 'cong_giao',
+            PHAT_GIAO => 'phat_giao',
+            TIN_LANH => 'tin_lanh',
+            CAO_DAI => 'cao_dai',
+            TINH_DO_CU_SI => 'tinh_do_cu_si',
+            HOI_GIAO => 'hoi_giao'
+        ];
+
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
+
+        $province = $this->Province->getProvince($filter_location);
 
         $export = $this->init($province);
 
         foreach ($export_fields as $field_index => $list) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
             $tmp = $this->__calculate($list);
 
             foreach ($province as $provice_code => $name) {
@@ -64,15 +76,39 @@ class ExportThTdVhCsComponent extends Component
 
                     $export[$provice_code]['total'] += $count;
                     $export[$provice_code][$key] += $count;
-                    $export[$provice_code][$field_index . '_' . $key] = $count;
+
+                    $fn = $map_name[$field_index];
+                    $export[$provice_code][$fn . '_' . $key] = $count;
                 }
             }
         }
 
-        return $export;
+        return $this->sum($export);
     }
 
-    ////////////////////////////////////////////
+    private function sum($data, $start = 2)
+    {
+        $total = [];
+
+        foreach ($data as $location => $target) {
+            $index = 0;
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$field}"] = '';
+
+                    continue;
+                }
+
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
+            }
+        }
+        $data['final_total'] = $total;
+
+        return $data;
+    }
+
+
     private function __getChucsacnhatuhanhconggiaotrieu($model)
     {
         $fields = [
@@ -101,54 +137,54 @@ class ExportThTdVhCsComponent extends Component
     private function __getChucsacnhatuhanhconggiaotrieuVf()
     {
         $tieu_hoc = 'WHEN
-						trinhdohocvan_bangcap IN (1, 2, 3, 4, 5) OR
-						trinhdohocvan_bangcap IN ("1/12", "2/12", "3/12", "4/12", "5/12")
-					THEN 1';
+                        trinhdohocvan_bangcap IN (1, 2, 3, 4, 5) OR
+                        trinhdohocvan_bangcap IN ("1/12", "2/12", "3/12", "4/12", "5/12")
+                    THEN 1';
         $thcs = 'WHEN
-						trinhdohocvan_bangcap IN (6, 7, 8, 9) OR
-						trinhdohocvan_bangcap IN ("6/12", "7/12", "8/12", "9/12")
-					THEN 2';
+                        trinhdohocvan_bangcap IN (6, 7, 8, 9) OR
+                        trinhdohocvan_bangcap IN ("6/12", "7/12", "8/12", "9/12")
+                    THEN 2';
         $thpt = 'WHEN
-						trinhdohocvan_bangcap IN (10, 11, 12) OR
-						trinhdohocvan_bangcap IN ("10/12", "11/12", "12/12", "Tú Tài")
-					THEN 3';
+                        trinhdohocvan_bangcap IN (10, 11, 12) OR
+                        trinhdohocvan_bangcap IN ("10/12", "11/12", "12/12", "Tú Tài")
+                    THEN 3';
         $so_cap = 'WHEN
-						trinhdohocvan_bangcap LIKE "SƠ CẤP"
-					THEN 4';
+                        trinhdohocvan_bangcap LIKE "SƠ CẤP"
+                    THEN 4';
 
         $trung_cap = 'WHEN
-						trinhdohocvan_bangcap LIKE "TRUNG CẤP%"
-					THEN 5';
+                        trinhdohocvan_bangcap LIKE "TRUNG CẤP%"
+                    THEN 5';
 
         $cao_dang = 'WHEN
-						trinhdohocvan_bangcap LIKE "CAO ĐẲNG%"
-					THEN 6';
+                        trinhdohocvan_bangcap LIKE "CAO ĐẲNG%"
+                    THEN 6';
 
         $dai_hoc = 'WHEN
-						trinhdohocvan_bangcap LIKE "ĐẠI HỌC%" OR
-						trinhdohocvan_bangcap LIKE "CỬ NHÂN%"
-					THEN 7';
+                        trinhdohocvan_bangcap LIKE "ĐẠI HỌC%" OR
+                        trinhdohocvan_bangcap LIKE "CỬ NHÂN%"
+                    THEN 7';
 
         $sau_dai_hoc = 'WHEN
-							trinhdohocvan_bangcap LIKE "CAO HỌC%" OR
-							trinhdohocvan_bangcap LIKE "SAU ĐẠI HỌC%" OR
-							trinhdohocvan_bangcap LIKE "THẠC SỸ%" OR
-							trinhdohocvan_bangcap LIKE "TIẾN SỸ%"
-						THEN 8';
+                            trinhdohocvan_bangcap LIKE "CAO HỌC%" OR
+                            trinhdohocvan_bangcap LIKE "SAU ĐẠI HỌC%" OR
+                            trinhdohocvan_bangcap LIKE "THẠC SỸ%" OR
+                            trinhdohocvan_bangcap LIKE "TIẾN SỸ%"
+                        THEN 8';
 
         $vf = "
-        			CASE
-        				{$tieu_hoc}
-        				{$thcs}
-        				{$thpt}
-        				{$sau_dai_hoc}
-        				{$dai_hoc}
-        				{$cao_dang}
-        				{$trung_cap}
-        				{$so_cap}
-        				ELSE 0
-        			END
-        		";
+                    CASE
+                        {$tieu_hoc}
+                        {$thcs}
+                        {$thpt}
+                        {$sau_dai_hoc}
+                        {$dai_hoc}
+                        {$cao_dang}
+                        {$trung_cap}
+                        {$so_cap}
+                        ELSE 0
+                    END
+                ";
 
         return $vf;
     }
@@ -180,56 +216,55 @@ class ExportThTdVhCsComponent extends Component
 
     private function __getChucsacnhatuhanhcongiaodongtuVf()
     {
-
         $tieu_hoc = 'WHEN
-						trinhdohocvan_bangcap IN (1, 2, 3, 4, 5) OR
-						trinhdohocvan_bangcap IN ("1/12", "2/12", "3/12", "4/12", "5/12")
-					THEN 1';
+                        trinhdohocvan_bangcap IN (1, 2, 3, 4, 5) OR
+                        trinhdohocvan_bangcap IN ("1/12", "2/12", "3/12", "4/12", "5/12")
+                    THEN 1';
         $thcs = 'WHEN
-						trinhdohocvan_bangcap IN (6, 7, 8, 9) OR
-						trinhdohocvan_bangcap IN ("6/12", "7/12", "8/12", "9/12")
-					THEN 2';
+                        trinhdohocvan_bangcap IN (6, 7, 8, 9) OR
+                        trinhdohocvan_bangcap IN ("6/12", "7/12", "8/12", "9/12")
+                    THEN 2';
         $thpt = 'WHEN
-						trinhdohocvan_bangcap IN (10, 11, 12) OR
-						trinhdohocvan_bangcap IN ("10/12", "11/12", "12/12", "Tú Tài")
-					THEN 3';
+                        trinhdohocvan_bangcap IN (10, 11, 12) OR
+                        trinhdohocvan_bangcap IN ("10/12", "11/12", "12/12", "Tú Tài")
+                    THEN 3';
         $so_cap = 'WHEN
-						trinhdohocvan_bangcap LIKE "SƠ CẤP"
-					THEN 4';
+                        trinhdohocvan_bangcap LIKE "SƠ CẤP"
+                    THEN 4';
 
         $trung_cap = 'WHEN
-						trinhdohocvan_bangcap LIKE "TRUNG CẤP%"
-					THEN 5';
+                        trinhdohocvan_bangcap LIKE "TRUNG CẤP%"
+                    THEN 5';
 
         $cao_dang = 'WHEN
-						trinhdohocvan_bangcap LIKE "CAO ĐẲNG%"
-					THEN 6';
+                        trinhdohocvan_bangcap LIKE "CAO ĐẲNG%"
+                    THEN 6';
 
         $dai_hoc = 'WHEN
-						trinhdohocvan_bangcap LIKE "ĐẠI HỌC%" OR
-						trinhdohocvan_bangcap LIKE "CỬ NHÂN%"
-					THEN 7';
+                        trinhdohocvan_bangcap LIKE "ĐẠI HỌC%" OR
+                        trinhdohocvan_bangcap LIKE "CỬ NHÂN%"
+                    THEN 7';
 
         $sau_dai_hoc = 'WHEN
-							trinhdohocvan_bangcap LIKE "CAO HỌC%" OR
-							trinhdohocvan_bangcap LIKE "SAU ĐẠI HỌC%" OR
-							trinhdohocvan_bangcap LIKE "THẠC SỸ%" OR
-							trinhdohocvan_bangcap LIKE "TIẾN SỸ%"
-						THEN 8';
+                            trinhdohocvan_bangcap LIKE "CAO HỌC%" OR
+                            trinhdohocvan_bangcap LIKE "SAU ĐẠI HỌC%" OR
+                            trinhdohocvan_bangcap LIKE "THẠC SỸ%" OR
+                            trinhdohocvan_bangcap LIKE "TIẾN SỸ%"
+                        THEN 8';
 
         $vf = "
-        			CASE
-        				{$tieu_hoc}
-        				{$thcs}
-        				{$thpt}
-        				{$sau_dai_hoc}
-        				{$dai_hoc}
-        				{$cao_dang}
-        				{$trung_cap}
-        				{$so_cap}
-        				ELSE 0
-        			END
-        		";
+                    CASE
+                        {$tieu_hoc}
+                        {$thcs}
+                        {$thpt}
+                        {$sau_dai_hoc}
+                        {$dai_hoc}
+                        {$cao_dang}
+                        {$trung_cap}
+                        {$so_cap}
+                        ELSE 0
+                    END
+                ";
 
         return $vf;
     }
@@ -262,54 +297,54 @@ class ExportThTdVhCsComponent extends Component
     private function __getChucsacnhatuhanhphatgiaoVf()
     {
         $tieu_hoc = 'WHEN
-						trinhdohocvan_bangcap IN (1, 2, 3, 4, 5) OR
-						trinhdohocvan_bangcap IN ("1/12", "2/12", "3/12", "4/12", "5/12")
-					THEN 1';
+                        trinhdohocvan_bangcap IN (1, 2, 3, 4, 5) OR
+                        trinhdohocvan_bangcap IN ("1/12", "2/12", "3/12", "4/12", "5/12")
+                    THEN 1';
         $thcs = 'WHEN
-						trinhdohocvan_bangcap IN (6, 7, 8, 9) OR
-						trinhdohocvan_bangcap IN ("6/12", "7/12", "8/12", "9/12")
-					THEN 2';
+                        trinhdohocvan_bangcap IN (6, 7, 8, 9) OR
+                        trinhdohocvan_bangcap IN ("6/12", "7/12", "8/12", "9/12")
+                    THEN 2';
         $thpt = 'WHEN
-						trinhdohocvan_bangcap IN (10, 11, 12) OR
-						trinhdohocvan_bangcap IN ("10/12", "11/12", "12/12", "Tú Tài")
-					THEN 3';
+                        trinhdohocvan_bangcap IN (10, 11, 12) OR
+                        trinhdohocvan_bangcap IN ("10/12", "11/12", "12/12", "Tú Tài")
+                    THEN 3';
         $so_cap = 'WHEN
-						trinhdohocvan_bangcap LIKE "SƠ CẤP"
-					THEN 4';
+                        trinhdohocvan_bangcap LIKE "SƠ CẤP"
+                    THEN 4';
 
         $trung_cap = 'WHEN
-						trinhdohocvan_bangcap LIKE "TRUNG CẤP%"
-					THEN 5';
+                        trinhdohocvan_bangcap LIKE "TRUNG CẤP%"
+                    THEN 5';
 
         $cao_dang = 'WHEN
-						trinhdohocvan_bangcap LIKE "CAO ĐẲNG%"
-					THEN 6';
+                        trinhdohocvan_bangcap LIKE "CAO ĐẲNG%"
+                    THEN 6';
 
         $dai_hoc = 'WHEN
-						trinhdohocvan_bangcap LIKE "ĐẠI HỌC%" OR
-						trinhdohocvan_bangcap LIKE "CỬ NHÂN%"
-					THEN 7';
+                        trinhdohocvan_bangcap LIKE "ĐẠI HỌC%" OR
+                        trinhdohocvan_bangcap LIKE "CỬ NHÂN%"
+                    THEN 7';
 
         $sau_dai_hoc = 'WHEN
-							trinhdohocvan_bangcap LIKE "CAO HỌC%" OR
-							trinhdohocvan_bangcap LIKE "SAU ĐẠI HỌC%" OR
-							trinhdohocvan_bangcap LIKE "THẠC SỸ%" OR
-							trinhdohocvan_bangcap LIKE "TIẾN SỸ%"
-						THEN 8';
+                            trinhdohocvan_bangcap LIKE "CAO HỌC%" OR
+                            trinhdohocvan_bangcap LIKE "SAU ĐẠI HỌC%" OR
+                            trinhdohocvan_bangcap LIKE "THẠC SỸ%" OR
+                            trinhdohocvan_bangcap LIKE "TIẾN SỸ%"
+                        THEN 8';
 
         $vf = "
-        			CASE
-        				{$tieu_hoc}
-        				{$thcs}
-        				{$thpt}
-        				{$sau_dai_hoc}
-        				{$dai_hoc}
-        				{$cao_dang}
-        				{$trung_cap}
-        				{$so_cap}
-        				ELSE 0
-        			END
-        		";
+                    CASE
+                        {$tieu_hoc}
+                        {$thcs}
+                        {$thpt}
+                        {$sau_dai_hoc}
+                        {$dai_hoc}
+                        {$cao_dang}
+                        {$trung_cap}
+                        {$so_cap}
+                        ELSE 0
+                    END
+                ";
 
         return $vf;
     }
@@ -666,7 +701,7 @@ class ExportThTdVhCsComponent extends Component
                 continue;
             }
 
-            $trinh_do = $item[$this->trinh_do];
+            $trinh_do = intval($item[$this->trinh_do]);
             if ($trinh_do && $trinh_do < 6) {
                 $tmp[$provice_code][$trinh_do]++;
             }
