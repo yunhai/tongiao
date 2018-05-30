@@ -1097,7 +1097,7 @@ class ActionController extends AppController
     protected function __getType4Data($conditions)
     {
         $component = $this->Components->load('ExportThDt');
-        $data = $component->export();
+        $data = $component->export($conditions);
 
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template4.xls';
         $filename = "{$this->_type_text[4]}";
@@ -6246,8 +6246,9 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->mergeCells("{$high}{$index_column}:{$low}{$index_column}");
         return true;
     }
-    
-    public function setStyles($c, $r) {
+
+    public function setStyles($c, $r)
+    {
         $borders = array(
           'borders' => array(
               'allborders' => array(

@@ -7,8 +7,8 @@ class ExportThDtComponent extends Component
         $this->Province = new ProvinceComponent(new ComponentCollection());
     }
 
-    public function export()
-	{
+    public function export($filter)
+    {
         $location_map = [
             'Giaoxu' => 'diachi_huyen',
             'Tuvienphatgiao' => 'diachi_huyen',
@@ -20,13 +20,13 @@ class ExportThDtComponent extends Component
         ];
 
         $groups = [
-            'Giaoxu',
-            'Tuvienphatgiao',
-            'Chihoitinlanh',
-            'Hodaocaodai',
-            'Chihoitinhdocusiphatgiaovietnam',
-            'Hoahao',
-            'Cosohoigiaoislam',
+            CONG_GIAO => 'Giaoxu',
+            PHAT_GIAO => 'Tuvienphatgiao',
+            TIN_LANH => 'Chihoitinlanh',
+            CAO_DAI => 'Hodaocaodai',
+            TINH_DO_CU_SI => 'Chihoitinhdocusiphatgiaovietnam',
+            HOA_HAO => 'Hoahao',
+            HOI_GIAO => 'Cosohoigiaoislam',
         ];
 
         $criteria = [
@@ -37,16 +37,22 @@ class ExportThDtComponent extends Component
             'cosothotu_ditichkhaoco' => 'DI TÍCH KHẢO CỔ',
         ];
 
-        $province = $this->Province->getProvince();
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
+        $province = $this->Province->getProvince($filter_location);
 
         $export = [];
         $init = $this->init($province);
 
         foreach ($groups as $field_index => $model) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
+
             $func = '__statis';
             $location = $location_map[$model];
             if (!$location) {
-                $func= '__statisTmp';
+                $func = '__statisTmp';
             }
             $tmp = $this->$func($model, $location);
 
@@ -59,7 +65,7 @@ class ExportThDtComponent extends Component
                         $export["{$provice_code}_{$field}"] = $init[$provice_code];
                         $export["{$provice_code}_{$field}"]['criteria'] = $criteria[$field];
                     }
-                    foreach($element as $key => $value) {
+                    foreach ($element as $key => $value) {
                         $export["{$provice_code}_{$field}"]["total_{$key}"] += $value;
                         $target["{$model}_{$key}"] = $value;
                     }
@@ -68,47 +74,29 @@ class ExportThDtComponent extends Component
             }
         }
 
-        $export['total'] = $this->__sum($export);
-
-        return $export;
+        return $this->sum($export);
     }
 
-    private function __sum($data)
+    private function sum($data, $start = 3)
     {
-        $total = [
-            'total_index' => 'TỔNG',
-            'total_province' => '',
-            'total_criteria' => '',
-            'total_total_tw' => 0,
-            'total_total_tinh' => 0,
-            'total_Giaoxu_tw' => 0,
-            'total_Giaoxu_tinh' => 0,
-            'total_Tuvienphatgiao_tw' => 0,
-            'total_Tuvienphatgiao_tinh' => 0,
-            'total_Chihoitinlanh_tw' => 0,
-            'total_Chihoitinlanh_tinh' => 0,
-            'total_Hodaocaodai_tw' => 0,
-            'total_Hodaocaodai_tinh' => 0,
-            'total_Chihoitinhdocusiphatgiaovietnam_tw' => 0,
-            'total_Chihoitinhdocusiphatgiaovietnam_tinh' => 0,
-            'total_Hoahao_tw' => 0,
-            'total_Hoahao_tinh' => 0,
-            'total_Cosohoigiaoislam_tw' => 0,
-            'total_Cosohoigiaoislam_tinh' => 0,
-        ];
+        $total = [];
 
-        foreach($data as $row => $column) {
+        foreach ($data as $location => $target) {
             $index = 0;
-            foreach($column as $col => $value) {
-                if ($index++ < 3) {
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$field}"] = '';
+
                     continue;
                 }
 
-                $total['total_' . $col] += $value;
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
             }
         }
+        $data['final_total'] = $total;
 
-        return $total;
+        return $data;
     }
 
     private function __statis($model, $province_field)
