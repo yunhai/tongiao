@@ -2,8 +2,6 @@
 
 class ProvinceComponent extends Component
 {
-    // public $components = array('UtilityComponent');
-
     public function retrieveProvinceCode($string = '')
     {
         App::uses('UtilityComponent', 'Controller/Component');
@@ -22,9 +20,9 @@ class ProvinceComponent extends Component
         return '';
     }
 
-    public function getProvince()
+    public function getProvince($filter = [])
     {
-        return [
+        $result = [
             'bien-hoa' => 'BIÊN HÒA',
             'cam-my' => 'CẨM MỸ',
             'dinh-quan' => 'ĐỊNH QUÁN',
@@ -37,6 +35,12 @@ class ProvinceComponent extends Component
             'vinh-cuu' => 'VĨNH CỬU',
             'xuan-loc' => 'XUÂN LỘC',
         ];
+
+        if ($filter) {
+            return array_intersect_key($result, array_flip($filter));
+        }
+
+        return $result;
     }
 
     public function getProvinceName($code)

@@ -1363,11 +1363,6 @@ class ActionController extends AppController
         return $this->Excel->save($filename);
     }
 
-private function __getTypeData($conditions) {
-	return $this->__getType7Data($conditions);
-}
-
-
     /**
      * BẢNG TỔNG HỢP TÍN ĐỒ CÁC TÔN GIÁO TRÊN ĐỊA BÀN TỈNH
      */
@@ -1379,7 +1374,7 @@ private function __getTypeData($conditions) {
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template7.xls';
         $filename = "{$this->_type_text[7]}";
         $this->Excel->load($source);
-        
+
         $r = 12;
         $reset = reset($data);
         if (!isset($reset['Tongiaokhac_total'])) {
@@ -6223,8 +6218,9 @@ private function __getTypeData($conditions) {
 
         return $this->Excel->save($filename);
     }
-    
-    public function removeColumn($low, $high, $index_column) {
+
+    public function removeColumn($low, $high, $index_column)
+    {
         $this->Excel->ActiveSheet->unmergeCells("{$high}{$index_column}:{$low}{$index_column}");
         $this->Excel->ActiveSheet->removeColumn($high, 4);
         $this->Excel->ActiveSheet->mergeCells("{$high}{$index_column}:{$low}{$index_column}");

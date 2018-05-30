@@ -10,11 +10,8 @@ class ExportThTdTgComponent extends Component
     public function export($filter = [])
     {
         $filter_group = $filter['ton_giao'];
-        // $filter_location = $filter['prefecture'];
-        $filter_location= [
-            'long-khanh',
-            'dinh-quan'
-        ];
+        $filter_location = $filter['prefecture'];
+
         $groups = [
             CONG_GIAO => 'Giaoxu',
             PHAT_GIAO => 'Tuvienphatgiao',
@@ -26,7 +23,7 @@ class ExportThTdTgComponent extends Component
             KHAC => 'Tongiaokhac',
         ];
 
-        $province = $this->Province->getProvince();
+        $province = $this->Province->getProvince($filter_location);
 
         $export = $this->init($province);
         foreach ($groups as $field_index => $model) {
@@ -53,7 +50,31 @@ class ExportThTdTgComponent extends Component
             }
         }
 
+        $export = $this->sum($export, 2);
+
         return $export;
+    }
+
+    private function sum($data, $start)
+    {
+        $total = [];
+
+        foreach ($data as $location => $target) {
+            $index = 0;
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$index}"] = '';
+
+                    continue;
+                }
+
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
+            }
+        }
+        $data['final_total'] = $total;
+
+        return $data;
     }
 
     private function __getTongiaokhac($model)
