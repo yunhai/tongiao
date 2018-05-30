@@ -6,66 +6,105 @@ class ExportThDtCsComponent extends Component
     {
         App::uses('ProvinceComponent', 'Controller/Component');
         $this->Province = new ProvinceComponent(new ComponentCollection());
-
-        App::uses('UtilityComponent', 'Controller/Component');
-        $this->Utility = new UtilityComponent(new ComponentCollection());
     }
 
-    public function export()
+    public function export($filter = [])
     {
-        $export_fields = [
-			[
-				'Chucsacnhatuhanhconggiaotrieu',
-				'Chucsacnhatuhanhcongiaodongtu'
-			],
-			['Chucsacnhatuhanhphatgiao'],
-			['Chucsactinlanh'],
-			['Chucsaccaodai'],
-			['Chucviechoigiao'],
-			['Chucviectinhdocusiphathoivietnam'],
-			['Nguoihoatdongtinnguongchuyennghiep']
+        $groups = [
+            CONG_GIAO => [
+                'Chucsacnhatuhanhconggiaotrieu',
+                'Chucsacnhatuhanhcongiaodongtu'
+            ],
+            PHAT_GIAO => ['Chucsacnhatuhanhphatgiao'],
+            CAO_DAI => ['Chucsactinlanh'],
+            TINH_DO_CU_SI => ['Chucsaccaodai'],
+            HOI_GIAO => ['Chucviechoigiao'],
+            HOA_HAO => ['Chucviectinhdocusiphathoivietnam'],
+            TIN_NGUONG => ['Nguoihoatdongtinnguongchuyennghiep']
         ];
 
-        $province = $this->Province->getProvince();
+        $map_name = array(
+            CONG_GIAO => 'cong_giao',
+            PHAT_GIAO => 'phat_giao',
+            CAO_DAI => 'cao_dai',
+            TINH_DO_CU_SI => 'tinh_do_cu_si',
+            HOI_GIAO => 'hoi_giao',
+            HOA_HAO => 'hoa_hao',
+            TIN_NGUONG => 'tin_nguong',
+        );
+
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
+
+        $province = $this->Province->getProvince($filter_location);
 
         $export = $this->init($province);
 
-        foreach ($export_fields as $field_index => $list) {
-			$tmp = $this->__calculate($list);
+        foreach ($groups as $field_index => $list) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
+            $tmp = $this->__calculate($list);
             foreach ($province as $provice_code => $name) {
-				$partial = $tmp[$provice_code];
-				foreach($partial as $key => $val) {
-					$export[$provice_code]['total_' . $key] += $val;
-				}
-				$export[$provice_code] = array_merge($export[$provice_code], $partial);
+                $partial = $tmp[$provice_code];
+                foreach ($partial as $key => $val) {
+                    $export[$provice_code]['total_' . $key] += $val;
+                }
+                foreach ($partial as $field => $value) {
+                    $fn = $map_name[$field_index];
+                    $export[$provice_code][$fn . '_' . $field] = $value;
+                }
             }
         }
 
-        return $export;
+        return $this->sum($export);
     }
 
-	private function __calculate($list = []) {
-		$tmp = [];
-		foreach($list as $model) {
-			$func = '__getDataRange';
-			array_push($tmp, $this->$func($model));
-		}
+    private function sum($data, $start = 2)
+    {
+        $total = [];
 
-		$final = [];
-		foreach($tmp as $element) {
-			foreach($element as $province => $statis) {
-				foreach($statis as $range => $count) {
-					if (!isset($final[$province][$range])) {
-						$final[$province][$range] = 0;
-					}
+        foreach ($data as $location => $target) {
+            $index = 0;
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$field}"] = '';
 
-					$final[$province][$range] += $count;
-				}
-			}
-		}
+                    continue;
+                }
 
-		return $final;
-	}
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
+            }
+        }
+        $data['final_total'] = $total;
+
+        return $data;
+    }
+
+    private function __calculate($list = [])
+    {
+        $tmp = [];
+        foreach ($list as $model) {
+            $func = '__getDataRange';
+            array_push($tmp, $this->$func($model));
+        }
+
+        $final = [];
+        foreach ($tmp as $element) {
+            foreach ($element as $province => $statis) {
+                foreach ($statis as $range => $count) {
+                    if (!isset($final[$province][$range])) {
+                        $final[$province][$range] = 0;
+                    }
+
+                    $final[$province][$range] += $count;
+                }
+            }
+        }
+
+        return $final;
+    }
 
     private function init($province)
     {
@@ -76,39 +115,39 @@ class ExportThDtCsComponent extends Component
             $export[$code] = [
                 'index' => $index++,
                 'province' => $name,
-				'total_1' => 0,
-				'total_2' => 0,
-				'total_3' => 0,
-				'total_4' => 0,
+                'total_u20' => 0,
+                'total_u40' => 0,
+                'total_u60' => 0,
+                'total_u90' => 0,
             ];
         }
 
         return $export;
     }
 
-	private function __getDataRange($model)
-	{
-		$fields = [
-			'id',
-			'noiohiennay_huyen'
-		];
-		$conditions = [
-			'noiohiennay_huyen <>' => '',
-			'noiohiennay_huyen is not null',
-			'ngaythangnamsinh <>' => '',
-			'ngaythangnamsinh is not null',
-		];
-		$column = [
-			'ngaythangnamsinh'
-		];
-		$province_field = 'noiohiennay_huyen';
+    private function __getDataRange($model)
+    {
+        $fields = [
+            'id',
+            'noiohiennay_huyen'
+        ];
+        $conditions = [
+            'noiohiennay_huyen <>' => '',
+            'noiohiennay_huyen is not null',
+            'ngaythangnamsinh <>' => '',
+            'ngaythangnamsinh is not null',
+        ];
+        $column = [
+            'ngaythangnamsinh'
+        ];
+        $province_field = 'noiohiennay_huyen';
 
-		$fields = array_merge($fields, $column);
+        $fields = array_merge($fields, $column);
 
-		$data = $this->__getData($model, compact('fields', 'conditions'));
+        $data = $this->__getData($model, compact('fields', 'conditions'));
 
-		return $this->__groupData($data, $column, $province_field);
-	}
+        return $this->__groupData($data, $column, $province_field);
+    }
 
     private function __getData($model, $option = [])
     {
@@ -125,11 +164,11 @@ class ExportThDtCsComponent extends Component
 
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = array(
-				1 => 0,
-				2 => 0,
-				3 => 0,
-				4 => 0
-			);
+                'u20' => 0,
+                'u40' => 0,
+                'u60' => 0,
+                'u90' => 0,
+            );
         }
 
         foreach ($data as $id => $item) {
@@ -137,34 +176,36 @@ class ExportThDtCsComponent extends Component
             if (!$provice_code) {
                 continue;
             }
-			$ageRange = $this->__calculateAgeRange($item['ngaythangnamsinh']);
+            $ageRange = $this->__calculateAgeRange($item['ngaythangnamsinh']);
 
-			if (isset($result[$provice_code][$ageRange])) {
-				$result[$provice_code][$ageRange]++;
-			}
+            if (isset($result[$provice_code][$ageRange])) {
+                $result[$provice_code][$ageRange]++;
+            }
         }
 
         return $result;
     }
 
-	private function __calculateAgeRange($dob) {
-		if ($dob) {
-			$tmp = explode('/', $dob);
-			$year = end($tmp);
-			$age = date('Y') - $year;
-			if ($age < 21) {
-				return 1;
-			}
-			if ($age < 41) {
-				return 2;
-			}
-			if ($age < 62) {
-				return 3;
-			}
-			return 4;
-		}
-		return 0;
-	}
+    private function __calculateAgeRange($dob)
+    {
+        if ($dob) {
+            $tmp = explode('/', $dob);
+            $year = end($tmp);
+            $age = date('Y') - $year;
+            if ($age < 21) {
+                return 'u20';
+            }
+            if ($age < 41) {
+                return 'u40';
+            }
+            if ($age < 62) {
+                return 'u60';
+            }
+            return 'u90';
+        }
+
+        return 0;
+    }
 }
 
 /**

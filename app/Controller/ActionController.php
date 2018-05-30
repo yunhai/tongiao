@@ -6019,7 +6019,7 @@ class ActionController extends AppController
     protected function __getType30Data($conditions)
     {
         $component = $this->Components->load('ExportThDtCs');
-        $data = $component->export();
+        $data = $component->export($conditions);
 
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template30.xls';
         $filename = "{$this->_type_text[30]}";
