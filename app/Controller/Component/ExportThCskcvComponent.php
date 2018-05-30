@@ -11,22 +11,28 @@ class ExportThCskcvComponent extends Component
         $this->Utility = new UtilityComponent(new ComponentCollection());
     }
 
-    public function export()
+    public function export($filter = [])
     {
         $export_fields = [
-            'Chucsacnhatuhanhconggiaotrieu',
-            'Chucsacnhatuhanhphatgiao',
-            'Chucsactinlanh',
-            'Chucsaccaodai',
-            'Chucviechoigiao',
-            'Chucviectinhdocusiphathoivietnam'
+            CONG_GIAO => 'Chucsacnhatuhanhconggiaotrieu',
+            PHAT_GIAO => 'Chucsacnhatuhanhphatgiao',
+            TIN_LANH => 'Chucsactinlanh',
+            CAO_DAI => 'Chucsaccaodai',
+            HOI_GIAO => 'Chucviechoigiao',
+            TINH_DO_CU_SI => 'Chucviectinhdocusiphathoivietnam'
         ];
 
-        $province = $this->Province->getProvince();
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
+
+        $province = $this->Province->getProvince($filter_location);
 
         $export = $this->init($province);
 
         foreach ($export_fields as $field_index => $model) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
             $func = '__get' . $model;
             $tmp = $this->$func($model);
 
@@ -42,7 +48,29 @@ class ExportThCskcvComponent extends Component
             }
         }
 
-        return $export;
+        return $this->sum($export);
+    }
+
+    private function sum($data, $start = 2)
+    {
+        $total = [];
+
+        foreach ($data as $location => $target) {
+            $index = 0;
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$field}"] = '';
+
+                    continue;
+                }
+
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
+            }
+        }
+        $data['final_total'] = $total;
+
+        return $data;
     }
 
     private function init($province)
