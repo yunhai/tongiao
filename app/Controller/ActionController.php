@@ -4221,7 +4221,7 @@ class ActionController extends AppController
     protected function __getType21Data($conditions)
     {
         $component = $this->Components->load('ExportThTdTgCs');
-        $data = $component->export();
+        $data = $component->export($conditions);
 
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template21.xls';
         $filename = "{$this->_type_text[21]}";
