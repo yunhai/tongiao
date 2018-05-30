@@ -1411,12 +1411,32 @@ class ActionController extends AppController
                 break;
             }
         }
-        foreach ($data as $result) {
+        $delete_rows = array();
+        foreach ($data as $key => $result) {
             $value = array_values($result);
             foreach ($colIndexes as $k => $c) {
-                $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value[$k]);
+                if (isset($value[$k])) {
+                    if ($key != 'final_total') {
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value[$k]);
+                    } else {
+                        $bold = array('font' => array('bold' => true, 'name' => 'Times New Roman'));
+                        $this->Excel->ActiveSheet->getStyle("{$c}{$r}")->applyFromArray($bold);
+                        if (in_array($c, array('A', 'B'))) {
+                            $this->Excel->ActiveSheet->getCell("A{$r}")->setValue('TỔNG');
+                            $this->Excel->ActiveSheet->mergeCells("A$r:B$r");
+                        } else {
+                            $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value[$k]);
+                        }
+                    }
+                    $this->setStyles($c, $r);
+                } else {
+                    $delete_rows[$c] = $c;
+                }
             }
             $r++;
+        }
+        foreach (array_reverse($delete_rows) as $row) {
+            $this->Excel->ActiveSheet->removeColumn($row);
         }
         return $this->Excel->save($filename);
     }
@@ -6224,6 +6244,22 @@ class ActionController extends AppController
         $this->Excel->ActiveSheet->unmergeCells("{$high}{$index_column}:{$low}{$index_column}");
         $this->Excel->ActiveSheet->removeColumn($high, 4);
         $this->Excel->ActiveSheet->mergeCells("{$high}{$index_column}:{$low}{$index_column}");
+        return true;
+    }
+    
+    public function setStyles($c, $r) {
+        $borders = array(
+          'borders' => array(
+              'allborders' => array(
+                  'style' => PHPExcel_Style_Border::BORDER_THIN
+              )
+          )
+        );
+        $this->Excel->ActiveSheet->getRowDimension($r)->setRowHeight(25);
+        $this->Excel->ActiveSheet->getStyle("{$c}{$r}")->getFont()->setSize(8);
+        $this->Excel->ActiveSheet->getStyle("{$c}{$r}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $this->Excel->ActiveSheet->getStyle("{$c}{$r}")->getAlignment()->setVERTICAL(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+        $this->Excel->ActiveSheet->getStyle("{$c}{$r}")->applyFromArray($borders);
         return true;
     }
 }
