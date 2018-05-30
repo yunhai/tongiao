@@ -172,11 +172,13 @@ class TongiaocosoComponent extends Component
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = [
                 'total' => 0,
+                'to-dinh' => 0,
                 'chua' => 0,
                 'tinh-xa' => 0,
                 'tinh-that' => 0,
                 'thien-vien' => 0,
                 'tu-vien' => 0,
+                'tinh-vien' => 0,
                 'niem-phat-duong' => 0,
             ];
         }
