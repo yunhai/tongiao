@@ -27,14 +27,13 @@ class ExportThCsCyComponent extends Component
         $export = $this->init($province);
 
         foreach ($groups as $field_index => $model) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
             $func = '__get' . $model;
             $tmp = $this->$func($model);
 
             foreach ($province as $provice_code => $name) {
-                if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
-                    continue;
-                }
-
                 $partial = $tmp[$provice_code];
 
                 foreach ($partial as $field => $value) {
@@ -67,7 +66,10 @@ class ExportThCsCyComponent extends Component
             }
         }
         $data['final_total'] = $total;
-
+        print('<pre>');
+        print_r($data);
+        print('</pre>');
+        exit;
         return $data;
     }
 
