@@ -6,40 +6,63 @@ class ExportThTsComponent extends Component
     {
         App::uses('ProvinceComponent', 'Controller/Component');
         $this->Province = new ProvinceComponent(new ComponentCollection());
-
-        App::uses('UtilityComponent', 'Controller/Component');
-        $this->Utility = new UtilityComponent(new ComponentCollection());
     }
 
-    public function export()
+    public function export($filter = [])
     {
-        $export_fields = [
-			'Giaoxu',
-            'Tuvienphatgiao',
+        $groups = [
+            CONG_GIAO => 'Giaoxu',
+            PHAT_GIAO => 'Tuvienphatgiao',
         ];
 
-        $province = $this->Province->getProvince();
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
+        $province = $this->Province->getProvince($filter_location);
 
         $export = $this->init($province);
 
-        foreach ($export_fields as $field_index => $model) {
-			$func = '__get' . $model;
+        foreach ($groups as $field_index => $model) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
+            $func = '__get' . $model;
             $tmp = $this->$func($model);
 
             foreach ($province as $provice_code => $name) {
                 $partial = $tmp[$provice_code];
 
-
-				foreach($partial as $field => $value) {
-					if ($field === 'total') {
-						$export[$provice_code]['total'] += $value;
-					}
-					$export[$provice_code][$model . '_' . $field] = $value;
-				}
+                foreach ($partial as $field => $value) {
+                    if ($field === 'total') {
+                        $export[$provice_code]['total'] += $value;
+                    }
+                    $export[$provice_code][$model . '_' . $field] = $value;
+                }
             }
         }
 
-        return $export;
+        return $this->sum($export);
+    }
+
+    private function sum($data, $start = 2)
+    {
+        $total = [];
+
+        foreach ($data as $location => $target) {
+            $index = 0;
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$field}"] = '';
+
+                    continue;
+                }
+
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
+            }
+        }
+        $data['final_total'] = $total;
+
+        return $data;
     }
 
     private function init($province)
@@ -58,44 +81,44 @@ class ExportThTsComponent extends Component
         return $export;
     }
 
-	private function __getTuvienphatgiao($model)
-	{
-		$fields = [
-			'id',
-			'diachi_huyen'
-		];
-		$conditions = [];
-		$column = [
-			'sotusi',
-			'nam_tykheo',
-			'nam_sadi',
-			'nu_tykheoni',
-			'nu_thucxoamana',
-			'nu_sadini',
-		];
-		$province_field = 'diachi_huyen';
+    private function __getTuvienphatgiao($model)
+    {
+        $fields = [
+            'id',
+            'diachi_huyen'
+        ];
+        $conditions = [];
+        $column = [
+            'sotusi',
+            'nam_tykheo',
+            'nam_sadi',
+            'nu_tykheoni',
+            'nu_thucxoamana',
+            'nu_sadini',
+        ];
+        $province_field = 'diachi_huyen';
 
-		$fields = array_merge($fields, $column);
+        $fields = array_merge($fields, $column);
 
-		$data = $this->__getData($model, compact('fields', 'conditions'));
+        $data = $this->__getData($model, compact('fields', 'conditions'));
 
-		$result = $this->__groupData($data, $column, $province_field);
+        $result = $this->__groupData($data, $column, $province_field);
 
-		foreach($result as &$item) {
-			$item = array(
-				'total' => $item['sotusi'],
-				'nam_tykheo' => $item['nam_tykheo'],
-				'nam_sadi' => $item['nam_sadi'],
-				'nam_tinhnhon_dieu' => 0,
-				'nu_tykheoni' => $item['nu_tykheoni'],
-				'nu_thucxoamana' => $item['nu_thucxoamana'],
-				'nu_sadini' => $item['nu_sadini'],
-				'tinhnhon_dieu' => 0
-			);
-		}
+        foreach ($result as &$item) {
+            $item = array(
+                'total' => $item['sotusi'],
+                'nam_tykheo' => $item['nam_tykheo'],
+                'nam_sadi' => $item['nam_sadi'],
+                'nam_tinhnhon_dieu' => 0,
+                'nu_tykheoni' => $item['nu_tykheoni'],
+                'nu_thucxoamana' => $item['nu_thucxoamana'],
+                'nu_sadini' => $item['nu_sadini'],
+                'tinhnhon_dieu' => 0
+            );
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
     private function __getGiaoxu($model)
     {
@@ -105,27 +128,27 @@ class ExportThTsComponent extends Component
         ];
         $conditions = [];
         $column = [
-			'sotusi_nam',
-			'sotusi_nu',
+            'sotusi_nam',
+            'sotusi_nu',
         ];
         $province_field = 'diachi_huyen';
 
         $fields = array_merge($fields, $column);
         $data = $this->__getData($model, compact('fields', 'conditions'));
 
-		$result = $this->__groupData($data, $column, $province_field);
+        $result = $this->__groupData($data, $column, $province_field);
 
-		foreach($result as &$item) {
-			$total = array_sum($item);
-			$item = [
-				'total' => $total,
-				'sotusi_nam' => $item['sotusi_nam'],
-				'chungsinh' => 0,
-				'sotusi_nu' => $item['sotusi_nu'],
-			];
-		}
+        foreach ($result as &$item) {
+            $total = array_sum($item);
+            $item = [
+                'total' => $total,
+                'sotusi_nam' => $item['sotusi_nam'],
+                'chungsinh' => 0,
+                'sotusi_nu' => $item['sotusi_nu'],
+            ];
+        }
 
-		return $result;
+        return $result;
     }
 
     private function __getData($model, $option = [])
@@ -143,7 +166,7 @@ class ExportThTsComponent extends Component
 
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = array();
-			foreach ($column as $col) {
+            foreach ($column as $col) {
                 $result[$provice_code][$col] = 0;
             }
         }
@@ -156,11 +179,11 @@ class ExportThTsComponent extends Component
 
             foreach ($result[$provice_code] as $key => &$count) {
                 if ($item[$key]) {
-					if ($countFlag) {
-						$count++;
-					} else {
-						$count += $item[$key];
-					}
+                    if ($countFlag) {
+                        $count++;
+                    } else {
+                        $count += intval($item[$key]);
+                    }
                 }
             }
         }
