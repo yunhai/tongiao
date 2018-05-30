@@ -887,7 +887,7 @@ class ActionController extends AppController
     protected function __getType2Data($conditions)
     {
         $component = $this->Components->load('Tongiaocoso');
-        $result = $component->export();
+        $result = $component->export($conditions);
 
         $data = array();
         foreach ($result as $key => $value) {

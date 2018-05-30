@@ -11,15 +11,18 @@ class TongiaocosoComponent extends Component
         $this->Utility = new UtilityComponent(new ComponentCollection());
     }
 
-    public function export()
+    public function export($filter)
     {
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
+
         $list = [
-            'Conggiao',
-            'Tuvienphatgiao',
-            'Hodaocaodai',
-            'Chihoitinhdocusiphatgiaovietnam',
-            'Cosohoigiaoislam',
-            'Phatgiaohoahao'
+            CONG_GIAO => 'Conggiao',
+            PHAT_GIAO => 'Tuvienphatgiao',
+            CAO_DAI => 'Hodaocaodai',
+            TINH_DO_CU_SI => 'Chihoitinhdocusiphatgiaovietnam',
+            HOI_GIAO => 'Cosohoigiaoislam',
+            HOA_HAO => 'Phatgiaohoahao'
         ];
 
         $single = [
@@ -29,35 +32,62 @@ class TongiaocosoComponent extends Component
             'Phatgiaohoahao'
         ];
 
-        $province = $this->Province->getProvince();
+        $province = $this->Province->getProvince($filter_location);
 
         $index = 1;
         foreach ($province as $code => $name) {
             $export[$code] = [
-                $index++,
-                $name,
-                0,
+                'index' => $index++,
+                'location' => $name,
+                'total' => 0,
             ];
         }
 
-        foreach ($list as $model) {
+        foreach ($list as $field_index => $model) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
             $func = 'cal_' . strtolower($model);
             $tmp = $this->$func($model);
 
             foreach ($province as $provice_code => $name) {
-                $partial = array_values($tmp[$provice_code]);
+                $partial = ($tmp[$provice_code]);
 
                 if (in_array($model, $single)) {
-                    $export[$provice_code][2] += array_sum($partial);
+                    $export[$provice_code]['total'] += array_sum($partial);
                 } else {
-                    $export[$provice_code][2] += $tmp[$provice_code]['total'];
+                    $export[$provice_code]['total'] += $tmp[$provice_code]['total'];
                 }
 
-                $export[$provice_code] = array_merge($export[$provice_code], $partial);
+                foreach ($partial as $field => $value) {
+                    $export[$provice_code][$model . '__' . $field] = $value;
+                }
             }
         }
 
-        return $export;
+        return $this->sum($export);
+    }
+
+    private function sum($data, $start = 2)
+    {
+        $total = [];
+
+        foreach ($data as $location => $target) {
+            $index = 0;
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$index}"] = '';
+
+                    continue;
+                }
+
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
+            }
+        }
+        $data['final_total'] = $total;
+
+        return $data;
     }
 
     private function cal_conggiao()
@@ -91,8 +121,6 @@ class TongiaocosoComponent extends Component
                 continue;
             }
 
-            //$keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
-            //$keyword = strtolower(str_replace(' ', '-', $keyword));
             $keyword = $this->Utility->slug($item['tentuvien']);
 
             foreach ($result[$provice_code] as $key => &$count) {
@@ -165,8 +193,6 @@ class TongiaocosoComponent extends Component
                 continue;
             }
 
-            //$keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
-            //$keyword = strtolower(str_replace(' ', '-', $keyword));
             $keyword = $this->Utility->slug($item['tentuvien']);
             foreach ($result[$provice_code] as $key => &$count) {
                 if (strpos($keyword, $key) !== false) {
@@ -207,7 +233,9 @@ class TongiaocosoComponent extends Component
         }
 
         foreach ($result as $key => &$val) {
-            $val = [$val];
+            $val = [
+                'ho-dao' => $val
+            ];
         }
 
         return $result;
@@ -237,7 +265,9 @@ class TongiaocosoComponent extends Component
         }
 
         foreach ($result as $key => &$val) {
-            $val = [$val];
+            $val = [
+                'chi-hoi' => $val
+            ];
         }
 
         return $result;
@@ -267,7 +297,9 @@ class TongiaocosoComponent extends Component
         }
 
         foreach ($result as $key => &$val) {
-            $val = [$val];
+            $val = [
+                'thanh-duong' => $val
+            ];
         }
 
         return $result;
@@ -282,7 +314,9 @@ class TongiaocosoComponent extends Component
         }
 
         foreach ($result as $key => &$val) {
-            $val = [$val];
+            $val = [
+                'ban-tri-su' => $val
+            ];
         }
 
         return $result;
