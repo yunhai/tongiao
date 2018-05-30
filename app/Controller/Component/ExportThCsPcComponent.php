@@ -8,16 +8,19 @@ class ExportThCsPcComponent extends Component
         $this->basic = new ExportThCscvComponent(new ComponentCollection());
     }
 
-    public function export()
+    public function export($filter = [])
     {
         $exclude = [
             'Chucsacnhatuhanhconggiaotrieu_betrentongquyen',
-            'Chucsacnhatuhanhconggiaotrieu_giamtinh'
+            'Chucsacnhatuhanhconggiaotrieu_giamtinh',
+            'final_total_Chucsacnhatuhanhconggiaotrieu_betrentongquyen',
+            'final_total_Chucsacnhatuhanhconggiaotrieu_giamtinh'
         ];
 
-        $export = $this->basic->export();
-        foreach($export as &$element) {
-            foreach($exclude as $f) {
+        $export = $this->basic->export($filter);
+
+        foreach ($export as &$element) {
+            foreach ($exclude as $f) {
                 unset($element[$f]);
             }
         }
