@@ -105,7 +105,7 @@ class ExportThTkDatComponent extends Component
             $index = 0;
             foreach ($target as $field => $value) {
                 if (++$index <= $start) {
-                    $total["final_total_{$index}"] = '';
+                    $total["final_total_{$field}"] = '';
 
                     continue;
                 }

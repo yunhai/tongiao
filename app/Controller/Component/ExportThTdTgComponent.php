@@ -50,12 +50,10 @@ class ExportThTdTgComponent extends Component
             }
         }
 
-        $export = $this->sum($export, 2);
-
-        return $export;
+        return  $this->sum($export);
     }
 
-    private function sum($data, $start)
+    private function sum($data, $start = 2)
     {
         $total = [];
 
@@ -63,7 +61,7 @@ class ExportThTdTgComponent extends Component
             $index = 0;
             foreach ($target as $field => $value) {
                 if (++$index <= $start) {
-                    $total["final_total_{$index}"] = '';
+                    $total["final_total_{$field}"] = '';
 
                     continue;
                 }
@@ -240,7 +238,6 @@ class ExportThTdTgComponent extends Component
         $result = $this->__groupData($data, $column, $province_field);
 
         foreach ($result as &$item) {
-            // $total = $item['tongsotindo_baptem'] + $item['tongsotindo_chuabaptem'] + $item['sotindo_dantoc_thieuso'];
             $item = [
                 'total' => $item['tongsotindo'],
                 'dathuchiennghiletongiao' => $item['tongsotindo_baptem'],
@@ -276,15 +273,19 @@ class ExportThTdTgComponent extends Component
         $result = $this->__groupData($data, $column, $province_field);
 
         foreach ($result as &$item) {
-            $chuathuchiennghiletongiao = $item['soluongtindo'] - $item['daquyy'];
+            $daquyy = intval($item['daquyy']);
+            $phattu_dantoc_thieuso = intval($item['phattu_dantoc_thieuso']);
+            $soluongtindo = intval($item['soluongtindo']);
+
+            $chuathuchiennghiletongiao = $soluongtindo - $daquyy;
             if ($chuathuchiennghiletongiao < 0) {
                 $chuathuchiennghiletongiao = 0;
             }
             $item = [
-                'total' => $item['soluongtindo'],
-                'dathuchiennghiletongiao' => $item['daquyy'],
+                'total' => $soluongtindo,
+                'dathuchiennghiletongiao' => $daquyy,
                 'chuathuchiennghiletongiao' => $chuathuchiennghiletongiao,
-                'dantocthieuso' => $item['phattu_dantoc_thieuso'],
+                'dantocthieuso' => $phattu_dantoc_thieuso,
             ];
         }
 
@@ -314,11 +315,14 @@ class ExportThTdTgComponent extends Component
         $result = $this->__groupData($data, $column, $province_field);
 
         foreach ($result as &$item) {
+            $giaodan_sonhankhau = intval($item['giaodan_sonhankhau']);
+            $giaodandantocthieuso_sonhankhau = intval($item['giaodandantocthieuso_sonhankhau']);
+
             $item = [
-                'total' => $item['giaodan_sonhankhau'],
-                'dathuchiennghiletongiao' => $item['giaodan_sonhankhau'],
+                'total' => $giaodan_sonhankhau,
+                'dathuchiennghiletongiao' => $giaodan_sonhankhau,
                 'chuathuchiennghiletongiao' => 0,
-                'dantocthieuso' => $item['giaodandantocthieuso_sonhankhau'],
+                'dantocthieuso' => $giaodandantocthieuso_sonhankhau,
             ];
         }
 
