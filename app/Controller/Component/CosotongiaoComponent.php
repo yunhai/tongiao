@@ -22,13 +22,13 @@ class CosotongiaoComponent extends Component
         ];
 
         $list = [
-            'Dongtuconggiao',
-            'Tuvienphatgiao',
-            'Hodaocaodai',
-            'Chihoitinhdocusiphatgiaovietnam',
-            'Cosohoigiaoislam',
-            'Chucviecphathoahao',
-            'Cosotinnguong',
+            CONG_GIAO => 'Dongtuconggiao',
+            PHAT_GIAO => 'Tuvienphatgiao',
+            CAO_DAI => 'Hodaocaodai',
+            TINH_DO_CU_SI => 'Chihoitinhdocusiphatgiaovietnam',
+            HOI_GIAO => 'Cosohoigiaoislam',
+            HOA_HAO => 'Chucviecphathoahao',
+            TIN_NGUONG => 'Cosotinnguong',
         ];
 
         $filter_group = $filter['ton_giao'];
