@@ -11,8 +11,11 @@ class CosotongiaoComponent extends Component
         $this->Utility = new UtilityComponent(new ComponentCollection());
     }
 
-    public function export()
+    public function export($filter = [])
     {
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
+
         $sum = [
             'Dongtuconggiao',
             'Tuvienphatgiao',
@@ -28,18 +31,24 @@ class CosotongiaoComponent extends Component
             'Cosotinnguong',
         ];
 
-        $province = $this->Province->getProvince();
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
+
+        $province = $this->Province->getProvince($filter_location);
 
         $index = 1;
         foreach ($province as $code => $name) {
             $export[$code] = [
-                $index++,
-                $name,
-                0
+                'index' => $index++,
+                'location' => $name,
+                'total' => 0
             ];
         }
 
-        foreach ($list as $model) {
+        foreach ($list as $field_index => $model) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
             $func = 'cal_' . strtolower($model);
             $tmp = $this->$func($model);
 
@@ -50,13 +59,37 @@ class CosotongiaoComponent extends Component
                 } else {
                     $total = array_sum($data);
                 }
-                $export[$provice_code][2] += $total;
+                $export[$provice_code]['total'] += $total;
 
-                $export[$provice_code] = array_merge($export[$provice_code], array_values($data));
+                foreach ($data as $field => $value) {
+                    $export[$provice_code][$model . '_' . $field] = $value;
+                }
             }
         }
 
-        return $export;
+        return $this->sum($export);
+    }
+
+    private function sum($data, $start = 2)
+    {
+        $total = [];
+
+        foreach ($data as $location => $target) {
+            $index = 0;
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$field}"] = '';
+
+                    continue;
+                }
+
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
+            }
+        }
+        $data['final_total'] = $total;
+
+        return $data;
     }
 
     private function cal_dongtuconggiao($model)
@@ -107,10 +140,8 @@ class CosotongiaoComponent extends Component
                 continue;
             }
 
-//            $keyword = (iconv('UTF-8', 'ASCII//TRANSLIT', $item['tentuvien']));
-//            $keyword = strtolower(str_replace(' ', '-', $keyword));
             $keyword = $this->Utility->slug($item['tentuvien']);
-           
+
             foreach ($result[$provice_code] as $key => &$count) {
                 if (strpos($keyword, $key) !== false) {
                     $count++;
@@ -335,13 +366,6 @@ class CosotongiaoComponent extends Component
         ));
 
         return Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
-    }
-
-    private function slug($string)
-    {
-        $string = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
-
-        return strtolower(str_replace(' ', '-', trim($string)));
     }
 
     private function calculateMapping($model)

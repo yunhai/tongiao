@@ -918,7 +918,7 @@ class ActionController extends AppController
     protected function __getType3Data($conditions)
     {
         $component = $this->Components->load('Cosotongiao');
-        $data = $component->export();
+        $data = $component->export($conditions);
 
         // begin tinh toan dong cuoi cung
         $result = $data;
