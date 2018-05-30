@@ -11,44 +11,85 @@ class CstgtrungtuComponent extends Component
         $this->Utility = new UtilityComponent(new ComponentCollection());
     }
 
-    public function export()
+    public function export($filter = [])
     {
         $list = [
-            'Dongtuconggiao',
-            'Tuvienphatgiao',
-            'Chihoitinlanh',
-            'Hodaocaodai',
-            'Chihoitinhdocusiphatgiaovietnam',
-            'Phatgiaohoahao', // chua lam
-            'Cosohoigiaoislam',
-            'Cosotinnguong',
+            CONG_GIAO => 'Dongtuconggiao',
+            PHAT_GIAO => 'Tuvienphatgiao',
+            TIN_LANH => 'Chihoitinlanh',
+            CAO_DAI => 'Hodaocaodai',
+            TINH_DO_CU_SI => 'Chihoitinhdocusiphatgiaovietnam',
+            HOA_HAO => 'Phatgiaohoahao',
+            HOI_GIAO => 'Cosohoigiaoislam',
+            TIN_NGUONG => 'Cosotinnguong',
         ];
 
-        $province = $this->Province->getProvince();
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
 
-        $index = 1;
-        foreach ($province as $code => $name) {
-            $export[$code] = [
-                $index++,
-                $name,
-                0,
-                0
-            ];
-        }
+        $province = $this->Province->getProvince($filter_location);
+        $export = $this->init($province);
 
-        foreach ($list as $model) {
+        foreach ($list as $field_index => $model) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
+
             $func = 'cal_' . strtolower($model);
             $tmp = $this->$func($model);
 
             foreach ($province as $provice_code => $name) {
                 $data = $tmp[$provice_code];
-                $export[$provice_code][2] += $data['so_lan'];
-                $export[$provice_code][3] += $data['so_tien'];
+                $export[$provice_code]['total_so_lan'] += $data['so_lan'];
+                $export[$provice_code]['total_so_tien'] += $data['so_tien'];
 
-                $export[$provice_code] = array_merge($export[$provice_code], array_values($data));
+                foreach ($data as $field => $value) {
+                    $export[$provice_code][$model . '_' . $field] = $value;
+                }
             }
         }
+        return $this->sum($export);
+    }
 
+    private function sum($data, $start = 3)
+    {
+        $total = [];
+
+        foreach ($data as $location => $target) {
+            $index = 0;
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$field}"] = '';
+
+                    continue;
+                }
+
+                if (strpos($field, 'nam_trung_tu') !== false) {
+                    $total["final_total_{$field}"] = '';
+                    continue;
+                }
+
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
+            }
+        }
+        $data['final_total'] = $total;
+
+        return $data;
+    }
+
+    private function init($province)
+    {
+        $export = [];
+        $index = 1;
+        foreach ($province as $code => $name) {
+            $export[$code] = [
+                'index' => $index++,
+                'location' => $name,
+                'total_so_lan' => 0,
+                'total_so_tien' => 0
+            ];
+        }
         return $export;
     }
 
@@ -59,7 +100,7 @@ class CstgtrungtuComponent extends Component
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = [
                 'so_lan' => 0,
-                'nam_trung_tu' => 0,
+                'nam_trung_tu' => '',
                 'so_tien' => 0,
             ];
         }
@@ -77,11 +118,23 @@ class CstgtrungtuComponent extends Component
             }
 
             $result[$provice_code]['so_lan'] += $this->convertToNumber($item['ttttcs_solan']);
-            $result[$provice_code]['nam_trung_tu'] += $item['ttttcs_gannhat'];
             $result[$provice_code]['so_tien'] += $this->convertToNumber($item['ttttcs_tongkinhphi']);
+            $result[$provice_code]['nam_trung_tu'] = $this->checkNamtrungtu($result[$provice_code]['nam_trung_tu'], $item['ttttcs_gannhat']);
         }
 
         return $result;
+    }
+
+    private function checkNamtrungtu($old, $new)
+    {
+        if ($new) {
+            $new = intval($new);
+            if ($old < $new) {
+                return $new;
+            }
+        }
+
+        return $old;
     }
 
     private function cal_tuvienphatgiao($model)
@@ -91,7 +144,7 @@ class CstgtrungtuComponent extends Component
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = [
                 'so_lan' => 0,
-                'nam_trung_tu' => 0,
+                'nam_trung_tu' => '',
                 'so_tien' => 0,
             ];
         }
@@ -109,8 +162,8 @@ class CstgtrungtuComponent extends Component
             }
 
             $result[$provice_code]['so_lan'] += $this->convertToNumber($item['ttttcs_solan']);
-            $result[$provice_code]['nam_trung_tu'] += $item['ttttcs_gannhat'];
             $result[$provice_code]['so_tien'] += $this->convertToNumber($item['ttttcs_tongkinhphi']);
+            $result[$provice_code]['nam_trung_tu'] = $this->checkNamtrungtu($result[$provice_code]['nam_trung_tu'], $item['ttttcs_gannhat']);
         }
 
         return $result;
@@ -123,7 +176,7 @@ class CstgtrungtuComponent extends Component
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = [
                 'so_lan' => 0,
-                'nam_trung_tu' => 0,
+                'nam_trung_tu' => '',
                 'so_tien' => 0,
             ];
         }
@@ -141,7 +194,6 @@ class CstgtrungtuComponent extends Component
             }
 
             $result[$provice_code]['so_lan'] += $this->convertToNumber($item['ttttcs_solan']);
-            $result[$provice_code]['nam_trung_tu'] += $item['ttttcs_gannhat'];
             $result[$provice_code]['so_tien'] += $this->convertToNumber($item['ttttcs_tongkinhphi']);
         }
 
@@ -155,7 +207,7 @@ class CstgtrungtuComponent extends Component
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = [
                 'so_lan' => 0,
-                'nam_trung_tu' => 0,
+                'nam_trung_tu' => '',
                 'so_tien' => 0,
             ];
         }
@@ -173,8 +225,8 @@ class CstgtrungtuComponent extends Component
             }
 
             $result[$provice_code]['so_lan'] += $this->convertToNumber($item['ttttcs_solan']);
-            $result[$provice_code]['nam_trung_tu'] += $item['ttttcs_gannhat'];
             $result[$provice_code]['so_tien'] += $this->convertToNumber($item['ttttcs_tongkinhphi']);
+            $result[$provice_code]['nam_trung_tu'] = $this->checkNamtrungtu($result[$provice_code]['nam_trung_tu'], $item['ttttcs_gannhat']);
         }
 
         return $result;
@@ -187,7 +239,7 @@ class CstgtrungtuComponent extends Component
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = [
                 'so_lan' => 0,
-                'nam_trung_tu' => 0,
+                'nam_trung_tu' => '',
                 'so_tien' => 0,
             ];
         }
@@ -205,8 +257,8 @@ class CstgtrungtuComponent extends Component
             }
 
             $result[$provice_code]['so_lan'] += $this->convertToNumber($item['ttttcs_solan']);
-            $result[$provice_code]['nam_trung_tu'] += $item['ttttcs_gannhat'];
             $result[$provice_code]['so_tien'] += $this->convertToNumber($item['ttttcs_tongkinhphi']);
+            $result[$provice_code]['nam_trung_tu'] = $this->checkNamtrungtu($result[$provice_code]['nam_trung_tu'], $item['ttttcs_gannhat']);
         }
 
         return $result;
@@ -219,7 +271,7 @@ class CstgtrungtuComponent extends Component
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = [
                 'so_lan' => 0,
-                'nam_trung_tu' => 0,
+                'nam_trung_tu' => '',
                 'so_tien' => 0,
             ];
         }
@@ -234,7 +286,7 @@ class CstgtrungtuComponent extends Component
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = [
                 'so_lan' => 0,
-                'nam_trung_tu' => 0,
+                'nam_trung_tu' => '',
                 'so_tien' => 0,
             ];
         }
@@ -252,8 +304,8 @@ class CstgtrungtuComponent extends Component
             }
 
             $result[$provice_code]['so_lan'] += $this->convertToNumber($item['ttttcs_solan']);
-            $result[$provice_code]['nam_trung_tu'] += $item['ttttcs_gannhat'];
             $result[$provice_code]['so_tien'] += $this->convertToNumber($item['ttttcs_tongkinhphi']);
+            $result[$provice_code]['nam_trung_tu'] = $this->checkNamtrungtu($result[$provice_code]['nam_trung_tu'], $item['ttttcs_gannhat']);
         }
 
         return $result;
@@ -266,7 +318,7 @@ class CstgtrungtuComponent extends Component
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = [
                 'so_lan' => 0,
-                'nam_trung_tu' => 0,
+                'nam_trung_tu' => '',
                 'so_tien' => 0,
             ];
         }
@@ -284,8 +336,8 @@ class CstgtrungtuComponent extends Component
             }
 
             $result[$provice_code]['so_lan'] += $this->convertToNumber($item['ttttcs_solan']);
-            $result[$provice_code]['nam_trung_tu'] += $item['ttttcs_gannhat'];
             $result[$provice_code]['so_tien'] += $this->convertToNumber($item['ttttcs_tongkinhphi']);
+            $result[$provice_code]['nam_trung_tu'] = $this->checkNamtrungtu($result[$provice_code]['nam_trung_tu'], $item['ttttcs_gannhat']);
         }
 
         return $result;

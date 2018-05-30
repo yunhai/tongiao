@@ -1200,7 +1200,7 @@ class ActionController extends AppController
     protected function __getType6Data($conditions)
     {
         $component = $this->Components->load('Cstgtrungtu');
-        $data = $component->export();
+        $data = $component->export($conditions);
 
         $result = $data;
         $total = [];
