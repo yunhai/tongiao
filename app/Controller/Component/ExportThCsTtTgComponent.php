@@ -234,7 +234,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getTindodathuchiennghiletongiao($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $result = $data['giaodan_sonhankhau'];
                 break;
@@ -263,7 +263,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getTindochuathuchiennghiletongiao($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $result = 0;
                 break;
@@ -291,7 +291,7 @@ class ExportThCsTtTgComponent extends Component
 
     private function __getTindoladantocthieuso($data, $model)
     {
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $result = $data['giaodandantocthieuso_sonhankhau'];
                 break;
@@ -320,7 +320,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getChucsac($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 break;
             case 'Tuvienphatgiao':
@@ -351,7 +351,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getTusi($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $result = $data['sotusi'];
                 break;
@@ -380,7 +380,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getChucsacladantocthieuso($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
             case 'Tuvienphatgiao':
             case 'Chihoitinlanh':
@@ -397,7 +397,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getChucviec($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $result = $data['sothanhvientrongthuongvu'];
                 break;
@@ -426,7 +426,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getChucviecladantocthieuso($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
             case 'Tuvienphatgiao':
             case 'Chihoitinlanh':
@@ -443,7 +443,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getNamthanhlap($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
             case 'Tuvienphatgiao':
                 $result = $data['namthanhlap'];
@@ -470,7 +470,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getNamxaydung($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $result = $data['namxaydungnhatho'];
                 break;
@@ -499,7 +499,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getSotien($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
             case 'Tuvienphatgiao':
             case 'Chihoitinlanh':
@@ -515,7 +515,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getSolan($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $result = $data['ttttcs_solan'];
                 break;
@@ -544,7 +544,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getSotienlancuoi($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $result = $data['ttttcs_tongkinhphi'];
                 break;
@@ -572,7 +572,7 @@ class ExportThCsTtTgComponent extends Component
 
     private function __getDacapgcnqsddat_tongiao($data, $model)
     {
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $field1 = [
                     'dattrongkhuonvien_tongiao_dientich',
@@ -684,10 +684,10 @@ class ExportThCsTtTgComponent extends Component
         }
 
         $result = 0;
-        foreach($field1 as $f) {
+        foreach ($field1 as $f) {
             $result += intval($data[$f]);
         }
-        foreach($field2 as $f) {
+        foreach ($field2 as $f) {
             $result -= intval($data[$f]);
         }
 
@@ -696,7 +696,7 @@ class ExportThCsTtTgComponent extends Component
 
     private function __getDacapgcnqsddat_khac($data, $model)
     {
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $field1 = [
                     'dattrongkhuonvien_nnlnntts_dientich',
@@ -907,10 +907,10 @@ class ExportThCsTtTgComponent extends Component
         }
 
         $result = 0;
-        foreach($field1 as $f) {
+        foreach ($field1 as $f) {
             $result += intval($data[$f]);
         }
-        foreach($field2 as $f) {
+        foreach ($field2 as $f) {
             $result -= intval($data[$f]);
         }
 
@@ -919,7 +919,7 @@ class ExportThCsTtTgComponent extends Component
 
     private function __getChuacapgcnqsddat($data, $model)
     {
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 $field = [
                     'dattrongkhuonvien_tongiao_chuacap_dientich',
@@ -1059,7 +1059,7 @@ class ExportThCsTtTgComponent extends Component
         }
 
         $result = 0;
-        foreach($field as $f) {
+        foreach ($field as $f) {
             $result += intval($data[$f]);
         }
 
@@ -1069,7 +1069,7 @@ class ExportThCsTtTgComponent extends Component
     private function __getKientruc($data, $model)
     {
         $result = '';
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
                 break;
             case 'Tuvienphatgiao':
@@ -1091,14 +1091,14 @@ class ExportThCsTtTgComponent extends Component
     private function __getXephangditich($data, $model)
     {
         $mode = [
-            "cosothotu_ditichlichsu" => "Di tích lịch sử'",
-            "cosothotu_ditichvanhoa" => "Di tích văn hóa",
-            "cosothotu_ditichlichsuvanhoa" => "Di tích lịch sử văn hóa",
-            "cosothotu_ditichkientrucnghethuat" => "Di tích kiến trúc nghệ thuật",
-            "cosothotu_ditichkhaoco" => "Di tích khảo cổ'",
+            'cosothotu_ditichlichsu' => 'Di tích lịch sử',
+            'cosothotu_ditichvanhoa' => 'Di tích văn hóa',
+            'cosothotu_ditichlichsuvanhoa' => 'Di tích lịch sử văn hóa',
+            'cosothotu_ditichkientrucnghethuat' => 'Di tích kiến trúc nghệ thuật',
+            'cosothotu_ditichkhaoco' => "Di tích khảo cổ'",
         ];
 
-        foreach($mode as $f => $name) {
+        foreach ($mode as $f => $name) {
             if (!empty($data[$f])) {
                 return $name;
             }
@@ -1110,11 +1110,11 @@ class ExportThCsTtTgComponent extends Component
     private function __getCapcongnhan($data, $model)
     {
         $mode = [
-            "cosothotu_captrunguong" => "Cấp Trung ương",
-            "cosothotu_captinh" => "Cấp tỉnh",
+            'cosothotu_captrunguong' => 'Cấp Trung ương',
+            'cosothotu_captinh' => 'Cấp tỉnh',
         ];
 
-        foreach($mode as $f => $name) {
+        foreach ($mode as $f => $name) {
             if (!empty($data[$f])) {
                 return $name;
             }

@@ -6,48 +6,64 @@ class ExportThTkDatComponent extends Component
     {
         App::uses('ProvinceComponent', 'Controller/Component');
         $this->Province = new ProvinceComponent(new ComponentCollection());
+
+        App::uses('UtilityComponent', 'Controller/Component');
+        $this->Utility = new UtilityComponent(new ComponentCollection());
     }
 
-    public function export()
+    public function export($filter = [])
     {
+        $filter_group = $filter['ton_giao'];
+        $filter_location = $filter['prefecture'];
+
         $list = [
-            'Conggiao',
-            'Cosotinnguong',
-            'Hodaocaodai',
-            'Chihoitinhdocusiphatgiaovietnam',
-            'Tuvienphatgiao',
-            'Phatgiaohoahoa',
-            'Cosohoigiaoislam',
+            CONG_GIAO => 'Conggiao',
+            PHAT_GIAO => 'Tuvienphatgiao',
+            CAO_DAI => 'Hodaocaodai',
+            TINH_DO_CU_SI => 'Chihoitinhdocusiphatgiaovietnam',
+            HOI_GIAO => 'Cosohoigiaoislam',
+            HOA_HAO => 'Phatgiaohoahoa',
+            TIN_NGUONG => 'Cosotinnguong',
         ];
 
         $statictis = [];
 
         $export = [];
-        $province = $this->Province->getProvince();
+        $province = $this->Province->getProvince($filter_location);
 
         $index = 1;
         foreach ($province as $code => $name) {
             $export[$code] = [
-                $index++,
-                $name,
-                0,
-                0,
-                0,
-                0,
-                0
+                'index' => $index++,
+                'location' => $name,
+                'total' => 0,
+                'licensed_total' => 0,
+                'licensed_other' => 0,
+                'licensed_main' => 0,
+                'unlicense' => 0
             ];
             $statictis[$code] = [
                 'total' => 0,
-                'licensed_main' => 0,
-                'licensed_other' => 0,
                 'licensed_total' => 0,
+                'licensed_other' => 0,
+                'licensed_main' => 0,
                 'unlicense' => 0,
             ];
         }
 
-        foreach ($list as $model) {
+        $fields = [
+            'total',
+            'licensed_main',
+            'licensed_other',
+            'unlicense',
+        ];
+
+        foreach ($list as $field_index => $model) {
+            if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
+                continue;
+            }
             $func = 'cal_' . mb_strtolower($model);
-            $tmp = $this->$func($model,  $province);
+            $tmp = $this->$func($model, $province);
 
             foreach ($province as $provice_code => $name) {
                 if (!empty($tmp[$provice_code])) {
@@ -63,19 +79,44 @@ class ExportThTkDatComponent extends Component
                     $partial = [0, 0, 0, 0];
                 }
 
-                $export[$provice_code] = array_merge($export[$provice_code], $partial);
+                foreach ($partial as $key => $value) {
+                    $f = $fields[$key];
+                    $export[$provice_code][$model . '_' . $f] = $value;
+                }
             }
         }
 
         foreach ($export as $provice_code => &$item) {
-            $item[2] = $statictis[$provice_code]['total'];
-            $item[3] = $statictis[$provice_code]['licensed_total'];
-            $item[4] = $statictis[$provice_code]['licensed_main'];
-            $item[5] = $statictis[$provice_code]['licensed_other'];
-            $item[6] = $statictis[$provice_code]['unlicense'];
+            $item['total'] = $statictis[$provice_code]['total'];
+            $item['licensed_total'] = $statictis[$provice_code]['licensed_total'];
+            $item['licensed_main'] = $statictis[$provice_code]['licensed_main'];
+            $item['licensed_other'] = $statictis[$provice_code]['licensed_other'];
+            $item['unlicense'] = $statictis[$provice_code]['unlicense'];
         }
 
-        return $export;
+        return $this->sum($export);
+    }
+
+    private function sum($data, $start = 2)
+    {
+        $total = [];
+
+        foreach ($data as $location => $target) {
+            $index = 0;
+            foreach ($target as $field => $value) {
+                if (++$index <= $start) {
+                    $total["final_total_{$index}"] = '';
+
+                    continue;
+                }
+
+                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
+                $total["final_total_{$field}"] += $value;
+            }
+        }
+        $data['final_total'] = $total;
+
+        return $data;
     }
 
     private function cal_conggiao()
@@ -85,10 +126,10 @@ class ExportThTkDatComponent extends Component
 
         foreach ($dtcg as $province_code => &$item) {
             if (isset($gx[$province_code])) {
-                $item['total'] = $gx[$province_code]['total'];
-                $item['licensed_main'] = $gx[$province_code]['licensed_main'];
-                $item['licensed_other'] = $gx[$province_code]['licensed_other'];
-                $item['unlicense'] = $gx[$province_code]['unlicense'];
+                $item['total'] = $this->Utility->retrieveNumberFromString($gx[$province_code]['total']);
+                $item['licensed_main'] = $this->Utility->retrieveNumberFromString($gx[$province_code]['licensed_main']);
+                $item['licensed_other'] = $this->Utility->retrieveNumberFromString($gx[$province_code]['licensed_other']);
+                $item['unlicense'] = $this->Utility->retrieveNumberFromString($gx[$province_code]['unlicense']);
                 unset($gx[$province_code]);
             }
         }
@@ -162,7 +203,6 @@ class ExportThTkDatComponent extends Component
 
     private function cal_phatgiaohoahoa($model, $province)
     {
-        // $province = $this->getProvince();
         $result = [];
         foreach ($province as $code => $name) {
             $result[$code] = [

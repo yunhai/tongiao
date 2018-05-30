@@ -339,7 +339,7 @@ class ActionController extends AppController
     protected function __getType1Data($conditions)
     {
         $component = $this->Components->load('ExportThTkDat');
-        $result = $component->export();
+        $result = $component->export($conditions);
 
         $tongdt = $result['bien-hoa']['2'] + $result['long-khanh']['2'] + $result['xuan-loc']['2'] + $result['cam-my']['2'] + $result['tan-phu']['2'] + $result['dinh-quan']['2'] + $result['thong-nhat']['2'] + $result['trang-bom']['2'] + $result['vinh-cuu']['2'] + $result['nhon-trach']['2'] + $result['long-thanh']['2'];
         $sodientichdat_dacapgcn_tong = $result['bien-hoa']['3'] + $result['long-khanh']['3'] + $result['xuan-loc']['3'] + $result['cam-my']['3'] + $result['tan-phu']['3'] + $result['dinh-quan']['3'] + $result['thong-nhat']['3'] + $result['trang-bom']['3'] + $result['vinh-cuu']['3'] + $result['nhon-trach']['3'] + $result['long-thanh']['3'];
