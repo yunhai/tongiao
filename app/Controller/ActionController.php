@@ -920,173 +920,71 @@ class ActionController extends AppController
         $component = $this->Components->load('Cosotongiao');
         $data = $component->export($conditions);
 
-        // begin tinh toan dong cuoi cung
-        $result = $data;
-        $total = [];
-        $i = 2;
-        while ($i <= 29) {
-            $sum = 0;
-            foreach ($result as $key => $value) {
-                $sum += $value[$i];
-            }
-            $total["tong{$i}"] = $sum;
-            $i++;
-        }
-
         $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template3.xls';
         $filename = "{$this->_type_text[3]}";
         $this->Excel->load($source);
 
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
+        $r = 9;
+        $reset = reset($data);
+        if (!isset($reset['Cosotinnguong_dinh'])) {
+            $this->removeColumn('AD', 'Z', 6, 4);
+        }
+        if (!isset($reset['Chucviecphathoahao_ban-dai-dien'])) {
+            $this->removeColumn('Y', 'X', 6, 2);
+        }
+        if (!isset($reset['Cosohoigiaoislam_thanh-duong'])) {
+            $this->removeColumn('W', 'V', 6, 2);
+        }
+        if (!isset($reset['Chihoitinhdocusiphatgiaovietnam_chi-hoi'])) {
+            $this->Excel->ActiveSheet->removeColumn('U');
+        }
+        if (!isset($reset['Hodaocaodai_thanh-that'])) {
+            $this->removeColumn('T', 'S', 6, 2);
+        }
+        if (!isset($reset['Tuvienphatgiao_tong'])) {
+            $this->removeColumn('R', 'L', 6, 7);
+        }
+        if (!isset($reset['Dongtuconggiao_tong'])) {
+            $this->removeColumn('K', 'D', 6, 8);
+        }
         $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
         $colIndexes = array();
-
-        $index = 1;
-        for ($c = 'C'; $c <= 'Z'; $c++) {
+        $index = 0;
+        for ($c = 'A'; $c <= 'Z'; $c++) {
             $colIndexes[$index] = $c;
             $index ++;
             if ($c == $maxCols) {
                 break;
             }
         }
-        $r = 9;
-        $tinhs = array(
-            'bien-hoa',
-            'long-khanh',
-            'xuan-loc',
-            'cam-my',
-            'tan-phu',
-            'dinh-quan',
-            'thong-nhat',
-            'trang-bom',
-            'vinh-cuu',
-            'nhon-trach',
-            'long-thanh',
-        );
-        foreach ($tinhs as $tinh) {
-            $result = $data[$tinh];
+        $delete_rows = array();
+        foreach ($data as $key => $result) {
+            $value = array_values($result);
             foreach ($colIndexes as $k => $c) {
-                switch ($c) {
-                    case 'C'://TỔNG
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['2']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong2']);
-                        break;
-                    case 'D'://CÔNG GIÁO
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['3']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong3']);
-                        break;
-                    case 'E':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['4']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong4']);
-                        break;
-                    case 'F':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['5']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong5']);
-                        break;
-                    case 'G':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['6']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong6']);
-                        break;
-                    case 'H':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['7']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong7']);
-                        break;
-                    case 'I':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['8']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong8']);
-                        break;
-                    case 'J':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['9']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong9']);
-                        break;
-                    case 'K':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['10']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong10']);
-                        break;
-                    case 'L'://PHẬT GIÁO
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['11']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong11']);
-                        break;
-                    case 'M':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['12']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong12']);
-                        break;
-                    case 'N':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['13']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong13']);
-                        break;
-                    case 'O':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['14']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong14']);
-                        break;
-                    case 'P':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['15']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong15']);
-                        break;
-                    case 'Q':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['16']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong16']);
-                        break;
-                    case 'R':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['17']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong17']);
-                        break;
-                    case 'S'://CAO ĐÀI
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['18']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong18']);
-                        break;
-                    case 'T':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['19']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong19']);
-                        break;
-                    case 'U'://TĐCSPHVN
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['20']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong20']);
-                        break;
-                    case 'V'://HỒI GIÁO
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['21']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong21']);
-                        break;
-                    case 'W':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['22']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong22']);
-                        break;
-                    case 'X'://PHẬT GIÁO HÒA HẢO
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['23']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong23']);
-                        break;
-                    case 'Y':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['24']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong24']);
-                        break;
-                    case 'Z'://TÍN NGƯỠNG
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['25']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong25']);
-                        break;
-                    case 'AA':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['26']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong26']);
-                        break;
-                    case 'AB':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['27']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong27']);
-                        break;
-                    case 'AC':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['28']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong28']);
-                        break;
-                    case 'AD':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['29']);
-                        $this->Excel->ActiveSheet->getCell("{$c}20")->setValue($total['tong29']);
-                        break;
-                    default:
-                        echo 'TH CO SO TON GIAO';
+                if (isset($value[$k])) {
+                    if ($key != 'final_total') {
+                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value[$k]);
+                    } else {
+                        $bold = array('font' => array('bold' => true, 'name' => 'Times New Roman'));
+                        $this->Excel->ActiveSheet->getStyle("{$c}{$r}")->applyFromArray($bold);
+                        if (in_array($c, array('A', 'B'))) {
+                            $this->Excel->ActiveSheet->getCell("A{$r}")->setValue('TỔNG');
+                            $this->Excel->ActiveSheet->mergeCells("A$r:B$r");
+                        } else {
+                            $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($value[$k]);
+                        }
+                    }
+                    $this->setStyles($c, $r);
+                } else {
+                    $delete_rows[$c] = $c;
                 }
             }
-
             $r++;
         }
-
+        $delete_rows = array_reverse($delete_rows);
+        foreach ($delete_rows as $row) {
+            $this->Excel->ActiveSheet->removeColumn($row);
+        }
         return $this->Excel->save($filename);
     }
 
@@ -6239,10 +6137,10 @@ class ActionController extends AppController
         return $this->Excel->save($filename);
     }
 
-    public function removeColumn($low, $high, $index_column)
+    public function removeColumn($low, $high, $index_column, $step)
     {
         $this->Excel->ActiveSheet->unmergeCells("{$high}{$index_column}:{$low}{$index_column}");
-        $this->Excel->ActiveSheet->removeColumn($high, 4);
+        $this->Excel->ActiveSheet->removeColumn($high, $step);
         $this->Excel->ActiveSheet->mergeCells("{$high}{$index_column}:{$low}{$index_column}");
         return true;
     }
