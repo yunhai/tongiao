@@ -38,9 +38,9 @@ class ActionController extends AppController
     {
         //parent::beforeFilter();
         $this->_type_text = array(
-            TONG_HOP_DAT_DAI => 'TONG HOP DAT DAI',
+            // TONG_HOP_DAT_DAI => 'TONG HOP DAT DAI',
             TH_TON_GIAO_CO_SO => 'TH TON GIAO CO SO',
-            TH_CO_SO_TON_GIAO => 'TH CO SO TON GIAO',
+            // TH_CO_SO_TON_GIAO => 'TH CO SO TON GIAO',
             TONG_HOP_DI_TICH => 'TONG HOP DI TICH',
             TONG_HOP_CSTG_TRUNG_TU => 'TONG HOP CSTG TRUNG TU',
             BANG_TONG_HOP_TIN_DO => 'BANG TONG HOP TIN DO',
@@ -255,62 +255,11 @@ class ActionController extends AppController
         $this->redirect($this->referer());
     }
 
-    public function template($type)
+    public function download($type = null)
     {
         $this->autoLayout = false;
         $this->autoRender = false;
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template{$type}.xls";
-        $filename = "template{$type}";
-        $this->Excel->load($source);
-        $this->{"__createTemplate{$type}"}();
-        $this->Excel->save($filename);
-    }
 
-    /**
-     * Tạo template
-     */
-    public function __createTemplate0()
-    {
-        $maxRows = $this->Excel->ActiveSheet->getHighestRow();
-        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
-        $colIndexes = array();
-
-        $index = 2;
-        for ($c = 'C'; $c <= 'Z'; $c++) {
-            $colIndexes[$index] = $c;
-            $index ++;
-            if ($c == $maxCols) {
-                break;
-            }
-        }
-
-        $arrays = array(
-            9 => 'bien_hoa',
-            10 => 'cam_my',
-            11 => 'dinh_quan',
-            12 => 'long_khanh',
-            13 => 'long_thanh',
-            14 => 'nhon_trach',
-            15 => 'thong_nhat',
-            16 => 'trang_bom',
-            17 => 'tan_phu',
-            18 => 'vinh_cuu',
-            19 => 'xuan_loc',
-            20 => 'tong'
-        );
-
-        foreach ($arrays as $key => $value) {
-            for ($r = 3; $r <= $maxRows; $r++) {
-                foreach ($colIndexes as $k => $c) {
-                    $this->Excel->ActiveSheet->getCell("{$c}{$key}")->setValue('{$'.$value.$k.'}');
-                }
-            }
-        }
-        //exit;
-    }
-
-    public function download($type = null)
-    {
         $conditions = array();
         if ($this->request->is('post')) {
             $request = $this->request->data;
@@ -322,30 +271,32 @@ class ActionController extends AppController
                 $conditions['ton_giao'] = $request['ton_giao_'.$type];
             }
         }
-        return $this->pandog($conditions);
+
+        return $this->export($type, $conditions);
     }
 
-    public function pandog($conditions)
+    public function export($type, $conditions)
     {
-        $index = 0;
-        // $conditions['ton_giao'] = [
-        //     PHAT_GIAO,
-        //     CAO_DAI,
-        //     HOI_GIAO,
-        //     HOA_HAO,
-        // ];
+        $config = Configure::read('export.excel.' . $type);
 
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template3.xls';
-        $filename = 'pandogtest';
-        $this->Excel->load($source);
 
-        $component = $this->Components->load('Cosotongiao');
+        extract($config);
+        $this->excelTemplate($type);
+        $component = $this->Components->load($component);
         $data = $component->export($conditions);
+
         $config = $component->layout($conditions['ton_giao']);
 
         $this->excelLayout($config);
         $this->excelData($data, $config);
         $this->Excel->save($filename);
+    }
+
+    private function excelTemplate($type)
+    {
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template{$type}.xls";
+
+        $this->Excel->load($source);
     }
 
     private function excelLayout($config)
@@ -378,16 +329,15 @@ class ActionController extends AppController
                 $cell_index = $this->getColumnAddress($column_index) . $row_data_index;
 
                 $this->Excel->ActiveSheet->getCell($cell_index)->setValue($cell_data);
-                $this->style($cell_index, $row_data_index);
+                $this->setExcelCellStyle($cell_index, $row_data_index);
                 if ($count === 1) {
                     $fonts = array('font' => array('bold' => true, 'name' => 'Times New Roman'));
                     $this->Excel->ActiveSheet->getStyle($cell_index)->applyFromArray($fonts);
                 }
                 $column_index++;
             }
-            
-            $count--;
 
+            $count--;
             $row_data_index++;
         }
 
@@ -409,7 +359,7 @@ class ActionController extends AppController
             'G', 'H', 'I', 'J', 'K', 'L',
             'M', 'N', 'O', 'P', 'Q', 'R',
             'S', 'T', 'U', 'V', 'W', 'X',
-            'Y', 'X'
+            'Y', 'Z'
         ];
 
         $index = $index - 1;
@@ -424,8 +374,8 @@ class ActionController extends AppController
 
         return $result;
     }
-    
-    public function style($cell_index, $row_data_index)
+
+    public function setExcelCellStyle($cell_index, $row_data_index)
     {
         $borders = array(
           'borders' => array(
