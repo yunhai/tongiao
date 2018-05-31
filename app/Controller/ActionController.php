@@ -370,7 +370,7 @@ class ActionController extends AppController
     private function excelData($data, $config)
     {
         extract($config);
-
+        $count = count($data);
         foreach ($data as $index => $row_data) {
             $column_index = 1;
 
@@ -378,13 +378,20 @@ class ActionController extends AppController
                 $cell_index = $this->getColumnAddress($column_index) . $row_data_index;
 
                 $this->Excel->ActiveSheet->getCell($cell_index)->setValue($cell_data);
+                $this->style($cell_index, $row_data_index);
+                if ($count === 1) {
+                    $fonts = array('font' => array('bold' => true, 'name' => 'Times New Roman'));
+                    $this->Excel->ActiveSheet->getStyle($cell_index)->applyFromArray($fonts);
+                }
                 $column_index++;
             }
+            
+            $count--;
 
             $row_data_index++;
         }
 
-        if (1 && $cell_total_count) {
+        if ($cell_total_count) {
             $row_data_index = $row_data_index - 1;
 
             $address = $this->getColumnAddress($cell_total_count);
@@ -416,6 +423,23 @@ class ActionController extends AppController
         $result .= $map[$mod];
 
         return $result;
+    }
+    
+    public function style($cell_index, $row_data_index)
+    {
+        $borders = array(
+          'borders' => array(
+              'allborders' => array(
+                  'style' => PHPExcel_Style_Border::BORDER_THIN
+              )
+          )
+        );
+        $this->Excel->ActiveSheet->getRowDimension($row_data_index)->setRowHeight(25);
+        $this->Excel->ActiveSheet->getStyle($cell_index)->getFont()->setSize(8);
+        $this->Excel->ActiveSheet->getStyle($cell_index)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $this->Excel->ActiveSheet->getStyle($cell_index)->getAlignment()->setVERTICAL(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+        $this->Excel->ActiveSheet->getStyle($cell_index)->applyFromArray($borders);
+        return true;
     }
 
     /**
