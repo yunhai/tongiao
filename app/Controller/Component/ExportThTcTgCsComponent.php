@@ -1,15 +1,43 @@
 <?php
 
-class TongiaocosoComponent extends Component
+App::uses('ExportExcelComponent', 'Controller/Component');
+
+class ExportThTcTgCsComponent extends ExportExcelComponent
 {
     public function __construct()
     {
-        App::uses('ProvinceComponent', 'Controller/Component');
-        $this->Province = new ProvinceComponent(new ComponentCollection());
-
+        parent::__construct();
         App::uses('UtilityComponent', 'Controller/Component');
         $this->Utility = new UtilityComponent(new ComponentCollection());
     }
+
+    public function layout($filter = [])
+    {
+        $row_data_index = 9;
+        $row_header_index = 6;
+        $column_begin = 4;
+        $column_structure = [
+            CONG_GIAO => '6',
+            PHAT_GIAO => '7',
+            CAO_DAI => '1',
+            TINH_DO_CU_SI => '1',
+            HOI_GIAO => '1',
+            HOA_HAO => '1'
+        ];
+
+        $column_remove = [];
+        $cell_total_count = 2;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
+                }
+            }
+        }
+
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count');
+    }
+
 
     public function export($filter)
     {
@@ -66,28 +94,6 @@ class TongiaocosoComponent extends Component
         }
 
         return $this->sum($export);
-    }
-
-    private function sum($data, $start = 2)
-    {
-        $total = [];
-
-        foreach ($data as $location => $target) {
-            $index = 0;
-            foreach ($target as $field => $value) {
-                if (++$index <= $start) {
-                    $total["final_total_{$field}"] = '';
-
-                    continue;
-                }
-
-                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
-                $total["final_total_{$field}"] += $value;
-            }
-        }
-        $data['final_total'] = $total;
-
-        return $data;
     }
 
     private function cal_conggiao()

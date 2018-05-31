@@ -279,7 +279,6 @@ class ActionController extends AppController
     {
         $config = Configure::read('export.excel.' . $type);
 
-
         extract($config);
         $this->excelTemplate($type);
         $component = $this->Components->load($component);

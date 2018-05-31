@@ -158,6 +158,10 @@ Configure::write('export.excel', [
         'filename' => 'TONG HOP DAT DAI',
         'component' => 'ExportThTkDat'
     ],
+    TH_TON_GIAO_CO_SO => [
+        'filename' => 'TH TON GIAO CO SO',
+        'component' => 'ExportThTcTgCs'
+    ],
     TH_CO_SO_TON_GIAO => [
         'filename' => 'TH CO SO TON GIAO',
         'component' => 'ExportThTgCsTinh'
