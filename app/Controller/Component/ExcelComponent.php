@@ -1,6 +1,6 @@
 <?php
 App::uses('Component', 'Controller');
-App::import('Vendor','PHPExcel', array('file' => 'Excel/PHPExcel.php'));
+App::import('Vendor', 'PHPExcel', array('file' => 'Excel/PHPExcel.php'));
 
 /**
  * For exporting excel using template
@@ -10,12 +10,14 @@ App::import('Vendor','PHPExcel', array('file' => 'Excel/PHPExcel.php'));
  * @author Mai Nhut Tan
  * @since 2013.07.01
  */
-class ExcelComponent extends Component {
+class ExcelComponent extends Component
+{
     public $defaultPlaceHolder = null;
 
     protected $filter = '/[\\\$\{]+([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)[\\\$\}]+/u';
     protected $controller;
-    protected $Reader = null, $Writer = null;
+    protected $Reader = null;
+    protected $Writer = null;
     public $Handler = null;
     protected $_variables = array();
     public $ActiveSheet = null;
@@ -30,11 +32,12 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function initialize(Controller $controller) {
+    public function initialize(Controller $controller)
+    {
         ini_set('zlib.output_compression', 'Off');
         ob_start();
 
-        $this->controller = $controller;
+        // $this->controller = $controller;
         $this->Reader = new PHPExcel_Reader_Excel5();
     }
 
@@ -48,13 +51,14 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function load($path){
-        if(!file_exists($path)){
+    public function load($path)
+    {
+        if (!file_exists($path)) {
             throw new Exception(__('COMMON_ERR_MSG001'), 1);
             return false;
         }
 
-        if(!$this->Reader->canRead($path)){
+        if (!$this->Reader->canRead($path)) {
             throw new Exception(__('COMMON_ERR_MSG002'), 1);
             return false;
         }
@@ -76,7 +80,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function setAuthor($name){
+    public function setAuthor($name)
+    {
         $this->_properties->setCreator($name);
     }
 
@@ -90,7 +95,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function setTitle($title){
+    public function setTitle($title)
+    {
         $this->_properties->setTitle($title);
     }
 
@@ -104,7 +110,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function setSubject($subject){
+    public function setSubject($subject)
+    {
         $this->_properties->setSubject($subject);
     }
 
@@ -117,7 +124,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function setActiveSheet($num){
+    public function setActiveSheet($num)
+    {
         $this->Handler->setActiveSheetIndex($num);
         $this->ActiveSheet = $this->Handler->getActiveSheet();
         $this->_properties = $this->Handler->getProperties();
@@ -132,7 +140,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function getMaxCols(){
+    public function getMaxCols()
+    {
         return $this->ActiveSheet->getHighestColumn();
     }
 
@@ -145,7 +154,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function getMaxRows(){
+    public function getMaxRows()
+    {
         return $this->ActiveSheet->getHighestRow();
     }
 
@@ -158,7 +168,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function resetVariables(){
+    public function resetVariables()
+    {
         $this->_variables = array();
     }
 
@@ -171,7 +182,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function getVariables($name = null){
+    public function getVariables($name = null)
+    {
         return $name === null ? $this->_variables : $this->_variables[$name];
     }
 
@@ -184,7 +196,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function setVariable($name, $value){
+    public function setVariable($name, $value)
+    {
         $this->_variables[$name] = $value;
     }
 
@@ -197,7 +210,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function setVariableArray($arr){
+    public function setVariableArray($arr)
+    {
         $this->_variables = $arr;
     }
 
@@ -210,7 +224,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function setAutosize($row = null){
+    public function setAutosize($row = null)
+    {
         $this->setRowSize($row, -1);
     }
 
@@ -223,9 +238,12 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function setAutosizeByContents($cell = null, $line_max_char = 75, $row_size = 12.85){
+    public function setAutosizeByContents($cell = null, $line_max_char = 75, $row_size = 12.85)
+    {
         $cell = $this->ActiveSheet->getCell($cell);
-        if(!$cell) return;
+        if (!$cell) {
+            return;
+        }
 
         $current_row = $cell->getRow();
         $content = $cell->getValue();
@@ -247,15 +265,19 @@ class ExcelComponent extends Component {
         $to_row = $row_range[1];
 
         //exclude other row heights
-        for($i = $from_row; $i <= $to_row; $i++){
-            if($i == $current_row) continue;
+        for ($i = $from_row; $i <= $to_row; $i++) {
+            if ($i == $current_row) {
+                continue;
+            }
             $row_size -= $this->ActiveSheet->getRowDimension($i)->getRowHeight();
         }
 
         $this->setWordWrap($cell->getCoordinate(), true);
 
         //set extended row height
-        if($row_size > $original_row_size) $this->ActiveSheet->getRowDimension($from_row)->setRowHeight($row_size);
+        if ($row_size > $original_row_size) {
+            $this->ActiveSheet->getRowDimension($from_row)->setRowHeight($row_size);
+        }
     }
 
     /**
@@ -267,10 +289,11 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.12
      */
-    public function setRowSize($row = null, $size = -1){
-        if($row === null){
+    public function setRowSize($row = null, $size = -1)
+    {
+        if ($row === null) {
             $max = $this->getMaxRows();
-            for($i = 1; $i <= $max; $i++){
+            for ($i = 1; $i <= $max; $i++) {
                 $this->setRowSize($i, $size);
             }
 
@@ -278,9 +301,9 @@ class ExcelComponent extends Component {
         }
 
         $row = intval($row);
-        if(empty($row)){
+        if (empty($row)) {
             return;
-        }else{
+        } else {
             $this->ActiveSheet->getRowDimension($row)->setRowHeight($size);
         }
     }
@@ -294,24 +317,26 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function setWordWrap($cellName = null, $bool = true){
-
-        if($cellName === null){
+    public function setWordWrap($cellName = null, $bool = true)
+    {
+        if ($cellName === null) {
             $maxRows = $this->getMaxRows();
             $maxCols = $this->getMaxCols();
             $colIndexes = array();
 
-            for($c = 'A'; $c <= 'Z'; $c++){
+            for ($c = 'A'; $c <= 'Z'; $c++) {
                 $colIndexes[] = $c;
-                if($c == $maxCols) break;
+                if ($c == $maxCols) {
+                    break;
+                }
             }
 
-            for($r = 1; $r <= $maxRows; $r++){
-                foreach($colIndexes as $c){
+            for ($r = 1; $r <= $maxRows; $r++) {
+                foreach ($colIndexes as $c) {
                     $this->ActiveSheet->getStyle("{$c}{$r}")->getAlignment()->setWrapText($bool);
                 }
             }
-        }else{
+        } else {
             $this->ActiveSheet->getStyle($cellName)->getAlignment()->setWrapText($bool);
         }
     }
@@ -325,18 +350,21 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function compile(){
+    public function compile()
+    {
         $maxRows = $this->getMaxRows();
         $maxCols = $this->getMaxCols();
         $colIndexes = array();
 
-        for($c = 'A'; $c <= 'Z'; $c++){
+        for ($c = 'A'; $c <= 'Z'; $c++) {
             $colIndexes[] = $c;
-            if($c == $maxCols) break;
+            if ($c == $maxCols) {
+                break;
+            }
         }
 
-        for($r = 1; $r <= $maxRows; $r++){
-            foreach($colIndexes as $c){
+        for ($r = 1; $r <= $maxRows; $r++) {
+            foreach ($colIndexes as $c) {
                 $row = $this->ActiveSheet->getCell("{$c}{$r}");
                 $value = $row->getValue();
 
@@ -358,30 +386,31 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    public function save($filename, $path = null){
-        if($path === null){
+    public function save($filename, $path = null)
+    {
+        if ($path === null) {
 
             //set headers
-            header("Cache-Control: cache, must-revalidate");
-            header("Cache-Control: max-age=0");
-            header("Cache-Control: max-age=1"); //IE
-            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-            header("Content-Disposition: inline; filename=\"".$filename.".xls\"");
-            header("Content-Transfer-Encoding: binary");
-            header("Content-Type: application/download");
-            header("Content-Type: application/force-download");
-            header("Content-Type: application/vnd.ms-excel");
-            header("Expires: 0");
-            header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-            header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT");
-            header("Pragma: public");
-            header("Server: Haken Documents");
-            header("X-Powered-By: Haken System");
+            header('Cache-Control: cache, must-revalidate');
+            header('Cache-Control: max-age=0');
+            header('Cache-Control: max-age=1'); //IE
+            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+            header('Content-Disposition: inline; filename="'.$filename.'.xls"');
+            header('Content-Transfer-Encoding: binary');
+            header('Content-Type: application/download');
+            header('Content-Type: application/force-download');
+            header('Content-Type: application/vnd.ms-excel');
+            header('Expires: 0');
+            header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+            header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
+            header('Pragma: public');
+            header('Server: Haken Documents');
+            header('X-Powered-By: Haken System');
 
             ob_end_clean();
             $this->Writer->save('php://output');
             exit();
-        }else{
+        } else {
             @chmod($path, 0777);
             $file_path = $path . DS . $filename.'.xls';
             $this->Writer->save($file_path);
@@ -398,12 +427,13 @@ class ExcelComponent extends Component {
       * @author Mai Nhut Tan
       * @since 2013.07.01
       */
-    protected function __mergeVariables($text, $var_arr){
+    protected function __mergeVariables($text, $var_arr)
+    {
         $used_vars = array();
 
         //search for used variables
-        if(preg_match_all($this->filter, $text, $var_list)){
-            foreach($var_list[1] as $match){
+        if (preg_match_all($this->filter, $text, $var_list)) {
+            foreach ($var_list[1] as $match) {
                 $used_vars[$match] = ($this->defaultPlaceHolder === null ? "#$match#" : $this->defaultPlaceHolder);
             }
         }
@@ -416,9 +446,10 @@ class ExcelComponent extends Component {
 
         $result = '';
 
-        try{
+        try {
             eval('$result = "'.$text.'";');
-        }catch(Exception $e){}
+        } catch (Exception $e) {
+        }
 
         return $result;
     }
@@ -432,7 +463,8 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.01
      */
-    protected function __parseVariables(&$text){
+    protected function __parseVariables(&$text)
+    {
         //escape all dollar signs
         $text = str_replace('$', '\$', $text);
         //parse variables
@@ -450,18 +482,21 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.12
      */
-    protected function __wrap($str, $width, $break, $cut = true, $charset = null) {
-        if ($charset === null) $charset = 'UTF-8';
+    protected function __wrap($str, $width, $break, $cut = true, $charset = null)
+    {
+        if ($charset === null) {
+            $charset = 'UTF-8';
+        }
 
         $pieces = explode($break, $str);
         $result = array();
         foreach ($pieces as $piece) {
-          $current = $piece;
-          while ($cut && mb_strlen($current) > $width) {
-            $result[] = mb_substr($current, 0, $width, $charset);
-            $current = mb_substr($current, $width, 2048, $charset);
-          }
-          $result[] = $current;
+            $current = $piece;
+            while ($cut && mb_strlen($current) > $width) {
+                $result[] = mb_substr($current, 0, $width, $charset);
+                $current = mb_substr($current, $width, 2048, $charset);
+            }
+            $result[] = $current;
         }
         return implode($break, $result);
     }
@@ -475,23 +510,28 @@ class ExcelComponent extends Component {
      * @author Mai Nhut Tan
      * @since 2013.07.12
      */
-    protected function __getCellRowIndexes($cell = null){
-        if(is_string($cell)){
+    protected function __getCellRowIndexes($cell = null)
+    {
+        if (is_string($cell)) {
             $cell = $this->ActiveSheet->getCell($cell);
         }
 
-        if(!$cell) return null;
+        if (!$cell) {
+            return null;
+        }
 
         $in_range = null;
         $merged_cells = $this->ActiveSheet->getMergeCells();
-        foreach($merged_cells as $range){
-            if($cell->isInRange($range)){
+        foreach ($merged_cells as $range) {
+            if ($cell->isInRange($range)) {
                 $in_range = $range;
                 break;
             }
         }
 
-        if(!$in_range) return array($cell->getRow(), $cell->getRow());
+        if (!$in_range) {
+            return array($cell->getRow(), $cell->getRow());
+        }
 
         $range = explode(':', $in_range);
 
@@ -499,7 +539,5 @@ class ExcelComponent extends Component {
             $this->ActiveSheet->getCell($range[0])->getRow(),
             $this->ActiveSheet->getCell($range[1])->getRow()
         );
-
     }
 }
-

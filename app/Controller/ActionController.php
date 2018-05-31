@@ -322,15 +322,100 @@ class ActionController extends AppController
                 $conditions['ton_giao'] = $request['ton_giao_'.$type];
             }
         }
-        $this->autoLayout = false;
-        $this->autoRender = false;
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . "template{$type}.xls";
-        $filename = "{$this->_type_text[$type]}";
-        $data = $this->{"__getType{$type}Data"}($conditions);
+        return $this->pandog($conditions);
+    }
+
+    public function pandog($conditions)
+    {
+        $index = 0;
+        // $conditions['ton_giao'] = [
+        //     PHAT_GIAO,
+        //     CAO_DAI,
+        //     HOI_GIAO,
+        //     HOA_HAO,
+        // ];
+
+        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template3.xls';
+        $filename = 'pandogtest';
         $this->Excel->load($source);
-        $this->Excel->setVariableArray($data);
-        $this->Excel->compile();
+
+        $component = $this->Components->load('Cosotongiao');
+        $data = $component->export($conditions);
+        $config = $component->layout($conditions['ton_giao']);
+
+        $this->excelLayout($config);
+        $this->excelData($data, $config);
         $this->Excel->save($filename);
+    }
+
+    private function excelLayout($config)
+    {
+        extract($config);
+
+        foreach ($column_structure as $col => $step) {
+            if (in_array($col, $column_remove)) {
+                $begin = $this->getColumnAddress($column_begin);
+                $end = $this->getColumnAddress($column_begin + $step - 1);
+
+                if ($begin != $end) {
+                    $this->Excel->ActiveSheet->unmergeCells("{$begin}{$row_header_index}:{$end}{$row_header_index}");
+                }
+                $this->Excel->ActiveSheet->removeColumn($begin, $step);
+            } else {
+                $column_begin += $step;
+            }
+        }
+    }
+
+    private function excelData($data, $config)
+    {
+        extract($config);
+
+        foreach ($data as $index => $row_data) {
+            $column_index = 1;
+
+            foreach ($row_data as $cell_data) {
+                $cell_index = $this->getColumnAddress($column_index) . $row_data_index;
+
+                $this->Excel->ActiveSheet->getCell($cell_index)->setValue($cell_data);
+                $column_index++;
+            }
+
+            $row_data_index++;
+        }
+
+        if (1 && $cell_total_count) {
+            $row_data_index = $row_data_index - 1;
+
+            $address = $this->getColumnAddress($cell_total_count);
+            $begin = "A{$row_data_index}";
+            $range = "{$begin}:{$address}{$row_data_index}";
+            $this->Excel->ActiveSheet->mergeCells($range);
+            $this->Excel->ActiveSheet->getCell($begin)->setValue('TỔNG');
+        }
+    }
+
+    private function getColumnAddress($index)
+    {
+        $map = [
+            'A', 'B', 'C', 'D', 'E', 'F',
+            'G', 'H', 'I', 'J', 'K', 'L',
+            'M', 'N', 'O', 'P', 'Q', 'R',
+            'S', 'T', 'U', 'V', 'W', 'X',
+            'Y', 'X'
+        ];
+
+        $index = $index - 1;
+        $div = intval($index / 26) - 1;
+        $mod = ($index % 26);
+
+        $result = '';
+        if ($div >= 0) {
+            $result = $map[$div];
+        }
+        $result .= $map[$mod];
+
+        return $result;
     }
 
     /**

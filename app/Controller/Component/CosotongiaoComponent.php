@@ -11,6 +11,33 @@ class CosotongiaoComponent extends Component
         $this->Utility = new UtilityComponent(new ComponentCollection());
     }
 
+    public function layout($filter = [])
+    {
+        $row_data_index = 9;
+        $row_header_index = 6;
+        $column_begin = 4;
+        $column_structure = [
+            CONG_GIAO => 8,
+            PHAT_GIAO => 7,
+            CAO_DAI => 2,
+            TINH_DO_CU_SI => 1,
+            HOI_GIAO => 2,
+            HOA_HAO => 2,
+            TIN_NGUONG => 5,
+        ];
+
+        $column_remove = [];
+        $cell_total_count = 2;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
+                }
+            }
+        }
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count');
+    }
+
     public function export($filter = [])
     {
         $filter_group = $filter['ton_giao'];
