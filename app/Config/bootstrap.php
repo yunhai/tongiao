@@ -127,31 +127,42 @@ define('TIN_NGUONG', 8);
 define('KHAC', 99);
 
 $location = [
-	'bien-hoa' => 'BIÊN HÒA',
-	'long-khanh' => 'LONG KHÁNH',
-	'xuan-loc' => 'XUÂN LỘC',
-	'cam-my' => 'CẨM MỸ',
-	'tan-phu' => 'TÂN PHÚ',
-	'dinh-quan' => 'ĐỊNH QUÁN',
-	'thong-nhat' => 'THỐNG NHẤT',
-	'trang-bom' => 'TRẢNG BOM',
-	'vinh-cuu' => 'VĨNH CỬU',
-	'nhon-trach' => 'NHƠN TRẠCH',
-	'long-thanh' => 'LONG THÀNH'
+    'bien-hoa' => 'BIÊN HÒA',
+    'long-khanh' => 'LONG KHÁNH',
+    'xuan-loc' => 'XUÂN LỘC',
+    'cam-my' => 'CẨM MỸ',
+    'tan-phu' => 'TÂN PHÚ',
+    'dinh-quan' => 'ĐỊNH QUÁN',
+    'thong-nhat' => 'THỐNG NHẤT',
+    'trang-bom' => 'TRẢNG BOM',
+    'vinh-cuu' => 'VĨNH CỬU',
+    'nhon-trach' => 'NHƠN TRẠCH',
+    'long-thanh' => 'LONG THÀNH'
 ];
 
 $group = [
-	CONG_GIAO => 'CÔNG GIÁO',
-	PHAT_GIAO => 'PHẬT GIÁO',
-	CAO_DAI => 'CAO ĐÀI',
-	TINH_DO_CU_SI => 'TĐCSPHVN',
-	HOI_GIAO => 'HỒI GIÁO',
-	HOA_HAO => 'PHẬT GIÁO HÒA HẢO',
-	TIN_NGUONG => 'TÍN NGƯỠNG',
-	KHAC => 'Khac',
+    CONG_GIAO => 'CÔNG GIÁO',
+    PHAT_GIAO => 'PHẬT GIÁO',
+    CAO_DAI => 'CAO ĐÀI',
+    TINH_DO_CU_SI => 'TĐCSPHVN',
+    HOI_GIAO => 'HỒI GIÁO',
+    HOA_HAO => 'PHẬT GIÁO HÒA HẢO',
+    TIN_NGUONG => 'TÍN NGƯỠNG',
+    KHAC => 'Khac',
 ];
 
 Configure::write('export.filter', compact('location', 'group'));
+
+Configure::write('export.excel', [
+    TONG_HOP_DAT_DAI => [
+        'filename' => 'TONG HOP DAT DAI',
+        'component' => 'ExportThTkDat'
+    ],
+    TH_CO_SO_TON_GIAO => [
+        'filename' => 'TH CO SO TON GIAO',
+        'component' => 'ExportThTgCsTinh'
+    ]
+]);
 
 define('TONGIAO', serialize(array(
             1 => array(
