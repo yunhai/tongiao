@@ -169,6 +169,18 @@ Configure::write('export.excel', [
     TONG_HOP_DI_TICH => [
         'filename' => 'TONG_HOP_DI_TICH',
         'component' => 'ExportThDt'
+    ],
+    TH_CS_THAM_GIA_CT_XH_CAP_XA => [
+        'filename' => 'TH CS THAM GIA CT-XH CAP XA',
+        'component' => 'ExportThCtxhXa'
+    ],
+    TH_CS_THAM_GIA_CT_XH_CAP_HUYEN => [
+        'filename' => 'TH CS THAM GIA CT-XH CAP HUYEN',
+        'component' => 'ExportThCtxhHuyen'
+    ],
+    TH_CS_THAM_GIA_CT_XH_CAP_TINH => [
+        'filename' => 'TH CS THAM GIA CT-XHCAP TINH',
+        'component' => 'ExportThCtxhTinh'
     ]
 ]);
 
