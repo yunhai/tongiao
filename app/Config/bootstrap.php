@@ -189,6 +189,10 @@ Configure::write('export.excel', [
     THBNCS => [
         'filename' => 'THBNCS',
         'component' => 'ExportThCsCy'
+    ],
+    DO_TUOI_CUA_CHAC_SAC => [
+        'filename' => 'DO TUOI CUA CHAC SAC',
+        'component' => 'ExportThDtCs'
     ]
 ]);
 

@@ -261,6 +261,7 @@ class ActionController extends AppController
         $this->autoRender = false;
 
         $conditions = array();
+
         if ($this->request->is('post')) {
             $request = $this->request->data;
             $type = $request['type'];
@@ -318,18 +319,32 @@ class ActionController extends AppController
 
         $buffer_text = [];
         if (!empty($buffer)) {
-            foreach ($buffer as $list) {
-                foreach ($list as $key => $value) {
-                    $buffer_text[$key] = $this->Excel->ActiveSheet->getCell($key)->getValue();
-                    $this->Excel->ActiveSheet->unmergeCells("{$key}:{$value}");
+            foreach ($buffer as $row => $list) {
+                $tmp = $column_begin;
+                foreach ($list as $i => $item) {
+                    $low = $this->getColumnAddress($tmp) . $row;
+
+                    $tmp += $item['size'][1];
+                    $high = $this->getColumnAddress($tmp - 1) . ($row + $item['size'][0] - 1);
+                    $range = $low . ':' . $high;
+
+                    $buffer_text["{$row}.{$i}"] = $this->Excel->ActiveSheet->getCell($low)->getValue();
+                    $this->Excel->ActiveSheet->unmergeCells($range);
+
+                    if (!empty($item['merge'])) {
+                        foreach ($item['merge'] as $range) {
+                            $this->Excel->ActiveSheet->mergeCells($range);
+                        }
+                    }
                 }
             }
         }
 
+        $tmp = $column_begin;
         foreach ($column_structure as $col => $step) {
             if (in_array($col, $column_remove)) {
-                $begin = $this->getColumnAddress($column_begin);
-                $end = $this->getColumnAddress($column_begin + $step - 1);
+                $begin = $this->getColumnAddress($tmp);
+                $end = $this->getColumnAddress($tmp + $step - 1);
 
                 if ($begin != $end) {
                     $this->Excel->ActiveSheet->unmergeCells("{$begin}{$row_header_index}:{$end}{$row_header_index}");
@@ -337,17 +352,41 @@ class ActionController extends AppController
 
                 $this->Excel->ActiveSheet->removeColumn($begin, $step);
             } else {
-                $column_begin += $step;
+                $tmp += $step;
             }
         }
 
         if ($buffer) {
             foreach ($buffer as $row => $list) {
-                foreach ($list as $key => $value) {
-                    $value = $this->getColumnAddress($column_begin - 1) . $row;
-                    $this->Excel->ActiveSheet->mergeCells("$key:$value");
-                    $this->Excel->ActiveSheet->getCell($key)->setValue($buffer_text[$key]);
-                    $this->Excel->ActiveSheet->getStyle("$key:$value")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                $tmp = $column_begin;
+                foreach ($list as $i => $item) {
+                    $low = $this->getColumnAddress($tmp) . $row;
+
+                    foreach ($item['group'] as $j => $value) {
+                        if (in_array($value, $column_remove)) {
+                            unset($item['group'][$j]);
+                            continue;
+                        }
+                        $tmp += $column_structure[$value];
+                    }
+
+                    if (!$item['group']) {
+                        continue;
+                    }
+
+                    $high = $this->getColumnAddress($tmp - 1) . ($row + $item['size'][0] - 1);
+                    $range = $low . ':' . $high;
+
+                    $this->Excel->ActiveSheet->mergeCells($range);
+                    $this->Excel->ActiveSheet
+                            ->getCell($low)
+                            ->setValue($buffer_text["{$row}.{$i}"]);
+
+                    $alignment = $this->Excel->ActiveSheet
+                            ->getStyle($range)
+                            ->getAlignment();
+                    $alignment->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+                    $alignment->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
                 }
             }
         }
@@ -357,6 +396,7 @@ class ActionController extends AppController
     {
         extract($config);
         $count = count($data);
+
         foreach ($data as $index => $row_data) {
             $column_index = 1;
 
@@ -376,7 +416,7 @@ class ActionController extends AppController
             $row_data_index++;
         }
 
-        if ($cell_total_count) {
+        if ($data && $cell_total_count) {
             $row_data_index = $row_data_index - 1;
 
             $address = $this->getColumnAddress($cell_total_count);
@@ -419,11 +459,14 @@ class ActionController extends AppController
               )
           )
         );
+
         $this->Excel->ActiveSheet->getRowDimension($row_data_index)->setRowHeight(25);
-        $this->Excel->ActiveSheet->getStyle($cell_index)->getFont()->setSize(8);
-        $this->Excel->ActiveSheet->getStyle($cell_index)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-        $this->Excel->ActiveSheet->getStyle($cell_index)->getAlignment()->setVERTICAL(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-        $this->Excel->ActiveSheet->getStyle($cell_index)->applyFromArray($borders);
+
+        $style = $this->Excel->ActiveSheet->getStyle($cell_index);
+        $style->getFont()->setSize(8);
+        $style->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $style->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+        $style->applyFromArray($borders);
         return true;
     }
 

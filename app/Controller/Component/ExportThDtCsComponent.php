@@ -1,11 +1,58 @@
 <?php
-
-class ExportThDtCsComponent extends Component
+App::uses('ExportExcelComponent', 'Controller/Component');
+class ExportThDtCsComponent extends ExportExcelComponent
 {
-    public function __construct()
+    public function layout($filter = [])
     {
-        App::uses('ProvinceComponent', 'Controller/Component');
-        $this->Province = new ProvinceComponent(new ComponentCollection());
+        $row_header_index = 6;
+        $row_data_index = 9;
+        $column_begin = 7;
+        $column_structure = [
+            CONG_GIAO => 4,
+            PHAT_GIAO => 4,
+            CAO_DAI => 4,
+            TINH_DO_CU_SI => 4,
+            HOI_GIAO => 4,
+            HOA_HAO => 4,
+            TIN_NGUONG => 4
+        ];
+
+        $column_remove = [];
+        $cell_total_count = 2;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
+                }
+            }
+        }
+
+        $buffer = [
+            5 => [
+                [
+                    'size' => [1, 24],
+                    'group' => [
+                        CONG_GIAO,
+                        PHAT_GIAO,
+                        CAO_DAI,
+                        TINH_DO_CU_SI,
+                        HOI_GIAO,
+                        HOA_HAO,
+                    ],
+                ],
+                [
+                    'size' => [2, 4],
+                    'group' => [
+                        TIN_NGUONG,
+                    ],
+                    'merge' => [
+                        'AE6:AH6'
+                    ]
+                ],
+            ]
+        ];
+
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count', 'buffer', 'dual_change');
     }
 
     public function export($filter = [])
@@ -58,28 +105,6 @@ class ExportThDtCsComponent extends Component
         }
 
         return $this->sum($export);
-    }
-
-    private function sum($data, $start = 2)
-    {
-        $total = [];
-
-        foreach ($data as $location => $target) {
-            $index = 0;
-            foreach ($target as $field => $value) {
-                if (++$index <= $start) {
-                    $total["final_total_{$field}"] = '';
-
-                    continue;
-                }
-
-                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
-                $total["final_total_{$field}"] += $value;
-            }
-        }
-        $data['final_total'] = $total;
-
-        return $data;
     }
 
     private function __calculate($list = [])
