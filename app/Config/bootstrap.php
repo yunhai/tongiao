@@ -140,18 +140,7 @@ $location = [
     'long-thanh' => 'LONG THÀNH'
 ];
 
-$group = [
-    CONG_GIAO => 'CÔNG GIÁO',
-    PHAT_GIAO => 'PHẬT GIÁO',
-    CAO_DAI => 'CAO ĐÀI',
-    TINH_DO_CU_SI => 'TĐCSPHVN',
-    HOI_GIAO => 'HỒI GIÁO',
-    HOA_HAO => 'PHẬT GIÁO HÒA HẢO',
-    TIN_NGUONG => 'TÍN NGƯỠNG',
-    KHAC => 'Khac',
-];
-
-Configure::write('export.filter', compact('location', 'group'));
+Configure::write('export.filter', compact('location'));
 
 Configure::write('export.excel', [
     TONG_HOP_DAT_DAI => [
