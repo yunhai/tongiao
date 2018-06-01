@@ -1,9 +1,12 @@
 <?php
 
-class ExportThCsPcComponent extends Component
+App::uses('ExportExcelComponent', 'Controller/Component');
+
+class ExportThCsPcComponent extends ExportExcelComponent
 {
     public function __construct()
     {
+        parent::__construct();
         App::uses('ExportThCscvComponent', 'Controller/Component');
         $this->basic = new ExportThCscvComponent(new ComponentCollection());
     }
@@ -11,21 +14,65 @@ class ExportThCsPcComponent extends Component
     public function export($filter = [])
     {
         $exclude = [
-            'Chucsacnhatuhanhconggiaotrieu_betrentongquyen',
-            'Chucsacnhatuhanhconggiaotrieu_giamtinh',
-            'final_total_Chucsacnhatuhanhconggiaotrieu_betrentongquyen',
-            'final_total_Chucsacnhatuhanhconggiaotrieu_giamtinh'
+            'Chucsacnhatuhanhconggiaotrieu_betrentongquyen' => 'Chucsacnhatuhanhconggiaotrieu_total',
+            'Chucsacnhatuhanhconggiaotrieu_giamtinh' => 'Chucsacnhatuhanhconggiaotrieu_total',
         ];
 
         $export = $this->basic->export($filter);
+        unset($export['final_total']);
 
         foreach ($export as &$element) {
-            foreach ($exclude as $f) {
-                unset($element[$f]);
+            foreach ($exclude as $f => $t) {
+                if (isset($element[$f])) {
+                    $element[$t] = $element[$t] - $element[$f];
+                    unset($element[$f]);
+                }
             }
         }
 
-        return $export;
+        return $this->sum($export);
+    }
+
+    public function layout($filter = [])
+    {
+        $row_header_index = 5;
+        $row_data_index = 8;
+        $column_begin = 4;
+        $column_structure = [
+            CONG_GIAO => 3,
+            PHAT_GIAO => 5,
+            TIN_LANH => 4,
+            CAO_DAI => 5,
+            HOI_GIAO => 7,
+            TINH_DO_CU_SI => 5
+        ];
+
+        $column_remove = [];
+        $cell_total_count = 2;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
+                }
+            }
+        }
+        $buffer = [
+            4 => [
+                [
+                    'size' => [1, 29],
+                    'group' => [
+                        CONG_GIAO,
+                        PHAT_GIAO,
+                        TIN_LANH,
+                        CAO_DAI,
+                        HOI_GIAO,
+                        TINH_DO_CU_SI
+                    ],
+                ],
+            ]
+        ];
+
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count', 'buffer');
     }
 }
 
