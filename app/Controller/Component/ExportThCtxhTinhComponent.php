@@ -1,6 +1,6 @@
 <?php
 App::uses('ExportExcelComponent', 'Controller/Component');
-class ExportThCtxhTinhComponent extends Component
+class ExportThCtxhTinhComponent extends ExportExcelComponent
 {
     public function __construct()
     {
@@ -114,28 +114,6 @@ class ExportThCtxhTinhComponent extends Component
         }
 
         return $this->sum($export);
-    }
-
-    private function sum($data, $start = 2)
-    {
-        $total = [];
-
-        foreach ($data as $location => $target) {
-            $index = 0;
-            foreach ($target as $field => $value) {
-                if (++$index <= $start) {
-                    $total["final_total_{$field}"] = '';
-
-                    continue;
-                }
-
-                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
-                $total["final_total_{$field}"] += $value;
-            }
-        }
-        $data['final_total'] = $total;
-
-        return $data;
     }
 
     private function init($province)
