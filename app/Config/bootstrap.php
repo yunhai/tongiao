@@ -165,6 +165,18 @@ Configure::write('export.excel', [
     TH_CO_SO_TON_GIAO => [
         'filename' => 'TH CO SO TON GIAO',
         'component' => 'ExportThTgCsTinh'
+    ],
+    TH_CS_THAM_GIA_CT_XH_CAP_XA => [
+        'filename' => 'TH CS THAM GIA CT-XH CAP XA',
+        'component' => 'ExportThCtxhXa'
+    ],
+    TH_CS_THAM_GIA_CT_XH_CAP_HUYEN => [
+        'filename' => 'TH CS THAM GIA CT-XH CAP HUYEN',
+        'component' => 'ExportThCtxhHuyen'
+    ],
+    TH_CS_THAM_GIA_CT_XH_CAP_TINH => [
+        'filename' => 'TH CS THAM GIA CT-XHCAP TINH',
+        'component' => 'ExportThCtxhTinh'
     ]
 ]);
 
@@ -324,10 +336,10 @@ define('TONGIAO', serialize(array(
             30 => array(
                 CONG_GIAO => 'CÔNG GIÁO',
                 PHAT_GIAO => 'PHẬT GIÁO',
+                TIN_LANH => 'TIN LÀNH',
                 CAO_DAI => 'CAO ĐÀI',
-                TINH_DO_CU_SI => 'TĐCSPHVN',
                 HOI_GIAO => 'HỒI GIÁO',
-                HOA_HAO => 'PHẬT GIÁO HÒA HẢO',
+                TINH_DO_CU_SI => 'TĐCSPHVN',
                 TIN_NGUONG => 'TÍN NGƯỠNG'
             )
         )

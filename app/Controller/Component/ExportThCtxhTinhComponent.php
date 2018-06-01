@@ -1,5 +1,5 @@
 <?php
-
+App::uses('ExportExcelComponent', 'Controller/Component');
 class ExportThCtxhTinhComponent extends Component
 {
     public function __construct()
@@ -18,6 +18,34 @@ class ExportThCtxhTinhComponent extends Component
         ];
     }
 
+    public function layout($filter = [])
+    {
+        $row_data_index = 6;
+        $row_header_index = 4;
+        $column_begin = 11;
+        $column_structure = [
+            CONG_GIAO => '7',
+            PHAT_GIAO => '7',
+            TIN_LANH => '7',
+            CAO_DAI => '7',
+            TINH_DO_CU_SI => '7',
+            HOA_HAO => '7',
+            HOI_GIAO => '6'
+        ];
+
+        $column_remove = [];
+        $cell_total_count = 2;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
+                }
+            }
+        }
+
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count');
+    }
+    
     public function export($filter = [])
     {
         $groups = [
