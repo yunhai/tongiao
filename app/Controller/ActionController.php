@@ -347,6 +347,7 @@ class ActionController extends AppController
                     $value = $this->getColumnAddress($column_begin - 1) . $row;
                     $this->Excel->ActiveSheet->mergeCells("$key:$value");
                     $this->Excel->ActiveSheet->getCell($key)->setValue($buffer_text[$key]);
+                    $this->Excel->ActiveSheet->getStyle("$key:$value")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
                 }
             }
         }
