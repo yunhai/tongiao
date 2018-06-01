@@ -1,10 +1,55 @@
 <?php
-class ExportThDtComponent extends Component
+App::uses('ExportExcelComponent', 'Controller/Component');
+class ExportThDtComponent extends ExportExcelComponent
 {
-    public function __construct()
+    public function layout($filter = [])
     {
-        App::uses('ProvinceComponent', 'Controller/Component');
-        $this->Province = new ProvinceComponent(new ComponentCollection());
+        $row_data_index = 9;
+        $row_header_index = 6;
+        $column_begin = 6;
+        $column_structure = [
+            CONG_GIAO => '2',
+            PHAT_GIAO => '2',
+            TIN_LANH => '2',
+            CAO_DAI => '2',
+            TINH_DO_CU_SI => '2',
+            HOA_HAO => '2',
+            HOI_GIAO => '2',
+        ];
+
+        $column_remove = [];
+        $cell_total_count = 3;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
+                }
+            }
+        }
+
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count');
+    }
+
+    public function rendered($data, $config)
+    {
+        if ($config['cell_total_count']) {
+            array_pop($data);
+        }
+        $row_index = $config['row_data_index'];
+
+        $merge = [];
+        $index = 0;
+        foreach ($data as $item) {
+            if (++$index % 5 === 1) {
+                $begin = $row_index;
+                $end = $row_index + 4;
+                array_push($merge, "A{$begin}:A{$end}");
+                array_push($merge, "B{$begin}:B{$end}");
+            }
+            $row_index++;
+        }
+
+        return compact('merge');
     }
 
     public function export($filter)
@@ -74,29 +119,7 @@ class ExportThDtComponent extends Component
             }
         }
 
-        return $this->sum($export);
-    }
-
-    private function sum($data, $start = 3)
-    {
-        $total = [];
-
-        foreach ($data as $location => $target) {
-            $index = 0;
-            foreach ($target as $field => $value) {
-                if (++$index <= $start) {
-                    $total["final_total_{$field}"] = '';
-
-                    continue;
-                }
-
-                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
-                $total["final_total_{$field}"] += $value;
-            }
-        }
-        $data['final_total'] = $total;
-
-        return $data;
+        return $this->sum($export, 3);
     }
 
     private function __statis($model, $province_field)

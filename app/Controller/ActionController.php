@@ -281,6 +281,7 @@ class ActionController extends AppController
 
         extract($config);
         $this->excelTemplate($type);
+
         $component = $this->Components->load($component);
         $data = $component->export($conditions);
 
@@ -288,7 +289,20 @@ class ActionController extends AppController
 
         $this->excelLayout($config);
         $this->excelData($data, $config);
+
+        $this->excelRendered($component, $data, $config);
         $this->Excel->save($filename);
+    }
+
+    private function excelRendered($component, $data, $config)
+    {
+        $rendered = $component->rendered($data, $config);
+        extract($rendered);
+        if (!empty($merge)) {
+            foreach ($merge as $range) {
+                $this->Excel->ActiveSheet->mergeCells($range);
+            }
+        }
     }
 
     private function excelTemplate($type)
@@ -310,6 +324,7 @@ class ActionController extends AppController
                 if ($begin != $end) {
                     $this->Excel->ActiveSheet->unmergeCells("{$begin}{$row_header_index}:{$end}{$row_header_index}");
                 }
+
                 $this->Excel->ActiveSheet->removeColumn($begin, $step);
             } else {
                 $column_begin += $step;

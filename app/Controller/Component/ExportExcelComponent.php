@@ -29,4 +29,8 @@ class ExportExcelComponent extends Component
 
         return $data;
     }
+
+    public function rendered($data, $config)
+    {
+    }
 }
