@@ -52,7 +52,7 @@ class ExportThDtCsComponent extends ExportExcelComponent
             ]
         ];
 
-        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count', 'buffer', 'dual_change');
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count', 'buffer');
     }
 
     public function export($filter = [])
