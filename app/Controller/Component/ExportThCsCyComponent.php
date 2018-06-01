@@ -29,7 +29,17 @@ class ExportThCsCyComponent extends ExportExcelComponent
 
         $buffer = [
             2 => [
-                'D2' => 'AB2'
+                [
+                    'size' => [1, 25],
+                    'group' => [
+                        CONG_GIAO,
+                        PHAT_GIAO,
+                        TIN_LANH,
+                        CAO_DAI,
+                        HOI_GIAO,
+                        TINH_DO_CU_SI
+                    ],
+                ],
             ]
         ];
 
