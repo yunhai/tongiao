@@ -167,9 +167,13 @@ Configure::write('export.excel', [
         'component' => 'ExportThTgCsTinh'
     ],
     TONG_HOP_DI_TICH => [
-        'filename' => 'TONG_HOP_DI_TICH',
+        'filename' => 'TONG HOP DI TICH',
         'component' => 'ExportThDt'
-    ]
+    ],
+    BANG_TONG_HOP_TIN_DO => [
+        'filename' => 'BANG TONG HOP TIN DO',
+        'component' => 'ExportThTdTg'
+    ],
 ]);
 
 define('TONGIAO', serialize(array(
