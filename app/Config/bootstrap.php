@@ -190,6 +190,22 @@ Configure::write('export.excel', [
         'filename' => 'THBNCS',
         'component' => 'ExportThCsCy'
     ],
+
+    TH_CHUC_SAC_PCPP => [
+        'filename' => 'TH TRINH DO TON GIAO',
+        'component' => 'ExportThCsPc'
+    ],
+
+    TH_TRINH_DO_TON_GIAO => [
+        'filename' => 'TH TRINH DO VH',
+        'component' => 'ExportThTdTgCs'
+    ],
+
+    TH_TRINH_DO_VH => [
+        'filename' => 'TH CHUC SAC PCPP',
+        'component' => 'ExportThTdVhCs'
+    ],
+
     DO_TUOI_CUA_CHAC_SAC => [
         'filename' => 'DO TUOI CUA CHAC SAC',
         'component' => 'ExportThDtCs'

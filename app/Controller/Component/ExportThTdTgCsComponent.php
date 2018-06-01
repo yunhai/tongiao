@@ -1,12 +1,12 @@
 <?php
 
-class ExportThTdTgCsComponent extends Component
+App::uses('ExportExcelComponent', 'Controller/Component');
+
+class ExportThTdTgCsComponent extends ExportExcelComponent
 {
     public function __construct()
     {
-        App::uses('ProvinceComponent', 'Controller/Component');
-        $this->Province = new ProvinceComponent(new ComponentCollection());
-
+        parent::__construct();
         $this->map_field = [
             1 => 'so_cap',
             2 => 'trung_cap',
@@ -20,7 +20,7 @@ class ExportThTdTgCsComponent extends Component
 
     public function export($filter = [])
     {
-        $export_fields = [
+        $groups = [
             CONG_GIAO => [
                 'Chucsacnhatuhanhconggiaotrieu',
                 'Chucsacnhatuhanhcongiaodongtu'
@@ -58,7 +58,7 @@ class ExportThTdTgCsComponent extends Component
 
         $export = $this->init($province);
 
-        foreach ($export_fields as $field_index => $list) {
+        foreach ($groups as $field_index => $list) {
             if (!empty($filter_group) && !in_array($field_index, $filter_group)) {
                 continue;
             }
@@ -83,26 +83,31 @@ class ExportThTdTgCsComponent extends Component
         return $this->sum($export);
     }
 
-    private function sum($data, $start = 2)
+    public function layout($filter = [])
     {
-        $total = [];
+        $row_header_index = 5;
+        $row_data_index = 8;
+        $column_begin = 9;
+        $column_structure = [
+            CONG_GIAO => 5,
+            PHAT_GIAO => 5,
+            TIN_LANH => 5,
+            CAO_DAI => 5,
+            TINH_DO_CU_SI => 5,
+            HOI_GIAO => 5,
+        ];
 
-        foreach ($data as $location => $target) {
-            $index = 0;
-            foreach ($target as $field => $value) {
-                if (++$index <= $start) {
-                    $total["final_total_{$field}"] = '';
-
-                    continue;
+        $column_remove = [];
+        $cell_total_count = 2;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
                 }
-
-                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
-                $total["final_total_{$field}"] += $value;
             }
         }
-        $data['final_total'] = $total;
 
-        return $data;
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count');
     }
 
     private function __getChucsaccaodai($model)
