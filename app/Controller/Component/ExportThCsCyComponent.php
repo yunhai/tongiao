@@ -1,11 +1,39 @@
 <?php
 
-class ExportThCsCyComponent extends Component
+App::uses('ExportExcelComponent', 'Controller/Component');
+class ExportThCsCyComponent extends ExportExcelComponent
 {
-    public function __construct()
+    public function layout($filter = [])
     {
-        App::uses('ProvinceComponent', 'Controller/Component');
-        $this->Province = new ProvinceComponent(new ComponentCollection());
+        $row_header_index = 3;
+        $row_data_index = 6;
+        $column_begin = 4;
+        $column_structure = [
+            CONG_GIAO => 6,
+            PHAT_GIAO => 6,
+            TIN_LANH => 4,
+            CAO_DAI => 5,
+            HOI_GIAO => 1,
+            TINH_DO_CU_SI => 3
+        ];
+
+        $column_remove = [];
+        $cell_total_count = 2;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
+                }
+            }
+        }
+
+        $buffer = [
+            2 => [
+                'D2' => 'AB2'
+            ]
+        ];
+
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count', 'buffer');
     }
 
     public function export($filter = [])
@@ -46,31 +74,6 @@ class ExportThCsCyComponent extends Component
         }
 
         return $this->sum($export);
-    }
-
-    private function sum($data, $start = 2)
-    {
-        $total = [];
-
-        foreach ($data as $location => $target) {
-            $index = 0;
-            foreach ($target as $field => $value) {
-                if (++$index <= $start) {
-                    $total["final_total_{$field}"] = '';
-
-                    continue;
-                }
-
-                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
-                $total["final_total_{$field}"] += $value;
-            }
-        }
-        $data['final_total'] = $total;
-        print('<pre>');
-        print_r($data);
-        print('</pre>');
-        exit;
-        return $data;
     }
 
     private function init($province)

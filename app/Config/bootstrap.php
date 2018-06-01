@@ -185,6 +185,10 @@ Configure::write('export.excel', [
     TH_CS_THAM_GIA_CT_XH_CAP_TINH => [
         'filename' => 'TH CS THAM GIA CT-XHCAP TINH',
         'component' => 'ExportThCtxhTinh'
+    ],
+    THBNCS => [
+        'filename' => 'THBNCS',
+        'component' => 'ExportThCsCy'
     ]
 ]);
 

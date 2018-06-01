@@ -280,14 +280,14 @@ class ActionController extends AppController
         $config = Configure::read('export.excel.' . $type);
 
         extract($config);
+        $component = $this->Components->load($component);
+
         $this->excelTemplate($type);
 
-        $component = $this->Components->load($component);
-        $data = $component->export($conditions);
-
         $config = $component->layout($conditions['ton_giao']);
-
         $this->excelLayout($config);
+
+        $data = $component->export($conditions);
         $this->excelData($data, $config);
 
         $this->excelRendered($component, $data, $config);
@@ -316,6 +316,16 @@ class ActionController extends AppController
     {
         extract($config);
 
+        $buffer_text = [];
+        if (!empty($buffer)) {
+            foreach ($buffer as $list) {
+                foreach ($list as $key => $value) {
+                    $buffer_text[$key] = $this->Excel->ActiveSheet->getCell($key)->getValue();
+                    $this->Excel->ActiveSheet->unmergeCells("{$key}:{$value}");
+                }
+            }
+        }
+
         foreach ($column_structure as $col => $step) {
             if (in_array($col, $column_remove)) {
                 $begin = $this->getColumnAddress($column_begin);
@@ -328,6 +338,16 @@ class ActionController extends AppController
                 $this->Excel->ActiveSheet->removeColumn($begin, $step);
             } else {
                 $column_begin += $step;
+            }
+        }
+
+        if ($buffer) {
+            foreach ($buffer as $row => $list) {
+                foreach ($list as $key => $value) {
+                    $value = $this->getColumnAddress($column_begin - 1) . $row;
+                    $this->Excel->ActiveSheet->mergeCells("$key:$value");
+                    $this->Excel->ActiveSheet->getCell($key)->setValue($buffer_text[$key]);
+                }
             }
         }
     }
