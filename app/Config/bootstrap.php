@@ -206,6 +206,26 @@ Configure::write('export.excel', [
         'component' => 'ExportThTdVhCs'
     ],
 
+    TONG_HOP_CHUC_VIEC => [
+        'filename' => 'TONG HOP CHUC VIEC',
+        'component' => 'ExportThCvTinh'
+    ],
+
+    TONG_HOP_TU_SI => [
+        'filename' => 'TONG HOP TU SI',
+        'component' => 'ExportThTs'
+    ],
+
+    TONG_HOP_CHUC_SAC_KO_CHUC_VU => [
+        'filename' => 'TONG HOP CHUC SAC KO CHUC VU',
+        'component' => 'ExportThCskcv'
+    ],
+
+    TONG_HOP_CHUC_SAC_CO_CHUC_VU => [
+        'filename' => 'TONG HOP CHUC SAC CO CHUC VU',
+        'component' => 'ExportThCscv'
+    ],
+
     DO_TUOI_CUA_CHAC_SAC => [
         'filename' => 'DO TUOI CUA CHAC SAC',
         'component' => 'ExportThDtCs'
