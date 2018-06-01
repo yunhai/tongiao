@@ -1,13 +1,8 @@
 <?php
+App::uses('ExportExcelComponent', 'Controller/Component');
 
-class ExportThCvTinhComponent extends Component
+class ExportThCvTinhComponent extends ExportExcelComponent
 {
-    public function __construct()
-    {
-        App::uses('ProvinceComponent', 'Controller/Component');
-        $this->Province = new ProvinceComponent(new ComponentCollection());
-    }
-
     public function export($filter = [])
     {
         $groups = [
@@ -51,26 +46,47 @@ class ExportThCvTinhComponent extends Component
         return $this->sum($export);
     }
 
-    private function sum($data, $start = 2)
+    public function layout($filter = [])
     {
-        $total = [];
+        $row_header_index = 6;
+        $row_data_index = 9;
+        $column_begin = 4;
+        $column_structure = [
+            CONG_GIAO => 5,
+            PHAT_GIAO => 4,
+            TIN_LANH => 2,
+            CAO_DAI => 3,
+            HOA_HAO => 3,
+            TINH_DO_CU_SI => 3,
+        ];
 
-        foreach ($data as $location => $target) {
-            $index = 0;
-            foreach ($target as $field => $value) {
-                if (++$index <= $start) {
-                    $total["final_total_{$field}"] = '';
-
-                    continue;
+        $column_remove = [];
+        $cell_total_count = 2;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
                 }
-
-                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
-                $total["final_total_{$field}"] += $value;
             }
         }
-        $data['final_total'] = $total;
 
-        return $data;
+        $buffer = [
+            5 => [
+                [
+                    'size' => [1, 20],
+                    'group' => [
+                        CONG_GIAO,
+                        PHAT_GIAO,
+                        TIN_LANH,
+                        CAO_DAI,
+                        HOA_HAO,
+                        TINH_DO_CU_SI
+                    ],
+                ],
+            ]
+        ];
+
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count', 'buffer');
     }
 
     private function init($province)
