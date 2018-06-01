@@ -174,6 +174,18 @@ Configure::write('export.excel', [
         'filename' => 'BANG TONG HOP TIN DO',
         'component' => 'ExportThTdTg'
     ],
+    TH_CS_THAM_GIA_CT_XH_CAP_XA => [
+        'filename' => 'TH CS THAM GIA CT-XH CAP XA',
+        'component' => 'ExportThCtxhXa'
+    ],
+    TH_CS_THAM_GIA_CT_XH_CAP_HUYEN => [
+        'filename' => 'TH CS THAM GIA CT-XH CAP HUYEN',
+        'component' => 'ExportThCtxhHuyen'
+    ],
+    TH_CS_THAM_GIA_CT_XH_CAP_TINH => [
+        'filename' => 'TH CS THAM GIA CT-XHCAP TINH',
+        'component' => 'ExportThCtxhTinh'
+    ]
 ]);
 
 define('TONGIAO', serialize(array(
