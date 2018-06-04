@@ -1,11 +1,12 @@
 <?php
 
-class CstgtrungtuComponent extends Component
+App::uses('ExportExcelComponent', 'Controller/Component');
+
+class ExportThCsTgTtComponent extends ExportExcelComponent
 {
     public function __construct()
     {
-        App::uses('ProvinceComponent', 'Controller/Component');
-        $this->Province = new ProvinceComponent(new ComponentCollection());
+        parent::__construct();
 
         App::uses('UtilityComponent', 'Controller/Component');
         $this->Utility = new UtilityComponent(new ComponentCollection());
@@ -40,6 +41,7 @@ class CstgtrungtuComponent extends Component
 
             foreach ($province as $provice_code => $name) {
                 $data = $tmp[$provice_code];
+
                 $export[$provice_code]['total_so_lan'] += $data['so_lan'];
                 $export[$provice_code]['total_so_tien'] += $data['so_tien'];
 
@@ -48,34 +50,36 @@ class CstgtrungtuComponent extends Component
                 }
             }
         }
+
         return $this->sum($export);
     }
 
-    private function sum($data, $start = 3)
+    public function layout($filter = [])
     {
-        $total = [];
+        $row_header_index = 3;
+        $row_data_index = 6;
+        $column_begin = 5;
+        $column_structure = [
+            CONG_GIAO => 3,
+            PHAT_GIAO => 3,
+            TIN_LANH => 3,
+            CAO_DAI => 3,
+            TINH_DO_CU_SI => 3,
+            HOA_HAO => 3,
+            HOI_GIAO => 3,
+            TIN_NGUONG => 3,
+        ];
 
-        foreach ($data as $location => $target) {
-            $index = 0;
-            foreach ($target as $field => $value) {
-                if (++$index <= $start) {
-                    $total["final_total_{$field}"] = '';
-
-                    continue;
+        $column_remove = [];
+        $cell_total_count = 2;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
                 }
-
-                if (strpos($field, 'nam_trung_tu') !== false) {
-                    $total["final_total_{$field}"] = '';
-                    continue;
-                }
-
-                $total["final_total_{$field}"] = isset($total["final_total_{$field}"]) ? $total["final_total_{$field}"] : 0;
-                $total["final_total_{$field}"] += $value;
             }
         }
-        $data['final_total'] = $total;
-
-        return $data;
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count');
     }
 
     private function init($province)

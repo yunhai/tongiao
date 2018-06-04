@@ -159,6 +159,10 @@ Configure::write('export.excel', [
         'filename' => 'TONG HOP DI TICH',
         'component' => 'ExportThDt'
     ],
+    TONG_HOP_CSTG_TRUNG_TU => [
+        'filename' => 'TONG HOP CSTG TRUNG TU',
+        'component' => 'ExportThCsTgTt'
+    ],
     BANG_TONG_HOP_TIN_DO => [
         'filename' => 'BANG TONG HOP TIN DO',
         'component' => 'ExportThTdTg'
