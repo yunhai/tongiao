@@ -163,6 +163,10 @@ Configure::write('export.excel', [
         'filename' => 'TONG HOP CSTG TRUNG TU',
         'component' => 'ExportThCsTgTt'
     ],
+    DS_CSTT => [
+        'filename' => 'ds cstt',
+        'component' => 'ExportThCsTtTg'
+    ],
     BANG_TONG_HOP_TIN_DO => [
         'filename' => 'BANG TONG HOP TIN DO',
         'component' => 'ExportThTdTg'

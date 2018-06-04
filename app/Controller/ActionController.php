@@ -241,7 +241,10 @@ class ActionController extends AppController
         $this->autoLayout = false;
         $this->autoRender = false;
 
-        $conditions = array();
+        $conditions = [
+            'prefecture' => [],
+            'ton_giao' => [],
+        ];
 
         if ($this->request->is('post')) {
             $request = $this->request->data;
@@ -386,8 +389,11 @@ class ActionController extends AppController
                 $cell_index = $this->getColumnAddress($column_index) . $row_data_index;
 
                 $this->Excel->ActiveSheet->getCell($cell_index)->setValue($cell_data);
-                $this->setExcelCellStyle($cell_index, $row_data_index);
-                if ($count === 1) {
+                if (!empty($ingore_format)) {
+                    $this->setExcelCellStyle($cell_index, $row_data_index);
+                }
+
+                if ($cell_total_count && $count === 1) {
                     $fonts = array('font' => array('bold' => true, 'name' => 'Times New Roman'));
                     $this->Excel->ActiveSheet->getStyle($cell_index)->applyFromArray($fonts);
                 }
@@ -450,113 +456,6 @@ class ActionController extends AppController
         $style->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
         $style->applyFromArray($borders);
         return true;
-    }
-
-    /**
-     * DANH SÁCH CƠ SỞ THỜ TỰ TÔN GIÁO, TÍN NGƯỠNG TRÊN ĐỊA BÀN TỈNH
-     */
-    protected function __getType8Data()
-    {
-        $component = $this->Components->load('ExportThCsTtTg');
-        $data = $component->export();
-
-        $source = WWW_ROOT . 'files' . DS . 'templates' . DS . 'template8.xls';
-        $filename = "{$this->_type_text[8]}";
-        $this->Excel->load($source);
-
-        //$maxRows = $this->Excel->ActiveSheet->getHighestRow();
-        $maxCols = $this->Excel->ActiveSheet->getHighestColumn();
-        $colIndexes = array();
-
-        $index = 1;
-        for ($c = 'A'; $c <= 'Z'; $c++) {
-            $colIndexes[$index] = $c;
-            $index ++;
-            if ($c == $maxCols) {
-                break;
-            }
-        }
-        $r = 8;
-        foreach ($data as $result) {
-            foreach ($colIndexes as $k => $c) {
-                switch ($c) {
-                    case 'A':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['stt']);
-                        break;
-                    case 'B':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['tencosothotu']);
-                        break;
-                    case 'C':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['diachi']);
-                        break;
-                    case 'D':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['thuoctochuctongiao']);
-                        break;
-                    case 'E':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['tindodathuchiennghiletongiao']);
-                        break;
-                    case 'F':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['tindochuathuchiennghiletongiao']);
-                        break;
-                    case 'G':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['tindoladantocthieuso']);
-                        break;
-                    case 'H':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['chucsac']);
-                        break;
-                    case 'I':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['tusi']);
-                        break;
-                    case 'J':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['chucsacladantocthieuso']);
-                        break;
-                    case 'K':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['chucviec']);
-                        break;
-                    case 'L':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['chucviecladantocthieuso']);
-                        break;
-                    case 'M':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['namthanhlap']);
-                        break;
-                    case 'N':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['namxaydung']);
-                        break;
-                    case 'O':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['sotien']);
-                        break;
-                    case 'P':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['solan']);
-                        break;
-                    case 'Q':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['sotienlancuoi']);
-                        break;
-                    case 'R':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['dacapgcnqsddat_tongiao']);
-                        break;
-                    case 'S':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['dacapgcnqsddat_khac']);
-                        break;
-                    case 'T':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['chuacapgcnqsddat']);
-                        break;
-                    case 'U':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['kientruc']);
-                        break;
-                    case 'V':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['xephangditich']);
-                        break;
-                    case 'W':
-                        $this->Excel->ActiveSheet->getCell("{$c}{$r}")->setValue($result['capcongnhan']);
-                        break;
-                    default:
-                        echo 'ds cstt';
-                }
-            }
-            $r++;
-        }
-
-        return $this->Excel->save($filename);
     }
 
     /**

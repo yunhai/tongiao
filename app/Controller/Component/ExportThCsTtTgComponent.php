@@ -1,6 +1,7 @@
 <?php
+App::uses('ExportExcelComponent', 'Controller/Component');
 
-class ExportThCsTtTgComponent extends Component
+class ExportThCsTtTgComponent extends ExportExcelComponent
 {
     public function __construct()
     {
@@ -26,6 +27,27 @@ class ExportThCsTtTgComponent extends Component
         }
 
         return $export;
+    }
+
+    public function layout($filter = [])
+    {
+        $row_header_index = 4;
+        $row_data_index = 8;
+        $column_begin = 1;
+        $column_structure = [
+        ];
+
+        $column_remove = [];
+        $cell_total_count = 0;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
+                }
+            }
+        }
+        $ignore_format = true;
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count', 'ignore_format');
     }
 
     private function __getStt($target, $model)
