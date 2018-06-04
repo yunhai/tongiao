@@ -1,12 +1,12 @@
 <?php
 
-class ExportThCsHdXhComponent extends Component
+App::uses('ExportExcelComponent', 'Controller/Component');
+class ExportThCsHdXhComponent extends ExportExcelComponent
 {
-
     public function __construct()
     {
         $this->index = 1;
-       }
+    }
 
     public function export()
     {
@@ -29,7 +29,29 @@ class ExportThCsHdXhComponent extends Component
         return $export;
     }
 
-    private function __getInfo($model) {
+    public function layout($filter = [])
+    {
+        $row_header_index = 4;
+        $row_data_index = 8;
+        $column_begin = 1;
+        $column_structure = [
+        ];
+
+        $column_remove = [];
+        $cell_total_count = 0;
+        if ($filter) {
+            foreach ($column_structure as $index => $tmp) {
+                if (!in_array($index, $filter)) {
+                    $column_remove[$index] = $index;
+                }
+            }
+        }
+        $ignore_format = true;
+        return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count', 'ignore_format');
+    }
+
+    private function __getInfo($model)
+    {
         $fields = [
             'stt',
             'tencosothotu',
@@ -45,11 +67,11 @@ class ExportThCsHdXhComponent extends Component
         $result = [];
         $data = $this->__getData($model);
 
-        foreach($data as $target) {
+        foreach ($data as $target) {
             $target = $this->__format($target, $model);
 
             $tmp = [];
-            foreach($fields as $f) {
+            foreach ($fields as $f) {
                 $func = '__format' . ucfirst($f);
                 $tmp[$f] = $this->$func($target, $model);
             }
@@ -60,8 +82,9 @@ class ExportThCsHdXhComponent extends Component
         return $result;
     }
 
-    private function __format($target, $model) {
-        switch($model) {
+    private function __format($target, $model)
+    {
+        switch ($model) {
             case 'Giaoxu':
                 $field = 'cachoatdongbacai_dogiaoxu';
                 break;
@@ -98,7 +121,8 @@ class ExportThCsHdXhComponent extends Component
         return $target;
     }
 
-    private function __parseString($string) {
+    private function __parseString($string)
+    {
         $result = [];
         $group = explode(';', $string);
         foreach ($group as $str) {
@@ -124,14 +148,16 @@ class ExportThCsHdXhComponent extends Component
         return $result;
     }
 
-    private function __formatStt($target, $model) {
+    private function __formatStt($target, $model)
+    {
         $index = $this->index;
         $this->index += 1;
         return $index;
     }
 
-    private function __formatTencosothotu($target, $model){
-        switch($model) {
+    private function __formatTencosothotu($target, $model)
+    {
+        switch ($model) {
             case 'Giaoxu':
                 $field = 'tengiaoxu';
                 break;
@@ -158,9 +184,10 @@ class ExportThCsHdXhComponent extends Component
         return $target[$field] ?: '';
     }
 
-    private function __formatDiachi($target, $model){
+    private function __formatDiachi($target, $model)
+    {
         $fields = [];
-        switch($model) {
+        switch ($model) {
             case 'Giaoxu':
             case 'Tuvienphatgiao':
                 $prefix = 'diachi_';
@@ -250,8 +277,9 @@ class ExportThCsHdXhComponent extends Component
         return trim($string, ', ');
     }
 
-    private function __formatThuoctochuctongiaocoso($target, $model){
-        switch($model) {
+    private function __formatThuoctochuctongiaocoso($target, $model)
+    {
+        switch ($model) {
             case 'Giaoxu':
                 $string = 'Công Giáo';
                 break;
@@ -277,8 +305,9 @@ class ExportThCsHdXhComponent extends Component
         return $string;
     }
 
-    private function __formatThuoclinhvuc($target, $model){
-        switch($model) {
+    private function __formatThuoclinhvuc($target, $model)
+    {
+        switch ($model) {
             case 'Giaoxu':
                 $field = 'hoatdongbatai_linhvuchoatdong';
                 break;
@@ -304,8 +333,9 @@ class ExportThCsHdXhComponent extends Component
         return empty($target[$field]) ? '' : $target[$field];
     }
 
-    private function __formatCosohopphapchuahopphap($target, $model) {
-        switch($model) {
+    private function __formatCosohopphapchuahopphap($target, $model)
+    {
+        switch ($model) {
             case 'Giaoxu':
                 $field = 'hoatdongbatai_dangkyhoatdong';
                 break;
@@ -335,8 +365,9 @@ class ExportThCsHdXhComponent extends Component
         return 'Cơ sở họp pháp';
     }
 
-    private function __formatCoquancongnhan($target, $model){
-        switch($model) {
+    private function __formatCoquancongnhan($target, $model)
+    {
+        switch ($model) {
             case 'Giaoxu':
                 $field = 'hoatdongbatai_coquancap';
                 break;
@@ -363,8 +394,9 @@ class ExportThCsHdXhComponent extends Component
         return empty($target[$field]) ? '' : $target[$field];
     }
 
-    private function __formatGiaychungnhan($target, $model){
-        switch($model) {
+    private function __formatGiaychungnhan($target, $model)
+    {
+        switch ($model) {
             case 'Giaoxu':
                 $field = 'hoatdongbatai_sogiaychungnhan';
                 break;
@@ -391,8 +423,9 @@ class ExportThCsHdXhComponent extends Component
         return empty($target[$field]) ? '' : $target[$field];
     }
 
-    private function __formatGhichu($target, $model){
-        switch($model) {
+    private function __formatGhichu($target, $model)
+    {
+        switch ($model) {
             case 'Giaoxu':
             case 'Tuvienphatgiao':
             case 'Chihoitinlanh':
@@ -406,7 +439,8 @@ class ExportThCsHdXhComponent extends Component
         return $string;
     }
 
-    private function __getParams($model) {
+    private function __getParams($model)
+    {
         switch ($model) {
             case 'Giaoxu':
                 $location = 'tengiaoxu';
