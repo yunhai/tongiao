@@ -403,7 +403,7 @@ class ActionController extends AppController
                 $cell_index = $this->getColumnAddress($column_index) . $row_data_index;
 
                 $this->Excel->ActiveSheet->getCell($cell_index)->setValue($cell_data);
-                if (!empty($ingore_format)) {
+                if (empty($ingore_format)) {
                     $this->setExcelCellStyle($cell_index, $row_data_index);
                 }
 
