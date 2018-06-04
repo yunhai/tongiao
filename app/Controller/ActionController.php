@@ -260,6 +260,22 @@ class ActionController extends AppController
 
     public function export($type, $conditions)
     {
+        $exclude = [
+            DS_CS_THAM_GIA_CT_XH_CAP_XA,
+            DS_CS_THAM_GIA_CT_XH_CAP_HUYEN,
+            DS_CS_THAM_GIA_CT_XH_CAP_TINH,
+            DS_CS_DT_BD,
+            DS_CHUC_SAC_PCPP,
+            DANH_SACH_TU_SI,
+            DS_CHUC_SAC_KO_CO_CHUC_VU,
+            DS_CHUC_SAC_CO_CHUC_VU,
+        ];
+
+        if (in_array($type, $exclude)) {
+            $fn = "__getType{$type}Data";
+            return $this->$fn();
+        }
+
         $config = Configure::read('export.excel.' . $type);
 
         extract($config);
