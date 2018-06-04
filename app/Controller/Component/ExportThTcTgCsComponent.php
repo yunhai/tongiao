@@ -17,12 +17,12 @@ class ExportThTcTgCsComponent extends ExportExcelComponent
         $row_header_index = 6;
         $column_begin = 4;
         $column_structure = [
-            CONG_GIAO => '6',
-            PHAT_GIAO => '7',
-            CAO_DAI => '1',
-            TINH_DO_CU_SI => '1',
-            HOI_GIAO => '1',
-            HOA_HAO => '1'
+            CONG_GIAO => 6,
+            PHAT_GIAO => 7,
+            CAO_DAI => 1,
+            TINH_DO_CU_SI => 1,
+            HOI_GIAO => 1,
+            HOA_HAO => 1
         ];
 
         $column_remove = [];
@@ -37,7 +37,6 @@ class ExportThTcTgCsComponent extends ExportExcelComponent
 
         return compact('column_begin', 'column_structure', 'column_remove', 'row_header_index', 'row_data_index', 'cell_total_count');
     }
-
 
     public function export($filter)
     {
@@ -178,13 +177,13 @@ class ExportThTcTgCsComponent extends ExportExcelComponent
         foreach ($province as $provice_code => $name) {
             $result[$provice_code] = [
                 'total' => 0,
-                'to-dinh' => 0,
+                // 'to-dinh' => 0,
                 'chua' => 0,
                 'tinh-xa' => 0,
                 'tinh-that' => 0,
                 'thien-vien' => 0,
                 'tu-vien' => 0,
-                'tinh-vien' => 0,
+                // 'tinh-vien' => 0,
                 'niem-phat-duong' => 0,
             ];
         }
@@ -333,6 +332,7 @@ class ExportThTcTgCsComponent extends ExportExcelComponent
     public function getData($model, $data_field)
     {
         $obj = ClassRegistry::init($model);
+
         $conditions = [
             'is_add' => 1,
         ];
