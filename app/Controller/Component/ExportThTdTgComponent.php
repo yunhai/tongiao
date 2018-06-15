@@ -354,7 +354,24 @@ class ExportThTdTgComponent extends ExportExcelComponent
         $obj = ClassRegistry::init($model);
         $data = $obj->find('all', $option);
 
-        return Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
+        $result = Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
+        $this->track($model, $result);
+
+        return $result;
+    }
+
+    protected function track($name, $result)
+    {
+        $name = 'debug/' . strtolower($name);
+        foreach ($result as $item) {
+            foreach ($item as $value) {
+                if (!$value) {
+                    $this->log(print_r($item, true), $name);
+                    break;
+                }
+            }
+        }
+        return true;
     }
 
     private function __groupData($data, $column, $province_field)
