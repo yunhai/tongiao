@@ -119,7 +119,7 @@ class ExportThTdTgComponent extends ExportExcelComponent
             $item = [
                 'total' => $item['tongsotindo'],
                 'dathuchiennghiletongiao' => $item['tongsotindo'],
-                'chuathuchiennghiletongiao' => 0,
+                'chuathuchiennghiletongiao' => $item['tongsotindo'],
                 'dantocthieuso' => $item['sotindo_dantoc_thieuso'],
             ];
         }
@@ -170,7 +170,7 @@ class ExportThTdTgComponent extends ExportExcelComponent
             $item = [
                 'total' => $item['soluonghoivien_tindo'],
                 'dathuchiennghiletongiao' => $item['soluonghoivien_tindo'],
-                'chuathuchiennghiletongiao' => 0,
+                'chuathuchiennghiletongiao' => $item['soluonghoivien_tindo'],
                 'dantocthieuso' => $item['sotindo_dantoc_thieuso'],
             ];
         }
@@ -322,7 +322,7 @@ class ExportThTdTgComponent extends ExportExcelComponent
             $item = [
                 'total' => $giaodan_sonhankhau,
                 'dathuchiennghiletongiao' => $giaodan_sonhankhau,
-                'chuathuchiennghiletongiao' => 0,
+                'chuathuchiennghiletongiao' => $giaodan_sonhankhau,
                 'dantocthieuso' => $giaodandantocthieuso_sonhankhau,
             ];
         }
