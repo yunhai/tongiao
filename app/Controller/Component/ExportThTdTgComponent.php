@@ -117,10 +117,10 @@ class ExportThTdTgComponent extends ExportExcelComponent
 
         foreach ($result as &$item) {
             $item = [
-                'total' => $item['tongsotindo'],
-                'dathuchiennghiletongiao' => $item['tongsotindo'],
-                'chuathuchiennghiletongiao' => $item['tongsotindo'],
-                'dantocthieuso' => $item['sotindo_dantoc_thieuso'],
+                'total' => $this->parseInt($item['tongsotindo']),
+                'dathuchiennghiletongiao' => $this->parseInt($item['tongsotindo']),
+                'chuathuchiennghiletongiao' => $this->parseInt($item['tongsotindo']),
+                'dantocthieuso' => $this->parseInt($item['sotindo_dantoc_thieuso']),
             ];
         }
 
@@ -143,6 +143,7 @@ class ExportThTdTgComponent extends ExportExcelComponent
 
         return $result;
     }
+
     private function __getChihoitinhdocusiphatgiaovietnam($model)
     {
         $fields = [
@@ -168,10 +169,10 @@ class ExportThTdTgComponent extends ExportExcelComponent
         foreach ($result as &$item) {
             $total = $item['soluonghoivien_tindo'] + $item['sotindo_dantoc_thieuso'];
             $item = [
-                'total' => $item['soluonghoivien_tindo'],
-                'dathuchiennghiletongiao' => $item['soluonghoivien_tindo'],
-                'chuathuchiennghiletongiao' => $item['soluonghoivien_tindo'],
-                'dantocthieuso' => $item['sotindo_dantoc_thieuso'],
+                'total' => $this->parseInt($item['soluonghoivien_tindo']),
+                'dathuchiennghiletongiao' => $this->parseInt($item['soluonghoivien_tindo']),
+                'chuathuchiennghiletongiao' => $this->parseInt($item['soluonghoivien_tindo']),
+                'dantocthieuso' => $this->parseInt($item['sotindo_dantoc_thieuso']),
             ];
         }
 
@@ -204,10 +205,10 @@ class ExportThTdTgComponent extends ExportExcelComponent
 
         foreach ($result as &$item) {
             $item = [
-                'total' => $item['tongsotindo'],
-                'dathuchiennghiletongiao' => $item['tongsotindo_cosocaudao'],
-                'chuathuchiennghiletongiao' => $item['tongsotindo_chuacosocaudao'],
-                'dantocthieuso' => $item['sotindo_dantoc_thieuso'],
+                'total' => $this->parseInt($item['tongsotindo']),
+                'dathuchiennghiletongiao' => $this->parseInt($item['tongsotindo_cosocaudao']),
+                'chuathuchiennghiletongiao' => $this->parseInt($item['tongsotindo_chuacosocaudao']),
+                'dantocthieuso' => $this->parseInt($item['sotindo_dantoc_thieuso']),
             ];
         }
 
@@ -240,10 +241,10 @@ class ExportThTdTgComponent extends ExportExcelComponent
 
         foreach ($result as &$item) {
             $item = [
-                'total' => $item['tongsotindo'],
-                'dathuchiennghiletongiao' => $item['tongsotindo_baptem'],
-                'chuathuchiennghiletongiao' => $item['tongsotindo_chuabaptem'],
-                'dantocthieuso' => $item['sotindo_dantoc_thieuso'],
+                'total' => $this->parseInt($item['tongsotindo']),
+                'dathuchiennghiletongiao' => $this->parseInt($item['tongsotindo_baptem']),
+                'chuathuchiennghiletongiao' => $this->parseInt($item['tongsotindo_chuabaptem']),
+                'dantocthieuso' => $this->parseInt($item['sotindo_dantoc_thieuso']),
             ];
         }
 
@@ -274,9 +275,9 @@ class ExportThTdTgComponent extends ExportExcelComponent
         $result = $this->__groupData($data, $column, $province_field);
 
         foreach ($result as &$item) {
-            $daquyy = intval($item['daquyy']);
-            $phattu_dantoc_thieuso = intval($item['phattu_dantoc_thieuso']);
-            $soluongtindo = intval($item['soluongtindo']);
+            $daquyy = $this->parseInt($item['daquyy']);
+            $phattu_dantoc_thieuso = $this->parseInt($item['phattu_dantoc_thieuso']);
+            $soluongtindo = $this->parseInt($item['soluongtindo']);
 
             $chuathuchiennghiletongiao = $soluongtindo - $daquyy;
             if ($chuathuchiennghiletongiao < 0) {
@@ -316,8 +317,8 @@ class ExportThTdTgComponent extends ExportExcelComponent
         $result = $this->__groupData($data, $column, $province_field);
 
         foreach ($result as &$item) {
-            $giaodan_sonhankhau = intval($item['giaodan_sonhankhau']);
-            $giaodandantocthieuso_sonhankhau = intval($item['giaodandantocthieuso_sonhankhau']);
+            $giaodan_sonhankhau = $this->parseInt($item['giaodan_sonhankhau']);
+            $giaodandantocthieuso_sonhankhau = $this->parseInt($item['giaodandantocthieuso_sonhankhau']);
 
             $item = [
                 'total' => $giaodan_sonhankhau,
@@ -355,7 +356,7 @@ class ExportThTdTgComponent extends ExportExcelComponent
         $data = $obj->find('all', $option);
 
         $result = Hash::combine($data, '{n}.' . $model . '.id', '{n}.' . $model);
-        $this->track($model, $result);
+        // $this->track($model, $result);
 
         return $result;
     }

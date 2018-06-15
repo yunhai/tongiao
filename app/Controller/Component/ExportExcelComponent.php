@@ -33,4 +33,11 @@ class ExportExcelComponent extends Component
     public function rendered($data, $config)
     {
     }
+
+    public function parseInt($input)
+    {
+        $input = str_replace('.', '', $input);
+        $input = str_replace(',', '', $input);
+        return intval($input);
+    }
 }
