@@ -394,7 +394,7 @@ class ExportThTdTgComponent extends ExportExcelComponent
             }
             foreach ($result[$provice_code] as $key => &$count) {
                 if ($item[$key]) {
-                    $count += intval($item[$key]);
+                    $count += $this->parseInt($item[$key]);
                 }
             }
         }
